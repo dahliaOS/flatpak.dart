@@ -1332,6 +1332,59 @@ class NativeLibrary {
   late final _g_intern_static_string = _g_intern_static_stringPtr
       .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<gchar>)>();
 
+  int g_error_domain_register_static(
+    ffi.Pointer<ffi.Char> error_type_name,
+    int error_type_private_size,
+    GErrorInitFunc error_type_init,
+    GErrorCopyFunc error_type_copy,
+    GErrorClearFunc error_type_clear,
+  ) {
+    return _g_error_domain_register_static(
+      error_type_name,
+      error_type_private_size,
+      error_type_init,
+      error_type_copy,
+      error_type_clear,
+    );
+  }
+
+  late final _g_error_domain_register_staticPtr = _lookup<
+      ffi.NativeFunction<
+          GQuark Function(
+              ffi.Pointer<ffi.Char>,
+              gsize,
+              GErrorInitFunc,
+              GErrorCopyFunc,
+              GErrorClearFunc)>>('g_error_domain_register_static');
+  late final _g_error_domain_register_static =
+      _g_error_domain_register_staticPtr.asFunction<
+          int Function(ffi.Pointer<ffi.Char>, int, GErrorInitFunc,
+              GErrorCopyFunc, GErrorClearFunc)>();
+
+  int g_error_domain_register(
+    ffi.Pointer<ffi.Char> error_type_name,
+    int error_type_private_size,
+    GErrorInitFunc error_type_init,
+    GErrorCopyFunc error_type_copy,
+    GErrorClearFunc error_type_clear,
+  ) {
+    return _g_error_domain_register(
+      error_type_name,
+      error_type_private_size,
+      error_type_init,
+      error_type_copy,
+      error_type_clear,
+    );
+  }
+
+  late final _g_error_domain_registerPtr = _lookup<
+      ffi.NativeFunction<
+          GQuark Function(ffi.Pointer<ffi.Char>, gsize, GErrorInitFunc,
+              GErrorCopyFunc, GErrorClearFunc)>>('g_error_domain_register');
+  late final _g_error_domain_register = _g_error_domain_registerPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, int, GErrorInitFunc, GErrorCopyFunc,
+          GErrorClearFunc)>();
+
   ffi.Pointer<GError> g_error_new(
     int domain,
     int code,
@@ -1532,6 +1585,23 @@ class NativeLibrary {
   late final _g_prefix_error = _g_prefix_errorPtr.asFunction<
       void Function(ffi.Pointer<ffi.Pointer<GError>>, ffi.Pointer<gchar>)>();
 
+  void g_prefix_error_literal(
+    ffi.Pointer<ffi.Pointer<GError>> err,
+    ffi.Pointer<gchar> prefix,
+  ) {
+    return _g_prefix_error_literal(
+      err,
+      prefix,
+    );
+  }
+
+  late final _g_prefix_error_literalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Pointer<GError>>,
+              ffi.Pointer<gchar>)>>('g_prefix_error_literal');
+  late final _g_prefix_error_literal = _g_prefix_error_literalPtr.asFunction<
+      void Function(ffi.Pointer<ffi.Pointer<GError>>, ffi.Pointer<gchar>)>();
+
   void g_propagate_prefixed_error(
     ffi.Pointer<ffi.Pointer<GError>> dest,
     ffi.Pointer<GError> src,
@@ -1706,6 +1776,16 @@ class NativeLibrary {
           'g_get_user_cache_dir');
   late final _g_get_user_cache_dir =
       _g_get_user_cache_dirPtr.asFunction<ffi.Pointer<gchar> Function()>();
+
+  ffi.Pointer<gchar> g_get_user_state_dir() {
+    return _g_get_user_state_dir();
+  }
+
+  late final _g_get_user_state_dirPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<gchar> Function()>>(
+          'g_get_user_state_dir');
+  late final _g_get_user_state_dir =
+      _g_get_user_state_dirPtr.asFunction<ffi.Pointer<gchar> Function()>();
 
   ffi.Pointer<ffi.Pointer<gchar>> g_get_system_data_dirs() {
     return _g_get_system_data_dirs();
@@ -3142,6 +3222,1013 @@ class NativeLibrary {
   late final _g_bit_unlock =
       _g_bit_unlockPtr.asFunction<void Function(ffi.Pointer<gint>, int)>();
 
+  ffi.Pointer<GTimeZone> g_time_zone_new(
+    ffi.Pointer<gchar> identifier,
+  ) {
+    return _g_time_zone_new(
+      identifier,
+    );
+  }
+
+  late final _g_time_zone_newPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<gchar>)>>(
+      'g_time_zone_new');
+  late final _g_time_zone_new = _g_time_zone_newPtr
+      .asFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<GTimeZone> g_time_zone_new_identifier(
+    ffi.Pointer<gchar> identifier,
+  ) {
+    return _g_time_zone_new_identifier(
+      identifier,
+    );
+  }
+
+  late final _g_time_zone_new_identifierPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<gchar>)>>(
+      'g_time_zone_new_identifier');
+  late final _g_time_zone_new_identifier = _g_time_zone_new_identifierPtr
+      .asFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<GTimeZone> g_time_zone_new_utc() {
+    return _g_time_zone_new_utc();
+  }
+
+  late final _g_time_zone_new_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GTimeZone> Function()>>(
+          'g_time_zone_new_utc');
+  late final _g_time_zone_new_utc =
+      _g_time_zone_new_utcPtr.asFunction<ffi.Pointer<GTimeZone> Function()>();
+
+  ffi.Pointer<GTimeZone> g_time_zone_new_local() {
+    return _g_time_zone_new_local();
+  }
+
+  late final _g_time_zone_new_localPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GTimeZone> Function()>>(
+          'g_time_zone_new_local');
+  late final _g_time_zone_new_local =
+      _g_time_zone_new_localPtr.asFunction<ffi.Pointer<GTimeZone> Function()>();
+
+  ffi.Pointer<GTimeZone> g_time_zone_new_offset(
+    int seconds,
+  ) {
+    return _g_time_zone_new_offset(
+      seconds,
+    );
+  }
+
+  late final _g_time_zone_new_offsetPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GTimeZone> Function(gint32)>>(
+          'g_time_zone_new_offset');
+  late final _g_time_zone_new_offset = _g_time_zone_new_offsetPtr
+      .asFunction<ffi.Pointer<GTimeZone> Function(int)>();
+
+  ffi.Pointer<GTimeZone> g_time_zone_ref(
+    ffi.Pointer<GTimeZone> tz,
+  ) {
+    return _g_time_zone_ref(
+      tz,
+    );
+  }
+
+  late final _g_time_zone_refPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTimeZone> Function(
+              ffi.Pointer<GTimeZone>)>>('g_time_zone_ref');
+  late final _g_time_zone_ref = _g_time_zone_refPtr
+      .asFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<GTimeZone>)>();
+
+  void g_time_zone_unref(
+    ffi.Pointer<GTimeZone> tz,
+  ) {
+    return _g_time_zone_unref(
+      tz,
+    );
+  }
+
+  late final _g_time_zone_unrefPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GTimeZone>)>>(
+          'g_time_zone_unref');
+  late final _g_time_zone_unref =
+      _g_time_zone_unrefPtr.asFunction<void Function(ffi.Pointer<GTimeZone>)>();
+
+  int g_time_zone_find_interval(
+    ffi.Pointer<GTimeZone> tz,
+    int type,
+    int time_,
+  ) {
+    return _g_time_zone_find_interval(
+      tz,
+      type,
+      time_,
+    );
+  }
+
+  late final _g_time_zone_find_intervalPtr = _lookup<
+      ffi.NativeFunction<
+          gint Function(ffi.Pointer<GTimeZone>, ffi.Int32,
+              gint64)>>('g_time_zone_find_interval');
+  late final _g_time_zone_find_interval = _g_time_zone_find_intervalPtr
+      .asFunction<int Function(ffi.Pointer<GTimeZone>, int, int)>();
+
+  int g_time_zone_adjust_time(
+    ffi.Pointer<GTimeZone> tz,
+    int type,
+    ffi.Pointer<gint64> time_,
+  ) {
+    return _g_time_zone_adjust_time(
+      tz,
+      type,
+      time_,
+    );
+  }
+
+  late final _g_time_zone_adjust_timePtr = _lookup<
+      ffi.NativeFunction<
+          gint Function(ffi.Pointer<GTimeZone>, ffi.Int32,
+              ffi.Pointer<gint64>)>>('g_time_zone_adjust_time');
+  late final _g_time_zone_adjust_time = _g_time_zone_adjust_timePtr.asFunction<
+      int Function(ffi.Pointer<GTimeZone>, int, ffi.Pointer<gint64>)>();
+
+  ffi.Pointer<gchar> g_time_zone_get_abbreviation(
+    ffi.Pointer<GTimeZone> tz,
+    int interval,
+  ) {
+    return _g_time_zone_get_abbreviation(
+      tz,
+      interval,
+    );
+  }
+
+  late final _g_time_zone_get_abbreviationPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<gchar> Function(
+              ffi.Pointer<GTimeZone>, gint)>>('g_time_zone_get_abbreviation');
+  late final _g_time_zone_get_abbreviation = _g_time_zone_get_abbreviationPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GTimeZone>, int)>();
+
+  int g_time_zone_get_offset(
+    ffi.Pointer<GTimeZone> tz,
+    int interval,
+  ) {
+    return _g_time_zone_get_offset(
+      tz,
+      interval,
+    );
+  }
+
+  late final _g_time_zone_get_offsetPtr = _lookup<
+          ffi.NativeFunction<gint32 Function(ffi.Pointer<GTimeZone>, gint)>>(
+      'g_time_zone_get_offset');
+  late final _g_time_zone_get_offset = _g_time_zone_get_offsetPtr
+      .asFunction<int Function(ffi.Pointer<GTimeZone>, int)>();
+
+  int g_time_zone_is_dst(
+    ffi.Pointer<GTimeZone> tz,
+    int interval,
+  ) {
+    return _g_time_zone_is_dst(
+      tz,
+      interval,
+    );
+  }
+
+  late final _g_time_zone_is_dstPtr = _lookup<
+          ffi.NativeFunction<gboolean Function(ffi.Pointer<GTimeZone>, gint)>>(
+      'g_time_zone_is_dst');
+  late final _g_time_zone_is_dst = _g_time_zone_is_dstPtr
+      .asFunction<int Function(ffi.Pointer<GTimeZone>, int)>();
+
+  ffi.Pointer<gchar> g_time_zone_get_identifier(
+    ffi.Pointer<GTimeZone> tz,
+  ) {
+    return _g_time_zone_get_identifier(
+      tz,
+    );
+  }
+
+  late final _g_time_zone_get_identifierPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GTimeZone>)>>(
+      'g_time_zone_get_identifier');
+  late final _g_time_zone_get_identifier = _g_time_zone_get_identifierPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GTimeZone>)>();
+
+  void g_date_time_unref(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_unref(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_unrefPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_unref');
+  late final _g_date_time_unref =
+      _g_date_time_unrefPtr.asFunction<void Function(ffi.Pointer<GDateTime>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_ref(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_ref(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_refPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>)>>('g_date_time_ref');
+  late final _g_date_time_ref = _g_date_time_refPtr
+      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_now(
+    ffi.Pointer<GTimeZone> tz,
+  ) {
+    return _g_date_time_new_now(
+      tz,
+    );
+  }
+
+  late final _g_date_time_new_nowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GTimeZone>)>>('g_date_time_new_now');
+  late final _g_date_time_new_now = _g_date_time_new_nowPtr
+      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeZone>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_now_local() {
+    return _g_date_time_new_now_local();
+  }
+
+  late final _g_date_time_new_now_localPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function()>>(
+          'g_date_time_new_now_local');
+  late final _g_date_time_new_now_local = _g_date_time_new_now_localPtr
+      .asFunction<ffi.Pointer<GDateTime> Function()>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_now_utc() {
+    return _g_date_time_new_now_utc();
+  }
+
+  late final _g_date_time_new_now_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function()>>(
+          'g_date_time_new_now_utc');
+  late final _g_date_time_new_now_utc = _g_date_time_new_now_utcPtr
+      .asFunction<ffi.Pointer<GDateTime> Function()>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_from_unix_local(
+    int t,
+  ) {
+    return _g_date_time_new_from_unix_local(
+      t,
+    );
+  }
+
+  late final _g_date_time_new_from_unix_localPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function(gint64)>>(
+          'g_date_time_new_from_unix_local');
+  late final _g_date_time_new_from_unix_local =
+      _g_date_time_new_from_unix_localPtr
+          .asFunction<ffi.Pointer<GDateTime> Function(int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_from_unix_utc(
+    int t,
+  ) {
+    return _g_date_time_new_from_unix_utc(
+      t,
+    );
+  }
+
+  late final _g_date_time_new_from_unix_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function(gint64)>>(
+          'g_date_time_new_from_unix_utc');
+  late final _g_date_time_new_from_unix_utc = _g_date_time_new_from_unix_utcPtr
+      .asFunction<ffi.Pointer<GDateTime> Function(int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_from_timeval_local(
+    ffi.Pointer<GTimeVal> tv,
+  ) {
+    return _g_date_time_new_from_timeval_local(
+      tv,
+    );
+  }
+
+  late final _g_date_time_new_from_timeval_localPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GTimeVal>)>>('g_date_time_new_from_timeval_local');
+  late final _g_date_time_new_from_timeval_local =
+      _g_date_time_new_from_timeval_localPtr
+          .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeVal>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_from_timeval_utc(
+    ffi.Pointer<GTimeVal> tv,
+  ) {
+    return _g_date_time_new_from_timeval_utc(
+      tv,
+    );
+  }
+
+  late final _g_date_time_new_from_timeval_utcPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GTimeVal>)>>('g_date_time_new_from_timeval_utc');
+  late final _g_date_time_new_from_timeval_utc =
+      _g_date_time_new_from_timeval_utcPtr
+          .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeVal>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_from_iso8601(
+    ffi.Pointer<gchar> text,
+    ffi.Pointer<GTimeZone> default_tz,
+  ) {
+    return _g_date_time_new_from_iso8601(
+      text,
+      default_tz,
+    );
+  }
+
+  late final _g_date_time_new_from_iso8601Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<gchar>,
+              ffi.Pointer<GTimeZone>)>>('g_date_time_new_from_iso8601');
+  late final _g_date_time_new_from_iso8601 =
+      _g_date_time_new_from_iso8601Ptr.asFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<gchar>, ffi.Pointer<GTimeZone>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new(
+    ffi.Pointer<GTimeZone> tz,
+    int year,
+    int month,
+    int day,
+    int hour,
+    int minute,
+    double seconds,
+  ) {
+    return _g_date_time_new(
+      tz,
+      year,
+      month,
+      day,
+      hour,
+      minute,
+      seconds,
+    );
+  }
+
+  late final _g_date_time_newPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeZone>, gint, gint,
+              gint, gint, gint, gdouble)>>('g_date_time_new');
+  late final _g_date_time_new = _g_date_time_newPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(
+          ffi.Pointer<GTimeZone>, int, int, int, int, int, double)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_local(
+    int year,
+    int month,
+    int day,
+    int hour,
+    int minute,
+    double seconds,
+  ) {
+    return _g_date_time_new_local(
+      year,
+      month,
+      day,
+      hour,
+      minute,
+      seconds,
+    );
+  }
+
+  late final _g_date_time_new_localPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              gint, gint, gint, gint, gint, gdouble)>>('g_date_time_new_local');
+  late final _g_date_time_new_local = _g_date_time_new_localPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(int, int, int, int, int, double)>();
+
+  ffi.Pointer<GDateTime> g_date_time_new_utc(
+    int year,
+    int month,
+    int day,
+    int hour,
+    int minute,
+    double seconds,
+  ) {
+    return _g_date_time_new_utc(
+      year,
+      month,
+      day,
+      hour,
+      minute,
+      seconds,
+    );
+  }
+
+  late final _g_date_time_new_utcPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              gint, gint, gint, gint, gint, gdouble)>>('g_date_time_new_utc');
+  late final _g_date_time_new_utc = _g_date_time_new_utcPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(int, int, int, int, int, double)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add(
+    ffi.Pointer<GDateTime> datetime,
+    int timespan,
+  ) {
+    return _g_date_time_add(
+      datetime,
+      timespan,
+    );
+  }
+
+  late final _g_date_time_addPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, GTimeSpan)>>('g_date_time_add');
+  late final _g_date_time_add = _g_date_time_addPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_years(
+    ffi.Pointer<GDateTime> datetime,
+    int years,
+  ) {
+    return _g_date_time_add_years(
+      datetime,
+      years,
+    );
+  }
+
+  late final _g_date_time_add_yearsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_years');
+  late final _g_date_time_add_years = _g_date_time_add_yearsPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_months(
+    ffi.Pointer<GDateTime> datetime,
+    int months,
+  ) {
+    return _g_date_time_add_months(
+      datetime,
+      months,
+    );
+  }
+
+  late final _g_date_time_add_monthsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_months');
+  late final _g_date_time_add_months = _g_date_time_add_monthsPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_weeks(
+    ffi.Pointer<GDateTime> datetime,
+    int weeks,
+  ) {
+    return _g_date_time_add_weeks(
+      datetime,
+      weeks,
+    );
+  }
+
+  late final _g_date_time_add_weeksPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_weeks');
+  late final _g_date_time_add_weeks = _g_date_time_add_weeksPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_days(
+    ffi.Pointer<GDateTime> datetime,
+    int days,
+  ) {
+    return _g_date_time_add_days(
+      datetime,
+      days,
+    );
+  }
+
+  late final _g_date_time_add_daysPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_days');
+  late final _g_date_time_add_days = _g_date_time_add_daysPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_hours(
+    ffi.Pointer<GDateTime> datetime,
+    int hours,
+  ) {
+    return _g_date_time_add_hours(
+      datetime,
+      hours,
+    );
+  }
+
+  late final _g_date_time_add_hoursPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_hours');
+  late final _g_date_time_add_hours = _g_date_time_add_hoursPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_minutes(
+    ffi.Pointer<GDateTime> datetime,
+    int minutes,
+  ) {
+    return _g_date_time_add_minutes(
+      datetime,
+      minutes,
+    );
+  }
+
+  late final _g_date_time_add_minutesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_minutes');
+  late final _g_date_time_add_minutes = _g_date_time_add_minutesPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_seconds(
+    ffi.Pointer<GDateTime> datetime,
+    double seconds,
+  ) {
+    return _g_date_time_add_seconds(
+      datetime,
+      seconds,
+    );
+  }
+
+  late final _g_date_time_add_secondsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>, gdouble)>>('g_date_time_add_seconds');
+  late final _g_date_time_add_seconds = _g_date_time_add_secondsPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, double)>();
+
+  ffi.Pointer<GDateTime> g_date_time_add_full(
+    ffi.Pointer<GDateTime> datetime,
+    int years,
+    int months,
+    int days,
+    int hours,
+    int minutes,
+    double seconds,
+  ) {
+    return _g_date_time_add_full(
+      datetime,
+      years,
+      months,
+      days,
+      hours,
+      minutes,
+      seconds,
+    );
+  }
+
+  late final _g_date_time_add_fullPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, gint, gint,
+              gint, gint, gint, gdouble)>>('g_date_time_add_full');
+  late final _g_date_time_add_full = _g_date_time_add_fullPtr.asFunction<
+      ffi.Pointer<GDateTime> Function(
+          ffi.Pointer<GDateTime>, int, int, int, int, int, double)>();
+
+  int g_date_time_compare(
+    gconstpointer dt1,
+    gconstpointer dt2,
+  ) {
+    return _g_date_time_compare(
+      dt1,
+      dt2,
+    );
+  }
+
+  late final _g_date_time_comparePtr =
+      _lookup<ffi.NativeFunction<gint Function(gconstpointer, gconstpointer)>>(
+          'g_date_time_compare');
+  late final _g_date_time_compare = _g_date_time_comparePtr
+      .asFunction<int Function(gconstpointer, gconstpointer)>();
+
+  int g_date_time_difference(
+    ffi.Pointer<GDateTime> end,
+    ffi.Pointer<GDateTime> begin,
+  ) {
+    return _g_date_time_difference(
+      end,
+      begin,
+    );
+  }
+
+  late final _g_date_time_differencePtr = _lookup<
+      ffi.NativeFunction<
+          GTimeSpan Function(ffi.Pointer<GDateTime>,
+              ffi.Pointer<GDateTime>)>>('g_date_time_difference');
+  late final _g_date_time_difference = _g_date_time_differencePtr.asFunction<
+      int Function(ffi.Pointer<GDateTime>, ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_hash(
+    gconstpointer datetime,
+  ) {
+    return _g_date_time_hash(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_hashPtr =
+      _lookup<ffi.NativeFunction<guint Function(gconstpointer)>>(
+          'g_date_time_hash');
+  late final _g_date_time_hash =
+      _g_date_time_hashPtr.asFunction<int Function(gconstpointer)>();
+
+  int g_date_time_equal(
+    gconstpointer dt1,
+    gconstpointer dt2,
+  ) {
+    return _g_date_time_equal(
+      dt1,
+      dt2,
+    );
+  }
+
+  late final _g_date_time_equalPtr = _lookup<
+          ffi.NativeFunction<gboolean Function(gconstpointer, gconstpointer)>>(
+      'g_date_time_equal');
+  late final _g_date_time_equal = _g_date_time_equalPtr
+      .asFunction<int Function(gconstpointer, gconstpointer)>();
+
+  void g_date_time_get_ymd(
+    ffi.Pointer<GDateTime> datetime,
+    ffi.Pointer<gint> year,
+    ffi.Pointer<gint> month,
+    ffi.Pointer<gint> day,
+  ) {
+    return _g_date_time_get_ymd(
+      datetime,
+      year,
+      month,
+      day,
+    );
+  }
+
+  late final _g_date_time_get_ymdPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GDateTime>, ffi.Pointer<gint>,
+              ffi.Pointer<gint>, ffi.Pointer<gint>)>>('g_date_time_get_ymd');
+  late final _g_date_time_get_ymd = _g_date_time_get_ymdPtr.asFunction<
+      void Function(ffi.Pointer<GDateTime>, ffi.Pointer<gint>,
+          ffi.Pointer<gint>, ffi.Pointer<gint>)>();
+
+  int g_date_time_get_year(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_year(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_yearPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_year');
+  late final _g_date_time_get_year = _g_date_time_get_yearPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_month(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_month(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_monthPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_month');
+  late final _g_date_time_get_month = _g_date_time_get_monthPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_day_of_month(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_day_of_month(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_day_of_monthPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_day_of_month');
+  late final _g_date_time_get_day_of_month = _g_date_time_get_day_of_monthPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_week_numbering_year(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_week_numbering_year(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_week_numbering_yearPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_week_numbering_year');
+  late final _g_date_time_get_week_numbering_year =
+      _g_date_time_get_week_numbering_yearPtr
+          .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_week_of_year(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_week_of_year(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_week_of_yearPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_week_of_year');
+  late final _g_date_time_get_week_of_year = _g_date_time_get_week_of_yearPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_day_of_week(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_day_of_week(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_day_of_weekPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_day_of_week');
+  late final _g_date_time_get_day_of_week = _g_date_time_get_day_of_weekPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_day_of_year(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_day_of_year(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_day_of_yearPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_day_of_year');
+  late final _g_date_time_get_day_of_year = _g_date_time_get_day_of_yearPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_hour(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_hour(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_hourPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_hour');
+  late final _g_date_time_get_hour = _g_date_time_get_hourPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_minute(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_minute(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_minutePtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_minute');
+  late final _g_date_time_get_minute = _g_date_time_get_minutePtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_second(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_second(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_secondPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_second');
+  late final _g_date_time_get_second = _g_date_time_get_secondPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_get_microsecond(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_microsecond(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_microsecondPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_microsecond');
+  late final _g_date_time_get_microsecond = _g_date_time_get_microsecondPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  double g_date_time_get_seconds(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_seconds(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_secondsPtr =
+      _lookup<ffi.NativeFunction<gdouble Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_seconds');
+  late final _g_date_time_get_seconds = _g_date_time_get_secondsPtr
+      .asFunction<double Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_to_unix(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_to_unix(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_to_unixPtr =
+      _lookup<ffi.NativeFunction<gint64 Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_to_unix');
+  late final _g_date_time_to_unix = _g_date_time_to_unixPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_to_timeval(
+    ffi.Pointer<GDateTime> datetime,
+    ffi.Pointer<GTimeVal> tv,
+  ) {
+    return _g_date_time_to_timeval(
+      datetime,
+      tv,
+    );
+  }
+
+  late final _g_date_time_to_timevalPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(ffi.Pointer<GDateTime>,
+              ffi.Pointer<GTimeVal>)>>('g_date_time_to_timeval');
+  late final _g_date_time_to_timeval = _g_date_time_to_timevalPtr.asFunction<
+      int Function(ffi.Pointer<GDateTime>, ffi.Pointer<GTimeVal>)>();
+
+  int g_date_time_get_utc_offset(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_utc_offset(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_utc_offsetPtr =
+      _lookup<ffi.NativeFunction<GTimeSpan Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_get_utc_offset');
+  late final _g_date_time_get_utc_offset = _g_date_time_get_utc_offsetPtr
+      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  ffi.Pointer<GTimeZone> g_date_time_get_timezone(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_timezone(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_timezonePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTimeZone> Function(
+              ffi.Pointer<GDateTime>)>>('g_date_time_get_timezone');
+  late final _g_date_time_get_timezone = _g_date_time_get_timezonePtr
+      .asFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<GDateTime>)>();
+
+  ffi.Pointer<gchar> g_date_time_get_timezone_abbreviation(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_get_timezone_abbreviation(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_get_timezone_abbreviationPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>>(
+      'g_date_time_get_timezone_abbreviation');
+  late final _g_date_time_get_timezone_abbreviation =
+      _g_date_time_get_timezone_abbreviationPtr
+          .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>();
+
+  int g_date_time_is_daylight_savings(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_is_daylight_savings(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_is_daylight_savingsPtr =
+      _lookup<ffi.NativeFunction<gboolean Function(ffi.Pointer<GDateTime>)>>(
+          'g_date_time_is_daylight_savings');
+  late final _g_date_time_is_daylight_savings =
+      _g_date_time_is_daylight_savingsPtr
+          .asFunction<int Function(ffi.Pointer<GDateTime>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_to_timezone(
+    ffi.Pointer<GDateTime> datetime,
+    ffi.Pointer<GTimeZone> tz,
+  ) {
+    return _g_date_time_to_timezone(
+      datetime,
+      tz,
+    );
+  }
+
+  late final _g_date_time_to_timezonePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>,
+              ffi.Pointer<GTimeZone>)>>('g_date_time_to_timezone');
+  late final _g_date_time_to_timezone = _g_date_time_to_timezonePtr.asFunction<
+      ffi.Pointer<GDateTime> Function(
+          ffi.Pointer<GDateTime>, ffi.Pointer<GTimeZone>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_to_local(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_to_local(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_to_localPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>)>>('g_date_time_to_local');
+  late final _g_date_time_to_local = _g_date_time_to_localPtr
+      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>)>();
+
+  ffi.Pointer<GDateTime> g_date_time_to_utc(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_to_utc(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_to_utcPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GDateTime>)>>('g_date_time_to_utc');
+  late final _g_date_time_to_utc = _g_date_time_to_utcPtr
+      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>)>();
+
+  ffi.Pointer<gchar> g_date_time_format(
+    ffi.Pointer<GDateTime> datetime,
+    ffi.Pointer<gchar> format,
+  ) {
+    return _g_date_time_format(
+      datetime,
+      format,
+    );
+  }
+
+  late final _g_date_time_formatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>,
+              ffi.Pointer<gchar>)>>('g_date_time_format');
+  late final _g_date_time_format = _g_date_time_formatPtr.asFunction<
+      ffi.Pointer<gchar> Function(
+          ffi.Pointer<GDateTime>, ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<gchar> g_date_time_format_iso8601(
+    ffi.Pointer<GDateTime> datetime,
+  ) {
+    return _g_date_time_format_iso8601(
+      datetime,
+    );
+  }
+
+  late final _g_date_time_format_iso8601Ptr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>>(
+      'g_date_time_format_iso8601');
+  late final _g_date_time_format_iso8601 = _g_date_time_format_iso8601Ptr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>();
+
   int g_bookmark_file_error_quark() {
     return _g_bookmark_file_error_quark();
   }
@@ -3648,6 +4735,48 @@ class NativeLibrary {
               int,
               ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  int g_bookmark_file_set_application_info(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> exec,
+    int count,
+    ffi.Pointer<GDateTime> stamp,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_bookmark_file_set_application_info(
+      bookmark,
+      uri,
+      name,
+      exec,
+      count,
+      stamp,
+      error,
+    );
+  }
+
+  late final _g_bookmark_file_set_application_infoPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<GBookmarkFile>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Int,
+                  ffi.Pointer<GDateTime>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_bookmark_file_set_application_info');
+  late final _g_bookmark_file_set_application_info =
+      _g_bookmark_file_set_application_infoPtr.asFunction<
+          int Function(
+              ffi.Pointer<GBookmarkFile>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<GDateTime>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
   int g_bookmark_file_get_app_info(
     ffi.Pointer<GBookmarkFile> bookmark,
     ffi.Pointer<gchar> uri,
@@ -3688,6 +4817,48 @@ class NativeLibrary {
               ffi.Pointer<ffi.Pointer<gchar>>,
               ffi.Pointer<guint>,
               ffi.Pointer<time_t>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_bookmark_file_get_application_info(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> exec,
+    ffi.Pointer<ffi.UnsignedInt> count,
+    ffi.Pointer<ffi.Pointer<GDateTime>> stamp,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_bookmark_file_get_application_info(
+      bookmark,
+      uri,
+      name,
+      exec,
+      count,
+      stamp,
+      error,
+    );
+  }
+
+  late final _g_bookmark_file_get_application_infoPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<GBookmarkFile>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
+                  ffi.Pointer<ffi.UnsignedInt>,
+                  ffi.Pointer<ffi.Pointer<GDateTime>>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_bookmark_file_get_application_info');
+  late final _g_bookmark_file_get_application_info =
+      _g_bookmark_file_get_application_infoPtr.asFunction<
+          int Function(
+              ffi.Pointer<GBookmarkFile>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.UnsignedInt>,
+              ffi.Pointer<ffi.Pointer<GDateTime>>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
 
   void g_bookmark_file_set_is_private(
@@ -3811,6 +4982,27 @@ class NativeLibrary {
       _g_bookmark_file_set_addedPtr.asFunction<
           void Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<gchar>, int)>();
 
+  void g_bookmark_file_set_added_date_time(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<GDateTime> added,
+  ) {
+    return _g_bookmark_file_set_added_date_time(
+      bookmark,
+      uri,
+      added,
+    );
+  }
+
+  late final _g_bookmark_file_set_added_date_timePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GDateTime>)>>('g_bookmark_file_set_added_date_time');
+  late final _g_bookmark_file_set_added_date_time =
+      _g_bookmark_file_set_added_date_timePtr.asFunction<
+          void Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GDateTime>)>();
+
   int g_bookmark_file_get_added(
     ffi.Pointer<GBookmarkFile> bookmark,
     ffi.Pointer<gchar> uri,
@@ -3832,6 +5024,28 @@ class NativeLibrary {
           int Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<gchar>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  ffi.Pointer<GDateTime> g_bookmark_file_get_added_date_time(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_bookmark_file_get_added_date_time(
+      bookmark,
+      uri,
+      error,
+    );
+  }
+
+  late final _g_bookmark_file_get_added_date_timePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GDateTime> Function(ffi.Pointer<GBookmarkFile>,
+                  ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_bookmark_file_get_added_date_time');
+  late final _g_bookmark_file_get_added_date_time =
+      _g_bookmark_file_get_added_date_timePtr.asFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GBookmarkFile>,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
   void g_bookmark_file_set_modified(
     ffi.Pointer<GBookmarkFile> bookmark,
     ffi.Pointer<gchar> uri,
@@ -3851,6 +5065,28 @@ class NativeLibrary {
   late final _g_bookmark_file_set_modified =
       _g_bookmark_file_set_modifiedPtr.asFunction<
           void Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<gchar>, int)>();
+
+  void g_bookmark_file_set_modified_date_time(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<GDateTime> modified,
+  ) {
+    return _g_bookmark_file_set_modified_date_time(
+      bookmark,
+      uri,
+      modified,
+    );
+  }
+
+  late final _g_bookmark_file_set_modified_date_timePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<GBookmarkFile>,
+                  ffi.Pointer<ffi.Char>, ffi.Pointer<GDateTime>)>>(
+      'g_bookmark_file_set_modified_date_time');
+  late final _g_bookmark_file_set_modified_date_time =
+      _g_bookmark_file_set_modified_date_timePtr.asFunction<
+          void Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GDateTime>)>();
 
   int g_bookmark_file_get_modified(
     ffi.Pointer<GBookmarkFile> bookmark,
@@ -3874,6 +5110,28 @@ class NativeLibrary {
           int Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<gchar>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  ffi.Pointer<GDateTime> g_bookmark_file_get_modified_date_time(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_bookmark_file_get_modified_date_time(
+      bookmark,
+      uri,
+      error,
+    );
+  }
+
+  late final _g_bookmark_file_get_modified_date_timePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GDateTime> Function(ffi.Pointer<GBookmarkFile>,
+                  ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_bookmark_file_get_modified_date_time');
+  late final _g_bookmark_file_get_modified_date_time =
+      _g_bookmark_file_get_modified_date_timePtr.asFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GBookmarkFile>,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
   void g_bookmark_file_set_visited(
     ffi.Pointer<GBookmarkFile> bookmark,
     ffi.Pointer<gchar> uri,
@@ -3893,6 +5151,28 @@ class NativeLibrary {
   late final _g_bookmark_file_set_visited =
       _g_bookmark_file_set_visitedPtr.asFunction<
           void Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<gchar>, int)>();
+
+  void g_bookmark_file_set_visited_date_time(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<GDateTime> visited,
+  ) {
+    return _g_bookmark_file_set_visited_date_time(
+      bookmark,
+      uri,
+      visited,
+    );
+  }
+
+  late final _g_bookmark_file_set_visited_date_timePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<GBookmarkFile>,
+                  ffi.Pointer<ffi.Char>, ffi.Pointer<GDateTime>)>>(
+      'g_bookmark_file_set_visited_date_time');
+  late final _g_bookmark_file_set_visited_date_time =
+      _g_bookmark_file_set_visited_date_timePtr.asFunction<
+          void Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GDateTime>)>();
 
   int g_bookmark_file_get_visited(
     ffi.Pointer<GBookmarkFile> bookmark,
@@ -3915,6 +5195,28 @@ class NativeLibrary {
       _g_bookmark_file_get_visitedPtr.asFunction<
           int Function(ffi.Pointer<GBookmarkFile>, ffi.Pointer<gchar>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GDateTime> g_bookmark_file_get_visited_date_time(
+    ffi.Pointer<GBookmarkFile> bookmark,
+    ffi.Pointer<ffi.Char> uri,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_bookmark_file_get_visited_date_time(
+      bookmark,
+      uri,
+      error,
+    );
+  }
+
+  late final _g_bookmark_file_get_visited_date_timePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GDateTime> Function(ffi.Pointer<GBookmarkFile>,
+                  ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_bookmark_file_get_visited_date_time');
+  late final _g_bookmark_file_get_visited_date_time =
+      _g_bookmark_file_get_visited_date_timePtr.asFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GBookmarkFile>,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>();
 
   int g_bookmark_file_has_item(
     ffi.Pointer<GBookmarkFile> bookmark,
@@ -4290,6 +5592,27 @@ class NativeLibrary {
           'g_bytes_compare');
   late final _g_bytes_compare = _g_bytes_comparePtr
       .asFunction<int Function(gconstpointer, gconstpointer)>();
+
+  gconstpointer g_bytes_get_region(
+    ffi.Pointer<GBytes> bytes,
+    int element_size,
+    int offset,
+    int n_elements,
+  ) {
+    return _g_bytes_get_region(
+      bytes,
+      element_size,
+      offset,
+      n_elements,
+    );
+  }
+
+  late final _g_bytes_get_regionPtr = _lookup<
+      ffi.NativeFunction<
+          gconstpointer Function(
+              ffi.Pointer<GBytes>, gsize, gsize, gsize)>>('g_bytes_get_region');
+  late final _g_bytes_get_region = _g_bytes_get_regionPtr
+      .asFunction<gconstpointer Function(ffi.Pointer<GBytes>, int, int, int)>();
 
   int g_get_charset(
     ffi.Pointer<ffi.Pointer<ffi.Char>> charset,
@@ -6026,998 +7349,6 @@ class NativeLibrary {
       int Function(
           ffi.Pointer<gchar>, int, ffi.Pointer<gchar>, ffi.Pointer<GDate>)>();
 
-  ffi.Pointer<GTimeZone> g_time_zone_new(
-    ffi.Pointer<gchar> identifier,
-  ) {
-    return _g_time_zone_new(
-      identifier,
-    );
-  }
-
-  late final _g_time_zone_newPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<gchar>)>>(
-      'g_time_zone_new');
-  late final _g_time_zone_new = _g_time_zone_newPtr
-      .asFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<gchar>)>();
-
-  ffi.Pointer<GTimeZone> g_time_zone_new_utc() {
-    return _g_time_zone_new_utc();
-  }
-
-  late final _g_time_zone_new_utcPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<GTimeZone> Function()>>(
-          'g_time_zone_new_utc');
-  late final _g_time_zone_new_utc =
-      _g_time_zone_new_utcPtr.asFunction<ffi.Pointer<GTimeZone> Function()>();
-
-  ffi.Pointer<GTimeZone> g_time_zone_new_local() {
-    return _g_time_zone_new_local();
-  }
-
-  late final _g_time_zone_new_localPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<GTimeZone> Function()>>(
-          'g_time_zone_new_local');
-  late final _g_time_zone_new_local =
-      _g_time_zone_new_localPtr.asFunction<ffi.Pointer<GTimeZone> Function()>();
-
-  ffi.Pointer<GTimeZone> g_time_zone_new_offset(
-    int seconds,
-  ) {
-    return _g_time_zone_new_offset(
-      seconds,
-    );
-  }
-
-  late final _g_time_zone_new_offsetPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<GTimeZone> Function(gint32)>>(
-          'g_time_zone_new_offset');
-  late final _g_time_zone_new_offset = _g_time_zone_new_offsetPtr
-      .asFunction<ffi.Pointer<GTimeZone> Function(int)>();
-
-  ffi.Pointer<GTimeZone> g_time_zone_ref(
-    ffi.Pointer<GTimeZone> tz,
-  ) {
-    return _g_time_zone_ref(
-      tz,
-    );
-  }
-
-  late final _g_time_zone_refPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GTimeZone> Function(
-              ffi.Pointer<GTimeZone>)>>('g_time_zone_ref');
-  late final _g_time_zone_ref = _g_time_zone_refPtr
-      .asFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<GTimeZone>)>();
-
-  void g_time_zone_unref(
-    ffi.Pointer<GTimeZone> tz,
-  ) {
-    return _g_time_zone_unref(
-      tz,
-    );
-  }
-
-  late final _g_time_zone_unrefPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GTimeZone>)>>(
-          'g_time_zone_unref');
-  late final _g_time_zone_unref =
-      _g_time_zone_unrefPtr.asFunction<void Function(ffi.Pointer<GTimeZone>)>();
-
-  int g_time_zone_find_interval(
-    ffi.Pointer<GTimeZone> tz,
-    int type,
-    int time_,
-  ) {
-    return _g_time_zone_find_interval(
-      tz,
-      type,
-      time_,
-    );
-  }
-
-  late final _g_time_zone_find_intervalPtr = _lookup<
-      ffi.NativeFunction<
-          gint Function(ffi.Pointer<GTimeZone>, ffi.Int32,
-              gint64)>>('g_time_zone_find_interval');
-  late final _g_time_zone_find_interval = _g_time_zone_find_intervalPtr
-      .asFunction<int Function(ffi.Pointer<GTimeZone>, int, int)>();
-
-  int g_time_zone_adjust_time(
-    ffi.Pointer<GTimeZone> tz,
-    int type,
-    ffi.Pointer<gint64> time_,
-  ) {
-    return _g_time_zone_adjust_time(
-      tz,
-      type,
-      time_,
-    );
-  }
-
-  late final _g_time_zone_adjust_timePtr = _lookup<
-      ffi.NativeFunction<
-          gint Function(ffi.Pointer<GTimeZone>, ffi.Int32,
-              ffi.Pointer<gint64>)>>('g_time_zone_adjust_time');
-  late final _g_time_zone_adjust_time = _g_time_zone_adjust_timePtr.asFunction<
-      int Function(ffi.Pointer<GTimeZone>, int, ffi.Pointer<gint64>)>();
-
-  ffi.Pointer<gchar> g_time_zone_get_abbreviation(
-    ffi.Pointer<GTimeZone> tz,
-    int interval,
-  ) {
-    return _g_time_zone_get_abbreviation(
-      tz,
-      interval,
-    );
-  }
-
-  late final _g_time_zone_get_abbreviationPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<gchar> Function(
-              ffi.Pointer<GTimeZone>, gint)>>('g_time_zone_get_abbreviation');
-  late final _g_time_zone_get_abbreviation = _g_time_zone_get_abbreviationPtr
-      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GTimeZone>, int)>();
-
-  int g_time_zone_get_offset(
-    ffi.Pointer<GTimeZone> tz,
-    int interval,
-  ) {
-    return _g_time_zone_get_offset(
-      tz,
-      interval,
-    );
-  }
-
-  late final _g_time_zone_get_offsetPtr = _lookup<
-          ffi.NativeFunction<gint32 Function(ffi.Pointer<GTimeZone>, gint)>>(
-      'g_time_zone_get_offset');
-  late final _g_time_zone_get_offset = _g_time_zone_get_offsetPtr
-      .asFunction<int Function(ffi.Pointer<GTimeZone>, int)>();
-
-  int g_time_zone_is_dst(
-    ffi.Pointer<GTimeZone> tz,
-    int interval,
-  ) {
-    return _g_time_zone_is_dst(
-      tz,
-      interval,
-    );
-  }
-
-  late final _g_time_zone_is_dstPtr = _lookup<
-          ffi.NativeFunction<gboolean Function(ffi.Pointer<GTimeZone>, gint)>>(
-      'g_time_zone_is_dst');
-  late final _g_time_zone_is_dst = _g_time_zone_is_dstPtr
-      .asFunction<int Function(ffi.Pointer<GTimeZone>, int)>();
-
-  ffi.Pointer<gchar> g_time_zone_get_identifier(
-    ffi.Pointer<GTimeZone> tz,
-  ) {
-    return _g_time_zone_get_identifier(
-      tz,
-    );
-  }
-
-  late final _g_time_zone_get_identifierPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GTimeZone>)>>(
-      'g_time_zone_get_identifier');
-  late final _g_time_zone_get_identifier = _g_time_zone_get_identifierPtr
-      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GTimeZone>)>();
-
-  void g_date_time_unref(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_unref(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_unrefPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_unref');
-  late final _g_date_time_unref =
-      _g_date_time_unrefPtr.asFunction<void Function(ffi.Pointer<GDateTime>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_ref(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_ref(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_refPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>)>>('g_date_time_ref');
-  late final _g_date_time_ref = _g_date_time_refPtr
-      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_now(
-    ffi.Pointer<GTimeZone> tz,
-  ) {
-    return _g_date_time_new_now(
-      tz,
-    );
-  }
-
-  late final _g_date_time_new_nowPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GTimeZone>)>>('g_date_time_new_now');
-  late final _g_date_time_new_now = _g_date_time_new_nowPtr
-      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeZone>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_now_local() {
-    return _g_date_time_new_now_local();
-  }
-
-  late final _g_date_time_new_now_localPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function()>>(
-          'g_date_time_new_now_local');
-  late final _g_date_time_new_now_local = _g_date_time_new_now_localPtr
-      .asFunction<ffi.Pointer<GDateTime> Function()>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_now_utc() {
-    return _g_date_time_new_now_utc();
-  }
-
-  late final _g_date_time_new_now_utcPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function()>>(
-          'g_date_time_new_now_utc');
-  late final _g_date_time_new_now_utc = _g_date_time_new_now_utcPtr
-      .asFunction<ffi.Pointer<GDateTime> Function()>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_from_unix_local(
-    int t,
-  ) {
-    return _g_date_time_new_from_unix_local(
-      t,
-    );
-  }
-
-  late final _g_date_time_new_from_unix_localPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function(gint64)>>(
-          'g_date_time_new_from_unix_local');
-  late final _g_date_time_new_from_unix_local =
-      _g_date_time_new_from_unix_localPtr
-          .asFunction<ffi.Pointer<GDateTime> Function(int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_from_unix_utc(
-    int t,
-  ) {
-    return _g_date_time_new_from_unix_utc(
-      t,
-    );
-  }
-
-  late final _g_date_time_new_from_unix_utcPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<GDateTime> Function(gint64)>>(
-          'g_date_time_new_from_unix_utc');
-  late final _g_date_time_new_from_unix_utc = _g_date_time_new_from_unix_utcPtr
-      .asFunction<ffi.Pointer<GDateTime> Function(int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_from_timeval_local(
-    ffi.Pointer<GTimeVal> tv,
-  ) {
-    return _g_date_time_new_from_timeval_local(
-      tv,
-    );
-  }
-
-  late final _g_date_time_new_from_timeval_localPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GTimeVal>)>>('g_date_time_new_from_timeval_local');
-  late final _g_date_time_new_from_timeval_local =
-      _g_date_time_new_from_timeval_localPtr
-          .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeVal>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_from_timeval_utc(
-    ffi.Pointer<GTimeVal> tv,
-  ) {
-    return _g_date_time_new_from_timeval_utc(
-      tv,
-    );
-  }
-
-  late final _g_date_time_new_from_timeval_utcPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GTimeVal>)>>('g_date_time_new_from_timeval_utc');
-  late final _g_date_time_new_from_timeval_utc =
-      _g_date_time_new_from_timeval_utcPtr
-          .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeVal>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_from_iso8601(
-    ffi.Pointer<gchar> text,
-    ffi.Pointer<GTimeZone> default_tz,
-  ) {
-    return _g_date_time_new_from_iso8601(
-      text,
-      default_tz,
-    );
-  }
-
-  late final _g_date_time_new_from_iso8601Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(ffi.Pointer<gchar>,
-              ffi.Pointer<GTimeZone>)>>('g_date_time_new_from_iso8601');
-  late final _g_date_time_new_from_iso8601 =
-      _g_date_time_new_from_iso8601Ptr.asFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<gchar>, ffi.Pointer<GTimeZone>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new(
-    ffi.Pointer<GTimeZone> tz,
-    int year,
-    int month,
-    int day,
-    int hour,
-    int minute,
-    double seconds,
-  ) {
-    return _g_date_time_new(
-      tz,
-      year,
-      month,
-      day,
-      hour,
-      minute,
-      seconds,
-    );
-  }
-
-  late final _g_date_time_newPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(ffi.Pointer<GTimeZone>, gint, gint,
-              gint, gint, gint, gdouble)>>('g_date_time_new');
-  late final _g_date_time_new = _g_date_time_newPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(
-          ffi.Pointer<GTimeZone>, int, int, int, int, int, double)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_local(
-    int year,
-    int month,
-    int day,
-    int hour,
-    int minute,
-    double seconds,
-  ) {
-    return _g_date_time_new_local(
-      year,
-      month,
-      day,
-      hour,
-      minute,
-      seconds,
-    );
-  }
-
-  late final _g_date_time_new_localPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              gint, gint, gint, gint, gint, gdouble)>>('g_date_time_new_local');
-  late final _g_date_time_new_local = _g_date_time_new_localPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(int, int, int, int, int, double)>();
-
-  ffi.Pointer<GDateTime> g_date_time_new_utc(
-    int year,
-    int month,
-    int day,
-    int hour,
-    int minute,
-    double seconds,
-  ) {
-    return _g_date_time_new_utc(
-      year,
-      month,
-      day,
-      hour,
-      minute,
-      seconds,
-    );
-  }
-
-  late final _g_date_time_new_utcPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              gint, gint, gint, gint, gint, gdouble)>>('g_date_time_new_utc');
-  late final _g_date_time_new_utc = _g_date_time_new_utcPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(int, int, int, int, int, double)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add(
-    ffi.Pointer<GDateTime> datetime,
-    int timespan,
-  ) {
-    return _g_date_time_add(
-      datetime,
-      timespan,
-    );
-  }
-
-  late final _g_date_time_addPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, GTimeSpan)>>('g_date_time_add');
-  late final _g_date_time_add = _g_date_time_addPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_years(
-    ffi.Pointer<GDateTime> datetime,
-    int years,
-  ) {
-    return _g_date_time_add_years(
-      datetime,
-      years,
-    );
-  }
-
-  late final _g_date_time_add_yearsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_years');
-  late final _g_date_time_add_years = _g_date_time_add_yearsPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_months(
-    ffi.Pointer<GDateTime> datetime,
-    int months,
-  ) {
-    return _g_date_time_add_months(
-      datetime,
-      months,
-    );
-  }
-
-  late final _g_date_time_add_monthsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_months');
-  late final _g_date_time_add_months = _g_date_time_add_monthsPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_weeks(
-    ffi.Pointer<GDateTime> datetime,
-    int weeks,
-  ) {
-    return _g_date_time_add_weeks(
-      datetime,
-      weeks,
-    );
-  }
-
-  late final _g_date_time_add_weeksPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_weeks');
-  late final _g_date_time_add_weeks = _g_date_time_add_weeksPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_days(
-    ffi.Pointer<GDateTime> datetime,
-    int days,
-  ) {
-    return _g_date_time_add_days(
-      datetime,
-      days,
-    );
-  }
-
-  late final _g_date_time_add_daysPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_days');
-  late final _g_date_time_add_days = _g_date_time_add_daysPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_hours(
-    ffi.Pointer<GDateTime> datetime,
-    int hours,
-  ) {
-    return _g_date_time_add_hours(
-      datetime,
-      hours,
-    );
-  }
-
-  late final _g_date_time_add_hoursPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_hours');
-  late final _g_date_time_add_hours = _g_date_time_add_hoursPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_minutes(
-    ffi.Pointer<GDateTime> datetime,
-    int minutes,
-  ) {
-    return _g_date_time_add_minutes(
-      datetime,
-      minutes,
-    );
-  }
-
-  late final _g_date_time_add_minutesPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, gint)>>('g_date_time_add_minutes');
-  late final _g_date_time_add_minutes = _g_date_time_add_minutesPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, int)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_seconds(
-    ffi.Pointer<GDateTime> datetime,
-    double seconds,
-  ) {
-    return _g_date_time_add_seconds(
-      datetime,
-      seconds,
-    );
-  }
-
-  late final _g_date_time_add_secondsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>, gdouble)>>('g_date_time_add_seconds');
-  late final _g_date_time_add_seconds = _g_date_time_add_secondsPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, double)>();
-
-  ffi.Pointer<GDateTime> g_date_time_add_full(
-    ffi.Pointer<GDateTime> datetime,
-    int years,
-    int months,
-    int days,
-    int hours,
-    int minutes,
-    double seconds,
-  ) {
-    return _g_date_time_add_full(
-      datetime,
-      years,
-      months,
-      days,
-      hours,
-      minutes,
-      seconds,
-    );
-  }
-
-  late final _g_date_time_add_fullPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>, gint, gint,
-              gint, gint, gint, gdouble)>>('g_date_time_add_full');
-  late final _g_date_time_add_full = _g_date_time_add_fullPtr.asFunction<
-      ffi.Pointer<GDateTime> Function(
-          ffi.Pointer<GDateTime>, int, int, int, int, int, double)>();
-
-  int g_date_time_compare(
-    gconstpointer dt1,
-    gconstpointer dt2,
-  ) {
-    return _g_date_time_compare(
-      dt1,
-      dt2,
-    );
-  }
-
-  late final _g_date_time_comparePtr =
-      _lookup<ffi.NativeFunction<gint Function(gconstpointer, gconstpointer)>>(
-          'g_date_time_compare');
-  late final _g_date_time_compare = _g_date_time_comparePtr
-      .asFunction<int Function(gconstpointer, gconstpointer)>();
-
-  int g_date_time_difference(
-    ffi.Pointer<GDateTime> end,
-    ffi.Pointer<GDateTime> begin,
-  ) {
-    return _g_date_time_difference(
-      end,
-      begin,
-    );
-  }
-
-  late final _g_date_time_differencePtr = _lookup<
-      ffi.NativeFunction<
-          GTimeSpan Function(ffi.Pointer<GDateTime>,
-              ffi.Pointer<GDateTime>)>>('g_date_time_difference');
-  late final _g_date_time_difference = _g_date_time_differencePtr.asFunction<
-      int Function(ffi.Pointer<GDateTime>, ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_hash(
-    gconstpointer datetime,
-  ) {
-    return _g_date_time_hash(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_hashPtr =
-      _lookup<ffi.NativeFunction<guint Function(gconstpointer)>>(
-          'g_date_time_hash');
-  late final _g_date_time_hash =
-      _g_date_time_hashPtr.asFunction<int Function(gconstpointer)>();
-
-  int g_date_time_equal(
-    gconstpointer dt1,
-    gconstpointer dt2,
-  ) {
-    return _g_date_time_equal(
-      dt1,
-      dt2,
-    );
-  }
-
-  late final _g_date_time_equalPtr = _lookup<
-          ffi.NativeFunction<gboolean Function(gconstpointer, gconstpointer)>>(
-      'g_date_time_equal');
-  late final _g_date_time_equal = _g_date_time_equalPtr
-      .asFunction<int Function(gconstpointer, gconstpointer)>();
-
-  void g_date_time_get_ymd(
-    ffi.Pointer<GDateTime> datetime,
-    ffi.Pointer<gint> year,
-    ffi.Pointer<gint> month,
-    ffi.Pointer<gint> day,
-  ) {
-    return _g_date_time_get_ymd(
-      datetime,
-      year,
-      month,
-      day,
-    );
-  }
-
-  late final _g_date_time_get_ymdPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<GDateTime>, ffi.Pointer<gint>,
-              ffi.Pointer<gint>, ffi.Pointer<gint>)>>('g_date_time_get_ymd');
-  late final _g_date_time_get_ymd = _g_date_time_get_ymdPtr.asFunction<
-      void Function(ffi.Pointer<GDateTime>, ffi.Pointer<gint>,
-          ffi.Pointer<gint>, ffi.Pointer<gint>)>();
-
-  int g_date_time_get_year(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_year(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_yearPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_year');
-  late final _g_date_time_get_year = _g_date_time_get_yearPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_month(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_month(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_monthPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_month');
-  late final _g_date_time_get_month = _g_date_time_get_monthPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_day_of_month(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_day_of_month(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_day_of_monthPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_day_of_month');
-  late final _g_date_time_get_day_of_month = _g_date_time_get_day_of_monthPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_week_numbering_year(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_week_numbering_year(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_week_numbering_yearPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_week_numbering_year');
-  late final _g_date_time_get_week_numbering_year =
-      _g_date_time_get_week_numbering_yearPtr
-          .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_week_of_year(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_week_of_year(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_week_of_yearPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_week_of_year');
-  late final _g_date_time_get_week_of_year = _g_date_time_get_week_of_yearPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_day_of_week(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_day_of_week(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_day_of_weekPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_day_of_week');
-  late final _g_date_time_get_day_of_week = _g_date_time_get_day_of_weekPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_day_of_year(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_day_of_year(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_day_of_yearPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_day_of_year');
-  late final _g_date_time_get_day_of_year = _g_date_time_get_day_of_yearPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_hour(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_hour(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_hourPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_hour');
-  late final _g_date_time_get_hour = _g_date_time_get_hourPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_minute(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_minute(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_minutePtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_minute');
-  late final _g_date_time_get_minute = _g_date_time_get_minutePtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_second(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_second(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_secondPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_second');
-  late final _g_date_time_get_second = _g_date_time_get_secondPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_get_microsecond(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_microsecond(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_microsecondPtr =
-      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_microsecond');
-  late final _g_date_time_get_microsecond = _g_date_time_get_microsecondPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  double g_date_time_get_seconds(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_seconds(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_secondsPtr =
-      _lookup<ffi.NativeFunction<gdouble Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_seconds');
-  late final _g_date_time_get_seconds = _g_date_time_get_secondsPtr
-      .asFunction<double Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_to_unix(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_to_unix(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_to_unixPtr =
-      _lookup<ffi.NativeFunction<gint64 Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_to_unix');
-  late final _g_date_time_to_unix = _g_date_time_to_unixPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_to_timeval(
-    ffi.Pointer<GDateTime> datetime,
-    ffi.Pointer<GTimeVal> tv,
-  ) {
-    return _g_date_time_to_timeval(
-      datetime,
-      tv,
-    );
-  }
-
-  late final _g_date_time_to_timevalPtr = _lookup<
-      ffi.NativeFunction<
-          gboolean Function(ffi.Pointer<GDateTime>,
-              ffi.Pointer<GTimeVal>)>>('g_date_time_to_timeval');
-  late final _g_date_time_to_timeval = _g_date_time_to_timevalPtr.asFunction<
-      int Function(ffi.Pointer<GDateTime>, ffi.Pointer<GTimeVal>)>();
-
-  int g_date_time_get_utc_offset(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_utc_offset(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_utc_offsetPtr =
-      _lookup<ffi.NativeFunction<GTimeSpan Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_get_utc_offset');
-  late final _g_date_time_get_utc_offset = _g_date_time_get_utc_offsetPtr
-      .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  ffi.Pointer<GTimeZone> g_date_time_get_timezone(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_timezone(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_timezonePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GTimeZone> Function(
-              ffi.Pointer<GDateTime>)>>('g_date_time_get_timezone');
-  late final _g_date_time_get_timezone = _g_date_time_get_timezonePtr
-      .asFunction<ffi.Pointer<GTimeZone> Function(ffi.Pointer<GDateTime>)>();
-
-  ffi.Pointer<gchar> g_date_time_get_timezone_abbreviation(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_get_timezone_abbreviation(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_get_timezone_abbreviationPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>>(
-      'g_date_time_get_timezone_abbreviation');
-  late final _g_date_time_get_timezone_abbreviation =
-      _g_date_time_get_timezone_abbreviationPtr
-          .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>();
-
-  int g_date_time_is_daylight_savings(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_is_daylight_savings(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_is_daylight_savingsPtr =
-      _lookup<ffi.NativeFunction<gboolean Function(ffi.Pointer<GDateTime>)>>(
-          'g_date_time_is_daylight_savings');
-  late final _g_date_time_is_daylight_savings =
-      _g_date_time_is_daylight_savingsPtr
-          .asFunction<int Function(ffi.Pointer<GDateTime>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_to_timezone(
-    ffi.Pointer<GDateTime> datetime,
-    ffi.Pointer<GTimeZone> tz,
-  ) {
-    return _g_date_time_to_timezone(
-      datetime,
-      tz,
-    );
-  }
-
-  late final _g_date_time_to_timezonePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>,
-              ffi.Pointer<GTimeZone>)>>('g_date_time_to_timezone');
-  late final _g_date_time_to_timezone = _g_date_time_to_timezonePtr.asFunction<
-      ffi.Pointer<GDateTime> Function(
-          ffi.Pointer<GDateTime>, ffi.Pointer<GTimeZone>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_to_local(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_to_local(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_to_localPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>)>>('g_date_time_to_local');
-  late final _g_date_time_to_local = _g_date_time_to_localPtr
-      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>)>();
-
-  ffi.Pointer<GDateTime> g_date_time_to_utc(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_to_utc(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_to_utcPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<GDateTime> Function(
-              ffi.Pointer<GDateTime>)>>('g_date_time_to_utc');
-  late final _g_date_time_to_utc = _g_date_time_to_utcPtr
-      .asFunction<ffi.Pointer<GDateTime> Function(ffi.Pointer<GDateTime>)>();
-
-  ffi.Pointer<gchar> g_date_time_format(
-    ffi.Pointer<GDateTime> datetime,
-    ffi.Pointer<gchar> format,
-  ) {
-    return _g_date_time_format(
-      datetime,
-      format,
-    );
-  }
-
-  late final _g_date_time_formatPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>,
-              ffi.Pointer<gchar>)>>('g_date_time_format');
-  late final _g_date_time_format = _g_date_time_formatPtr.asFunction<
-      ffi.Pointer<gchar> Function(
-          ffi.Pointer<GDateTime>, ffi.Pointer<gchar>)>();
-
-  ffi.Pointer<gchar> g_date_time_format_iso8601(
-    ffi.Pointer<GDateTime> datetime,
-  ) {
-    return _g_date_time_format_iso8601(
-      datetime,
-    );
-  }
-
-  late final _g_date_time_format_iso8601Ptr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>>(
-      'g_date_time_format_iso8601');
-  late final _g_date_time_format_iso8601 = _g_date_time_format_iso8601Ptr
-      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GDateTime>)>();
-
   ffi.Pointer<GDir> g_dir_open(
     ffi.Pointer<gchar> path,
     int flags,
@@ -7294,6 +7625,38 @@ class NativeLibrary {
   late final _g_file_set_contents = _g_file_set_contentsPtr.asFunction<
       int Function(ffi.Pointer<gchar>, ffi.Pointer<gchar>, int,
           ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_file_set_contents_full(
+    ffi.Pointer<gchar> filename,
+    ffi.Pointer<gchar> contents,
+    int length,
+    int flags,
+    int mode,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_file_set_contents_full(
+      filename,
+      contents,
+      length,
+      flags,
+      mode,
+      error,
+    );
+  }
+
+  late final _g_file_set_contents_fullPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              gssize,
+              ffi.Int32,
+              ffi.Int,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_file_set_contents_full');
+  late final _g_file_set_contents_full =
+      _g_file_set_contents_fullPtr.asFunction<
+          int Function(ffi.Pointer<gchar>, ffi.Pointer<gchar>, int, int, int,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
 
   ffi.Pointer<gchar> g_file_read_link(
     ffi.Pointer<gchar> filename,
@@ -7936,6 +8299,56 @@ class NativeLibrary {
           'g_try_realloc_n');
   late final _g_try_realloc_n =
       _g_try_realloc_nPtr.asFunction<gpointer Function(gpointer, int, int)>();
+
+  gpointer g_aligned_alloc(
+    int n_blocks,
+    int n_block_bytes,
+    int alignment,
+  ) {
+    return _g_aligned_alloc(
+      n_blocks,
+      n_block_bytes,
+      alignment,
+    );
+  }
+
+  late final _g_aligned_allocPtr =
+      _lookup<ffi.NativeFunction<gpointer Function(gsize, gsize, gsize)>>(
+          'g_aligned_alloc');
+  late final _g_aligned_alloc =
+      _g_aligned_allocPtr.asFunction<gpointer Function(int, int, int)>();
+
+  gpointer g_aligned_alloc0(
+    int n_blocks,
+    int n_block_bytes,
+    int alignment,
+  ) {
+    return _g_aligned_alloc0(
+      n_blocks,
+      n_block_bytes,
+      alignment,
+    );
+  }
+
+  late final _g_aligned_alloc0Ptr =
+      _lookup<ffi.NativeFunction<gpointer Function(gsize, gsize, gsize)>>(
+          'g_aligned_alloc0');
+  late final _g_aligned_alloc0 =
+      _g_aligned_alloc0Ptr.asFunction<gpointer Function(int, int, int)>();
+
+  void g_aligned_free(
+    gpointer mem,
+  ) {
+    return _g_aligned_free(
+      mem,
+    );
+  }
+
+  late final _g_aligned_freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(gpointer)>>(
+          'g_aligned_free');
+  late final _g_aligned_free =
+      _g_aligned_freePtr.asFunction<void Function(gpointer)>();
 
   void g_mem_set_vtable(
     ffi.Pointer<GMemVTable> vtable,
@@ -9016,6 +9429,21 @@ class NativeLibrary {
   late final _g_hash_table_new_full = _g_hash_table_new_fullPtr.asFunction<
       ffi.Pointer<GHashTable> Function(
           GHashFunc, GEqualFunc, GDestroyNotify, GDestroyNotify)>();
+
+  ffi.Pointer<GHashTable> g_hash_table_new_similar(
+    ffi.Pointer<GHashTable> other_hash_table,
+  ) {
+    return _g_hash_table_new_similar(
+      other_hash_table,
+    );
+  }
+
+  late final _g_hash_table_new_similarPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GHashTable> Function(
+              ffi.Pointer<GHashTable>)>>('g_hash_table_new_similar');
+  late final _g_hash_table_new_similar = _g_hash_table_new_similarPtr
+      .asFunction<ffi.Pointer<GHashTable> Function(ffi.Pointer<GHashTable>)>();
 
   void g_hash_table_destroy(
     ffi.Pointer<GHashTable> hash_table,
@@ -10859,6 +11287,20 @@ class NativeLibrary {
   late final _g_main_context_new =
       _g_main_context_newPtr.asFunction<ffi.Pointer<GMainContext> Function()>();
 
+  ffi.Pointer<GMainContext> g_main_context_new_with_flags(
+    int flags,
+  ) {
+    return _g_main_context_new_with_flags(
+      flags,
+    );
+  }
+
+  late final _g_main_context_new_with_flagsPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<GMainContext> Function(ffi.Int32)>>(
+      'g_main_context_new_with_flags');
+  late final _g_main_context_new_with_flags = _g_main_context_new_with_flagsPtr
+      .asFunction<ffi.Pointer<GMainContext> Function(int)>();
+
   ffi.Pointer<GMainContext> g_main_context_ref(
     ffi.Pointer<GMainContext> context,
   ) {
@@ -11633,6 +12075,23 @@ class NativeLibrary {
           ffi.Void Function(ffi.Pointer<GSource>,
               ffi.Pointer<ffi.Char>)>>('g_source_set_name');
   late final _g_source_set_name = _g_source_set_namePtr
+      .asFunction<void Function(ffi.Pointer<GSource>, ffi.Pointer<ffi.Char>)>();
+
+  void g_source_set_static_name(
+    ffi.Pointer<GSource> source,
+    ffi.Pointer<ffi.Char> name,
+  ) {
+    return _g_source_set_static_name(
+      source,
+      name,
+    );
+  }
+
+  late final _g_source_set_static_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GSource>,
+              ffi.Pointer<ffi.Char>)>>('g_source_set_static_name');
+  late final _g_source_set_static_name = _g_source_set_static_namePtr
       .asFunction<void Function(ffi.Pointer<GSource>, ffi.Pointer<ffi.Char>)>();
 
   ffi.Pointer<ffi.Char> g_source_get_name(
@@ -13871,6 +14330,28 @@ class NativeLibrary {
               ffi.Pointer<GString>, gssize, gssize)>>('g_string_erase');
   late final _g_string_erase = _g_string_erasePtr.asFunction<
       ffi.Pointer<GString> Function(ffi.Pointer<GString>, int, int)>();
+
+  int g_string_replace(
+    ffi.Pointer<GString> string,
+    ffi.Pointer<gchar> find,
+    ffi.Pointer<gchar> replace,
+    int limit,
+  ) {
+    return _g_string_replace(
+      string,
+      find,
+      replace,
+      limit,
+    );
+  }
+
+  late final _g_string_replacePtr = _lookup<
+      ffi.NativeFunction<
+          guint Function(ffi.Pointer<GString>, ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>, guint)>>('g_string_replace');
+  late final _g_string_replace = _g_string_replacePtr.asFunction<
+      int Function(
+          ffi.Pointer<GString>, ffi.Pointer<gchar>, ffi.Pointer<gchar>, int)>();
 
   ffi.Pointer<GString> g_string_ascii_down(
     ffi.Pointer<GString> string,
@@ -19291,6 +19772,62 @@ class NativeLibrary {
   late final _g_log_writer_default = _g_log_writer_defaultPtr
       .asFunction<int Function(int, ffi.Pointer<GLogField>, int, gpointer)>();
 
+  void g_log_writer_default_set_use_stderr(
+    int use_stderr,
+  ) {
+    return _g_log_writer_default_set_use_stderr(
+      use_stderr,
+    );
+  }
+
+  late final _g_log_writer_default_set_use_stderrPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(gboolean)>>(
+          'g_log_writer_default_set_use_stderr');
+  late final _g_log_writer_default_set_use_stderr =
+      _g_log_writer_default_set_use_stderrPtr.asFunction<void Function(int)>();
+
+  int g_log_writer_default_would_drop(
+    int log_level,
+    ffi.Pointer<ffi.Char> log_domain,
+  ) {
+    return _g_log_writer_default_would_drop(
+      log_level,
+      log_domain,
+    );
+  }
+
+  late final _g_log_writer_default_would_dropPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Int32, ffi.Pointer<ffi.Char>)>>(
+      'g_log_writer_default_would_drop');
+  late final _g_log_writer_default_would_drop =
+      _g_log_writer_default_would_dropPtr
+          .asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
+
+  int g_log_get_debug_enabled() {
+    return _g_log_get_debug_enabled();
+  }
+
+  late final _g_log_get_debug_enabledPtr =
+      _lookup<ffi.NativeFunction<gboolean Function()>>(
+          'g_log_get_debug_enabled');
+  late final _g_log_get_debug_enabled =
+      _g_log_get_debug_enabledPtr.asFunction<int Function()>();
+
+  void g_log_set_debug_enabled(
+    int enabled,
+  ) {
+    return _g_log_set_debug_enabled(
+      enabled,
+    );
+  }
+
+  late final _g_log_set_debug_enabledPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(gboolean)>>(
+          'g_log_set_debug_enabled');
+  late final _g_log_set_debug_enabled =
+      _g_log_set_debug_enabledPtr.asFunction<void Function(int)>();
+
   void _g_log_fallback_handler(
     ffi.Pointer<gchar> log_domain,
     int log_level,
@@ -20075,6 +20612,21 @@ class NativeLibrary {
   late final _g_pattern_spec_free = _g_pattern_spec_freePtr
       .asFunction<void Function(ffi.Pointer<GPatternSpec>)>();
 
+  ffi.Pointer<GPatternSpec> g_pattern_spec_copy(
+    ffi.Pointer<GPatternSpec> pspec,
+  ) {
+    return _g_pattern_spec_copy(
+      pspec,
+    );
+  }
+
+  late final _g_pattern_spec_copyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GPatternSpec> Function(
+              ffi.Pointer<GPatternSpec>)>>('g_pattern_spec_copy');
+  late final _g_pattern_spec_copy = _g_pattern_spec_copyPtr.asFunction<
+      ffi.Pointer<GPatternSpec> Function(ffi.Pointer<GPatternSpec>)>();
+
   int g_pattern_spec_equal(
     ffi.Pointer<GPatternSpec> pspec1,
     ffi.Pointer<GPatternSpec> pspec2,
@@ -20091,6 +20643,46 @@ class NativeLibrary {
               ffi.Pointer<GPatternSpec>)>>('g_pattern_spec_equal');
   late final _g_pattern_spec_equal = _g_pattern_spec_equalPtr.asFunction<
       int Function(ffi.Pointer<GPatternSpec>, ffi.Pointer<GPatternSpec>)>();
+
+  int g_pattern_spec_match(
+    ffi.Pointer<GPatternSpec> pspec,
+    int string_length,
+    ffi.Pointer<gchar> string,
+    ffi.Pointer<gchar> string_reversed,
+  ) {
+    return _g_pattern_spec_match(
+      pspec,
+      string_length,
+      string,
+      string_reversed,
+    );
+  }
+
+  late final _g_pattern_spec_matchPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(ffi.Pointer<GPatternSpec>, gsize,
+              ffi.Pointer<gchar>, ffi.Pointer<gchar>)>>('g_pattern_spec_match');
+  late final _g_pattern_spec_match = _g_pattern_spec_matchPtr.asFunction<
+      int Function(ffi.Pointer<GPatternSpec>, int, ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>)>();
+
+  int g_pattern_spec_match_string(
+    ffi.Pointer<GPatternSpec> pspec,
+    ffi.Pointer<gchar> string,
+  ) {
+    return _g_pattern_spec_match_string(
+      pspec,
+      string,
+    );
+  }
+
+  late final _g_pattern_spec_match_stringPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(ffi.Pointer<GPatternSpec>,
+              ffi.Pointer<gchar>)>>('g_pattern_spec_match_string');
+  late final _g_pattern_spec_match_string =
+      _g_pattern_spec_match_stringPtr.asFunction<
+          int Function(ffi.Pointer<GPatternSpec>, ffi.Pointer<gchar>)>();
 
   int g_pattern_match(
     ffi.Pointer<GPatternSpec> pspec,
@@ -23710,6 +24302,88 @@ class NativeLibrary {
               ffi.Pointer<gint>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  int g_spawn_async_with_pipes_and_fds(
+    ffi.Pointer<gchar> working_directory,
+    ffi.Pointer<ffi.Pointer<gchar>> argv,
+    ffi.Pointer<ffi.Pointer<gchar>> envp,
+    int flags,
+    GSpawnChildSetupFunc child_setup,
+    gpointer user_data,
+    int stdin_fd,
+    int stdout_fd,
+    int stderr_fd,
+    ffi.Pointer<gint> source_fds,
+    ffi.Pointer<gint> target_fds,
+    int n_fds,
+    ffi.Pointer<GPid> child_pid_out,
+    ffi.Pointer<gint> stdin_pipe_out,
+    ffi.Pointer<gint> stdout_pipe_out,
+    ffi.Pointer<gint> stderr_pipe_out,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_spawn_async_with_pipes_and_fds(
+      working_directory,
+      argv,
+      envp,
+      flags,
+      child_setup,
+      user_data,
+      stdin_fd,
+      stdout_fd,
+      stderr_fd,
+      source_fds,
+      target_fds,
+      n_fds,
+      child_pid_out,
+      stdin_pipe_out,
+      stdout_pipe_out,
+      stderr_pipe_out,
+      error,
+    );
+  }
+
+  late final _g_spawn_async_with_pipes_and_fdsPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<gchar>,
+                  ffi.Pointer<ffi.Pointer<gchar>>,
+                  ffi.Pointer<ffi.Pointer<gchar>>,
+                  ffi.Int32,
+                  GSpawnChildSetupFunc,
+                  gpointer,
+                  gint,
+                  gint,
+                  gint,
+                  ffi.Pointer<gint>,
+                  ffi.Pointer<gint>,
+                  gsize,
+                  ffi.Pointer<GPid>,
+                  ffi.Pointer<gint>,
+                  ffi.Pointer<gint>,
+                  ffi.Pointer<gint>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_spawn_async_with_pipes_and_fds');
+  late final _g_spawn_async_with_pipes_and_fds =
+      _g_spawn_async_with_pipes_and_fdsPtr.asFunction<
+          int Function(
+              ffi.Pointer<gchar>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              int,
+              GSpawnChildSetupFunc,
+              gpointer,
+              int,
+              int,
+              int,
+              ffi.Pointer<gint>,
+              ffi.Pointer<gint>,
+              int,
+              ffi.Pointer<GPid>,
+              ffi.Pointer<gint>,
+              ffi.Pointer<gint>,
+              ffi.Pointer<gint>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
   int g_spawn_async_with_fds(
     ffi.Pointer<gchar> working_directory,
     ffi.Pointer<ffi.Pointer<gchar>> argv,
@@ -23775,7 +24449,7 @@ class NativeLibrary {
     gpointer user_data,
     ffi.Pointer<ffi.Pointer<gchar>> standard_output,
     ffi.Pointer<ffi.Pointer<gchar>> standard_error,
-    ffi.Pointer<gint> exit_status,
+    ffi.Pointer<gint> wait_status,
     ffi.Pointer<ffi.Pointer<GError>> error,
   ) {
     return _g_spawn_sync(
@@ -23787,7 +24461,7 @@ class NativeLibrary {
       user_data,
       standard_output,
       standard_error,
-      exit_status,
+      wait_status,
       error,
     );
   }
@@ -23822,14 +24496,14 @@ class NativeLibrary {
     ffi.Pointer<gchar> command_line,
     ffi.Pointer<ffi.Pointer<gchar>> standard_output,
     ffi.Pointer<ffi.Pointer<gchar>> standard_error,
-    ffi.Pointer<gint> exit_status,
+    ffi.Pointer<gint> wait_status,
     ffi.Pointer<ffi.Pointer<GError>> error,
   ) {
     return _g_spawn_command_line_sync(
       command_line,
       standard_output,
       standard_error,
-      exit_status,
+      wait_status,
       error,
     );
   }
@@ -23869,12 +24543,29 @@ class NativeLibrary {
       _g_spawn_command_line_asyncPtr.asFunction<
           int Function(ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  int g_spawn_check_wait_status(
+    int wait_status,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_spawn_check_wait_status(
+      wait_status,
+      error,
+    );
+  }
+
+  late final _g_spawn_check_wait_statusPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(gint,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_spawn_check_wait_status');
+  late final _g_spawn_check_wait_status = _g_spawn_check_wait_statusPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Pointer<GError>>)>();
+
   int g_spawn_check_exit_status(
-    int exit_status,
+    int wait_status,
     ffi.Pointer<ffi.Pointer<GError>> error,
   ) {
     return _g_spawn_check_exit_status(
-      exit_status,
+      wait_status,
       error,
     );
   }
@@ -24609,6 +25300,22 @@ class NativeLibrary {
   late final _g_memdup =
       _g_memdupPtr.asFunction<gpointer Function(gconstpointer, int)>();
 
+  gpointer g_memdup2(
+    gconstpointer mem,
+    int byte_size,
+  ) {
+    return _g_memdup2(
+      mem,
+      byte_size,
+    );
+  }
+
+  late final _g_memdup2Ptr =
+      _lookup<ffi.NativeFunction<gpointer Function(gconstpointer, gsize)>>(
+          'g_memdup2');
+  late final _g_memdup2 =
+      _g_memdup2Ptr.asFunction<gpointer Function(gconstpointer, int)>();
+
   ffi.Pointer<ffi.Pointer<gchar>> g_strsplit(
     ffi.Pointer<gchar> string,
     ffi.Pointer<gchar> delimiter,
@@ -24996,6 +25703,108 @@ class NativeLibrary {
           ffi.Pointer<gchar> Function(
               ffi.Pointer<GStringChunk>, ffi.Pointer<gchar>)>();
 
+  ffi.Pointer<GStrvBuilder> g_strv_builder_new() {
+    return _g_strv_builder_new();
+  }
+
+  late final _g_strv_builder_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GStrvBuilder> Function()>>(
+          'g_strv_builder_new');
+  late final _g_strv_builder_new =
+      _g_strv_builder_newPtr.asFunction<ffi.Pointer<GStrvBuilder> Function()>();
+
+  void g_strv_builder_unref(
+    ffi.Pointer<GStrvBuilder> builder,
+  ) {
+    return _g_strv_builder_unref(
+      builder,
+    );
+  }
+
+  late final _g_strv_builder_unrefPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GStrvBuilder>)>>(
+          'g_strv_builder_unref');
+  late final _g_strv_builder_unref = _g_strv_builder_unrefPtr
+      .asFunction<void Function(ffi.Pointer<GStrvBuilder>)>();
+
+  ffi.Pointer<GStrvBuilder> g_strv_builder_ref(
+    ffi.Pointer<GStrvBuilder> builder,
+  ) {
+    return _g_strv_builder_ref(
+      builder,
+    );
+  }
+
+  late final _g_strv_builder_refPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GStrvBuilder> Function(
+              ffi.Pointer<GStrvBuilder>)>>('g_strv_builder_ref');
+  late final _g_strv_builder_ref = _g_strv_builder_refPtr.asFunction<
+      ffi.Pointer<GStrvBuilder> Function(ffi.Pointer<GStrvBuilder>)>();
+
+  void g_strv_builder_add(
+    ffi.Pointer<GStrvBuilder> builder,
+    ffi.Pointer<ffi.Char> value,
+  ) {
+    return _g_strv_builder_add(
+      builder,
+      value,
+    );
+  }
+
+  late final _g_strv_builder_addPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GStrvBuilder>,
+              ffi.Pointer<ffi.Char>)>>('g_strv_builder_add');
+  late final _g_strv_builder_add = _g_strv_builder_addPtr.asFunction<
+      void Function(ffi.Pointer<GStrvBuilder>, ffi.Pointer<ffi.Char>)>();
+
+  void g_strv_builder_addv(
+    ffi.Pointer<GStrvBuilder> builder,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> value,
+  ) {
+    return _g_strv_builder_addv(
+      builder,
+      value,
+    );
+  }
+
+  late final _g_strv_builder_addvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GStrvBuilder>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('g_strv_builder_addv');
+  late final _g_strv_builder_addv = _g_strv_builder_addvPtr.asFunction<
+      void Function(
+          ffi.Pointer<GStrvBuilder>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  void g_strv_builder_add_many(
+    ffi.Pointer<GStrvBuilder> builder,
+  ) {
+    return _g_strv_builder_add_many(
+      builder,
+    );
+  }
+
+  late final _g_strv_builder_add_manyPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GStrvBuilder>)>>(
+          'g_strv_builder_add_many');
+  late final _g_strv_builder_add_many = _g_strv_builder_add_manyPtr
+      .asFunction<void Function(ffi.Pointer<GStrvBuilder>)>();
+
+  GStrv g_strv_builder_end(
+    ffi.Pointer<GStrvBuilder> builder,
+  ) {
+    return _g_strv_builder_end(
+      builder,
+    );
+  }
+
+  late final _g_strv_builder_endPtr =
+      _lookup<ffi.NativeFunction<GStrv Function(ffi.Pointer<GStrvBuilder>)>>(
+          'g_strv_builder_end');
+  late final _g_strv_builder_end = _g_strv_builder_endPtr
+      .asFunction<GStrv Function(ffi.Pointer<GStrvBuilder>)>();
+
   int g_strcmp0(
     ffi.Pointer<ffi.Char> str1,
     ffi.Pointer<ffi.Char> str2,
@@ -25141,6 +25950,16 @@ class NativeLibrary {
           void Function(ffi.Pointer<ffi.Char>, gpointer, GTestDataFunc,
               GDestroyNotify)>();
 
+  ffi.Pointer<ffi.Char> g_test_get_path() {
+    return _g_test_get_path();
+  }
+
+  late final _g_test_get_pathPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'g_test_get_path');
+  late final _g_test_get_path =
+      _g_test_get_pathPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
   void g_test_fail() {
     return _g_test_fail();
   }
@@ -25148,6 +25967,20 @@ class NativeLibrary {
   late final _g_test_failPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function()>>('g_test_fail');
   late final _g_test_fail = _g_test_failPtr.asFunction<void Function()>();
+
+  void g_test_fail_printf(
+    ffi.Pointer<ffi.Char> format,
+  ) {
+    return _g_test_fail_printf(
+      format,
+    );
+  }
+
+  late final _g_test_fail_printfPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'g_test_fail_printf');
+  late final _g_test_fail_printf =
+      _g_test_fail_printfPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
   void g_test_incomplete(
     ffi.Pointer<gchar> msg,
@@ -25163,6 +25996,20 @@ class NativeLibrary {
   late final _g_test_incomplete =
       _g_test_incompletePtr.asFunction<void Function(ffi.Pointer<gchar>)>();
 
+  void g_test_incomplete_printf(
+    ffi.Pointer<ffi.Char> format,
+  ) {
+    return _g_test_incomplete_printf(
+      format,
+    );
+  }
+
+  late final _g_test_incomplete_printfPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'g_test_incomplete_printf');
+  late final _g_test_incomplete_printf = _g_test_incomplete_printfPtr
+      .asFunction<void Function(ffi.Pointer<ffi.Char>)>();
+
   void g_test_skip(
     ffi.Pointer<gchar> msg,
   ) {
@@ -25176,6 +26023,20 @@ class NativeLibrary {
           'g_test_skip');
   late final _g_test_skip =
       _g_test_skipPtr.asFunction<void Function(ffi.Pointer<gchar>)>();
+
+  void g_test_skip_printf(
+    ffi.Pointer<ffi.Char> format,
+  ) {
+    return _g_test_skip_printf(
+      format,
+    );
+  }
+
+  late final _g_test_skip_printfPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'g_test_skip_printf');
+  late final _g_test_skip_printf =
+      _g_test_skip_printfPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
   int g_test_failed() {
     return _g_test_failed();
@@ -25518,6 +26379,34 @@ class NativeLibrary {
   late final _g_test_run_suite =
       _g_test_run_suitePtr.asFunction<int Function(ffi.Pointer<GTestSuite>)>();
 
+  void g_test_case_free(
+    ffi.Pointer<GTestCase> test_case,
+  ) {
+    return _g_test_case_free(
+      test_case,
+    );
+  }
+
+  late final _g_test_case_freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GTestCase>)>>(
+          'g_test_case_free');
+  late final _g_test_case_free =
+      _g_test_case_freePtr.asFunction<void Function(ffi.Pointer<GTestCase>)>();
+
+  void g_test_suite_free(
+    ffi.Pointer<GTestSuite> suite,
+  ) {
+    return _g_test_suite_free(
+      suite,
+    );
+  }
+
+  late final _g_test_suite_freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GTestSuite>)>>(
+          'g_test_suite_free');
+  late final _g_test_suite_free = _g_test_suite_freePtr
+      .asFunction<void Function(ffi.Pointer<GTestSuite>)>();
+
   void g_test_trap_assertions(
     ffi.Pointer<ffi.Char> domain,
     ffi.Pointer<ffi.Char> file,
@@ -25650,6 +26539,51 @@ class NativeLibrary {
               ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Char>)>();
+
+  void g_assertion_message_cmpstrv(
+    ffi.Pointer<ffi.Char> domain,
+    ffi.Pointer<ffi.Char> file,
+    int line,
+    ffi.Pointer<ffi.Char> func,
+    ffi.Pointer<ffi.Char> expr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> arg1,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> arg2,
+    int first_wrong_idx,
+  ) {
+    return _g_assertion_message_cmpstrv(
+      domain,
+      file,
+      line,
+      func,
+      expr,
+      arg1,
+      arg2,
+      first_wrong_idx,
+    );
+  }
+
+  late final _g_assertion_message_cmpstrvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              gsize)>>('g_assertion_message_cmpstrv');
+  late final _g_assertion_message_cmpstrv =
+      _g_assertion_message_cmpstrvPtr.asFunction<
+          void Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              int)>();
 
   void g_assertion_message_error(
     ffi.Pointer<ffi.Char> domain,
@@ -25948,6 +26882,37 @@ class NativeLibrary {
   late final _g_thread_pool_new = _g_thread_pool_newPtr.asFunction<
       ffi.Pointer<GThreadPool> Function(
           GFunc, gpointer, int, int, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GThreadPool> g_thread_pool_new_full(
+    GFunc func,
+    gpointer user_data,
+    GDestroyNotify item_free_func,
+    int max_threads,
+    int exclusive,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_thread_pool_new_full(
+      func,
+      user_data,
+      item_free_func,
+      max_threads,
+      exclusive,
+      error,
+    );
+  }
+
+  late final _g_thread_pool_new_fullPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GThreadPool> Function(
+              GFunc,
+              gpointer,
+              GDestroyNotify,
+              gint,
+              gboolean,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_thread_pool_new_full');
+  late final _g_thread_pool_new_full = _g_thread_pool_new_fullPtr.asFunction<
+      ffi.Pointer<GThreadPool> Function(GFunc, gpointer, GDestroyNotify, int,
+          int, ffi.Pointer<ffi.Pointer<GError>>)>();
 
   void g_thread_pool_free(
     ffi.Pointer<GThreadPool> pool,
@@ -26444,6 +27409,66 @@ class NativeLibrary {
       ffi.Pointer<GTree> Function(
           GCompareDataFunc, gpointer, GDestroyNotify, GDestroyNotify)>();
 
+  ffi.Pointer<GTreeNode> g_tree_node_first(
+    ffi.Pointer<GTree> tree,
+  ) {
+    return _g_tree_node_first(
+      tree,
+    );
+  }
+
+  late final _g_tree_node_firstPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>)>>(
+      'g_tree_node_first');
+  late final _g_tree_node_first = _g_tree_node_firstPtr
+      .asFunction<ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>)>();
+
+  ffi.Pointer<GTreeNode> g_tree_node_last(
+    ffi.Pointer<GTree> tree,
+  ) {
+    return _g_tree_node_last(
+      tree,
+    );
+  }
+
+  late final _g_tree_node_lastPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>)>>(
+      'g_tree_node_last');
+  late final _g_tree_node_last = _g_tree_node_lastPtr
+      .asFunction<ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>)>();
+
+  ffi.Pointer<GTreeNode> g_tree_node_previous(
+    ffi.Pointer<GTreeNode> node,
+  ) {
+    return _g_tree_node_previous(
+      node,
+    );
+  }
+
+  late final _g_tree_node_previousPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(
+              ffi.Pointer<GTreeNode>)>>('g_tree_node_previous');
+  late final _g_tree_node_previous = _g_tree_node_previousPtr
+      .asFunction<ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTreeNode>)>();
+
+  ffi.Pointer<GTreeNode> g_tree_node_next(
+    ffi.Pointer<GTreeNode> node,
+  ) {
+    return _g_tree_node_next(
+      node,
+    );
+  }
+
+  late final _g_tree_node_nextPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(
+              ffi.Pointer<GTreeNode>)>>('g_tree_node_next');
+  late final _g_tree_node_next = _g_tree_node_nextPtr
+      .asFunction<ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTreeNode>)>();
+
   ffi.Pointer<GTree> g_tree_ref(
     ffi.Pointer<GTree> tree,
   ) {
@@ -26486,6 +27511,26 @@ class NativeLibrary {
   late final _g_tree_destroy =
       _g_tree_destroyPtr.asFunction<void Function(ffi.Pointer<GTree>)>();
 
+  ffi.Pointer<GTreeNode> g_tree_insert_node(
+    ffi.Pointer<GTree> tree,
+    gpointer key,
+    gpointer value,
+  ) {
+    return _g_tree_insert_node(
+      tree,
+      key,
+      value,
+    );
+  }
+
+  late final _g_tree_insert_nodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(
+              ffi.Pointer<GTree>, gpointer, gpointer)>>('g_tree_insert_node');
+  late final _g_tree_insert_node = _g_tree_insert_nodePtr.asFunction<
+      ffi.Pointer<GTreeNode> Function(
+          ffi.Pointer<GTree>, gpointer, gpointer)>();
+
   void g_tree_insert(
     ffi.Pointer<GTree> tree,
     gpointer key,
@@ -26504,6 +27549,26 @@ class NativeLibrary {
               ffi.Pointer<GTree>, gpointer, gpointer)>>('g_tree_insert');
   late final _g_tree_insert = _g_tree_insertPtr
       .asFunction<void Function(ffi.Pointer<GTree>, gpointer, gpointer)>();
+
+  ffi.Pointer<GTreeNode> g_tree_replace_node(
+    ffi.Pointer<GTree> tree,
+    gpointer key,
+    gpointer value,
+  ) {
+    return _g_tree_replace_node(
+      tree,
+      key,
+      value,
+    );
+  }
+
+  late final _g_tree_replace_nodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(
+              ffi.Pointer<GTree>, gpointer, gpointer)>>('g_tree_replace_node');
+  late final _g_tree_replace_node = _g_tree_replace_nodePtr.asFunction<
+      ffi.Pointer<GTreeNode> Function(
+          ffi.Pointer<GTree>, gpointer, gpointer)>();
 
   void g_tree_replace(
     ffi.Pointer<GTree> tree,
@@ -26541,6 +27606,20 @@ class NativeLibrary {
   late final _g_tree_remove = _g_tree_removePtr
       .asFunction<int Function(ffi.Pointer<GTree>, gconstpointer)>();
 
+  void g_tree_remove_all(
+    ffi.Pointer<GTree> tree,
+  ) {
+    return _g_tree_remove_all(
+      tree,
+    );
+  }
+
+  late final _g_tree_remove_allPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GTree>)>>(
+          'g_tree_remove_all');
+  late final _g_tree_remove_all =
+      _g_tree_remove_allPtr.asFunction<void Function(ffi.Pointer<GTree>)>();
+
   int g_tree_steal(
     ffi.Pointer<GTree> tree,
     gconstpointer key,
@@ -26557,6 +27636,51 @@ class NativeLibrary {
               ffi.Pointer<GTree>, gconstpointer)>>('g_tree_steal');
   late final _g_tree_steal = _g_tree_stealPtr
       .asFunction<int Function(ffi.Pointer<GTree>, gconstpointer)>();
+
+  gpointer g_tree_node_key(
+    ffi.Pointer<GTreeNode> node,
+  ) {
+    return _g_tree_node_key(
+      node,
+    );
+  }
+
+  late final _g_tree_node_keyPtr =
+      _lookup<ffi.NativeFunction<gpointer Function(ffi.Pointer<GTreeNode>)>>(
+          'g_tree_node_key');
+  late final _g_tree_node_key = _g_tree_node_keyPtr
+      .asFunction<gpointer Function(ffi.Pointer<GTreeNode>)>();
+
+  gpointer g_tree_node_value(
+    ffi.Pointer<GTreeNode> node,
+  ) {
+    return _g_tree_node_value(
+      node,
+    );
+  }
+
+  late final _g_tree_node_valuePtr =
+      _lookup<ffi.NativeFunction<gpointer Function(ffi.Pointer<GTreeNode>)>>(
+          'g_tree_node_value');
+  late final _g_tree_node_value = _g_tree_node_valuePtr
+      .asFunction<gpointer Function(ffi.Pointer<GTreeNode>)>();
+
+  ffi.Pointer<GTreeNode> g_tree_lookup_node(
+    ffi.Pointer<GTree> tree,
+    gconstpointer key,
+  ) {
+    return _g_tree_lookup_node(
+      tree,
+      key,
+    );
+  }
+
+  late final _g_tree_lookup_nodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(
+              ffi.Pointer<GTree>, gconstpointer)>>('g_tree_lookup_node');
+  late final _g_tree_lookup_node = _g_tree_lookup_nodePtr.asFunction<
+      ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>, gconstpointer)>();
 
   gpointer g_tree_lookup(
     ffi.Pointer<GTree> tree,
@@ -26619,6 +27743,25 @@ class NativeLibrary {
   late final _g_tree_foreach = _g_tree_foreachPtr
       .asFunction<void Function(ffi.Pointer<GTree>, GTraverseFunc, gpointer)>();
 
+  void g_tree_foreach_node(
+    ffi.Pointer<GTree> tree,
+    GTraverseNodeFunc func,
+    gpointer user_data,
+  ) {
+    return _g_tree_foreach_node(
+      tree,
+      func,
+      user_data,
+    );
+  }
+
+  late final _g_tree_foreach_nodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GTree>, GTraverseNodeFunc,
+              gpointer)>>('g_tree_foreach_node');
+  late final _g_tree_foreach_node = _g_tree_foreach_nodePtr.asFunction<
+      void Function(ffi.Pointer<GTree>, GTraverseNodeFunc, gpointer)>();
+
   void g_tree_traverse(
     ffi.Pointer<GTree> tree,
     GTraverseFunc traverse_func,
@@ -26640,6 +27783,26 @@ class NativeLibrary {
   late final _g_tree_traverse = _g_tree_traversePtr.asFunction<
       void Function(ffi.Pointer<GTree>, GTraverseFunc, int, gpointer)>();
 
+  ffi.Pointer<GTreeNode> g_tree_search_node(
+    ffi.Pointer<GTree> tree,
+    GCompareFunc search_func,
+    gconstpointer user_data,
+  ) {
+    return _g_tree_search_node(
+      tree,
+      search_func,
+      user_data,
+    );
+  }
+
+  late final _g_tree_search_nodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>, GCompareFunc,
+              gconstpointer)>>('g_tree_search_node');
+  late final _g_tree_search_node = _g_tree_search_nodePtr.asFunction<
+      ffi.Pointer<GTreeNode> Function(
+          ffi.Pointer<GTree>, GCompareFunc, gconstpointer)>();
+
   gpointer g_tree_search(
     ffi.Pointer<GTree> tree,
     GCompareFunc search_func,
@@ -26658,6 +27821,40 @@ class NativeLibrary {
               gconstpointer)>>('g_tree_search');
   late final _g_tree_search = _g_tree_searchPtr.asFunction<
       gpointer Function(ffi.Pointer<GTree>, GCompareFunc, gconstpointer)>();
+
+  ffi.Pointer<GTreeNode> g_tree_lower_bound(
+    ffi.Pointer<GTree> tree,
+    gconstpointer key,
+  ) {
+    return _g_tree_lower_bound(
+      tree,
+      key,
+    );
+  }
+
+  late final _g_tree_lower_boundPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(
+              ffi.Pointer<GTree>, gconstpointer)>>('g_tree_lower_bound');
+  late final _g_tree_lower_bound = _g_tree_lower_boundPtr.asFunction<
+      ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>, gconstpointer)>();
+
+  ffi.Pointer<GTreeNode> g_tree_upper_bound(
+    ffi.Pointer<GTree> tree,
+    gconstpointer key,
+  ) {
+    return _g_tree_upper_bound(
+      tree,
+      key,
+    );
+  }
+
+  late final _g_tree_upper_boundPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GTreeNode> Function(
+              ffi.Pointer<GTree>, gconstpointer)>>('g_tree_upper_bound');
+  late final _g_tree_upper_bound = _g_tree_upper_boundPtr.asFunction<
+      ffi.Pointer<GTreeNode> Function(ffi.Pointer<GTree>, gconstpointer)>();
 
   int g_tree_height(
     ffi.Pointer<GTree> tree,
@@ -26686,6 +27883,740 @@ class NativeLibrary {
           'g_tree_nnodes');
   late final _g_tree_nnodes =
       _g_tree_nnodesPtr.asFunction<int Function(ffi.Pointer<GTree>)>();
+
+  ffi.Pointer<GUri> g_uri_ref(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_ref(
+      uri,
+    );
+  }
+
+  late final _g_uri_refPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<GUri> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_ref');
+  late final _g_uri_ref =
+      _g_uri_refPtr.asFunction<ffi.Pointer<GUri> Function(ffi.Pointer<GUri>)>();
+
+  void g_uri_unref(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_unref(
+      uri,
+    );
+  }
+
+  late final _g_uri_unrefPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GUri>)>>(
+          'g_uri_unref');
+  late final _g_uri_unref =
+      _g_uri_unrefPtr.asFunction<void Function(ffi.Pointer<GUri>)>();
+
+  int g_uri_split(
+    ffi.Pointer<gchar> uri_ref,
+    int flags,
+    ffi.Pointer<ffi.Pointer<gchar>> scheme,
+    ffi.Pointer<ffi.Pointer<gchar>> userinfo,
+    ffi.Pointer<ffi.Pointer<gchar>> host,
+    ffi.Pointer<gint> port,
+    ffi.Pointer<ffi.Pointer<gchar>> path,
+    ffi.Pointer<ffi.Pointer<gchar>> query,
+    ffi.Pointer<ffi.Pointer<gchar>> fragment,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_split(
+      uri_ref,
+      flags,
+      scheme,
+      userinfo,
+      host,
+      port,
+      path,
+      query,
+      fragment,
+      error,
+    );
+  }
+
+  late final _g_uri_splitPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<gint>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_split');
+  late final _g_uri_split = _g_uri_splitPtr.asFunction<
+      int Function(
+          ffi.Pointer<gchar>,
+          int,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<gint>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_uri_split_with_user(
+    ffi.Pointer<gchar> uri_ref,
+    int flags,
+    ffi.Pointer<ffi.Pointer<gchar>> scheme,
+    ffi.Pointer<ffi.Pointer<gchar>> user,
+    ffi.Pointer<ffi.Pointer<gchar>> password,
+    ffi.Pointer<ffi.Pointer<gchar>> auth_params,
+    ffi.Pointer<ffi.Pointer<gchar>> host,
+    ffi.Pointer<gint> port,
+    ffi.Pointer<ffi.Pointer<gchar>> path,
+    ffi.Pointer<ffi.Pointer<gchar>> query,
+    ffi.Pointer<ffi.Pointer<gchar>> fragment,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_split_with_user(
+      uri_ref,
+      flags,
+      scheme,
+      user,
+      password,
+      auth_params,
+      host,
+      port,
+      path,
+      query,
+      fragment,
+      error,
+    );
+  }
+
+  late final _g_uri_split_with_userPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<gint>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_split_with_user');
+  late final _g_uri_split_with_user = _g_uri_split_with_userPtr.asFunction<
+      int Function(
+          ffi.Pointer<gchar>,
+          int,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<gint>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_uri_split_network(
+    ffi.Pointer<gchar> uri_string,
+    int flags,
+    ffi.Pointer<ffi.Pointer<gchar>> scheme,
+    ffi.Pointer<ffi.Pointer<gchar>> host,
+    ffi.Pointer<gint> port,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_split_network(
+      uri_string,
+      flags,
+      scheme,
+      host,
+      port,
+      error,
+    );
+  }
+
+  late final _g_uri_split_networkPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<gint>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_split_network');
+  late final _g_uri_split_network = _g_uri_split_networkPtr.asFunction<
+      int Function(
+          ffi.Pointer<gchar>,
+          int,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<gint>,
+          ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_uri_is_valid(
+    ffi.Pointer<gchar> uri_string,
+    int flags,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_is_valid(
+      uri_string,
+      flags,
+      error,
+    );
+  }
+
+  late final _g_uri_is_validPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(ffi.Pointer<gchar>, ffi.Int32,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_is_valid');
+  late final _g_uri_is_valid = _g_uri_is_validPtr.asFunction<
+      int Function(
+          ffi.Pointer<gchar>, int, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<gchar> g_uri_join(
+    int flags,
+    ffi.Pointer<gchar> scheme,
+    ffi.Pointer<gchar> userinfo,
+    ffi.Pointer<gchar> host,
+    int port,
+    ffi.Pointer<gchar> path,
+    ffi.Pointer<gchar> query,
+    ffi.Pointer<gchar> fragment,
+  ) {
+    return _g_uri_join(
+      flags,
+      scheme,
+      userinfo,
+      host,
+      port,
+      path,
+      query,
+      fragment,
+    );
+  }
+
+  late final _g_uri_joinPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<gchar> Function(
+              ffi.Int32,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              gint,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>)>>('g_uri_join');
+  late final _g_uri_join = _g_uri_joinPtr.asFunction<
+      ffi.Pointer<gchar> Function(
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<gchar> g_uri_join_with_user(
+    int flags,
+    ffi.Pointer<gchar> scheme,
+    ffi.Pointer<gchar> user,
+    ffi.Pointer<gchar> password,
+    ffi.Pointer<gchar> auth_params,
+    ffi.Pointer<gchar> host,
+    int port,
+    ffi.Pointer<gchar> path,
+    ffi.Pointer<gchar> query,
+    ffi.Pointer<gchar> fragment,
+  ) {
+    return _g_uri_join_with_user(
+      flags,
+      scheme,
+      user,
+      password,
+      auth_params,
+      host,
+      port,
+      path,
+      query,
+      fragment,
+    );
+  }
+
+  late final _g_uri_join_with_userPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<gchar> Function(
+              ffi.Int32,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              gint,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>)>>('g_uri_join_with_user');
+  late final _g_uri_join_with_user = _g_uri_join_with_userPtr.asFunction<
+      ffi.Pointer<gchar> Function(
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<GUri> g_uri_parse(
+    ffi.Pointer<gchar> uri_string,
+    int flags,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_parse(
+      uri_string,
+      flags,
+      error,
+    );
+  }
+
+  late final _g_uri_parsePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GUri> Function(ffi.Pointer<gchar>, ffi.Int32,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_parse');
+  late final _g_uri_parse = _g_uri_parsePtr.asFunction<
+      ffi.Pointer<GUri> Function(
+          ffi.Pointer<gchar>, int, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GUri> g_uri_parse_relative(
+    ffi.Pointer<GUri> base_uri,
+    ffi.Pointer<gchar> uri_ref,
+    int flags,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_parse_relative(
+      base_uri,
+      uri_ref,
+      flags,
+      error,
+    );
+  }
+
+  late final _g_uri_parse_relativePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GUri> Function(
+              ffi.Pointer<GUri>,
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_parse_relative');
+  late final _g_uri_parse_relative = _g_uri_parse_relativePtr.asFunction<
+      ffi.Pointer<GUri> Function(ffi.Pointer<GUri>, ffi.Pointer<gchar>, int,
+          ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<gchar> g_uri_resolve_relative(
+    ffi.Pointer<gchar> base_uri_string,
+    ffi.Pointer<gchar> uri_ref,
+    int flags,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_resolve_relative(
+      base_uri_string,
+      uri_ref,
+      flags,
+      error,
+    );
+  }
+
+  late final _g_uri_resolve_relativePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<gchar> Function(
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_resolve_relative');
+  late final _g_uri_resolve_relative = _g_uri_resolve_relativePtr.asFunction<
+      ffi.Pointer<gchar> Function(ffi.Pointer<gchar>, ffi.Pointer<gchar>, int,
+          ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GUri> g_uri_build(
+    int flags,
+    ffi.Pointer<gchar> scheme,
+    ffi.Pointer<gchar> userinfo,
+    ffi.Pointer<gchar> host,
+    int port,
+    ffi.Pointer<gchar> path,
+    ffi.Pointer<gchar> query,
+    ffi.Pointer<gchar> fragment,
+  ) {
+    return _g_uri_build(
+      flags,
+      scheme,
+      userinfo,
+      host,
+      port,
+      path,
+      query,
+      fragment,
+    );
+  }
+
+  late final _g_uri_buildPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GUri> Function(
+              ffi.Int32,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              gint,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>)>>('g_uri_build');
+  late final _g_uri_build = _g_uri_buildPtr.asFunction<
+      ffi.Pointer<GUri> Function(
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<GUri> g_uri_build_with_user(
+    int flags,
+    ffi.Pointer<gchar> scheme,
+    ffi.Pointer<gchar> user,
+    ffi.Pointer<gchar> password,
+    ffi.Pointer<gchar> auth_params,
+    ffi.Pointer<gchar> host,
+    int port,
+    ffi.Pointer<gchar> path,
+    ffi.Pointer<gchar> query,
+    ffi.Pointer<gchar> fragment,
+  ) {
+    return _g_uri_build_with_user(
+      flags,
+      scheme,
+      user,
+      password,
+      auth_params,
+      host,
+      port,
+      path,
+      query,
+      fragment,
+    );
+  }
+
+  late final _g_uri_build_with_userPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GUri> Function(
+              ffi.Int32,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              gint,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>)>>('g_uri_build_with_user');
+  late final _g_uri_build_with_user = _g_uri_build_with_userPtr.asFunction<
+      ffi.Pointer<GUri> Function(
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          int,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>,
+          ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<ffi.Char> g_uri_to_string(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_to_string(
+      uri,
+    );
+  }
+
+  late final _g_uri_to_stringPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_to_string');
+  late final _g_uri_to_string = _g_uri_to_stringPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<ffi.Char> g_uri_to_string_partial(
+    ffi.Pointer<GUri> uri,
+    int flags,
+  ) {
+    return _g_uri_to_string_partial(
+      uri,
+      flags,
+    );
+  }
+
+  late final _g_uri_to_string_partialPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<GUri>, ffi.Int32)>>('g_uri_to_string_partial');
+  late final _g_uri_to_string_partial = _g_uri_to_string_partialPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<GUri>, int)>();
+
+  ffi.Pointer<gchar> g_uri_get_scheme(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_scheme(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_schemePtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_scheme');
+  late final _g_uri_get_scheme = _g_uri_get_schemePtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_userinfo(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_userinfo(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_userinfoPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_userinfo');
+  late final _g_uri_get_userinfo = _g_uri_get_userinfoPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_user(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_user(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_userPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_user');
+  late final _g_uri_get_user = _g_uri_get_userPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_password(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_password(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_passwordPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_password');
+  late final _g_uri_get_password = _g_uri_get_passwordPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_auth_params(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_auth_params(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_auth_paramsPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_auth_params');
+  late final _g_uri_get_auth_params = _g_uri_get_auth_paramsPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_host(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_host(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_hostPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_host');
+  late final _g_uri_get_host = _g_uri_get_hostPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  int g_uri_get_port(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_port(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_portPtr =
+      _lookup<ffi.NativeFunction<gint Function(ffi.Pointer<GUri>)>>(
+          'g_uri_get_port');
+  late final _g_uri_get_port =
+      _g_uri_get_portPtr.asFunction<int Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_path(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_path(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_pathPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_path');
+  late final _g_uri_get_path = _g_uri_get_pathPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_query(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_query(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_queryPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_query');
+  late final _g_uri_get_query = _g_uri_get_queryPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<gchar> g_uri_get_fragment(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_fragment(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_fragmentPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>>(
+      'g_uri_get_fragment');
+  late final _g_uri_get_fragment = _g_uri_get_fragmentPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<GUri>)>();
+
+  int g_uri_get_flags(
+    ffi.Pointer<GUri> uri,
+  ) {
+    return _g_uri_get_flags(
+      uri,
+    );
+  }
+
+  late final _g_uri_get_flagsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<GUri>)>>(
+          'g_uri_get_flags');
+  late final _g_uri_get_flags =
+      _g_uri_get_flagsPtr.asFunction<int Function(ffi.Pointer<GUri>)>();
+
+  ffi.Pointer<GHashTable> g_uri_parse_params(
+    ffi.Pointer<gchar> params,
+    int length,
+    ffi.Pointer<gchar> separators,
+    int flags,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_parse_params(
+      params,
+      length,
+      separators,
+      flags,
+      error,
+    );
+  }
+
+  late final _g_uri_parse_paramsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GHashTable> Function(
+              ffi.Pointer<gchar>,
+              gssize,
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_parse_params');
+  late final _g_uri_parse_params = _g_uri_parse_paramsPtr.asFunction<
+      ffi.Pointer<GHashTable> Function(ffi.Pointer<gchar>, int,
+          ffi.Pointer<gchar>, int, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  void g_uri_params_iter_init(
+    ffi.Pointer<GUriParamsIter> iter,
+    ffi.Pointer<gchar> params,
+    int length,
+    ffi.Pointer<gchar> separators,
+    int flags,
+  ) {
+    return _g_uri_params_iter_init(
+      iter,
+      params,
+      length,
+      separators,
+      flags,
+    );
+  }
+
+  late final _g_uri_params_iter_initPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GUriParamsIter>,
+              ffi.Pointer<gchar>,
+              gssize,
+              ffi.Pointer<gchar>,
+              ffi.Int32)>>('g_uri_params_iter_init');
+  late final _g_uri_params_iter_init = _g_uri_params_iter_initPtr.asFunction<
+      void Function(ffi.Pointer<GUriParamsIter>, ffi.Pointer<gchar>, int,
+          ffi.Pointer<gchar>, int)>();
+
+  int g_uri_params_iter_next(
+    ffi.Pointer<GUriParamsIter> iter,
+    ffi.Pointer<ffi.Pointer<gchar>> attribute,
+    ffi.Pointer<ffi.Pointer<gchar>> value,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_params_iter_next(
+      iter,
+      attribute,
+      value,
+      error,
+    );
+  }
+
+  late final _g_uri_params_iter_nextPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<GUriParamsIter>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<gchar>>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_params_iter_next');
+  late final _g_uri_params_iter_next = _g_uri_params_iter_nextPtr.asFunction<
+      int Function(ffi.Pointer<GUriParamsIter>, ffi.Pointer<ffi.Pointer<gchar>>,
+          ffi.Pointer<ffi.Pointer<gchar>>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_uri_error_quark() {
+    return _g_uri_error_quark();
+  }
+
+  late final _g_uri_error_quarkPtr =
+      _lookup<ffi.NativeFunction<GQuark Function()>>('g_uri_error_quark');
+  late final _g_uri_error_quark =
+      _g_uri_error_quarkPtr.asFunction<int Function()>();
 
   ffi.Pointer<ffi.Char> g_uri_unescape_string(
     ffi.Pointer<ffi.Char> escaped_string,
@@ -26742,6 +28673,21 @@ class NativeLibrary {
   late final _g_uri_parse_scheme = _g_uri_parse_schemePtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
+  ffi.Pointer<ffi.Char> g_uri_peek_scheme(
+    ffi.Pointer<ffi.Char> uri,
+  ) {
+    return _g_uri_peek_scheme(
+      uri,
+    );
+  }
+
+  late final _g_uri_peek_schemePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('g_uri_peek_scheme');
+  late final _g_uri_peek_scheme = _g_uri_peek_schemePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
   ffi.Pointer<ffi.Char> g_uri_escape_string(
     ffi.Pointer<ffi.Char> unescaped,
     ffi.Pointer<ffi.Char> reserved_chars_allowed,
@@ -26761,6 +28707,51 @@ class NativeLibrary {
   late final _g_uri_escape_string = _g_uri_escape_stringPtr.asFunction<
       ffi.Pointer<ffi.Char> Function(
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<GBytes> g_uri_unescape_bytes(
+    ffi.Pointer<ffi.Char> escaped_string,
+    int length,
+    ffi.Pointer<ffi.Char> illegal_characters,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_uri_unescape_bytes(
+      escaped_string,
+      length,
+      illegal_characters,
+      error,
+    );
+  }
+
+  late final _g_uri_unescape_bytesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GBytes> Function(
+              ffi.Pointer<ffi.Char>,
+              gssize,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_uri_unescape_bytes');
+  late final _g_uri_unescape_bytes = _g_uri_unescape_bytesPtr.asFunction<
+      ffi.Pointer<GBytes> Function(ffi.Pointer<ffi.Char>, int,
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Char> g_uri_escape_bytes(
+    ffi.Pointer<guint8> unescaped,
+    int length,
+    ffi.Pointer<ffi.Char> reserved_chars_allowed,
+  ) {
+    return _g_uri_escape_bytes(
+      unescaped,
+      length,
+      reserved_chars_allowed,
+    );
+  }
+
+  late final _g_uri_escape_bytesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<guint8>, gsize,
+              ffi.Pointer<ffi.Char>)>>('g_uri_escape_bytes');
+  late final _g_uri_escape_bytes = _g_uri_escape_bytesPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<guint8>, int, ffi.Pointer<ffi.Char>)>();
 
   int g_uuid_string_is_valid(
     ffi.Pointer<gchar> str,
@@ -28630,6 +30621,21 @@ class NativeLibrary {
       _g_type_interface_prerequisitesPtr
           .asFunction<ffi.Pointer<GType> Function(int, ffi.Pointer<guint>)>();
 
+  int g_type_interface_instantiatable_prerequisite(
+    int interface_type,
+  ) {
+    return _g_type_interface_instantiatable_prerequisite(
+      interface_type,
+    );
+  }
+
+  late final _g_type_interface_instantiatable_prerequisitePtr =
+      _lookup<ffi.NativeFunction<GType Function(GType)>>(
+          'g_type_interface_instantiatable_prerequisite');
+  late final _g_type_interface_instantiatable_prerequisite =
+      _g_type_interface_instantiatable_prerequisitePtr
+          .asFunction<int Function(int)>();
+
   void g_type_class_add_private(
     gpointer g_class,
     int private_size,
@@ -29743,6 +31749,20 @@ class NativeLibrary {
   late final _g_param_type_register_static =
       _g_param_type_register_staticPtr.asFunction<
           int Function(ffi.Pointer<gchar>, ffi.Pointer<GParamSpecTypeInfo>)>();
+
+  int g_param_spec_is_valid_name(
+    ffi.Pointer<gchar> name,
+  ) {
+    return _g_param_spec_is_valid_name(
+      name,
+    );
+  }
+
+  late final _g_param_spec_is_valid_namePtr =
+      _lookup<ffi.NativeFunction<gboolean Function(ffi.Pointer<gchar>)>>(
+          'g_param_spec_is_valid_name');
+  late final _g_param_spec_is_valid_name = _g_param_spec_is_valid_namePtr
+      .asFunction<int Function(ffi.Pointer<gchar>)>();
 
   int _g_param_type_register_static_constant(
     ffi.Pointer<gchar> name,
@@ -32088,6 +34108,20 @@ class NativeLibrary {
   late final _g_signal_list_ids = _g_signal_list_idsPtr
       .asFunction<ffi.Pointer<guint> Function(int, ffi.Pointer<guint>)>();
 
+  int g_signal_is_valid_name(
+    ffi.Pointer<gchar> name,
+  ) {
+    return _g_signal_is_valid_name(
+      name,
+    );
+  }
+
+  late final _g_signal_is_valid_namePtr =
+      _lookup<ffi.NativeFunction<gboolean Function(ffi.Pointer<gchar>)>>(
+          'g_signal_is_valid_name');
+  late final _g_signal_is_valid_name =
+      _g_signal_is_valid_namePtr.asFunction<int Function(ffi.Pointer<gchar>)>();
+
   int g_signal_parse_name(
     ffi.Pointer<gchar> detailed_signal,
     int itype,
@@ -32923,6 +34957,32 @@ class NativeLibrary {
   late final _g_option_group_get_type =
       _g_option_group_get_typePtr.asFunction<int Function()>();
 
+  int g_uri_get_type() {
+    return _g_uri_get_type();
+  }
+
+  late final _g_uri_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('g_uri_get_type');
+  late final _g_uri_get_type = _g_uri_get_typePtr.asFunction<int Function()>();
+
+  int g_tree_get_type() {
+    return _g_tree_get_type();
+  }
+
+  late final _g_tree_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('g_tree_get_type');
+  late final _g_tree_get_type =
+      _g_tree_get_typePtr.asFunction<int Function()>();
+
+  int g_pattern_spec_get_type() {
+    return _g_pattern_spec_get_type();
+  }
+
+  late final _g_pattern_spec_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('g_pattern_spec_get_type');
+  late final _g_pattern_spec_get_type =
+      _g_pattern_spec_get_typePtr.asFunction<int Function()>();
+
   int g_variant_get_gtype() {
     return _g_variant_get_gtype();
   }
@@ -33101,9 +35161,10 @@ class NativeLibrary {
 
   /// GInitiallyUnowned:
   ///
-  /// All the fields in the GInitiallyUnowned structure
-  /// are private to the #GInitiallyUnowned implementation and should never be
-  /// accessed directly.
+  /// A type for objects that have an initially floating reference.
+  ///
+  /// All the fields in the `GInitiallyUnowned` structure are private to the
+  /// implementation and should never be accessed directly.
   /// /
   /// /**
   /// GInitiallyUnownedClass:
@@ -33650,6 +35711,20 @@ class NativeLibrary {
           'g_object_ref_sink');
   late final _g_object_ref_sink =
       _g_object_ref_sinkPtr.asFunction<gpointer Function(gpointer)>();
+
+  gpointer g_object_take_ref(
+    gpointer object,
+  ) {
+    return _g_object_take_ref(
+      object,
+    );
+  }
+
+  late final _g_object_take_refPtr =
+      _lookup<ffi.NativeFunction<gpointer Function(gpointer)>>(
+          'g_object_take_ref');
+  late final _g_object_take_ref =
+      _g_object_take_refPtr.asFunction<gpointer Function(gpointer)>();
 
   gpointer g_object_ref(
     gpointer object,
@@ -34378,6 +36453,21 @@ class NativeLibrary {
   late final _g_binding_get_source = _g_binding_get_sourcePtr
       .asFunction<ffi.Pointer<GObject> Function(ffi.Pointer<GBinding>)>();
 
+  ffi.Pointer<GObject> g_binding_dup_source(
+    ffi.Pointer<GBinding> binding,
+  ) {
+    return _g_binding_dup_source(
+      binding,
+    );
+  }
+
+  late final _g_binding_dup_sourcePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GObject> Function(
+              ffi.Pointer<GBinding>)>>('g_binding_dup_source');
+  late final _g_binding_dup_source = _g_binding_dup_sourcePtr
+      .asFunction<ffi.Pointer<GObject> Function(ffi.Pointer<GBinding>)>();
+
   ffi.Pointer<GObject> g_binding_get_target(
     ffi.Pointer<GBinding> binding,
   ) {
@@ -34391,6 +36481,21 @@ class NativeLibrary {
           ffi.Pointer<GObject> Function(
               ffi.Pointer<GBinding>)>>('g_binding_get_target');
   late final _g_binding_get_target = _g_binding_get_targetPtr
+      .asFunction<ffi.Pointer<GObject> Function(ffi.Pointer<GBinding>)>();
+
+  ffi.Pointer<GObject> g_binding_dup_target(
+    ffi.Pointer<GBinding> binding,
+  ) {
+    return _g_binding_dup_target(
+      binding,
+    );
+  }
+
+  late final _g_binding_dup_targetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GObject> Function(
+              ffi.Pointer<GBinding>)>>('g_binding_dup_target');
+  late final _g_binding_dup_target = _g_binding_dup_targetPtr
       .asFunction<ffi.Pointer<GObject> Function(ffi.Pointer<GBinding>)>();
 
   ffi.Pointer<gchar> g_binding_get_source_property(
@@ -34544,6 +36649,174 @@ class NativeLibrary {
       _g_object_bind_property_with_closuresPtr.asFunction<
           ffi.Pointer<GBinding> Function(
               gpointer,
+              ffi.Pointer<gchar>,
+              gpointer,
+              ffi.Pointer<gchar>,
+              int,
+              ffi.Pointer<GClosure>,
+              ffi.Pointer<GClosure>)>();
+
+  int g_binding_group_get_type() {
+    return _g_binding_group_get_type();
+  }
+
+  late final _g_binding_group_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('g_binding_group_get_type');
+  late final _g_binding_group_get_type =
+      _g_binding_group_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<GBindingGroup> g_binding_group_new() {
+    return _g_binding_group_new();
+  }
+
+  late final _g_binding_group_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GBindingGroup> Function()>>(
+          'g_binding_group_new');
+  late final _g_binding_group_new = _g_binding_group_newPtr
+      .asFunction<ffi.Pointer<GBindingGroup> Function()>();
+
+  gpointer g_binding_group_dup_source(
+    ffi.Pointer<GBindingGroup> self,
+  ) {
+    return _g_binding_group_dup_source(
+      self,
+    );
+  }
+
+  late final _g_binding_group_dup_sourcePtr = _lookup<
+          ffi.NativeFunction<gpointer Function(ffi.Pointer<GBindingGroup>)>>(
+      'g_binding_group_dup_source');
+  late final _g_binding_group_dup_source = _g_binding_group_dup_sourcePtr
+      .asFunction<gpointer Function(ffi.Pointer<GBindingGroup>)>();
+
+  void g_binding_group_set_source(
+    ffi.Pointer<GBindingGroup> self,
+    gpointer source,
+  ) {
+    return _g_binding_group_set_source(
+      self,
+      source,
+    );
+  }
+
+  late final _g_binding_group_set_sourcePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GBindingGroup>,
+              gpointer)>>('g_binding_group_set_source');
+  late final _g_binding_group_set_source = _g_binding_group_set_sourcePtr
+      .asFunction<void Function(ffi.Pointer<GBindingGroup>, gpointer)>();
+
+  void g_binding_group_bind(
+    ffi.Pointer<GBindingGroup> self,
+    ffi.Pointer<gchar> source_property,
+    gpointer target,
+    ffi.Pointer<gchar> target_property,
+    int flags,
+  ) {
+    return _g_binding_group_bind(
+      self,
+      source_property,
+      target,
+      target_property,
+      flags,
+    );
+  }
+
+  late final _g_binding_group_bindPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GBindingGroup>,
+              ffi.Pointer<gchar>,
+              gpointer,
+              ffi.Pointer<gchar>,
+              ffi.Int32)>>('g_binding_group_bind');
+  late final _g_binding_group_bind = _g_binding_group_bindPtr.asFunction<
+      void Function(ffi.Pointer<GBindingGroup>, ffi.Pointer<gchar>, gpointer,
+          ffi.Pointer<gchar>, int)>();
+
+  void g_binding_group_bind_full(
+    ffi.Pointer<GBindingGroup> self,
+    ffi.Pointer<gchar> source_property,
+    gpointer target,
+    ffi.Pointer<gchar> target_property,
+    int flags,
+    GBindingTransformFunc transform_to,
+    GBindingTransformFunc transform_from,
+    gpointer user_data,
+    GDestroyNotify user_data_destroy,
+  ) {
+    return _g_binding_group_bind_full(
+      self,
+      source_property,
+      target,
+      target_property,
+      flags,
+      transform_to,
+      transform_from,
+      user_data,
+      user_data_destroy,
+    );
+  }
+
+  late final _g_binding_group_bind_fullPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GBindingGroup>,
+              ffi.Pointer<gchar>,
+              gpointer,
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              GBindingTransformFunc,
+              GBindingTransformFunc,
+              gpointer,
+              GDestroyNotify)>>('g_binding_group_bind_full');
+  late final _g_binding_group_bind_full =
+      _g_binding_group_bind_fullPtr.asFunction<
+          void Function(
+              ffi.Pointer<GBindingGroup>,
+              ffi.Pointer<gchar>,
+              gpointer,
+              ffi.Pointer<gchar>,
+              int,
+              GBindingTransformFunc,
+              GBindingTransformFunc,
+              gpointer,
+              GDestroyNotify)>();
+
+  void g_binding_group_bind_with_closures(
+    ffi.Pointer<GBindingGroup> self,
+    ffi.Pointer<gchar> source_property,
+    gpointer target,
+    ffi.Pointer<gchar> target_property,
+    int flags,
+    ffi.Pointer<GClosure> transform_to,
+    ffi.Pointer<GClosure> transform_from,
+  ) {
+    return _g_binding_group_bind_with_closures(
+      self,
+      source_property,
+      target,
+      target_property,
+      flags,
+      transform_to,
+      transform_from,
+    );
+  }
+
+  late final _g_binding_group_bind_with_closuresPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GBindingGroup>,
+              ffi.Pointer<gchar>,
+              gpointer,
+              ffi.Pointer<gchar>,
+              ffi.Int32,
+              ffi.Pointer<GClosure>,
+              ffi.Pointer<GClosure>)>>('g_binding_group_bind_with_closures');
+  late final _g_binding_group_bind_with_closures =
+      _g_binding_group_bind_with_closuresPtr.asFunction<
+          void Function(
+              ffi.Pointer<GBindingGroup>,
               ffi.Pointer<gchar>,
               gpointer,
               ffi.Pointer<gchar>,
@@ -35586,6 +37859,217 @@ class NativeLibrary {
   set g_param_spec_types(ffi.Pointer<GType> value) =>
       _g_param_spec_types.value = value;
 
+  int g_signal_group_get_type() {
+    return _g_signal_group_get_type();
+  }
+
+  late final _g_signal_group_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('g_signal_group_get_type');
+  late final _g_signal_group_get_type =
+      _g_signal_group_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<GSignalGroup> g_signal_group_new(
+    int target_type,
+  ) {
+    return _g_signal_group_new(
+      target_type,
+    );
+  }
+
+  late final _g_signal_group_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GSignalGroup> Function(GType)>>(
+          'g_signal_group_new');
+  late final _g_signal_group_new = _g_signal_group_newPtr
+      .asFunction<ffi.Pointer<GSignalGroup> Function(int)>();
+
+  void g_signal_group_set_target(
+    ffi.Pointer<GSignalGroup> self,
+    gpointer target,
+  ) {
+    return _g_signal_group_set_target(
+      self,
+      target,
+    );
+  }
+
+  late final _g_signal_group_set_targetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GSignalGroup>,
+              gpointer)>>('g_signal_group_set_target');
+  late final _g_signal_group_set_target = _g_signal_group_set_targetPtr
+      .asFunction<void Function(ffi.Pointer<GSignalGroup>, gpointer)>();
+
+  gpointer g_signal_group_dup_target(
+    ffi.Pointer<GSignalGroup> self,
+  ) {
+    return _g_signal_group_dup_target(
+      self,
+    );
+  }
+
+  late final _g_signal_group_dup_targetPtr =
+      _lookup<ffi.NativeFunction<gpointer Function(ffi.Pointer<GSignalGroup>)>>(
+          'g_signal_group_dup_target');
+  late final _g_signal_group_dup_target = _g_signal_group_dup_targetPtr
+      .asFunction<gpointer Function(ffi.Pointer<GSignalGroup>)>();
+
+  void g_signal_group_block(
+    ffi.Pointer<GSignalGroup> self,
+  ) {
+    return _g_signal_group_block(
+      self,
+    );
+  }
+
+  late final _g_signal_group_blockPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GSignalGroup>)>>(
+          'g_signal_group_block');
+  late final _g_signal_group_block = _g_signal_group_blockPtr
+      .asFunction<void Function(ffi.Pointer<GSignalGroup>)>();
+
+  void g_signal_group_unblock(
+    ffi.Pointer<GSignalGroup> self,
+  ) {
+    return _g_signal_group_unblock(
+      self,
+    );
+  }
+
+  late final _g_signal_group_unblockPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GSignalGroup>)>>(
+          'g_signal_group_unblock');
+  late final _g_signal_group_unblock = _g_signal_group_unblockPtr
+      .asFunction<void Function(ffi.Pointer<GSignalGroup>)>();
+
+  void g_signal_group_connect_object(
+    ffi.Pointer<GSignalGroup> self,
+    ffi.Pointer<gchar> detailed_signal,
+    GCallback c_handler,
+    gpointer object,
+    int flags,
+  ) {
+    return _g_signal_group_connect_object(
+      self,
+      detailed_signal,
+      c_handler,
+      object,
+      flags,
+    );
+  }
+
+  late final _g_signal_group_connect_objectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GSignalGroup>,
+              ffi.Pointer<gchar>,
+              GCallback,
+              gpointer,
+              ffi.Int32)>>('g_signal_group_connect_object');
+  late final _g_signal_group_connect_object =
+      _g_signal_group_connect_objectPtr.asFunction<
+          void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>,
+              GCallback, gpointer, int)>();
+
+  void g_signal_group_connect_data(
+    ffi.Pointer<GSignalGroup> self,
+    ffi.Pointer<gchar> detailed_signal,
+    GCallback c_handler,
+    gpointer data,
+    GClosureNotify notify,
+    int flags,
+  ) {
+    return _g_signal_group_connect_data(
+      self,
+      detailed_signal,
+      c_handler,
+      data,
+      notify,
+      flags,
+    );
+  }
+
+  late final _g_signal_group_connect_dataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GSignalGroup>,
+              ffi.Pointer<gchar>,
+              GCallback,
+              gpointer,
+              GClosureNotify,
+              ffi.Int32)>>('g_signal_group_connect_data');
+  late final _g_signal_group_connect_data =
+      _g_signal_group_connect_dataPtr.asFunction<
+          void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>,
+              GCallback, gpointer, GClosureNotify, int)>();
+
+  void g_signal_group_connect(
+    ffi.Pointer<GSignalGroup> self,
+    ffi.Pointer<gchar> detailed_signal,
+    GCallback c_handler,
+    gpointer data,
+  ) {
+    return _g_signal_group_connect(
+      self,
+      detailed_signal,
+      c_handler,
+      data,
+    );
+  }
+
+  late final _g_signal_group_connectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>,
+              GCallback, gpointer)>>('g_signal_group_connect');
+  late final _g_signal_group_connect = _g_signal_group_connectPtr.asFunction<
+      void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>, GCallback,
+          gpointer)>();
+
+  void g_signal_group_connect_after(
+    ffi.Pointer<GSignalGroup> self,
+    ffi.Pointer<gchar> detailed_signal,
+    GCallback c_handler,
+    gpointer data,
+  ) {
+    return _g_signal_group_connect_after(
+      self,
+      detailed_signal,
+      c_handler,
+      data,
+    );
+  }
+
+  late final _g_signal_group_connect_afterPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>,
+              GCallback, gpointer)>>('g_signal_group_connect_after');
+  late final _g_signal_group_connect_after =
+      _g_signal_group_connect_afterPtr.asFunction<
+          void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>,
+              GCallback, gpointer)>();
+
+  void g_signal_group_connect_swapped(
+    ffi.Pointer<GSignalGroup> self,
+    ffi.Pointer<gchar> detailed_signal,
+    GCallback c_handler,
+    gpointer data,
+  ) {
+    return _g_signal_group_connect_swapped(
+      self,
+      detailed_signal,
+      c_handler,
+      data,
+    );
+  }
+
+  late final _g_signal_group_connect_swappedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>,
+              GCallback, gpointer)>>('g_signal_group_connect_swapped');
+  late final _g_signal_group_connect_swapped =
+      _g_signal_group_connect_swappedPtr.asFunction<
+          void Function(ffi.Pointer<GSignalGroup>, ffi.Pointer<gchar>,
+              GCallback, gpointer)>();
+
   void g_source_set_closure(
     ffi.Pointer<GSource> source,
     ffi.Pointer<GClosure> closure,
@@ -36423,6 +38907,23 @@ class NativeLibrary {
           ffi.Void Function(ffi.Pointer<GValue>,
               ffi.Pointer<gchar>)>>('g_value_set_static_string');
   late final _g_value_set_static_string = _g_value_set_static_stringPtr
+      .asFunction<void Function(ffi.Pointer<GValue>, ffi.Pointer<gchar>)>();
+
+  void g_value_set_interned_string(
+    ffi.Pointer<GValue> value,
+    ffi.Pointer<gchar> v_string,
+  ) {
+    return _g_value_set_interned_string(
+      value,
+      v_string,
+    );
+  }
+
+  late final _g_value_set_interned_stringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GValue>,
+              ffi.Pointer<gchar>)>>('g_value_set_interned_string');
+  late final _g_value_set_interned_string = _g_value_set_interned_stringPtr
       .asFunction<void Function(ffi.Pointer<GValue>, ffi.Pointer<gchar>)>();
 
   ffi.Pointer<gchar> g_value_get_string(
@@ -49001,6 +51502,20 @@ class NativeLibrary {
   late final _g_dbus_is_interface_name = _g_dbus_is_interface_namePtr
       .asFunction<int Function(ffi.Pointer<gchar>)>();
 
+  int g_dbus_is_error_name(
+    ffi.Pointer<gchar> string,
+  ) {
+    return _g_dbus_is_error_name(
+      string,
+    );
+  }
+
+  late final _g_dbus_is_error_namePtr =
+      _lookup<ffi.NativeFunction<gboolean Function(ffi.Pointer<gchar>)>>(
+          'g_dbus_is_error_name');
+  late final _g_dbus_is_error_name =
+      _g_dbus_is_error_namePtr.asFunction<int Function(ffi.Pointer<gchar>)>();
+
   void g_dbus_gvariant_to_gvalue(
     ffi.Pointer<GVariant> value,
     ffi.Pointer<GValue> out_gvalue,
@@ -49036,6 +51551,143 @@ class NativeLibrary {
       _g_dbus_gvalue_to_gvariantPtr.asFunction<
           ffi.Pointer<GVariant> Function(
               ffi.Pointer<GValue>, ffi.Pointer<GVariantType>)>();
+
+  ffi.Pointer<gchar> g_dbus_escape_object_path_bytestring(
+    ffi.Pointer<guint8> bytes,
+  ) {
+    return _g_dbus_escape_object_path_bytestring(
+      bytes,
+    );
+  }
+
+  late final _g_dbus_escape_object_path_bytestringPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<guint8>)>>(
+      'g_dbus_escape_object_path_bytestring');
+  late final _g_dbus_escape_object_path_bytestring =
+      _g_dbus_escape_object_path_bytestringPtr
+          .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<guint8>)>();
+
+  ffi.Pointer<gchar> g_dbus_escape_object_path(
+    ffi.Pointer<gchar> s,
+  ) {
+    return _g_dbus_escape_object_path(
+      s,
+    );
+  }
+
+  late final _g_dbus_escape_object_pathPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<gchar> Function(ffi.Pointer<gchar>)>>(
+      'g_dbus_escape_object_path');
+  late final _g_dbus_escape_object_path = _g_dbus_escape_object_pathPtr
+      .asFunction<ffi.Pointer<gchar> Function(ffi.Pointer<gchar>)>();
+
+  ffi.Pointer<guint8> g_dbus_unescape_object_path(
+    ffi.Pointer<gchar> s,
+  ) {
+    return _g_dbus_unescape_object_path(
+      s,
+    );
+  }
+
+  late final _g_dbus_unescape_object_pathPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<guint8> Function(ffi.Pointer<gchar>)>>(
+      'g_dbus_unescape_object_path');
+  late final _g_dbus_unescape_object_path = _g_dbus_unescape_object_pathPtr
+      .asFunction<ffi.Pointer<guint8> Function(ffi.Pointer<gchar>)>();
+
+  int g_debug_controller_get_type() {
+    return _g_debug_controller_get_type();
+  }
+
+  late final _g_debug_controller_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'g_debug_controller_get_type');
+  late final _g_debug_controller_get_type =
+      _g_debug_controller_get_typePtr.asFunction<int Function()>();
+
+  int g_debug_controller_get_debug_enabled(
+    ffi.Pointer<GDebugController> self,
+  ) {
+    return _g_debug_controller_get_debug_enabled(
+      self,
+    );
+  }
+
+  late final _g_debug_controller_get_debug_enabledPtr = _lookup<
+          ffi.NativeFunction<gboolean Function(ffi.Pointer<GDebugController>)>>(
+      'g_debug_controller_get_debug_enabled');
+  late final _g_debug_controller_get_debug_enabled =
+      _g_debug_controller_get_debug_enabledPtr
+          .asFunction<int Function(ffi.Pointer<GDebugController>)>();
+
+  void g_debug_controller_set_debug_enabled(
+    ffi.Pointer<GDebugController> self,
+    int debug_enabled,
+  ) {
+    return _g_debug_controller_set_debug_enabled(
+      self,
+      debug_enabled,
+    );
+  }
+
+  late final _g_debug_controller_set_debug_enabledPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GDebugController>,
+              gboolean)>>('g_debug_controller_set_debug_enabled');
+  late final _g_debug_controller_set_debug_enabled =
+      _g_debug_controller_set_debug_enabledPtr
+          .asFunction<void Function(ffi.Pointer<GDebugController>, int)>();
+
+  int g_debug_controller_dbus_get_type() {
+    return _g_debug_controller_dbus_get_type();
+  }
+
+  late final _g_debug_controller_dbus_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'g_debug_controller_dbus_get_type');
+  late final _g_debug_controller_dbus_get_type =
+      _g_debug_controller_dbus_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<GDebugControllerDBus> g_debug_controller_dbus_new(
+    ffi.Pointer<GDBusConnection> connection,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_debug_controller_dbus_new(
+      connection,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _g_debug_controller_dbus_newPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GDebugControllerDBus> Function(
+                  ffi.Pointer<GDBusConnection>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_debug_controller_dbus_new');
+  late final _g_debug_controller_dbus_new =
+      _g_debug_controller_dbus_newPtr.asFunction<
+          ffi.Pointer<GDebugControllerDBus> Function(
+              ffi.Pointer<GDBusConnection>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  void g_debug_controller_dbus_stop(
+    ffi.Pointer<GDebugControllerDBus> self,
+  ) {
+    return _g_debug_controller_dbus_stop(
+      self,
+    );
+  }
+
+  late final _g_debug_controller_dbus_stopPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<GDebugControllerDBus>)>>(
+      'g_debug_controller_dbus_stop');
+  late final _g_debug_controller_dbus_stop = _g_debug_controller_dbus_stopPtr
+      .asFunction<void Function(ffi.Pointer<GDebugControllerDBus>)>();
 
   int g_drive_get_type() {
     return _g_drive_get_type();
@@ -50071,6 +52723,61 @@ class NativeLibrary {
       'g_dtls_connection_get_negotiated_protocol');
   late final _g_dtls_connection_get_negotiated_protocol =
       _g_dtls_connection_get_negotiated_protocolPtr.asFunction<
+          ffi.Pointer<gchar> Function(ffi.Pointer<GDtlsConnection>)>();
+
+  int g_dtls_connection_get_channel_binding_data(
+    ffi.Pointer<GDtlsConnection> conn,
+    int type,
+    ffi.Pointer<GByteArray> data,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_dtls_connection_get_channel_binding_data(
+      conn,
+      type,
+      data,
+      error,
+    );
+  }
+
+  late final _g_dtls_connection_get_channel_binding_dataPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<GDtlsConnection>, ffi.Int32,
+                  ffi.Pointer<GByteArray>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_dtls_connection_get_channel_binding_data');
+  late final _g_dtls_connection_get_channel_binding_data =
+      _g_dtls_connection_get_channel_binding_dataPtr.asFunction<
+          int Function(ffi.Pointer<GDtlsConnection>, int,
+              ffi.Pointer<GByteArray>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_dtls_connection_get_protocol_version(
+    ffi.Pointer<GDtlsConnection> conn,
+  ) {
+    return _g_dtls_connection_get_protocol_version(
+      conn,
+    );
+  }
+
+  late final _g_dtls_connection_get_protocol_versionPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<GDtlsConnection>)>>(
+      'g_dtls_connection_get_protocol_version');
+  late final _g_dtls_connection_get_protocol_version =
+      _g_dtls_connection_get_protocol_versionPtr
+          .asFunction<int Function(ffi.Pointer<GDtlsConnection>)>();
+
+  ffi.Pointer<gchar> g_dtls_connection_get_ciphersuite_name(
+    ffi.Pointer<GDtlsConnection> conn,
+  ) {
+    return _g_dtls_connection_get_ciphersuite_name(
+      conn,
+    );
+  }
+
+  late final _g_dtls_connection_get_ciphersuite_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<gchar> Function(ffi.Pointer<GDtlsConnection>)>>(
+      'g_dtls_connection_get_ciphersuite_name');
+  late final _g_dtls_connection_get_ciphersuite_name =
+      _g_dtls_connection_get_ciphersuite_namePtr.asFunction<
           ffi.Pointer<gchar> Function(ffi.Pointer<GDtlsConnection>)>();
 
   int g_dtls_client_connection_get_type() {
@@ -52227,6 +54934,74 @@ class NativeLibrary {
           gpointer,
           ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  void g_file_move_async(
+    ffi.Pointer<GFile> source,
+    ffi.Pointer<GFile> destination,
+    int flags,
+    int io_priority,
+    ffi.Pointer<GCancellable> cancellable,
+    GFileProgressCallback progress_callback,
+    gpointer progress_callback_data,
+    GAsyncReadyCallback callback,
+    gpointer user_data,
+  ) {
+    return _g_file_move_async(
+      source,
+      destination,
+      flags,
+      io_priority,
+      cancellable,
+      progress_callback,
+      progress_callback_data,
+      callback,
+      user_data,
+    );
+  }
+
+  late final _g_file_move_asyncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GFile>,
+              ffi.Pointer<GFile>,
+              ffi.Int32,
+              ffi.Int,
+              ffi.Pointer<GCancellable>,
+              GFileProgressCallback,
+              gpointer,
+              GAsyncReadyCallback,
+              gpointer)>>('g_file_move_async');
+  late final _g_file_move_async = _g_file_move_asyncPtr.asFunction<
+      void Function(
+          ffi.Pointer<GFile>,
+          ffi.Pointer<GFile>,
+          int,
+          int,
+          ffi.Pointer<GCancellable>,
+          GFileProgressCallback,
+          gpointer,
+          GAsyncReadyCallback,
+          gpointer)>();
+
+  int g_file_move_finish(
+    ffi.Pointer<GFile> file,
+    ffi.Pointer<GAsyncResult> result,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_file_move_finish(
+      file,
+      result,
+      error,
+    );
+  }
+
+  late final _g_file_move_finishPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(ffi.Pointer<GFile>, ffi.Pointer<GAsyncResult>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_file_move_finish');
+  late final _g_file_move_finish = _g_file_move_finishPtr.asFunction<
+      int Function(ffi.Pointer<GFile>, ffi.Pointer<GAsyncResult>,
+          ffi.Pointer<ffi.Pointer<GError>>)>();
+
   int g_file_make_directory(
     ffi.Pointer<GFile> file,
     ffi.Pointer<GCancellable> cancellable,
@@ -53046,6 +55821,33 @@ class NativeLibrary {
       _g_file_eject_mountable_with_operation_finishPtr.asFunction<
           int Function(ffi.Pointer<GFile>, ffi.Pointer<GAsyncResult>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Char> g_file_build_attribute_list_for_copy(
+    ffi.Pointer<GFile> file,
+    int flags,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_file_build_attribute_list_for_copy(
+      file,
+      flags,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _g_file_build_attribute_list_for_copyPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<GFile>,
+                  ffi.Int32,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_file_build_attribute_list_for_copy');
+  late final _g_file_build_attribute_list_for_copy =
+      _g_file_build_attribute_list_for_copyPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<GFile>, int,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
 
   int g_file_copy_attributes(
     ffi.Pointer<GFile> source,
@@ -55204,6 +58006,38 @@ class NativeLibrary {
       _g_file_info_get_modification_date_timePtr.asFunction<
           ffi.Pointer<GDateTime> Function(ffi.Pointer<GFileInfo>)>();
 
+  ffi.Pointer<GDateTime> g_file_info_get_access_date_time(
+    ffi.Pointer<GFileInfo> info,
+  ) {
+    return _g_file_info_get_access_date_time(
+      info,
+    );
+  }
+
+  late final _g_file_info_get_access_date_timePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GFileInfo>)>>('g_file_info_get_access_date_time');
+  late final _g_file_info_get_access_date_time =
+      _g_file_info_get_access_date_timePtr.asFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GFileInfo>)>();
+
+  ffi.Pointer<GDateTime> g_file_info_get_creation_date_time(
+    ffi.Pointer<GFileInfo> info,
+  ) {
+    return _g_file_info_get_creation_date_time(
+      info,
+    );
+  }
+
+  late final _g_file_info_get_creation_date_timePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GDateTime> Function(
+              ffi.Pointer<GFileInfo>)>>('g_file_info_get_creation_date_time');
+  late final _g_file_info_get_creation_date_time =
+      _g_file_info_get_creation_date_timePtr.asFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GFileInfo>)>();
+
   ffi.Pointer<ffi.Char> g_file_info_get_symlink_target(
     ffi.Pointer<GFileInfo> info,
   ) {
@@ -55492,6 +58326,42 @@ class NativeLibrary {
       'g_file_info_set_modification_date_time');
   late final _g_file_info_set_modification_date_time =
       _g_file_info_set_modification_date_timePtr.asFunction<
+          void Function(ffi.Pointer<GFileInfo>, ffi.Pointer<GDateTime>)>();
+
+  void g_file_info_set_access_date_time(
+    ffi.Pointer<GFileInfo> info,
+    ffi.Pointer<GDateTime> atime,
+  ) {
+    return _g_file_info_set_access_date_time(
+      info,
+      atime,
+    );
+  }
+
+  late final _g_file_info_set_access_date_timePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GFileInfo>,
+              ffi.Pointer<GDateTime>)>>('g_file_info_set_access_date_time');
+  late final _g_file_info_set_access_date_time =
+      _g_file_info_set_access_date_timePtr.asFunction<
+          void Function(ffi.Pointer<GFileInfo>, ffi.Pointer<GDateTime>)>();
+
+  void g_file_info_set_creation_date_time(
+    ffi.Pointer<GFileInfo> info,
+    ffi.Pointer<GDateTime> creation_time,
+  ) {
+    return _g_file_info_set_creation_date_time(
+      info,
+      creation_time,
+    );
+  }
+
+  late final _g_file_info_set_creation_date_timePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GFileInfo>,
+              ffi.Pointer<GDateTime>)>>('g_file_info_set_creation_date_time');
+  late final _g_file_info_set_creation_date_time =
+      _g_file_info_set_creation_date_timePtr.asFunction<
           void Function(ffi.Pointer<GFileInfo>, ffi.Pointer<GDateTime>)>();
 
   void g_file_info_set_symlink_target(
@@ -57655,6 +60525,26 @@ class NativeLibrary {
   late final _g_tls_authentication_mode_get_type =
       _g_tls_authentication_mode_get_typePtr.asFunction<int Function()>();
 
+  int g_tls_channel_binding_type_get_type() {
+    return _g_tls_channel_binding_type_get_type();
+  }
+
+  late final _g_tls_channel_binding_type_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'g_tls_channel_binding_type_get_type');
+  late final _g_tls_channel_binding_type_get_type =
+      _g_tls_channel_binding_type_get_typePtr.asFunction<int Function()>();
+
+  int g_tls_channel_binding_error_get_type() {
+    return _g_tls_channel_binding_error_get_type();
+  }
+
+  late final _g_tls_channel_binding_error_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'g_tls_channel_binding_error_get_type');
+  late final _g_tls_channel_binding_error_get_type =
+      _g_tls_channel_binding_error_get_typePtr.asFunction<int Function()>();
+
   int g_tls_rehandshake_mode_get_type() {
     return _g_tls_rehandshake_mode_get_type();
   }
@@ -57735,6 +60625,16 @@ class NativeLibrary {
           'g_tls_certificate_request_flags_get_type');
   late final _g_tls_certificate_request_flags_get_type =
       _g_tls_certificate_request_flags_get_typePtr.asFunction<int Function()>();
+
+  int g_tls_protocol_version_get_type() {
+    return _g_tls_protocol_version_get_type();
+  }
+
+  late final _g_tls_protocol_version_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'g_tls_protocol_version_get_type');
+  late final _g_tls_protocol_version_get_type =
+      _g_tls_protocol_version_get_typePtr.asFunction<int Function()>();
 
   int g_io_module_scope_flags_get_type() {
     return _g_io_module_scope_flags_get_type();
@@ -57846,6 +60746,15 @@ class NativeLibrary {
   late final _g_settings_bind_flags_get_type =
       _g_settings_bind_flags_get_typePtr.asFunction<int Function()>();
 
+  int g_module_error_quark() {
+    return _g_module_error_quark();
+  }
+
+  late final _g_module_error_quarkPtr =
+      _lookup<ffi.NativeFunction<GQuark Function()>>('g_module_error_quark');
+  late final _g_module_error_quark =
+      _g_module_error_quarkPtr.asFunction<int Function()>();
+
   int g_module_supported() {
     return _g_module_supported();
   }
@@ -57871,6 +60780,26 @@ class NativeLibrary {
               ffi.Pointer<gchar>, ffi.Int32)>>('g_module_open');
   late final _g_module_open = _g_module_openPtr
       .asFunction<ffi.Pointer<GModule> Function(ffi.Pointer<gchar>, int)>();
+
+  ffi.Pointer<GModule> g_module_open_full(
+    ffi.Pointer<gchar> file_name,
+    int flags,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_module_open_full(
+      file_name,
+      flags,
+      error,
+    );
+  }
+
+  late final _g_module_open_fullPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GModule> Function(ffi.Pointer<gchar>, ffi.Int32,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('g_module_open_full');
+  late final _g_module_open_full = _g_module_open_fullPtr.asFunction<
+      ffi.Pointer<GModule> Function(
+          ffi.Pointer<gchar>, int, ffi.Pointer<ffi.Pointer<GError>>)>();
 
   int g_module_close(
     ffi.Pointer<GModule> module,
@@ -58282,7 +61211,7 @@ class NativeLibrary {
       _g_io_extension_ref_classPtr.asFunction<
           ffi.Pointer<GTypeClass> Function(ffi.Pointer<GIOExtension>)>();
 
-  /// g_io_module_load:
+  /// g_io_module_load: (skip)
   /// @module: a #GIOModule.
   ///
   /// Required API for GIO modules to implement.
@@ -58312,7 +61241,7 @@ class NativeLibrary {
   late final _g_io_module_load =
       _g_io_module_loadPtr.asFunction<void Function(ffi.Pointer<GIOModule>)>();
 
-  /// g_io_module_unload:
+  /// g_io_module_unload: (skip)
   /// @module: a #GIOModule.
   ///
   /// Required API for GIO modules to implement.
@@ -61645,6 +64574,24 @@ class NativeLibrary {
   late final _g_notification_set_priority = _g_notification_set_priorityPtr
       .asFunction<void Function(ffi.Pointer<GNotification>, int)>();
 
+  void g_notification_set_category(
+    ffi.Pointer<GNotification> notification,
+    ffi.Pointer<gchar> category,
+  ) {
+    return _g_notification_set_category(
+      notification,
+      category,
+    );
+  }
+
+  late final _g_notification_set_categoryPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GNotification>,
+              ffi.Pointer<gchar>)>>('g_notification_set_category');
+  late final _g_notification_set_category =
+      _g_notification_set_categoryPtr.asFunction<
+          void Function(ffi.Pointer<GNotification>, ffi.Pointer<gchar>)>();
+
   void g_notification_add_button(
     ffi.Pointer<GNotification> notification,
     ffi.Pointer<gchar> label,
@@ -62353,6 +65300,43 @@ class NativeLibrary {
               ffi.Pointer<gsize>,
               ffi.Pointer<GCancellable>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int g_power_profile_monitor_get_type() {
+    return _g_power_profile_monitor_get_type();
+  }
+
+  late final _g_power_profile_monitor_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'g_power_profile_monitor_get_type');
+  late final _g_power_profile_monitor_get_type =
+      _g_power_profile_monitor_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<GPowerProfileMonitor> g_power_profile_monitor_dup_default() {
+    return _g_power_profile_monitor_dup_default();
+  }
+
+  late final _g_power_profile_monitor_dup_defaultPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GPowerProfileMonitor> Function()>>(
+          'g_power_profile_monitor_dup_default');
+  late final _g_power_profile_monitor_dup_default =
+      _g_power_profile_monitor_dup_defaultPtr
+          .asFunction<ffi.Pointer<GPowerProfileMonitor> Function()>();
+
+  int g_power_profile_monitor_get_power_saver_enabled(
+    ffi.Pointer<GPowerProfileMonitor> monitor,
+  ) {
+    return _g_power_profile_monitor_get_power_saver_enabled(
+      monitor,
+    );
+  }
+
+  late final _g_power_profile_monitor_get_power_saver_enabledPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<GPowerProfileMonitor>)>>(
+      'g_power_profile_monitor_get_power_saver_enabled');
+  late final _g_power_profile_monitor_get_power_saver_enabled =
+      _g_power_profile_monitor_get_power_saver_enabledPtr
+          .asFunction<int Function(ffi.Pointer<GPowerProfileMonitor>)>();
 
   int g_property_action_get_type() {
     return _g_property_action_get_type();
@@ -70008,6 +72992,21 @@ class NativeLibrary {
   late final _g_subprocess_launcher_take_fd = _g_subprocess_launcher_take_fdPtr
       .asFunction<void Function(ffi.Pointer<GSubprocessLauncher>, int, int)>();
 
+  void g_subprocess_launcher_close(
+    ffi.Pointer<GSubprocessLauncher> self,
+  ) {
+    return _g_subprocess_launcher_close(
+      self,
+    );
+  }
+
+  late final _g_subprocess_launcher_closePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Pointer<GSubprocessLauncher>)>>(
+      'g_subprocess_launcher_close');
+  late final _g_subprocess_launcher_close = _g_subprocess_launcher_closePtr
+      .asFunction<void Function(ffi.Pointer<GSubprocessLauncher>)>();
+
   void g_subprocess_launcher_set_child_setup(
     ffi.Pointer<GSubprocessLauncher> self,
     GSpawnChildSetupFunc child_setup,
@@ -71185,6 +74184,52 @@ class NativeLibrary {
           ffi.Pointer<GTlsCertificate> Function(
               ffi.Pointer<gchar>, int, ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  ffi.Pointer<GTlsCertificate> g_tls_certificate_new_from_pkcs12(
+    ffi.Pointer<guint8> data,
+    int length,
+    ffi.Pointer<gchar> password,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_tls_certificate_new_from_pkcs12(
+      data,
+      length,
+      password,
+      error,
+    );
+  }
+
+  late final _g_tls_certificate_new_from_pkcs12Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GTlsCertificate> Function(ffi.Pointer<guint8>, gsize,
+                  ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_tls_certificate_new_from_pkcs12');
+  late final _g_tls_certificate_new_from_pkcs12 =
+      _g_tls_certificate_new_from_pkcs12Ptr.asFunction<
+          ffi.Pointer<GTlsCertificate> Function(ffi.Pointer<guint8>, int,
+              ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GTlsCertificate> g_tls_certificate_new_from_file_with_password(
+    ffi.Pointer<gchar> file,
+    ffi.Pointer<gchar> password,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_tls_certificate_new_from_file_with_password(
+      file,
+      password,
+      error,
+    );
+  }
+
+  late final _g_tls_certificate_new_from_file_with_passwordPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GTlsCertificate> Function(ffi.Pointer<gchar>,
+                  ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_tls_certificate_new_from_file_with_password');
+  late final _g_tls_certificate_new_from_file_with_password =
+      _g_tls_certificate_new_from_file_with_passwordPtr.asFunction<
+          ffi.Pointer<GTlsCertificate> Function(ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
   ffi.Pointer<GTlsCertificate> g_tls_certificate_new_from_file(
     ffi.Pointer<gchar> file,
     ffi.Pointer<ffi.Pointer<GError>> error,
@@ -71224,6 +74269,28 @@ class NativeLibrary {
       'g_tls_certificate_new_from_files');
   late final _g_tls_certificate_new_from_files =
       _g_tls_certificate_new_from_filesPtr.asFunction<
+          ffi.Pointer<GTlsCertificate> Function(ffi.Pointer<gchar>,
+              ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GTlsCertificate> g_tls_certificate_new_from_pkcs11_uris(
+    ffi.Pointer<gchar> pkcs11_uri,
+    ffi.Pointer<gchar> private_key_pkcs11_uri,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_tls_certificate_new_from_pkcs11_uris(
+      pkcs11_uri,
+      private_key_pkcs11_uri,
+      error,
+    );
+  }
+
+  late final _g_tls_certificate_new_from_pkcs11_urisPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GTlsCertificate> Function(ffi.Pointer<gchar>,
+                  ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_tls_certificate_new_from_pkcs11_uris');
+  late final _g_tls_certificate_new_from_pkcs11_uris =
+      _g_tls_certificate_new_from_pkcs11_urisPtr.asFunction<
           ffi.Pointer<GTlsCertificate> Function(ffi.Pointer<gchar>,
               ffi.Pointer<gchar>, ffi.Pointer<ffi.Pointer<GError>>)>();
 
@@ -71305,6 +74372,102 @@ class NativeLibrary {
       _g_tls_certificate_is_samePtr.asFunction<
           int Function(
               ffi.Pointer<GTlsCertificate>, ffi.Pointer<GTlsCertificate>)>();
+
+  ffi.Pointer<GDateTime> g_tls_certificate_get_not_valid_before(
+    ffi.Pointer<GTlsCertificate> cert,
+  ) {
+    return _g_tls_certificate_get_not_valid_before(
+      cert,
+    );
+  }
+
+  late final _g_tls_certificate_get_not_valid_beforePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GDateTime> Function(ffi.Pointer<GTlsCertificate>)>>(
+      'g_tls_certificate_get_not_valid_before');
+  late final _g_tls_certificate_get_not_valid_before =
+      _g_tls_certificate_get_not_valid_beforePtr.asFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GTlsCertificate>)>();
+
+  ffi.Pointer<GDateTime> g_tls_certificate_get_not_valid_after(
+    ffi.Pointer<GTlsCertificate> cert,
+  ) {
+    return _g_tls_certificate_get_not_valid_after(
+      cert,
+    );
+  }
+
+  late final _g_tls_certificate_get_not_valid_afterPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GDateTime> Function(ffi.Pointer<GTlsCertificate>)>>(
+      'g_tls_certificate_get_not_valid_after');
+  late final _g_tls_certificate_get_not_valid_after =
+      _g_tls_certificate_get_not_valid_afterPtr.asFunction<
+          ffi.Pointer<GDateTime> Function(ffi.Pointer<GTlsCertificate>)>();
+
+  ffi.Pointer<gchar> g_tls_certificate_get_subject_name(
+    ffi.Pointer<GTlsCertificate> cert,
+  ) {
+    return _g_tls_certificate_get_subject_name(
+      cert,
+    );
+  }
+
+  late final _g_tls_certificate_get_subject_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<gchar> Function(ffi.Pointer<GTlsCertificate>)>>(
+      'g_tls_certificate_get_subject_name');
+  late final _g_tls_certificate_get_subject_name =
+      _g_tls_certificate_get_subject_namePtr.asFunction<
+          ffi.Pointer<gchar> Function(ffi.Pointer<GTlsCertificate>)>();
+
+  ffi.Pointer<gchar> g_tls_certificate_get_issuer_name(
+    ffi.Pointer<GTlsCertificate> cert,
+  ) {
+    return _g_tls_certificate_get_issuer_name(
+      cert,
+    );
+  }
+
+  late final _g_tls_certificate_get_issuer_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<gchar> Function(ffi.Pointer<GTlsCertificate>)>>(
+      'g_tls_certificate_get_issuer_name');
+  late final _g_tls_certificate_get_issuer_name =
+      _g_tls_certificate_get_issuer_namePtr.asFunction<
+          ffi.Pointer<gchar> Function(ffi.Pointer<GTlsCertificate>)>();
+
+  ffi.Pointer<GPtrArray> g_tls_certificate_get_dns_names(
+    ffi.Pointer<GTlsCertificate> cert,
+  ) {
+    return _g_tls_certificate_get_dns_names(
+      cert,
+    );
+  }
+
+  late final _g_tls_certificate_get_dns_namesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(ffi.Pointer<GTlsCertificate>)>>(
+      'g_tls_certificate_get_dns_names');
+  late final _g_tls_certificate_get_dns_names =
+      _g_tls_certificate_get_dns_namesPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(ffi.Pointer<GTlsCertificate>)>();
+
+  ffi.Pointer<GPtrArray> g_tls_certificate_get_ip_addresses(
+    ffi.Pointer<GTlsCertificate> cert,
+  ) {
+    return _g_tls_certificate_get_ip_addresses(
+      cert,
+    );
+  }
+
+  late final _g_tls_certificate_get_ip_addressesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(ffi.Pointer<GTlsCertificate>)>>(
+      'g_tls_certificate_get_ip_addresses');
+  late final _g_tls_certificate_get_ip_addresses =
+      _g_tls_certificate_get_ip_addressesPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(ffi.Pointer<GTlsCertificate>)>();
 
   int g_tls_connection_get_type() {
     return _g_tls_connection_get_type();
@@ -71592,6 +74755,30 @@ class NativeLibrary {
       _g_tls_connection_get_negotiated_protocolPtr.asFunction<
           ffi.Pointer<gchar> Function(ffi.Pointer<GTlsConnection>)>();
 
+  int g_tls_connection_get_channel_binding_data(
+    ffi.Pointer<GTlsConnection> conn,
+    int type,
+    ffi.Pointer<GByteArray> data,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _g_tls_connection_get_channel_binding_data(
+      conn,
+      type,
+      data,
+      error,
+    );
+  }
+
+  late final _g_tls_connection_get_channel_binding_dataPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<GTlsConnection>, ffi.Int32,
+                  ffi.Pointer<GByteArray>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'g_tls_connection_get_channel_binding_data');
+  late final _g_tls_connection_get_channel_binding_data =
+      _g_tls_connection_get_channel_binding_dataPtr.asFunction<
+          int Function(ffi.Pointer<GTlsConnection>, int,
+              ffi.Pointer<GByteArray>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
   int g_tls_connection_handshake(
     ffi.Pointer<GTlsConnection> conn,
     ffi.Pointer<GCancellable> cancellable,
@@ -71668,6 +74855,37 @@ class NativeLibrary {
           int Function(ffi.Pointer<GTlsConnection>, ffi.Pointer<GAsyncResult>,
               ffi.Pointer<ffi.Pointer<GError>>)>();
 
+  int g_tls_connection_get_protocol_version(
+    ffi.Pointer<GTlsConnection> conn,
+  ) {
+    return _g_tls_connection_get_protocol_version(
+      conn,
+    );
+  }
+
+  late final _g_tls_connection_get_protocol_versionPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<GTlsConnection>)>>(
+      'g_tls_connection_get_protocol_version');
+  late final _g_tls_connection_get_protocol_version =
+      _g_tls_connection_get_protocol_versionPtr
+          .asFunction<int Function(ffi.Pointer<GTlsConnection>)>();
+
+  ffi.Pointer<gchar> g_tls_connection_get_ciphersuite_name(
+    ffi.Pointer<GTlsConnection> conn,
+  ) {
+    return _g_tls_connection_get_ciphersuite_name(
+      conn,
+    );
+  }
+
+  late final _g_tls_connection_get_ciphersuite_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<gchar> Function(ffi.Pointer<GTlsConnection>)>>(
+      'g_tls_connection_get_ciphersuite_name');
+  late final _g_tls_connection_get_ciphersuite_name =
+      _g_tls_connection_get_ciphersuite_namePtr.asFunction<
+          ffi.Pointer<gchar> Function(ffi.Pointer<GTlsConnection>)>();
+
   int g_tls_error_quark() {
     return _g_tls_error_quark();
   }
@@ -71676,6 +74894,16 @@ class NativeLibrary {
       _lookup<ffi.NativeFunction<GQuark Function()>>('g_tls_error_quark');
   late final _g_tls_error_quark =
       _g_tls_error_quarkPtr.asFunction<int Function()>();
+
+  int g_tls_channel_binding_error_quark() {
+    return _g_tls_channel_binding_error_quark();
+  }
+
+  late final _g_tls_channel_binding_error_quarkPtr =
+      _lookup<ffi.NativeFunction<GQuark Function()>>(
+          'g_tls_channel_binding_error_quark');
+  late final _g_tls_channel_binding_error_quark =
+      _g_tls_channel_binding_error_quarkPtr.asFunction<int Function()>();
 
   int g_tls_connection_emit_accept_certificate(
     ffi.Pointer<GTlsConnection> conn,
@@ -73571,14 +76799,68 @@ final class _GError extends ffi.Struct {
   external ffi.Pointer<gchar> message;
 }
 
+/// GErrorInitFunc:
+/// @error: extended error
+///
+/// Specifies the type of function which is called just after an
+/// extended error instance is created and its fields filled. It should
+/// only initialize the fields in the private data, which can be
+/// received with the generated `*_get_private()` function.
+///
+/// Normally, it is better to use G_DEFINE_EXTENDED_ERROR(), as it
+/// already takes care of getting the private data from @error.
+///
+/// Since: 2.68
+typedef GErrorInitFunc
+    = ffi.Pointer<ffi.NativeFunction<GErrorInitFuncFunction>>;
+typedef GErrorInitFuncFunction = ffi.Void Function(ffi.Pointer<GError> error);
+typedef DartGErrorInitFuncFunction = void Function(ffi.Pointer<GError> error);
+
 /// GError:
-/// @domain: error domain, e.g. #G_FILE_ERROR
+/// @domain: error domain, e.g. %G_FILE_ERROR
 /// @code: error code, e.g. %G_FILE_ERROR_NOENT
 /// @message: human-readable informative error message
 ///
 /// The `GError` structure contains information about
 /// an error that has occurred.
 typedef GError = _GError;
+
+/// GErrorCopyFunc:
+/// @src_error: source extended error
+/// @dest_error: destination extended error
+///
+/// Specifies the type of function which is called when an extended
+/// error instance is copied. It is passed the pointer to the
+/// destination error and source error, and should copy only the fields
+/// of the private data from @src_error to @dest_error.
+///
+/// Normally, it is better to use G_DEFINE_EXTENDED_ERROR(), as it
+/// already takes care of getting the private data from @src_error and
+/// @dest_error.
+///
+/// Since: 2.68
+typedef GErrorCopyFunc
+    = ffi.Pointer<ffi.NativeFunction<GErrorCopyFuncFunction>>;
+typedef GErrorCopyFuncFunction = ffi.Void Function(
+    ffi.Pointer<GError> src_error, ffi.Pointer<GError> dest_error);
+typedef DartGErrorCopyFuncFunction = void Function(
+    ffi.Pointer<GError> src_error, ffi.Pointer<GError> dest_error);
+
+/// GErrorClearFunc:
+/// @error: extended error to clear
+///
+/// Specifies the type of function which is called when an extended
+/// error instance is freed. It is passed the error pointer about to be
+/// freed, and should free the error's private data fields.
+///
+/// Normally, it is better to use G_DEFINE_EXTENDED_ERROR(), as it
+/// already takes care of getting the private data from @error.
+///
+/// Since: 2.68
+typedef GErrorClearFunc
+    = ffi.Pointer<ffi.NativeFunction<GErrorClearFuncFunction>>;
+typedef GErrorClearFuncFunction = ffi.Void Function(ffi.Pointer<GError> error);
+typedef DartGErrorClearFuncFunction = void Function(ffi.Pointer<GError> error);
 
 final class __va_list_tag extends ffi.Struct {
   @ffi.UnsignedInt()
@@ -73754,6 +77036,49 @@ typedef GTimeVal = _GTimeVal;
 typedef guchar = ffi.UnsignedChar;
 typedef Dartguchar = int;
 
+final class _GTimeZone extends ffi.Opaque {}
+
+/// GTimeType:
+/// @G_TIME_TYPE_STANDARD: the time is in local standard time
+/// @G_TIME_TYPE_DAYLIGHT: the time is in local daylight time
+/// @G_TIME_TYPE_UNIVERSAL: the time is in UTC
+///
+/// Disambiguates a given time in two ways.
+///
+/// First, specifies if the given time is in universal or local time.
+///
+/// Second, if the time is in local time, specifies if it is local
+/// standard time or local daylight time.  This is important for the case
+/// where the same local time occurs twice (during daylight savings time
+/// transitions, for example).
+abstract class GTimeType {
+  static const int G_TIME_TYPE_STANDARD = 0;
+  static const int G_TIME_TYPE_DAYLIGHT = 1;
+  static const int G_TIME_TYPE_UNIVERSAL = 2;
+}
+
+typedef GTimeZone = _GTimeZone;
+typedef gint32 = ffi.Int;
+typedef Dartgint32 = int;
+
+final class _GDateTime extends ffi.Opaque {}
+
+/// GDateTime:
+///
+/// An opaque structure that represents a date and time, including a time zone.
+///
+/// Since: 2.26
+typedef GDateTime = _GDateTime;
+typedef gdouble = ffi.Double;
+typedef Dartgdouble = double;
+
+/// GTimeSpan:
+///
+/// A value representing an interval of time, in microseconds.
+///
+/// Since: 2.26
+typedef GTimeSpan = gint64;
+
 /// GBookmarkFileError:
 /// @G_BOOKMARK_FILE_ERROR_INVALID_URI: URI was ill-formed
 /// @G_BOOKMARK_FILE_ERROR_INVALID_VALUE: a requested field was not found
@@ -73782,8 +77107,7 @@ final class _GBookmarkFile extends ffi.Opaque {}
 
 /// GBookmarkFile:
 ///
-/// The `GBookmarkFile` structure contains only
-/// private data and should not be directly accessed.
+/// An opaque data structure representing a set of bookmarks.
 typedef GBookmarkFile = _GBookmarkFile;
 typedef time_t = __time_t;
 typedef __time_t = ffi.Long;
@@ -73819,6 +77143,7 @@ typedef Dartgssize = int;
 /// GChecksum:
 ///
 /// An opaque structure representing a checksumming operation.
+///
 /// To create a new GChecksum, use g_checksum_new(). To free
 /// a GChecksum, use g_checksum_free().
 ///
@@ -73915,8 +77240,6 @@ typedef GDateYear = guint16;
 typedef guint16 = ffi.UnsignedShort;
 typedef Dartguint16 = int;
 typedef GTime = gint32;
-typedef gint32 = ffi.Int;
-typedef Dartgint32 = int;
 
 final class tm extends ffi.Struct {
   @ffi.Int()
@@ -73951,48 +77274,6 @@ final class tm extends ffi.Struct {
 
   external ffi.Pointer<ffi.Char> tm_zone;
 }
-
-final class _GTimeZone extends ffi.Opaque {}
-
-/// GTimeType:
-/// @G_TIME_TYPE_STANDARD: the time is in local standard time
-/// @G_TIME_TYPE_DAYLIGHT: the time is in local daylight time
-/// @G_TIME_TYPE_UNIVERSAL: the time is in UTC
-///
-/// Disambiguates a given time in two ways.
-///
-/// First, specifies if the given time is in universal or local time.
-///
-/// Second, if the time is in local time, specifies if it is local
-/// standard time or local daylight time.  This is important for the case
-/// where the same local time occurs twice (during daylight savings time
-/// transitions, for example).
-abstract class GTimeType {
-  static const int G_TIME_TYPE_STANDARD = 0;
-  static const int G_TIME_TYPE_DAYLIGHT = 1;
-  static const int G_TIME_TYPE_UNIVERSAL = 2;
-}
-
-typedef GTimeZone = _GTimeZone;
-
-final class _GDateTime extends ffi.Opaque {}
-
-/// GDateTime:
-///
-/// `GDateTime` is an opaque structure whose members
-/// cannot be accessed directly.
-///
-/// Since: 2.26
-typedef GDateTime = _GDateTime;
-typedef gdouble = ffi.Double;
-typedef Dartgdouble = double;
-
-/// GTimeSpan:
-///
-/// A value representing an interval of time, in microseconds.
-///
-/// Since: 2.26
-typedef GTimeSpan = gint64;
 
 final class _GDir extends ffi.Opaque {}
 
@@ -74032,6 +77313,35 @@ abstract class GFileTest {
   static const int G_FILE_TEST_IS_DIR = 4;
   static const int G_FILE_TEST_IS_EXECUTABLE = 8;
   static const int G_FILE_TEST_EXISTS = 16;
+}
+
+/// GFileSetContentsFlags:
+/// @G_FILE_SET_CONTENTS_NONE: No guarantees about file consistency or durability.
+/// The most dangerous setting, which is slightly faster than other settings.
+/// @G_FILE_SET_CONTENTS_CONSISTENT: Guarantee file consistency: after a crash,
+/// either the old version of the file or the new version of the file will be
+/// available, but not a mixture. On Unix systems this equates to an `fsync()`
+/// on the file and use of an atomic `rename()` of the new version of the file
+/// over the old.
+/// @G_FILE_SET_CONTENTS_DURABLE: Guarantee file durability: after a crash, the
+/// new version of the file will be available. On Unix systems this equates to
+/// an `fsync()` on the file (if %G_FILE_SET_CONTENTS_CONSISTENT is unset), or
+/// the effects of %G_FILE_SET_CONTENTS_CONSISTENT plus an `fsync()` on the
+/// directory containing the file after calling `rename()`.
+/// @G_FILE_SET_CONTENTS_ONLY_EXISTING: Only apply consistency and durability
+/// guarantees if the file already exists. This may speed up file operations
+/// if the file doesn’t currently exist, but may result in a corrupted version
+/// of the new file if the system crashes while writing it.
+///
+/// Flags to pass to g_file_set_contents_full() to affect its safety and
+/// performance.
+///
+/// Since: 2.66
+abstract class GFileSetContentsFlags {
+  static const int G_FILE_SET_CONTENTS_NONE = 0;
+  static const int G_FILE_SET_CONTENTS_CONSISTENT = 1;
+  static const int G_FILE_SET_CONTENTS_DURABLE = 2;
+  static const int G_FILE_SET_CONTENTS_ONLY_EXISTING = 4;
 }
 
 final class _GMemVTable extends ffi.Struct {
@@ -74269,6 +77579,22 @@ abstract class GIOCondition {
   static const int G_IO_NVAL = 32;
 }
 
+/// GMainContextFlags:
+/// @G_MAIN_CONTEXT_FLAGS_NONE: Default behaviour.
+/// @G_MAIN_CONTEXT_FLAGS_OWNERLESS_POLLING: Assume that polling for events will
+/// free the thread to process other jobs. That's useful if you're using
+/// `g_main_context_{prepare,query,check,dispatch}` to integrate GMainContext in
+/// other event loops.
+///
+/// Flags to pass to g_main_context_new_with_flags() which affect the behaviour
+/// of a #GMainContext.
+///
+/// Since: 2.72
+abstract class GMainContextFlags {
+  static const int G_MAIN_CONTEXT_FLAGS_NONE = 0;
+  static const int G_MAIN_CONTEXT_FLAGS_OWNERLESS_POLLING = 1;
+}
+
 final class _GMainContext extends ffi.Opaque {}
 
 final class _GMainLoop extends ffi.Opaque {}
@@ -74345,8 +77671,8 @@ typedef GSource = _GSource;
 /// different type to this type. Use G_SOURCE_FUNC() to avoid warnings about
 /// incompatible function types.
 ///
-/// Returns: %FALSE if the source should be removed. #G_SOURCE_CONTINUE and
-/// #G_SOURCE_REMOVE are more memorable names for the return value.
+/// Returns: %FALSE if the source should be removed. %G_SOURCE_CONTINUE and
+/// %G_SOURCE_REMOVE are more memorable names for the return value.
 typedef GSourceFunc = ffi.Pointer<ffi.NativeFunction<GSourceFuncFunction>>;
 typedef GSourceFuncFunction = gboolean Function(gpointer user_data);
 typedef DartGSourceFuncFunction = Dartgint Function(gpointer user_data);
@@ -74376,8 +77702,8 @@ typedef DartGSourceFuncFunction = Dartgint Function(gpointer user_data);
 /// connected to a callback using g_source_set_callback(). The @dispatch
 /// function should call the callback function with @user_data and whatever
 /// additional parameters are needed for this type of event source. The
-/// return value of the @dispatch function should be #G_SOURCE_REMOVE if the
-/// source should be removed or #G_SOURCE_CONTINUE to keep it.
+/// return value of the @dispatch function should be %G_SOURCE_REMOVE if the
+/// source should be removed or %G_SOURCE_CONTINUE to keep it.
 /// @finalize: Called when the source is finalized. At this point, the source
 /// will have been destroyed, had its callback cleared, and have been removed
 /// from its #GMainContext, but it will still have its final reference count,
@@ -74502,19 +77828,23 @@ typedef DartGClearHandleFuncFunction = void Function(Dartguint handle_id);
 
 /// GChildWatchFunc:
 /// @pid: the process id of the child process
-/// @status: Status information about the child process, encoded
+/// @wait_status: Status information about the child process, encoded
 /// in a platform-specific manner
 /// @user_data: user data passed to g_child_watch_add()
 ///
 /// Prototype of a #GChildWatchSource callback, called when a child
-/// process has exited.  To interpret @status, see the documentation
-/// for g_spawn_check_exit_status().
+/// process has exited.
+///
+/// To interpret @wait_status, see the documentation
+/// for g_spawn_check_wait_status(). In particular,
+/// on Unix platforms, note that it is usually not equal
+/// to the integer passed to `exit()` or returned from `main()`.
 typedef GChildWatchFunc
     = ffi.Pointer<ffi.NativeFunction<GChildWatchFuncFunction>>;
 typedef GChildWatchFuncFunction = ffi.Void Function(
-    GPid pid, gint status, gpointer user_data);
+    GPid pid, gint wait_status, gpointer user_data);
 typedef DartGChildWatchFuncFunction = void Function(
-    DartGPid pid, Dartgint status, gpointer user_data);
+    DartGPid pid, Dartgint wait_status, gpointer user_data);
 
 /// GUnicodeType:
 /// @G_UNICODE_CONTROL: General category "Other, Control" (Cc)
@@ -74621,7 +77951,8 @@ abstract class GUnicodeType {
 /// @G_UNICODE_BREAK_HANGUL_T_JAMO: Hangul T Jamo (JT)
 /// @G_UNICODE_BREAK_HANGUL_LV_SYLLABLE: Hangul LV Syllable (H2)
 /// @G_UNICODE_BREAK_HANGUL_LVT_SYLLABLE: Hangul LVT Syllable (H3)
-/// @G_UNICODE_BREAK_CLOSE_PARANTHESIS: Closing Parenthesis (CP). Since 2.28
+/// @G_UNICODE_BREAK_CLOSE_PARANTHESIS: Closing Parenthesis (CP). Since 2.28. Deprecated: 2.70: Use %G_UNICODE_BREAK_CLOSE_PARENTHESIS instead.
+/// @G_UNICODE_BREAK_CLOSE_PARENTHESIS: Closing Parenthesis (CP). Since 2.70
 /// @G_UNICODE_BREAK_CONDITIONAL_JAPANESE_STARTER: Conditional Japanese Starter (CJ). Since: 2.32
 /// @G_UNICODE_BREAK_HEBREW_LETTER: Hebrew Letter (HL). Since: 2.32
 /// @G_UNICODE_BREAK_REGIONAL_INDICATOR: Regional Indicator (RI). Since: 2.36
@@ -74673,6 +78004,7 @@ abstract class GUnicodeBreakType {
   static const int G_UNICODE_BREAK_HANGUL_LV_SYLLABLE = 34;
   static const int G_UNICODE_BREAK_HANGUL_LVT_SYLLABLE = 35;
   static const int G_UNICODE_BREAK_CLOSE_PARANTHESIS = 36;
+  static const int G_UNICODE_BREAK_CLOSE_PARENTHESIS = 36;
   static const int G_UNICODE_BREAK_CONDITIONAL_JAPANESE_STARTER = 37;
   static const int G_UNICODE_BREAK_HEBREW_LETTER = 38;
   static const int G_UNICODE_BREAK_REGIONAL_INDICATOR = 39;
@@ -74848,6 +78180,16 @@ abstract class GUnicodeBreakType {
 /// @G_UNICODE_SCRIPT_NANDINAGARI:          Nand. Since: 2.62
 /// @G_UNICODE_SCRIPT_NYIAKENG_PUACHUE_HMONG: Rohg. Since: 2.62
 /// @G_UNICODE_SCRIPT_WANCHO:               Wcho. Since: 2.62
+/// @G_UNICODE_SCRIPT_CHORASMIAN:           Chorasmian. Since: 2.66
+/// @G_UNICODE_SCRIPT_DIVES_AKURU:          Dives Akuru. Since: 2.66
+/// @G_UNICODE_SCRIPT_KHITAN_SMALL_SCRIPT:  Khitan small script. Since: 2.66
+/// @G_UNICODE_SCRIPT_YEZIDI:               Yezidi. Since: 2.66
+/// @G_UNICODE_SCRIPT_CYPRO_MINOAN:         Cypro-Minoan. Since: 2.72
+/// @G_UNICODE_SCRIPT_OLD_UYGHUR:           Old Uyghur. Since: 2.72
+/// @G_UNICODE_SCRIPT_TANGSA:               Tangsa. Since: 2.72
+/// @G_UNICODE_SCRIPT_TOTO:                 Toto. Since: 2.72
+/// @G_UNICODE_SCRIPT_VITHKUQI:             Vithkuqi. Since: 2.72
+/// @G_UNICODE_SCRIPT_MATH:                 Mathematical notation. Since: 2.72
 ///
 /// The #GUnicodeScript enumeration identifies different writing
 /// systems. The values correspond to the names as defined in the
@@ -75012,6 +78354,16 @@ abstract class GUnicodeScript {
   static const int G_UNICODE_SCRIPT_NANDINAGARI = 150;
   static const int G_UNICODE_SCRIPT_NYIAKENG_PUACHUE_HMONG = 151;
   static const int G_UNICODE_SCRIPT_WANCHO = 152;
+  static const int G_UNICODE_SCRIPT_CHORASMIAN = 153;
+  static const int G_UNICODE_SCRIPT_DIVES_AKURU = 154;
+  static const int G_UNICODE_SCRIPT_KHITAN_SMALL_SCRIPT = 155;
+  static const int G_UNICODE_SCRIPT_YEZIDI = 156;
+  static const int G_UNICODE_SCRIPT_CYPRO_MINOAN = 157;
+  static const int G_UNICODE_SCRIPT_OLD_UYGHUR = 158;
+  static const int G_UNICODE_SCRIPT_TANGSA = 159;
+  static const int G_UNICODE_SCRIPT_TOTO = 160;
+  static const int G_UNICODE_SCRIPT_VITHKUQI = 161;
+  static const int G_UNICODE_SCRIPT_MATH = 162;
 }
 
 /// gunichar:
@@ -75569,6 +78921,7 @@ typedef GLogField = _GLogField;
 ///
 /// Returns: %G_LOG_WRITER_HANDLED if the log entry was handled successfully;
 /// %G_LOG_WRITER_UNHANDLED otherwise
+///
 /// Since: 2.50
 typedef GLogWriterFunc
     = ffi.Pointer<ffi.NativeFunction<GLogWriterFuncFunction>>;
@@ -76018,8 +79371,8 @@ abstract class GRegexError {
 /// newlines). The "start of line" metacharacter ("^") matches only
 /// at the start of the string, while the "end of line" metacharacter
 /// ("$") matches only at the end of the string, or before a terminating
-/// newline (unless #G_REGEX_DOLLAR_ENDONLY is set). When
-/// #G_REGEX_MULTILINE is set, the "start of line" and "end of line"
+/// newline (unless %G_REGEX_DOLLAR_ENDONLY is set). When
+/// %G_REGEX_MULTILINE is set, the "start of line" and "end of line"
 /// constructs match immediately following or immediately before any
 /// newline in the string, respectively, as well as at the very start
 /// and end. This can be changed within a pattern by a "(?m)" option
@@ -76042,7 +79395,7 @@ abstract class GRegexError {
 /// matches only at the end of the string. Without this option, a
 /// dollar also matches immediately before the final character if
 /// it is a newline (but not before any other newlines). This option
-/// is ignored if #G_REGEX_MULTILINE is set.
+/// is ignored if %G_REGEX_MULTILINE is set.
 /// @G_REGEX_UNGREEDY: Inverts the "greediness" of the quantifiers so that
 /// they are not greedy by default, but become greedy if followed by "?".
 /// It can also be set by a "(?U)" option setting within the pattern.
@@ -76112,14 +79465,14 @@ abstract class GRegexCompileFlags {
 /// metacharacter.
 /// @G_REGEX_MATCH_NOTBOL: Specifies that first character of the string is
 /// not the beginning of a line, so the circumflex metacharacter should
-/// not match before it. Setting this without #G_REGEX_MULTILINE (at
+/// not match before it. Setting this without %G_REGEX_MULTILINE (at
 /// compile time) causes circumflex never to match. This option affects
 /// only the behaviour of the circumflex metacharacter, it does not
 /// affect "\A".
 /// @G_REGEX_MATCH_NOTEOL: Specifies that the end of the subject string is
 /// not the end of a line, so the dollar metacharacter should not match
 /// it nor (except in multiline mode) a newline immediately before it.
-/// Setting this without #G_REGEX_MULTILINE (at compile time) causes
+/// Setting this without %G_REGEX_MULTILINE (at compile time) causes
 /// dollar never to match. This option affects only the behaviour of
 /// the dollar metacharacter, it does not affect "\Z" or "\z".
 /// @G_REGEX_MATCH_NOTEMPTY: An empty string is not considered to be a valid
@@ -76156,12 +79509,12 @@ abstract class GRegexCompileFlags {
 /// single characters U+000B LINE TABULATION, U+000C FORM FEED (FF),
 /// U+0085 NEXT LINE (NEL), U+2028 LINE SEPARATOR and
 /// U+2029 PARAGRAPH SEPARATOR. Since: 2.34
-/// @G_REGEX_MATCH_PARTIAL_SOFT: An alias for #G_REGEX_MATCH_PARTIAL. Since: 2.34
+/// @G_REGEX_MATCH_PARTIAL_SOFT: An alias for %G_REGEX_MATCH_PARTIAL. Since: 2.34
 /// @G_REGEX_MATCH_PARTIAL_HARD: Turns on the partial matching feature. In contrast to
-/// to #G_REGEX_MATCH_PARTIAL_SOFT, this stops matching as soon as a partial match
+/// to %G_REGEX_MATCH_PARTIAL_SOFT, this stops matching as soon as a partial match
 /// is found, without continuing to search for a possible complete match. See
 /// g_match_info_is_partial_match() for more information. Since: 2.34
-/// @G_REGEX_MATCH_NOTEMPTY_ATSTART: Like #G_REGEX_MATCH_NOTEMPTY, but only applied to
+/// @G_REGEX_MATCH_NOTEMPTY_ATSTART: Like %G_REGEX_MATCH_NOTEMPTY, but only applied to
 /// the start of the matched string. For anchored
 /// patterns this can only happen for pattern containing "\K". Since: 2.34
 ///
@@ -76466,7 +79819,7 @@ abstract class GSpawnError {
 /// execute, while the remaining elements are the actual argument vector
 /// to pass to the file. Normally g_spawn_async_with_pipes() uses `argv[0]`
 /// as the file to execute, and passes all of `argv` to the child.
-/// @G_SPAWN_SEARCH_PATH_FROM_ENVP: if `argv[0]` is not an abolute path,
+/// @G_SPAWN_SEARCH_PATH_FROM_ENVP: if `argv[0]` is not an absolute path,
 /// it will be looked for in the `PATH` from the passed child environment.
 /// Since: 2.34
 /// @G_SPAWN_CLOEXEC_PIPES: create all pipes with the `O_CLOEXEC` flag set.
@@ -76553,6 +79906,17 @@ abstract class GNumberParserError {
 final class _GStringChunk extends ffi.Opaque {}
 
 typedef GStringChunk = _GStringChunk;
+
+final class _GStrvBuilder extends ffi.Opaque {}
+
+/// GStrvBuilder:
+///
+/// A helper object to build a %NULL-terminated string array
+/// by appending. See g_strv_builder_new().
+///
+/// Since: 2.68
+typedef GStrvBuilder = _GStrvBuilder;
+typedef GStrv = ffi.Pointer<ffi.Pointer<gchar>>;
 
 final class GTestCase extends ffi.Opaque {}
 
@@ -76705,12 +80069,179 @@ typedef GTrashStack = _GTrashStack;
 
 final class _GTree extends ffi.Opaque {}
 
+final class _GTreeNode extends ffi.Opaque {}
+
 typedef GTree = _GTree;
+
+/// GTreeNode:
+///
+/// An opaque type which identifies a specific node in a #GTree.
+///
+/// Since: 2.68
+typedef GTreeNode = _GTreeNode;
 typedef GTraverseFunc = ffi.Pointer<ffi.NativeFunction<GTraverseFuncFunction>>;
 typedef GTraverseFuncFunction = gboolean Function(
     gpointer key, gpointer value, gpointer data);
 typedef DartGTraverseFuncFunction = Dartgint Function(
     gpointer key, gpointer value, gpointer data);
+
+/// GTraverseNodeFunc:
+/// @node: a #GTreeNode
+/// @data: user data passed to g_tree_foreach_node()
+///
+/// Specifies the type of function passed to g_tree_foreach_node(). It is
+/// passed each node, together with the @user_data parameter passed to
+/// g_tree_foreach_node(). If the function returns %TRUE, the traversal is
+/// stopped.
+///
+/// Returns: %TRUE to stop the traversal
+/// Since: 2.68
+typedef GTraverseNodeFunc
+    = ffi.Pointer<ffi.NativeFunction<GTraverseNodeFuncFunction>>;
+typedef GTraverseNodeFuncFunction = gboolean Function(
+    ffi.Pointer<GTreeNode> node, gpointer data);
+typedef DartGTraverseNodeFuncFunction = Dartgint Function(
+    ffi.Pointer<GTreeNode> node, gpointer data);
+
+final class _GUri extends ffi.Opaque {}
+
+typedef GUri = _GUri;
+
+/// GUriFlags:
+/// @G_URI_FLAGS_NONE: No flags set.
+/// @G_URI_FLAGS_PARSE_RELAXED: Parse the URI more relaxedly than the
+/// [RFC 3986](https://tools.ietf.org/html/rfc3986) grammar specifies,
+/// fixing up or ignoring common mistakes in URIs coming from external
+/// sources. This is also needed for some obscure URI schemes where `;`
+/// separates the host from the path. Don’t use this flag unless you need to.
+/// @G_URI_FLAGS_HAS_PASSWORD: The userinfo field may contain a password,
+/// which will be separated from the username by `:`.
+/// @G_URI_FLAGS_HAS_AUTH_PARAMS: The userinfo may contain additional
+/// authentication-related parameters, which will be separated from
+/// the username and/or password by `;`.
+/// @G_URI_FLAGS_NON_DNS: The host component should not be assumed to be a
+/// DNS hostname or IP address (for example, for `smb` URIs with NetBIOS
+/// hostnames).
+/// @G_URI_FLAGS_ENCODED: When parsing a URI, this indicates that `%`-encoded
+/// characters in the userinfo, path, query, and fragment fields
+/// should not be decoded. (And likewise the host field if
+/// %G_URI_FLAGS_NON_DNS is also set.) When building a URI, it indicates
+/// that you have already `%`-encoded the components, and so #GUri
+/// should not do any encoding itself.
+/// @G_URI_FLAGS_ENCODED_QUERY: Same as %G_URI_FLAGS_ENCODED, for the query
+/// field only.
+/// @G_URI_FLAGS_ENCODED_PATH: Same as %G_URI_FLAGS_ENCODED, for the path only.
+/// @G_URI_FLAGS_ENCODED_FRAGMENT: Same as %G_URI_FLAGS_ENCODED, for the
+/// fragment only.
+/// @G_URI_FLAGS_SCHEME_NORMALIZE: A scheme-based normalization will be applied.
+/// For example, when parsing an HTTP URI changing omitted path to `/` and
+/// omitted port to `80`; and when building a URI, changing empty path to `/`
+/// and default port `80`). This only supports a subset of known schemes. (Since: 2.68)
+///
+/// Flags that describe a URI.
+///
+/// When parsing a URI, if you need to choose different flags based on
+/// the type of URI, you can use g_uri_peek_scheme() on the URI string
+/// to check the scheme first, and use that to decide what flags to
+/// parse it with.
+///
+/// Since: 2.66
+abstract class GUriFlags {
+  static const int G_URI_FLAGS_NONE = 0;
+  static const int G_URI_FLAGS_PARSE_RELAXED = 1;
+  static const int G_URI_FLAGS_HAS_PASSWORD = 2;
+  static const int G_URI_FLAGS_HAS_AUTH_PARAMS = 4;
+  static const int G_URI_FLAGS_ENCODED = 8;
+  static const int G_URI_FLAGS_NON_DNS = 16;
+  static const int G_URI_FLAGS_ENCODED_QUERY = 32;
+  static const int G_URI_FLAGS_ENCODED_PATH = 64;
+  static const int G_URI_FLAGS_ENCODED_FRAGMENT = 128;
+  static const int G_URI_FLAGS_SCHEME_NORMALIZE = 256;
+}
+
+/// GUriHideFlags:
+/// @G_URI_HIDE_NONE: No flags set.
+/// @G_URI_HIDE_USERINFO: Hide the userinfo.
+/// @G_URI_HIDE_PASSWORD: Hide the password.
+/// @G_URI_HIDE_AUTH_PARAMS: Hide the auth_params.
+/// @G_URI_HIDE_QUERY: Hide the query.
+/// @G_URI_HIDE_FRAGMENT: Hide the fragment.
+///
+/// Flags describing what parts of the URI to hide in
+/// g_uri_to_string_partial(). Note that %G_URI_HIDE_PASSWORD and
+/// %G_URI_HIDE_AUTH_PARAMS will only work if the #GUri was parsed with
+/// the corresponding flags.
+///
+/// Since: 2.66
+abstract class GUriHideFlags {
+  static const int G_URI_HIDE_NONE = 0;
+  static const int G_URI_HIDE_USERINFO = 1;
+  static const int G_URI_HIDE_PASSWORD = 2;
+  static const int G_URI_HIDE_AUTH_PARAMS = 4;
+  static const int G_URI_HIDE_QUERY = 8;
+  static const int G_URI_HIDE_FRAGMENT = 16;
+}
+
+/// GUriParamsFlags:
+/// @G_URI_PARAMS_NONE: No flags set.
+/// @G_URI_PARAMS_CASE_INSENSITIVE: Parameter names are case insensitive.
+/// @G_URI_PARAMS_WWW_FORM: Replace `+` with space character. Only useful for
+/// URLs on the web, using the `https` or `http` schemas.
+/// @G_URI_PARAMS_PARSE_RELAXED: See %G_URI_FLAGS_PARSE_RELAXED.
+///
+/// Flags modifying the way parameters are handled by g_uri_parse_params() and
+/// #GUriParamsIter.
+///
+/// Since: 2.66
+abstract class GUriParamsFlags {
+  static const int G_URI_PARAMS_NONE = 0;
+  static const int G_URI_PARAMS_CASE_INSENSITIVE = 1;
+  static const int G_URI_PARAMS_WWW_FORM = 2;
+  static const int G_URI_PARAMS_PARSE_RELAXED = 4;
+}
+
+final class _GUriParamsIter extends ffi.Struct {
+  @gint()
+  external int dummy0;
+
+  external gpointer dummy1;
+
+  external gpointer dummy2;
+
+  @ffi.Array.multi([256])
+  external ffi.Array<guint8> dummy3;
+}
+
+typedef GUriParamsIter = _GUriParamsIter;
+
+/// GUriError:
+/// @G_URI_ERROR_FAILED: Generic error if no more specific error is available.
+/// See the error message for details.
+/// @G_URI_ERROR_BAD_SCHEME: The scheme of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_USER: The user/userinfo of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_PASSWORD: The password of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_AUTH_PARAMS: The authentication parameters of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_HOST: The host of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_PORT: The port of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_PATH: The path of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_QUERY: The query of a URI could not be parsed.
+/// @G_URI_ERROR_BAD_FRAGMENT: The fragment of a URI could not be parsed.
+///
+/// Error codes returned by #GUri methods.
+///
+/// Since: 2.66
+abstract class GUriError {
+  static const int G_URI_ERROR_FAILED = 0;
+  static const int G_URI_ERROR_BAD_SCHEME = 1;
+  static const int G_URI_ERROR_BAD_USER = 2;
+  static const int G_URI_ERROR_BAD_PASSWORD = 3;
+  static const int G_URI_ERROR_BAD_AUTH_PARAMS = 4;
+  static const int G_URI_ERROR_BAD_HOST = 5;
+  static const int G_URI_ERROR_BAD_PORT = 6;
+  static const int G_URI_ERROR_BAD_PATH = 7;
+  static const int G_URI_ERROR_BAD_QUERY = 8;
+  static const int G_URI_ERROR_BAD_FRAGMENT = 9;
+}
 
 final class _GAllocator extends ffi.Opaque {}
 
@@ -76960,10 +80491,12 @@ typedef GStaticPrivate = _GStaticPrivate;
 /// GValue:
 ///
 /// An opaque structure used to hold different types of values.
+///
 /// The data within the structure has protected scope: it is accessible only
 /// to functions within a #GTypeValueTable structure, or implementations of
 /// the g_value_*() API. That is, code portions which implement new fundamental
 /// types.
+///
 /// #GValue users cannot make any assumptions about how data is stored
 /// within the 2 element @data union, and the @g_type member should
 /// only be accessed through the G_VALUE_TYPE() macro.
@@ -77098,9 +80631,12 @@ final class _GTypeInfo extends ffi.Struct {
 /// @g_class: (type GObject.TypeClass): The #GTypeClass structure to initialize
 ///
 /// A callback function used by the type system to do base initialization
-/// of the class structures of derived types. It is called as part of the
-/// initialization process of all derived classes and should reallocate
-/// or reset all dynamic class members copied over from the parent class.
+/// of the class structures of derived types.
+///
+/// This function is called as part of the initialization process of all derived
+/// classes and should reallocate or reset all dynamic class members copied over
+/// from the parent class.
+///
 /// For example, class members (such as strings) that are not sufficiently
 /// handled by a plain memory copy of the parent class into the derived class
 /// have to be altered. See GClassInitFunc() for a discussion of the class
@@ -77114,8 +80650,11 @@ typedef DartGBaseInitFuncFunction = void Function(gpointer g_class);
 ///
 /// A callback function used by the type system to finalize those portions
 /// of a derived types class structure that were setup from the corresponding
-/// GBaseInitFunc() function. Class finalization basically works the inverse
-/// way in which class initialization is performed.
+/// GBaseInitFunc() function.
+///
+/// Class finalization basically works the inverse way in which class
+/// initialization is performed.
+///
 /// See GClassInitFunc() for a discussion of the class initialization process.
 typedef GBaseFinalizeFunc
     = ffi.Pointer<ffi.NativeFunction<GBaseFinalizeFuncFunction>>;
@@ -77127,8 +80666,9 @@ typedef DartGBaseFinalizeFuncFunction = void Function(gpointer g_class);
 /// @class_data: The @class_data member supplied via the #GTypeInfo structure.
 ///
 /// A callback function used by the type system to initialize the class
-/// of a specific type. This function should initialize all static class
-/// members.
+/// of a specific type.
+///
+/// This function should initialize all static class members.
 ///
 /// The initialization process of a class involves:
 ///
@@ -77197,6 +80737,7 @@ typedef DartGBaseFinalizeFuncFunction = void Function(gpointer g_class);
 /// class->static_float = 3.14159265358979323846;
 /// }
 /// ]|
+///
 /// Initialization of TypeBClass will first cause initialization of
 /// TypeAClass (derived classes reference their parent classes, see
 /// g_type_class_ref() on this).
@@ -77233,8 +80774,10 @@ typedef DartGClassInitFuncFunction = void Function(
 /// @class_data: The @class_data member supplied via the #GTypeInfo structure
 ///
 /// A callback function used by the type system to finalize a class.
+///
 /// This function is rarely needed, as dynamically allocated class resources
 /// should be handled by GBaseInitFunc() and GBaseFinalizeFunc().
+///
 /// Also, specification of a GClassFinalizeFunc() in the #GTypeInfo
 /// structure of a static type is invalid, because classes of static types
 /// will never be finalized (they are artificially kept alive when their
@@ -77252,8 +80795,10 @@ typedef DartGClassFinalizeFuncFunction = void Function(
 /// created for
 ///
 /// A callback function used by the type system to initialize a new
-/// instance of a type. This function initializes all instance members and
-/// allocates any resources required by it.
+/// instance of a type.
+///
+/// This function initializes all instance members and allocates any resources
+/// required by it.
 ///
 /// Initialization of a derived instance involves calling all its parent
 /// types instance initializers, so the class member of the instance
@@ -77353,7 +80898,7 @@ typedef GTypeValueTable = _GTypeValueTable;
 /// return NULL;
 /// ]|
 /// It should be noted, that it is generally a bad idea to follow the
-/// #G_VALUE_NOCOPY_CONTENTS hint for reference counted types. Due to
+/// %G_VALUE_NOCOPY_CONTENTS hint for reference counted types. Due to
 /// reentrancy requirements and reference count assertions performed
 /// by the signal emission code, reference counts should always be
 /// incremented for reference counted contents stored in the value->data
@@ -77361,16 +80906,12 @@ typedef GTypeValueTable = _GTypeValueTable;
 /// a look at an exemplary implementation for collect_value() of
 /// #GObject:
 /// |[<!-- language="C" -->
-/// if (collect_values[0].v_pointer)
-/// {
 /// GObject *object = G_OBJECT (collect_values[0].v_pointer);
+/// g_return_val_if_fail (object != NULL,
+/// g_strdup_printf ("Object passed as invalid NULL pointer"));
 /// // never honour G_VALUE_NOCOPY_CONTENTS for ref-counted types
 /// value->data[0].v_pointer = g_object_ref (object);
 /// return NULL;
-/// }
-/// else
-/// return g_strdup_printf ("Object passed as invalid NULL pointer");
-/// }
 /// ]|
 /// The reference count for valid objects is always incremented,
 /// regardless of @collect_flags. For invalid objects, the example
@@ -77402,8 +80943,8 @@ typedef GTypeValueTable = _GTypeValueTable;
 /// To complete the string example:
 /// |[<!-- language="C" -->
 /// gchar **string_p = collect_values[0].v_pointer;
-/// if (!string_p)
-/// return g_strdup_printf ("string location passed as NULL");
+/// g_return_val_if_fail (string_p != NULL,
+/// g_strdup_printf ("string location passed as NULL"));
 /// if (collect_flags & G_VALUE_NOCOPY_CONTENTS)
 /// *string_p = value->data[0].v_pointer;
 /// else
@@ -77413,8 +80954,8 @@ typedef GTypeValueTable = _GTypeValueTable;
 /// reference-counted types:
 /// |[<!-- language="C" -->
 /// GObject **object_p = collect_values[0].v_pointer;
-/// if (!object_p)
-/// return g_strdup_printf ("object location passed as NULL");
+/// g_return_val_if_fail (object_p != NULL,
+/// g_strdup_printf ("object location passed as NULL"));
 /// if (!value->data[0].v_pointer)
 /// *object_p = NULL;
 /// else if (collect_flags & G_VALUE_NOCOPY_CONTENTS) // always honour
@@ -77480,7 +81021,7 @@ final class _GTypeFundamentalInfo extends ffi.Struct {
 
 /// GTypeFundamentalFlags:
 /// @G_TYPE_FLAG_CLASSED: Indicates a classed type
-/// @G_TYPE_FLAG_INSTANTIATABLE: Indicates an instantiable type (implies classed)
+/// @G_TYPE_FLAG_INSTANTIATABLE: Indicates an instantiatable type (implies classed)
 /// @G_TYPE_FLAG_DERIVABLE: Indicates a flat derivable type
 /// @G_TYPE_FLAG_DEEP_DERIVABLE: Indicates a deep derivable type (implies derivable)
 ///
@@ -77513,8 +81054,10 @@ final class _GInterfaceInfo extends ffi.Struct {
 /// @iface_data: The @interface_data supplied via the #GInterfaceInfo structure
 ///
 /// A callback function used by the type system to initialize a new
-/// interface.  This function should initialize all internal data and
-/// allocate any resources required by the interface.
+/// interface.
+///
+/// This function should initialize all internal data and* allocate any
+/// resources required by the interface.
 ///
 /// The members of @iface_data are guaranteed to have been filled with
 /// zeros before this function is called.
@@ -77530,6 +81073,7 @@ typedef DartGInterfaceInitFuncFunction = void Function(
 /// @iface_data: The @interface_data supplied via the #GInterfaceInfo structure
 ///
 /// A callback function used by the type system to finalize an interface.
+///
 /// This function should destroy any internal data and release any resources
 /// allocated by the corresponding GInterfaceInitFunc() function.
 typedef GInterfaceFinalizeFunc
@@ -77546,7 +81090,8 @@ typedef DartGInterfaceFinalizeFuncFunction = void Function(
 /// @instance_size: the size of the instance structure
 ///
 /// A structure holding information for a specific type.
-/// It is filled in by the g_type_query() function.
+///
+/// See also: g_type_query()
 final class _GTypeQuery extends ffi.Struct {
   @GType()
   external int type;
@@ -77590,11 +81135,14 @@ typedef GTypeQuery = _GTypeQuery;
 /// @G_TYPE_FLAG_VALUE_ABSTRACT: Indicates an abstract value type, i.e. a type
 /// that introduces a value table, but can't be used for
 /// g_value_init()
+/// @G_TYPE_FLAG_FINAL: Indicates a final type. A final type is a non-derivable
+/// leaf node in a deep derivable type hierarchy tree. Since: 2.70
 ///
 /// Bit masks used to check or determine characteristics of a type.
 abstract class GTypeFlags {
   static const int G_TYPE_FLAG_ABSTRACT = 16;
   static const int G_TYPE_FLAG_VALUE_ABSTRACT = 32;
+  static const int G_TYPE_FLAG_FINAL = 64;
 }
 
 typedef GTypeInfo = _GTypeInfo;
@@ -77608,10 +81156,11 @@ typedef GInterfaceInfo = _GInterfaceInfo;
 /// unreferenced
 ///
 /// A callback function which is called when the reference count of a class
-/// drops to zero. It may use g_type_class_ref() to prevent the class from
-/// being freed. You should not call g_type_class_unref() from a
-/// #GTypeClassCacheFunc function to prevent infinite recursion, use
-/// g_type_class_unref_uncached() instead.
+/// drops to zero.
+///
+/// It may use g_type_class_ref() to prevent the class from being freed. You
+/// should not call g_type_class_unref() from a #GTypeClassCacheFunc function
+/// to prevent infinite recursion, use g_type_class_unref_uncached() instead.
 ///
 /// The functions have to check the class id passed in to figure
 /// whether they actually want to cache the class of this type, since all
@@ -77632,6 +81181,7 @@ typedef DartGTypeClassCacheFuncFunction = Dartgint Function(
 /// initialized
 ///
 /// A callback called after an interface vtable is initialized.
+///
 /// See g_type_add_interface_check().
 ///
 /// Since: 2.4
@@ -77688,7 +81238,9 @@ typedef DartGValueTransformFunction = void Function(
 /// Since 2.26
 ///
 /// Through the #GParamFlags flag values, certain aspects of parameters
-/// can be configured. See also #G_PARAM_STATIC_STRINGS.
+/// can be configured.
+///
+/// See also: %G_PARAM_STATIC_STRINGS
 abstract class GParamFlags {
   static const int G_PARAM_READABLE = 1;
   static const int G_PARAM_WRITABLE = 2;
@@ -77704,7 +81256,7 @@ abstract class GParamFlags {
   static const int G_PARAM_DEPRECATED = -2147483648;
 }
 
-/// GParamSpec: (ref-func g_param_spec_ref_sink) (unref-func g_param_spec_uref) (set-value-func g_value_set_param) (get-value-func g_value_get_param)
+/// GParamSpec: (ref-func g_param_spec_ref_sink) (unref-func g_param_spec_unref) (set-value-func g_value_set_param) (get-value-func g_value_get_param)
 /// @g_type_instance: private #GTypeInstance portion
 /// @name: name of this parameter: always an interned string
 /// @flags: #GParamFlags flags for this parameter
@@ -77826,6 +81378,7 @@ final class _GParamSpecPool extends ffi.Opaque {}
 /// This structure is used to provide the type system with the information
 /// required to initialize and destruct (finalize) a parameter's class and
 /// instances thereof.
+///
 /// The initialized structure is passed to the g_param_type_register_static()
 /// The type system will perform a deep copy of this structure, so its memory
 /// does not need to be persistent across invocation of
@@ -77905,10 +81458,13 @@ final class _GCClosure extends ffi.Opaque {}
 /// GCallback:
 ///
 /// The type used for callback functions in structure definitions and function
-/// signatures. This doesn't mean that all callback functions must take no
-/// parameters and return void. The required signature of a callback function
-/// is determined by the context in which is used (e.g. the signal to which it
-/// is connected). Use G_CALLBACK() to cast the callback function to a #GCallback.
+/// signatures.
+///
+/// This doesn't mean that all callback functions must take no  parameters and
+/// return void. The required signature of a callback function is determined by
+/// the context in which is used (e.g. the signal to which it is connected).
+///
+/// Use G_CALLBACK() to cast the callback function to a #GCallback.
 typedef GCallback = ffi.Pointer<ffi.NativeFunction<GCallbackFunction>>;
 typedef GCallbackFunction = ffi.Void Function();
 typedef DartGCallbackFunction = void Function();
@@ -77962,8 +81518,9 @@ typedef DartGClosureMarshalFunction = void Function(
 /// gpointer     data2);
 /// ]|
 ///
-/// A structure holding in-depth information for a specific signal. It is
-/// filled in by the g_signal_query() function.
+/// A structure holding in-depth information for a specific signal.
+///
+/// See also: g_signal_query()
 final class _GSignalQuery extends ffi.Struct {
   @guint()
   external int signal_id;
@@ -78006,10 +81563,11 @@ final class _GSignalQuery extends ffi.Struct {
 /// @G_SIGNAL_DEPRECATED: The signal is deprecated and will be removed
 /// in a future version. A warning will be generated if it is connected while
 /// running with G_ENABLE_DIAGNOSTIC=1.  Since 2.32.
+/// @G_SIGNAL_ACCUMULATOR_FIRST_RUN: Only used in #GSignalAccumulator accumulator
+/// functions for the #GSignalInvocationHint::run_type field to mark the first
+/// call to the accumulator function for a signal emission.  Since 2.68.
 ///
-/// The signal flags are used to specify a signal's behaviour, the overall
-/// signal description outlines how especially the RUN flags control the
-/// stages of a signal emission.
+/// The signal flags are used to specify a signal's behaviour.
 abstract class GSignalFlags {
   static const int G_SIGNAL_RUN_FIRST = 1;
   static const int G_SIGNAL_RUN_LAST = 2;
@@ -78020,6 +81578,7 @@ abstract class GSignalFlags {
   static const int G_SIGNAL_NO_HOOKS = 64;
   static const int G_SIGNAL_MUST_COLLECT = 128;
   static const int G_SIGNAL_DEPRECATED = 256;
+  static const int G_SIGNAL_ACCUMULATOR_FIRST_RUN = 131072;
 }
 
 /// GSignalInvocationHint:
@@ -78027,7 +81586,9 @@ abstract class GSignalFlags {
 /// @detail: The detail passed on for this emission
 /// @run_type: The stage the signal emission is currently in, this
 /// field will contain one of %G_SIGNAL_RUN_FIRST,
-/// %G_SIGNAL_RUN_LAST or %G_SIGNAL_RUN_CLEANUP.
+/// %G_SIGNAL_RUN_LAST or %G_SIGNAL_RUN_CLEANUP and %G_SIGNAL_ACCUMULATOR_FIRST_RUN.
+/// %G_SIGNAL_ACCUMULATOR_FIRST_RUN is only set for the first run of the accumulator
+/// function for a signal emission.
 ///
 /// The #GSignalInvocationHint structure is used to pass on additional information
 /// to callbacks during a signal emission.
@@ -78084,14 +81645,19 @@ abstract class GSignalMatchType {
 ///
 /// The signal accumulator is a special callback function that can be used
 /// to collect return values of the various callbacks that are called
-/// during a signal emission. The signal accumulator is specified at signal
-/// creation time, if it is left %NULL, no accumulation of callback return
-/// values is performed. The return value of signal emissions is then the
-/// value returned by the last callback.
+/// during a signal emission.
+///
+/// The signal accumulator is specified at signal creation time, if it is
+/// left %NULL, no accumulation of callback return values is performed.
+/// The return value of signal emissions is then the value returned by the
+/// last callback.
 ///
 /// Returns: The accumulator function returns whether the signal emission
-/// should be aborted. Returning %FALSE means to abort the
-/// current emission and %TRUE is returned for continuation.
+/// should be aborted. Returning %TRUE will continue with
+/// the signal emission. Returning %FALSE will abort the current emission.
+/// Since 2.62, returning %FALSE will skip to the CLEANUP stage. In this case,
+/// emission will occur as normal in the CLEANUP stage and the handler's
+/// return value will be accumulated.
 typedef GSignalAccumulator
     = ffi.Pointer<ffi.NativeFunction<GSignalAccumulatorFunction>>;
 typedef GSignalAccumulatorFunction = gboolean Function(
@@ -78110,9 +81676,11 @@ typedef GSignalInvocationHint = _GSignalInvocationHint;
 ///
 /// This is the signature of marshaller functions, required to marshall
 /// arrays of parameter values to signal emissions into C language callback
-/// invocations. It is merely an alias to #GClosureMarshal since the #GClosure
-/// mechanism takes over responsibility of actual function invocation for the
-/// signal system.
+/// invocations.
+///
+/// It is merely an alias to #GClosureMarshal since the #GClosure mechanism
+/// takes over responsibility of actual function invocation for the signal
+/// system.
 typedef GSignalCMarshaller = GClosureMarshal;
 
 /// GSignalCVaMarshaller:
@@ -78168,11 +81736,12 @@ typedef GSignalQuery = _GSignalQuery;
 /// the signal was emitted, followed by the parameters of the emission.
 /// @data: user data associated with the hook.
 ///
-/// A simple function pointer to get invoked when the signal is emitted. This
-/// allows you to tie a hook to the signal type, so that it will trap all
-/// emissions of that signal, from any object.
+/// A simple function pointer to get invoked when the signal is emitted.
 ///
-/// You may not attach these to signals created with the #G_SIGNAL_NO_HOOKS flag.
+/// Emission hooks allow you to tie a hook to the signal type, so that it will
+/// trap all emissions of that signal, from any object.
+///
+/// You may not attach these to signals created with the %G_SIGNAL_NO_HOOKS flag.
 ///
 /// Returns: whether it wants to stay connected. If it returns %FALSE, the signal
 /// hook is disconnected (and destroyed).
@@ -78212,8 +81781,18 @@ typedef DartGBoxedFreeFuncFunction = void Function(gpointer boxed);
 
 /// GObject:
 ///
-/// All the fields in the GObject structure are private
-/// to the #GObject implementation and should never be accessed directly.
+/// The base object type.
+///
+/// All the fields in the `GObject` structure are private to the implementation
+/// and should never be accessed directly.
+///
+/// Since GLib 2.72, all #GObjects are guaranteed to be aligned to at least the
+/// alignment of the largest basic GLib type (typically this is #guint64 or
+/// #gdouble). If you need larger alignment for an element in a #GObject, you
+/// should allocate it on the heap (aligned), or arrange for your #GObject to be
+/// appropriately padded. This guarantee applies to the #GObject (or derived)
+/// struct, the #GObjectClass (or derived) struct, and any private data allocated
+/// by G_ADD_PRIVATE().
 final class _GObject extends ffi.Struct {
   external GTypeInstance g_type_instance;
 
@@ -78350,9 +81929,8 @@ typedef GObjectConstructParam = _GObjectConstructParam;
 /// @pspec: the #GParamSpec of the construct parameter
 /// @value: the value to set the parameter to
 ///
-/// The GObjectConstructParam struct is an auxiliary
-/// structure used to hand #GParamSpec/#GValue pairs to the @constructor of
-/// a #GObjectClass.
+/// The GObjectConstructParam struct is an auxiliary structure used to hand
+/// #GParamSpec/#GValue pairs to the @constructor of a #GObjectClass.
 final class _GObjectConstructParam extends ffi.Struct {
   external ffi.Pointer<GParamSpec> pspec;
 
@@ -78364,12 +81942,19 @@ typedef GParameter = _GParameter;
 
 /// GWeakNotify:
 /// @data: data that was provided when the weak reference was established
-/// @where_the_object_was: the object being finalized
+/// @where_the_object_was: the object being disposed
 ///
 /// A #GWeakNotify function can be added to an object as a callback that gets
-/// triggered when the object is finalized. Since the object is already being
-/// finalized when the #GWeakNotify is called, there's not much you could do
-/// with the object, apart from e.g. using its address as hash-index or the like.
+/// triggered when the object is finalized.
+///
+/// Since the object is already being disposed when the #GWeakNotify is called,
+/// there's not much you could do with the object, apart from e.g. using its
+/// address as hash-index or the like.
+///
+/// In particular, this means it’s invalid to call g_object_ref(),
+/// g_weak_ref_init(), g_weak_ref_set(), g_object_add_toggle_ref(),
+/// g_object_weak_ref(), g_object_add_weak_pointer() or any function which calls
+/// them on the object from this callback.
 typedef GWeakNotify = ffi.Pointer<ffi.NativeFunction<GWeakNotifyFunction>>;
 typedef GWeakNotifyFunction = ffi.Void Function(
     gpointer data, ffi.Pointer<GObject> where_the_object_was);
@@ -78385,7 +81970,9 @@ typedef DartGWeakNotifyFunction = void Function(
 /// references.
 ///
 /// A callback function used for notification when the state
-/// of a toggle reference changes. See g_object_add_toggle_ref().
+/// of a toggle reference changes.
+///
+/// See also: g_object_add_toggle_ref()
 typedef GToggleNotify = ffi.Pointer<ffi.NativeFunction<GToggleNotifyFunction>>;
 typedef GToggleNotifyFunction = ffi.Void Function(
     gpointer data, ffi.Pointer<GObject> object, gboolean is_last_ref);
@@ -78444,8 +82031,9 @@ typedef GBinding = _GBinding;
 /// @to_value: the #GValue in which to store the transformed value
 /// @user_data: data passed to the transform function
 ///
-/// A function to be called to transform @from_value to @to_value. If
-/// this is the @transform_to function of a binding, then @from_value
+/// A function to be called to transform @from_value to @to_value.
+///
+/// If this is the @transform_to function of a binding, then @from_value
 /// is the @source_property on the @source object, and @to_value is the
 /// @target_property on the @target object. If this is the
 /// @transform_from function of a %G_BINDING_BIDIRECTIONAL binding,
@@ -78467,6 +82055,16 @@ typedef DartGBindingTransformFuncFunction = Dartgint Function(
     ffi.Pointer<GValue> from_value,
     ffi.Pointer<GValue> to_value,
     gpointer user_data);
+
+final class _GBindingGroup extends ffi.Opaque {}
+
+/// GBindingGroup:
+///
+/// GBindingGroup is an opaque structure whose members
+/// cannot be accessed directly.
+///
+/// Since: 2.72
+typedef GBindingGroup = _GBindingGroup;
 
 /// GEnumClass:
 /// @g_type_class: the parent class
@@ -78885,11 +82483,14 @@ final class _GParamSpecObject extends ffi.Struct {
 
 /// GParamSpecOverride:
 ///
-/// This is a type of #GParamSpec type that simply redirects operations to
-/// another paramspec.  All operations other than getting or
-/// setting the value are redirected, including accessing the nick and
-/// blurb, validating a value, and so forth. See
-/// g_param_spec_get_redirect_target() for retrieving the overidden
+/// A #GParamSpec derived structure that redirects operations to
+/// other types of #GParamSpec.
+///
+/// All operations other than getting or setting the value are redirected,
+/// including accessing the nick and blurb, validating a value, and so
+/// forth.
+///
+/// See g_param_spec_get_redirect_target() for retrieving the overridden
 /// property. #GParamSpecOverride is used in implementing
 /// g_object_class_override_property(), and will not be directly useful
 /// unless you are implementing a new base type similar to GObject.
@@ -78939,6 +82540,16 @@ final class _GParamSpecVariant extends ffi.Struct {
   @ffi.Array.multi([4])
   external ffi.Array<gpointer> padding;
 }
+
+final class _GSignalGroup extends ffi.Opaque {}
+
+/// GSignalGroup:
+///
+/// #GSignalGroup is an opaque structure whose members
+/// cannot be accessed directly.
+///
+/// Since: 2.72
+typedef GSignalGroup = _GSignalGroup;
 
 /// GTypeModule:
 /// @name: the name of the module
@@ -79066,7 +82677,7 @@ typedef DartGTypePluginCompleteTypeInfoFunction = void Function(
 
 /// GTypePluginCompleteInterfaceInfo:
 /// @plugin: the #GTypePlugin
-/// @instance_type: the #GType of an instantiable type to which the interface
+/// @instance_type: the #GType of an instantiatable type to which the interface
 /// is added
 /// @interface_type: the #GType of the interface whose info is completed
 /// @info: the #GInterfaceInfo to fill in
@@ -79174,7 +82785,7 @@ abstract class GDataStreamNewlineType {
 }
 
 /// GFileAttributeType:
-/// @G_FILE_ATTRIBUTE_TYPE_INVALID: indicates an invalid or uninitalized type.
+/// @G_FILE_ATTRIBUTE_TYPE_INVALID: indicates an invalid or uninitialized type.
 /// @G_FILE_ATTRIBUTE_TYPE_STRING: a null terminated UTF8 string.
 /// @G_FILE_ATTRIBUTE_TYPE_BYTE_STRING: a zero terminated string of non-zero bytes.
 /// @G_FILE_ATTRIBUTE_TYPE_BOOLEAN: a boolean value.
@@ -79244,7 +82855,9 @@ abstract class GFileQueryInfoFlags {
 /// rather than a "save new version of" replace operation.
 /// You can think of it as "unlink destination" before
 /// writing to it, although the implementation may not
-/// be exactly like that. Since 2.20
+/// be exactly like that. This flag can only be used with
+/// g_file_replace() and its variants, including g_file_replace_contents().
+/// Since 2.20
 ///
 /// Flags used when an operation may create a file.
 abstract class GFileCreateFlags {
@@ -79413,7 +83026,7 @@ abstract class GFileType {
 ///
 /// Indicates a hint from the file system whether files should be
 /// previewed in a file manager. Returned as the value of the key
-/// #G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
+/// %G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
 abstract class GFilesystemPreviewType {
   static const int G_FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS = 0;
   static const int G_FILESYSTEM_PREVIEW_TYPE_IF_LOCAL = 1;
@@ -79532,7 +83145,7 @@ abstract class GFileMonitorEvent {
 /// }
 /// ]|
 /// but should instead treat all unrecognized error codes the same as
-/// #G_IO_ERROR_FAILED.
+/// %G_IO_ERROR_FAILED.
 ///
 /// See also #GPollableReturn for a cheaper way of returning
 /// %G_IO_ERROR_WOULD_BLOCK to callers without allocating a #GError.
@@ -79937,7 +83550,7 @@ abstract class GBusType {
 /// @G_BUS_NAME_OWNER_FLAGS_NONE: No flags set.
 /// @G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT: Allow another message bus connection to claim the name.
 /// @G_BUS_NAME_OWNER_FLAGS_REPLACE: If another message bus connection owns the name and have
-/// specified #G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT, then take the name from the other connection.
+/// specified %G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT, then take the name from the other connection.
 /// @G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE: If another message bus connection owns the name, immediately
 /// return an error from g_bus_own_name() rather than entering the waiting queue for that name. (Since 2.54)
 ///
@@ -79977,6 +83590,9 @@ abstract class GBusNameWatcherFlags {
 /// do not ask the bus to launch an owner during proxy initialization, but allow it to be
 /// autostarted by a method call. This flag is only meaningful in proxies for well-known names,
 /// and only if %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START is not also specified.
+/// @G_DBUS_PROXY_FLAGS_NO_MATCH_RULE: Don't actually send the AddMatch D-Bus
+/// call for this signal subscription. This gives you more control
+/// over which match rules you add (but you must add them manually). (Since: 2.72)
 ///
 /// Flags used when constructing an instance of a #GDBusProxy derived class.
 ///
@@ -79988,6 +83604,7 @@ abstract class GDBusProxyFlags {
   static const int G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START = 4;
   static const int G_DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES = 8;
   static const int G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION = 16;
+  static const int G_DBUS_PROXY_FLAGS_NO_MATCH_RULE = 32;
 }
 
 /// GDBusError:
@@ -80154,6 +83771,8 @@ abstract class GDBusError {
 /// message bus. This means that the Hello() method will be invoked as part of the connection setup.
 /// @G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING: If set, processing of D-Bus messages is
 /// delayed until g_dbus_connection_start_message_processing() is called.
+/// @G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER: When authenticating
+/// as a server, require the UID of the peer to be the same as the UID of the server. (Since: 2.68)
 ///
 /// Flags used when creating a new #GDBusConnection.
 ///
@@ -80165,6 +83784,8 @@ abstract class GDBusConnectionFlags {
   static const int G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 4;
   static const int G_DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION = 8;
   static const int G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING = 16;
+  static const int G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER =
+      32;
 }
 
 /// GDBusCapabilityFlags:
@@ -80297,6 +83918,8 @@ abstract class GDBusSubtreeFlags {
 /// details).
 /// @G_DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS: Allow the anonymous
 /// authentication method.
+/// @G_DBUS_SERVER_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER: Require the UID of the
+/// peer to be the same as the UID of the server when authenticating. (Since: 2.68)
 ///
 /// Flags used when creating a #GDBusServer.
 ///
@@ -80305,6 +83928,7 @@ abstract class GDBusServerFlags {
   static const int G_DBUS_SERVER_FLAGS_NONE = 0;
   static const int G_DBUS_SERVER_FLAGS_RUN_IN_THREAD = 1;
   static const int G_DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 2;
+  static const int G_DBUS_SERVER_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER = 4;
 }
 
 /// GDBusSignalFlags:
@@ -80344,11 +83968,13 @@ abstract class GDBusSendMessageFlags {
 
 /// GCredentialsType:
 /// @G_CREDENTIALS_TYPE_INVALID: Indicates an invalid native credential type.
-/// @G_CREDENTIALS_TYPE_LINUX_UCRED: The native credentials type is a struct ucred.
-/// @G_CREDENTIALS_TYPE_FREEBSD_CMSGCRED: The native credentials type is a struct cmsgcred.
-/// @G_CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED: The native credentials type is a struct sockpeercred. Added in 2.30.
-/// @G_CREDENTIALS_TYPE_SOLARIS_UCRED: The native credentials type is a ucred_t. Added in 2.40.
-/// @G_CREDENTIALS_TYPE_NETBSD_UNPCBID: The native credentials type is a struct unpcbid.
+/// @G_CREDENTIALS_TYPE_LINUX_UCRED: The native credentials type is a `struct ucred`.
+/// @G_CREDENTIALS_TYPE_FREEBSD_CMSGCRED: The native credentials type is a `struct cmsgcred`.
+/// @G_CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED: The native credentials type is a `struct sockpeercred`. Added in 2.30.
+/// @G_CREDENTIALS_TYPE_SOLARIS_UCRED: The native credentials type is a `ucred_t`. Added in 2.40.
+/// @G_CREDENTIALS_TYPE_NETBSD_UNPCBID: The native credentials type is a `struct unpcbid`. Added in 2.42.
+/// @G_CREDENTIALS_TYPE_APPLE_XUCRED: The native credentials type is a `struct xucred`. Added in 2.66.
+/// @G_CREDENTIALS_TYPE_WIN32_PID: The native credentials type is a PID `DWORD`. Added in 2.72.
 ///
 /// Enumeration describing different kinds of native credential types.
 ///
@@ -80360,6 +83986,8 @@ abstract class GCredentialsType {
   static const int G_CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED = 3;
   static const int G_CREDENTIALS_TYPE_SOLARIS_UCRED = 4;
   static const int G_CREDENTIALS_TYPE_NETBSD_UNPCBID = 5;
+  static const int G_CREDENTIALS_TYPE_APPLE_XUCRED = 6;
+  static const int G_CREDENTIALS_TYPE_WIN32_PID = 7;
 }
 
 /// GDBusMessageByteOrder:
@@ -80447,6 +84075,8 @@ abstract class GApplicationFlags {
 /// @G_TLS_ERROR_INAPPROPRIATE_FALLBACK: The TLS handshake failed
 /// because the client sent the fallback SCSV, indicating a protocol
 /// downgrade attack. Since: 2.60
+/// @G_TLS_ERROR_BAD_CERTIFICATE_PASSWORD: The certificate failed
+/// to load because a password was incorrect. Since: 2.72
 ///
 /// An error code used with %G_TLS_ERROR in a #GError returned from a
 /// TLS-related routine.
@@ -80461,6 +84091,7 @@ abstract class GTlsError {
   static const int G_TLS_ERROR_CERTIFICATE_REQUIRED = 5;
   static const int G_TLS_ERROR_EOF = 6;
   static const int G_TLS_ERROR_INAPPROPRIATE_FALLBACK = 7;
+  static const int G_TLS_ERROR_BAD_CERTIFICATE_PASSWORD = 8;
 }
 
 /// GTlsCertificateFlags:
@@ -80481,10 +84112,16 @@ abstract class GTlsError {
 /// flags
 ///
 /// A set of flags describing TLS certification validation. This can be
-/// used to set which validation steps to perform (eg, with
-/// g_tls_client_connection_set_validation_flags()), or to describe why
-/// a particular certificate was rejected (eg, in
-/// #GTlsConnection::accept-certificate).
+/// used to describe why a particular certificate was rejected (for
+/// example, in #GTlsConnection::accept-certificate).
+///
+/// GLib guarantees that if certificate verification fails, at least one
+/// flag will be set, but it does not guarantee that all possible flags
+/// will be set. Accordingly, you may not safely decide to ignore any
+/// particular type of error. For example, it would be incorrect to mask
+/// %G_TLS_CERTIFICATE_EXPIRED if you want to allow expired certificates,
+/// because this could potentially be the only error flag set even if
+/// other problems exist with the certificate.
 ///
 /// Since: 2.28
 abstract class GTlsCertificateFlags {
@@ -80510,6 +84147,55 @@ abstract class GTlsAuthenticationMode {
   static const int G_TLS_AUTHENTICATION_NONE = 0;
   static const int G_TLS_AUTHENTICATION_REQUESTED = 1;
   static const int G_TLS_AUTHENTICATION_REQUIRED = 2;
+}
+
+/// GTlsChannelBindingType:
+/// @G_TLS_CHANNEL_BINDING_TLS_UNIQUE:
+/// [`tls-unique`](https://tools.ietf.org/html/rfc5929#section-3) binding
+/// type
+/// @G_TLS_CHANNEL_BINDING_TLS_SERVER_END_POINT:
+/// [`tls-server-end-point`](https://tools.ietf.org/html/rfc5929#section-4)
+/// binding type
+///
+/// The type of TLS channel binding data to retrieve from #GTlsConnection
+/// or #GDtlsConnection, as documented by RFC 5929. The
+/// [`tls-unique-for-telnet`](https://tools.ietf.org/html/rfc5929#section-5)
+/// binding type is not currently implemented.
+///
+/// Since: 2.66
+abstract class GTlsChannelBindingType {
+  static const int G_TLS_CHANNEL_BINDING_TLS_UNIQUE = 0;
+  static const int G_TLS_CHANNEL_BINDING_TLS_SERVER_END_POINT = 1;
+}
+
+/// GTlsChannelBindingError:
+/// @G_TLS_CHANNEL_BINDING_ERROR_NOT_IMPLEMENTED: Either entire binding
+/// retrieval facility or specific binding type is not implemented in the
+/// TLS backend.
+/// @G_TLS_CHANNEL_BINDING_ERROR_INVALID_STATE: The handshake is not yet
+/// complete on the connection which is a strong requirement for any existing
+/// binding type.
+/// @G_TLS_CHANNEL_BINDING_ERROR_NOT_AVAILABLE: Handshake is complete but
+/// binding data is not available. That normally indicates the TLS
+/// implementation failed to provide the binding data. For example, some
+/// implementations do not provide a peer certificate for resumed connections.
+/// @G_TLS_CHANNEL_BINDING_ERROR_NOT_SUPPORTED: Binding type is not supported
+/// on the current connection. This error could be triggered when requesting
+/// `tls-server-end-point` binding data for a certificate which has no hash
+/// function or uses multiple hash functions.
+/// @G_TLS_CHANNEL_BINDING_ERROR_GENERAL_ERROR: Any other backend error
+/// preventing binding data retrieval.
+///
+/// An error code used with %G_TLS_CHANNEL_BINDING_ERROR in a #GError to
+/// indicate a TLS channel binding retrieval error.
+///
+/// Since: 2.66
+abstract class GTlsChannelBindingError {
+  static const int G_TLS_CHANNEL_BINDING_ERROR_NOT_IMPLEMENTED = 0;
+  static const int G_TLS_CHANNEL_BINDING_ERROR_INVALID_STATE = 1;
+  static const int G_TLS_CHANNEL_BINDING_ERROR_NOT_AVAILABLE = 2;
+  static const int G_TLS_CHANNEL_BINDING_ERROR_NOT_SUPPORTED = 3;
+  static const int G_TLS_CHANNEL_BINDING_ERROR_GENERAL_ERROR = 4;
 }
 
 /// GTlsRehandshakeMode:
@@ -80538,6 +84224,12 @@ abstract class GTlsRehandshakeMode {
 /// wrong many times, and the user may not have many chances left.
 /// @G_TLS_PASSWORD_FINAL_TRY: Hint to the user that this is the last try to get
 /// this password right.
+/// @G_TLS_PASSWORD_PKCS11_USER: For PKCS #11, the user PIN is required.
+/// Since: 2.70.
+/// @G_TLS_PASSWORD_PKCS11_SECURITY_OFFICER: For PKCS #11, the security officer
+/// PIN is required. Since: 2.70.
+/// @G_TLS_PASSWORD_PKCS11_CONTEXT_SPECIFIC: For PKCS #11, the context-specific
+/// PIN is required. Since: 2.70.
 ///
 /// Various flags for the password.
 ///
@@ -80547,6 +84239,9 @@ abstract class _GTlsPasswordFlags {
   static const int G_TLS_PASSWORD_RETRY = 2;
   static const int G_TLS_PASSWORD_MANY_TRIES = 4;
   static const int G_TLS_PASSWORD_FINAL_TRY = 8;
+  static const int G_TLS_PASSWORD_PKCS11_USER = 16;
+  static const int G_TLS_PASSWORD_PKCS11_SECURITY_OFFICER = 32;
+  static const int G_TLS_PASSWORD_PKCS11_CONTEXT_SPECIFIC = 64;
 }
 
 /// GTlsInteractionResult:
@@ -80633,6 +84328,38 @@ abstract class GTlsDatabaseLookupFlags {
 /// Since: 2.40
 abstract class GTlsCertificateRequestFlags {
   static const int G_TLS_CERTIFICATE_REQUEST_NONE = 0;
+}
+
+/// GTlsProtocolVersion:
+/// @G_TLS_PROTOCOL_VERSION_UNKNOWN: No protocol version or unknown protocol version
+/// @G_TLS_PROTOCOL_VERSION_SSL_3_0: SSL 3.0, which is insecure and should not be used
+/// @G_TLS_PROTOCOL_VERSION_TLS_1_0: TLS 1.0, which is insecure and should not be used
+/// @G_TLS_PROTOCOL_VERSION_TLS_1_1: TLS 1.1, which is insecure and should not be used
+/// @G_TLS_PROTOCOL_VERSION_TLS_1_2: TLS 1.2, defined by [RFC 5246](https://datatracker.ietf.org/doc/html/rfc5246)
+/// @G_TLS_PROTOCOL_VERSION_TLS_1_3: TLS 1.3, defined by [RFC 8446](https://datatracker.ietf.org/doc/html/rfc8446)
+/// @G_TLS_PROTOCOL_VERSION_DTLS_1_0: DTLS 1.0, which is insecure and should not be used
+/// @G_TLS_PROTOCOL_VERSION_DTLS_1_2: DTLS 1.2, defined by [RFC 6347](https://datatracker.ietf.org/doc/html/rfc6347)
+///
+/// The TLS or DTLS protocol version used by a #GTlsConnection or
+/// #GDtlsConnection. The integer values of these versions are sequential
+/// to ensure newer known protocol versions compare greater than older
+/// known versions. Any known DTLS protocol version will compare greater
+/// than any SSL or TLS protocol version. The protocol version may be
+/// %G_TLS_PROTOCOL_VERSION_UNKNOWN if the TLS backend supports a newer
+/// protocol version that GLib does not yet know about. This means that
+/// it's possible for an unknown DTLS protocol version to compare less
+/// than the TLS protocol versions.
+///
+/// Since: 2.70
+abstract class GTlsProtocolVersion {
+  static const int G_TLS_PROTOCOL_VERSION_UNKNOWN = 0;
+  static const int G_TLS_PROTOCOL_VERSION_SSL_3_0 = 1;
+  static const int G_TLS_PROTOCOL_VERSION_TLS_1_0 = 2;
+  static const int G_TLS_PROTOCOL_VERSION_TLS_1_1 = 3;
+  static const int G_TLS_PROTOCOL_VERSION_TLS_1_2 = 4;
+  static const int G_TLS_PROTOCOL_VERSION_TLS_1_3 = 5;
+  static const int G_TLS_PROTOCOL_VERSION_DTLS_1_0 = 201;
+  static const int G_TLS_PROTOCOL_VERSION_DTLS_1_2 = 202;
 }
 
 /// GIOModuleScopeFlags:
@@ -80740,6 +84467,9 @@ abstract class GTestDBusFlags {
 /// file descriptors of their parent, unless those descriptors have
 /// been explicitly marked as close-on-exec.  This flag has no effect
 /// over the "standard" file descriptors (stdin, stdout, stderr).
+/// @G_SUBPROCESS_FLAGS_SEARCH_PATH_FROM_ENVP: if path searching is
+/// needed when spawning the subprocess, use the `PATH` in the launcher
+/// environment. (Since: 2.72)
 ///
 /// Flags to define the behaviour of a #GSubprocess.
 ///
@@ -80762,6 +84492,7 @@ abstract class GSubprocessFlags {
   static const int G_SUBPROCESS_FLAGS_STDERR_SILENCE = 32;
   static const int G_SUBPROCESS_FLAGS_STDERR_MERGE = 64;
   static const int G_SUBPROCESS_FLAGS_INHERIT_FDS = 128;
+  static const int G_SUBPROCESS_FLAGS_SEARCH_PATH_FROM_ENVP = 256;
 }
 
 /// GNotificationPriority:
@@ -81445,7 +85176,7 @@ final class _GThreadedSocketService extends ffi.Struct {
 
 /// GSocketService:
 ///
-/// A helper class for handling accepting incomming connections in the
+/// A helper class for handling accepting incoming connections in the
 /// glib mainloop.
 ///
 /// Since: 2.22
@@ -81874,11 +85605,11 @@ final class _GDBusSubtreeVTable extends ffi.Struct {
 /// specified (ie: to verify that the object path is valid).
 ///
 /// Hierarchies are not supported; the items that you return should not
-/// contain the '/' character.
+/// contain the `/` character.
 ///
 /// The return value will be freed with g_strfreev().
 ///
-/// Returns: A newly allocated array of strings for node names that are children of @object_path.
+/// Returns: (array zero-terminated=1) (transfer full): A newly allocated array of strings for node names that are children of @object_path.
 ///
 /// Since: 2.26
 typedef GDBusSubtreeEnumerateFunc
@@ -81916,7 +85647,7 @@ typedef GDBusSubtreeEnumerateFuncFunction
 /// remote introspector in the empty array case, but not in the %NULL
 /// case.
 ///
-/// Returns: A %NULL-terminated array of pointers to #GDBusInterfaceInfo, or %NULL.
+/// Returns: (array zero-terminated=1) (nullable) (transfer full): A %NULL-terminated array of pointers to #GDBusInterfaceInfo, or %NULL.
 ///
 /// Since: 2.26
 typedef GDBusSubtreeIntrospectFunc
@@ -82088,7 +85819,7 @@ final class _GDBusPropertyInfo extends ffi.Struct {
 /// Subtrees are flat.  @node, if non-%NULL, is always exactly one
 /// segment of the object path (ie: it never contains a slash).
 ///
-/// Returns: A #GDBusInterfaceVTable or %NULL if you don't want to handle the methods.
+/// Returns: (nullable): A #GDBusInterfaceVTable or %NULL if you don't want to handle the methods.
 ///
 /// Since: 2.26
 typedef GDBusSubtreeDispatchFunc
@@ -82432,13 +86163,18 @@ final class _GAppLaunchContextClass extends ffi.Struct {
               ffi.Pointer<GAppInfo> info,
               ffi.Pointer<GVariant> platform_data)>> launched;
 
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GAppLaunchContext> context,
+              ffi.Pointer<GAppInfo> info,
+              ffi.Pointer<GVariant> platform_data)>> launch_started;
+
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved1;
 
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved2;
 
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved3;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved4;
 }
 
 typedef GAppLaunchContext = _GAppLaunchContext;
@@ -82606,6 +86342,10 @@ typedef GCancellable = _GCancellable;
 /// where the #GTask was created. All other users of
 /// #GAsyncReadyCallback must likewise call it asynchronously in a
 /// later iteration of the main context.
+///
+/// The asynchronous operation is guaranteed to have held a reference to
+/// @source_object from the time when the `*_async()` function was called, until
+/// after this callback returns.
 typedef GAsyncReadyCallback
     = ffi.Pointer<ffi.NativeFunction<GAsyncReadyCallbackFunction>>;
 typedef GAsyncReadyCallbackFunction = ffi.Void Function(
@@ -83444,7 +87184,8 @@ typedef GDBusSubtreeVTable = _GDBusSubtreeVTable;
 
 /// GDBusSignalCallback:
 /// @connection: A #GDBusConnection.
-/// @sender_name: The unique bus name of the sender of the signal.
+/// @sender_name: (nullable): The unique bus name of the sender of the signal,
+/// or %NULL on a peer-to-peer D-Bus connection.
 /// @object_path: The object path that the signal was emitted on.
 /// @interface_name: The name of the interface.
 /// @signal_name: The name of the signal.
@@ -84014,6 +87755,45 @@ final class _GDBusProxyClass extends ffi.Struct {
 
 typedef GDBusServer = _GDBusServer;
 
+final class _GDebugController extends ffi.Opaque {}
+
+/// GDebugControllerInterface:
+/// @g_iface: The parent interface.
+///
+/// The virtual function table for #GDebugController.
+///
+/// Since: 2.72
+final class _GDebugControllerInterface extends ffi.Struct {
+  external GTypeInterface g_iface;
+}
+
+typedef GDebugController = _GDebugController;
+
+final class _GDebugControllerDBus extends ffi.Struct {
+  external GObject parent_instance;
+}
+
+/// GDebugControllerDBusClass:
+/// @parent_class: The parent class.
+/// @authorize: Default handler for the #GDebugControllerDBus::authorize signal.
+///
+/// The virtual function table for #GDebugControllerDBus.
+///
+/// Since: 2.72
+final class _GDebugControllerDBusClass extends ffi.Struct {
+  external GObjectClass parent_class;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(ffi.Pointer<GDebugControllerDBus> controller,
+              ffi.Pointer<GDBusMethodInvocation> invocation)>> authorize;
+
+  @ffi.Array.multi([12])
+  external ffi.Array<gpointer> padding;
+}
+
+typedef GDebugControllerDBus = _GDebugControllerDBus;
+
 final class _GDriveIface extends ffi.Struct {
   external GTypeInterface g_iface;
 
@@ -84208,8 +87988,9 @@ typedef GMountOperation = _GMountOperation;
 /// @shutdown: Shut down one or both directions of the connection.
 /// @shutdown_async: Start an asynchronous shutdown operation.
 /// @shutdown_finish: Finish an asynchronous shutdown operation.
-/// @set_advertised_protocols: Set APLN protocol list
-/// @get_negotiated_protocol: Retrieve ALPN-negotiated protocol
+/// @set_advertised_protocols: Set APLN protocol list (Since: 2.60)
+/// @get_negotiated_protocol: Get ALPN-negotiated protocol (Since: 2.60)
+/// @get_binding_data: Retrieve TLS channel binding data (Since: 2.66)
 ///
 /// Virtual method table for a #GDtlsConnection implementation.
 ///
@@ -84284,6 +88065,14 @@ final class _GDtlsConnectionInterface extends ffi.Struct {
           ffi.NativeFunction<
               ffi.Pointer<gchar> Function(ffi.Pointer<GDtlsConnection> conn)>>
       get_negotiated_protocol;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<GDtlsConnection> conn,
+              ffi.Int32 type,
+              ffi.Pointer<GByteArray> data,
+              ffi.Pointer<ffi.Pointer<GError>> error)>> get_binding_data;
 }
 
 typedef GDtlsConnection = _GDtlsConnection;
@@ -84462,8 +88251,8 @@ typedef GEmblemedIcon = _GEmblemedIcon;
 /// @copy_async: Asynchronously copies a file.
 /// @copy_finish: Finishes an asynchronous copy operation.
 /// @move: Moves a file.
-/// @_move_async: Asynchronously moves a file.
-/// @_move_finish: Finishes an asynchronous move operation.
+/// @move_async: Asynchronously moves a file. Since: 2.72
+/// @move_finish: Finishes an asynchronous move operation. Since: 2.72
 /// @mount_mountable: Mounts a mountable object.
 /// @mount_mountable_finish: Finishes a mounting operation.
 /// @unmount_mountable: Unmounts a mountable object.
@@ -85004,9 +88793,25 @@ final class _GFileIface extends ffi.Struct {
               gpointer progress_callback_data,
               ffi.Pointer<ffi.Pointer<GError>> error)>> move;
 
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _move_async;
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<GFile> source,
+              ffi.Pointer<GFile> destination,
+              ffi.Int32 flags,
+              ffi.Int io_priority,
+              ffi.Pointer<GCancellable> cancellable,
+              GFileProgressCallback progress_callback,
+              gpointer progress_callback_data,
+              GAsyncReadyCallback callback,
+              gpointer user_data)>> move_async;
 
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _move_finish;
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<GFile> file,
+              ffi.Pointer<GAsyncResult> result,
+              ffi.Pointer<ffi.Pointer<GError>> error)>> move_finish;
 
   external ffi.Pointer<
       ffi.NativeFunction<
@@ -85852,6 +89657,18 @@ abstract class GModuleFlags {
 }
 
 final class _GModule extends ffi.Opaque {}
+
+/// GModuleError:
+/// @G_MODULE_ERROR_FAILED: there was an error loading or opening a module file
+/// @G_MODULE_ERROR_CHECK_FAILED: a module returned an error from its `g_module_check_init()` function
+///
+/// Errors returned by g_module_open_full().
+///
+/// Since: 2.70
+abstract class GModuleError {
+  static const int G_MODULE_ERROR_FAILED = 0;
+  static const int G_MODULE_ERROR_CHECK_FAILED = 1;
+}
 
 typedef GModule = _GModule;
 
@@ -86781,6 +90598,14 @@ final class _GPollableOutputStreamInterface extends ffi.Struct {
 }
 
 typedef GPollableOutputStream = _GPollableOutputStream;
+
+final class _GPowerProfileMonitor extends ffi.Opaque {}
+
+final class _GPowerProfileMonitorInterface extends ffi.Struct {
+  external GTypeInterface g_iface;
+}
+
+typedef GPowerProfileMonitor = _GPowerProfileMonitor;
 typedef GPropertyAction = _GPropertyAction;
 
 /// GProxyInterface:
@@ -87262,7 +91087,7 @@ typedef GSettingsBackend = _GSettingsBackend;
 /// @G_SETTINGS_BIND_SET: Update the setting when the #GObject property changes.
 /// It is an error to use this flag if the property is not readable.
 /// @G_SETTINGS_BIND_NO_SENSITIVITY: Do not try to bind a "sensitivity" property to the writability of the setting
-/// @G_SETTINGS_BIND_GET_NO_CHANGES: When set in addition to #G_SETTINGS_BIND_GET, set the #GObject property
+/// @G_SETTINGS_BIND_GET_NO_CHANGES: When set in addition to %G_SETTINGS_BIND_GET, set the #GObject property
 /// value initially from the setting, but do not listen for changes of the setting
 /// @G_SETTINGS_BIND_INVERT_BOOLEAN: When passed to g_settings_bind(), uses a pair of mapping functions that invert
 /// the boolean value when mapping between the setting and the property.  The setting and property must both
@@ -87585,7 +91410,7 @@ final class _GSocketListenerClass extends ffi.Struct {
 }
 
 /// GSocketServiceClass:
-/// @incomming: signal emitted when new connections are accepted
+/// @incoming: signal emitted when new connections are accepted
 ///
 /// Class structure for #GSocketService.
 final class _GSocketServiceClass extends ffi.Struct {
@@ -87763,6 +91588,18 @@ final class _GTlsCertificateClass extends ffi.Struct {
   external ffi.Array<gpointer> padding;
 }
 
+/// GTlsConnectionClass:
+/// @parent_class: The parent class.
+/// @accept_certificate: Check whether to accept a certificate.
+/// @handshake: Perform a handshake operation.
+/// @handshake_async: Start an asynchronous handshake operation.
+/// @handshake_finish: Finish an asynchronous handshake operation.
+/// @get_binding_data: Retrieve TLS channel binding data (Since: 2.66)
+/// @get_negotiated_protocol: Get ALPN-negotiated protocol (Since: 2.70)
+///
+/// The class structure for the #GTlsConnection type.
+///
+/// Since: 2.28
 final class _GTlsConnectionClass extends ffi.Struct {
   external GIOStreamClass parent_class;
 
@@ -87796,7 +91633,20 @@ final class _GTlsConnectionClass extends ffi.Struct {
               ffi.Pointer<GAsyncResult> result,
               ffi.Pointer<ffi.Pointer<GError>> error)>> handshake_finish;
 
-  @ffi.Array.multi([8])
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<GTlsConnection> conn,
+              ffi.Int32 type,
+              ffi.Pointer<GByteArray> data,
+              ffi.Pointer<ffi.Pointer<GError>> error)>> get_binding_data;
+
+  external ffi.Pointer<
+          ffi.NativeFunction<
+              ffi.Pointer<gchar> Function(ffi.Pointer<GTlsConnection> conn)>>
+      get_negotiated_protocol;
+
+  @ffi.Array.multi([6])
   external ffi.Array<gpointer> padding;
 }
 
@@ -88324,13 +92174,15 @@ const int g_macro__has_feature = 0;
 
 const int g_macro__has_builtin = 0;
 
+const int g_macro__has_extension = 0;
+
 const String G_GNUC_FUNCTION = '';
 
 const String G_GNUC_PRETTY_FUNCTION = '';
 
 const int G_ANALYZER_ANALYZING = 0;
 
-const String G_STRLOC = '/tmp/LBNUAR/temp_for_macros.hpp:38';
+const String G_STRLOC = '/tmp/DDIKYF/temp_for_macros.hpp:39';
 
 const int FALSE = 0;
 
@@ -88376,13 +92228,21 @@ const int GLIB_VERSION_2_62 = 146944;
 
 const int GLIB_VERSION_2_64 = 147456;
 
-const int GLIB_VERSION_CUR_STABLE = 147456;
+const int GLIB_VERSION_2_66 = 147968;
 
-const int GLIB_VERSION_PREV_STABLE = 146944;
+const int GLIB_VERSION_2_68 = 148480;
 
-const int GLIB_VERSION_MIN_REQUIRED = 147456;
+const int GLIB_VERSION_2_70 = 148992;
 
-const int GLIB_VERSION_MAX_ALLOWED = 147456;
+const int GLIB_VERSION_2_72 = 149504;
+
+const int GLIB_VERSION_CUR_STABLE = 149504;
+
+const int GLIB_VERSION_PREV_STABLE = 148992;
+
+const int GLIB_VERSION_MIN_REQUIRED = 149504;
+
+const int GLIB_VERSION_MAX_ALLOWED = 149504;
 
 const int G_MININT8 = -128;
 
@@ -88456,14 +92316,6 @@ const String G_OS_INFO_KEY_BUG_REPORT_URL = 'BUG_REPORT_URL';
 
 const String G_OS_INFO_KEY_PRIVACY_POLICY_URL = 'PRIVACY_POLICY_URL';
 
-const int G_DATALIST_FLAGS_MASK = 3;
-
-const int G_DATE_BAD_JULIAN = 0;
-
-const int G_DATE_BAD_DAY = 0;
-
-const int G_DATE_BAD_YEAR = 0;
-
 const int G_TIME_SPAN_DAY = 86400000000;
 
 const int G_TIME_SPAN_HOUR = 3600000000;
@@ -88473,6 +92325,14 @@ const int G_TIME_SPAN_MINUTE = 60000000;
 const int G_TIME_SPAN_SECOND = 1000000;
 
 const int G_TIME_SPAN_MILLISECOND = 1000;
+
+const int G_DATALIST_FLAGS_MASK = 3;
+
+const int G_DATE_BAD_JULIAN = 0;
+
+const int G_DATE_BAD_DAY = 0;
+
+const int G_DATE_BAD_YEAR = 0;
 
 const int G_MEM_ALIGN = 8;
 
@@ -88654,6 +92514,8 @@ const int G_TYPE_FLAG_RESERVED_ID_BIT = 1;
 
 const int G_VALUE_NOCOPY_CONTENTS = 134217728;
 
+const int G_VALUE_INTERNED_STRING = 268435456;
+
 const int G_PARAM_STATIC_STRINGS = 224;
 
 const int G_PARAM_MASK = 255;
@@ -88665,6 +92527,12 @@ const int G_SIGNAL_FLAGS_MASK = 511;
 const int G_SIGNAL_MATCH_MASK = 63;
 
 const int G_SIGNAL_TYPE_STATIC_SCOPE = 1;
+
+const int G_DBUS_METHOD_INVOCATION_HANDLED = 1;
+
+const int G_DBUS_METHOD_INVOCATION_UNHANDLED = 0;
+
+const String G_DEBUG_CONTROLLER_EXTENSION_POINT_NAME = 'gio-debug-controller';
 
 const String G_DRIVE_IDENTIFIER_KIND_UNIX_DEVICE = 'unix-device';
 
@@ -88865,6 +92733,9 @@ const String G_NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME =
     'gio-native-volume-monitor';
 
 const String G_NETWORK_MONITOR_EXTENSION_POINT_NAME = 'gio-network-monitor';
+
+const String G_POWER_PROFILE_MONITOR_EXTENSION_POINT_NAME =
+    'gio-power-profile-monitor';
 
 const String G_PROXY_EXTENSION_POINT_NAME = 'gio-proxy';
 

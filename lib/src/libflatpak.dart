@@ -19,6 +19,1441 @@ class NativeLibrary {
           lookup)
       : _lookup = lookup;
 
+  int clock() {
+    return _clock();
+  }
+
+  late final _clockPtr =
+      _lookup<ffi.NativeFunction<clock_t Function()>>('clock');
+  late final _clock = _clockPtr.asFunction<int Function()>();
+
+  int time(
+    ffi.Pointer<time_t> __timer,
+  ) {
+    return _time(
+      __timer,
+    );
+  }
+
+  late final _timePtr =
+      _lookup<ffi.NativeFunction<time_t Function(ffi.Pointer<time_t>)>>('time');
+  late final _time = _timePtr.asFunction<int Function(ffi.Pointer<time_t>)>();
+
+  double difftime(
+    int __time1,
+    int __time0,
+  ) {
+    return _difftime(
+      __time1,
+      __time0,
+    );
+  }
+
+  late final _difftimePtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(time_t, time_t)>>(
+          'difftime');
+  late final _difftime = _difftimePtr.asFunction<double Function(int, int)>();
+
+  int mktime(
+    ffi.Pointer<tm> __tp,
+  ) {
+    return _mktime(
+      __tp,
+    );
+  }
+
+  late final _mktimePtr =
+      _lookup<ffi.NativeFunction<time_t Function(ffi.Pointer<tm>)>>('mktime');
+  late final _mktime = _mktimePtr.asFunction<int Function(ffi.Pointer<tm>)>();
+
+  int strftime(
+    ffi.Pointer<ffi.Char> __s,
+    int __maxsize,
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<tm> __tp,
+  ) {
+    return _strftime(
+      __s,
+      __maxsize,
+      __format,
+      __tp,
+    );
+  }
+
+  late final _strftimePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<tm>)>>('strftime');
+  late final _strftime = _strftimePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<tm>)>();
+
+  int strftime_l(
+    ffi.Pointer<ffi.Char> __s,
+    int __maxsize,
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<tm> __tp,
+    locale_t __loc,
+  ) {
+    return _strftime_l(
+      __s,
+      __maxsize,
+      __format,
+      __tp,
+      __loc,
+    );
+  }
+
+  late final _strftime_lPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<tm>, locale_t)>>('strftime_l');
+  late final _strftime_l = _strftime_lPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<tm>, locale_t)>();
+
+  ffi.Pointer<tm> gmtime(
+    ffi.Pointer<time_t> __timer,
+  ) {
+    return _gmtime(
+      __timer,
+    );
+  }
+
+  late final _gmtimePtr = _lookup<
+      ffi
+      .NativeFunction<ffi.Pointer<tm> Function(ffi.Pointer<time_t>)>>('gmtime');
+  late final _gmtime =
+      _gmtimePtr.asFunction<ffi.Pointer<tm> Function(ffi.Pointer<time_t>)>();
+
+  ffi.Pointer<tm> localtime(
+    ffi.Pointer<time_t> __timer,
+  ) {
+    return _localtime(
+      __timer,
+    );
+  }
+
+  late final _localtimePtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<tm> Function(ffi.Pointer<time_t>)>>(
+      'localtime');
+  late final _localtime =
+      _localtimePtr.asFunction<ffi.Pointer<tm> Function(ffi.Pointer<time_t>)>();
+
+  ffi.Pointer<tm> gmtime_r(
+    ffi.Pointer<time_t> __timer,
+    ffi.Pointer<tm> __tp,
+  ) {
+    return _gmtime_r(
+      __timer,
+      __tp,
+    );
+  }
+
+  late final _gmtime_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<tm> Function(
+              ffi.Pointer<time_t>, ffi.Pointer<tm>)>>('gmtime_r');
+  late final _gmtime_r = _gmtime_rPtr.asFunction<
+      ffi.Pointer<tm> Function(ffi.Pointer<time_t>, ffi.Pointer<tm>)>();
+
+  ffi.Pointer<tm> localtime_r(
+    ffi.Pointer<time_t> __timer,
+    ffi.Pointer<tm> __tp,
+  ) {
+    return _localtime_r(
+      __timer,
+      __tp,
+    );
+  }
+
+  late final _localtime_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<tm> Function(
+              ffi.Pointer<time_t>, ffi.Pointer<tm>)>>('localtime_r');
+  late final _localtime_r = _localtime_rPtr.asFunction<
+      ffi.Pointer<tm> Function(ffi.Pointer<time_t>, ffi.Pointer<tm>)>();
+
+  ffi.Pointer<ffi.Char> asctime(
+    ffi.Pointer<tm> __tp,
+  ) {
+    return _asctime(
+      __tp,
+    );
+  }
+
+  late final _asctimePtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<tm>)>>(
+      'asctime');
+  late final _asctime =
+      _asctimePtr.asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<tm>)>();
+
+  ffi.Pointer<ffi.Char> ctime(
+    ffi.Pointer<time_t> __timer,
+  ) {
+    return _ctime(
+      __timer,
+    );
+  }
+
+  late final _ctimePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<time_t>)>>('ctime');
+  late final _ctime = _ctimePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<time_t>)>();
+
+  ffi.Pointer<ffi.Char> asctime_r(
+    ffi.Pointer<tm> __tp,
+    ffi.Pointer<ffi.Char> __buf,
+  ) {
+    return _asctime_r(
+      __tp,
+      __buf,
+    );
+  }
+
+  late final _asctime_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<tm>, ffi.Pointer<ffi.Char>)>>('asctime_r');
+  late final _asctime_r = _asctime_rPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<tm>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> ctime_r(
+    ffi.Pointer<time_t> __timer,
+    ffi.Pointer<ffi.Char> __buf,
+  ) {
+    return _ctime_r(
+      __timer,
+      __buf,
+    );
+  }
+
+  late final _ctime_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<time_t>, ffi.Pointer<ffi.Char>)>>('ctime_r');
+  late final _ctime_r = _ctime_rPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<time_t>, ffi.Pointer<ffi.Char>)>();
+
+  late final ffi.Pointer<ffi.Pointer<ffi.Pointer<ffi.Char>>> ___tzname =
+      _lookup<ffi.Pointer<ffi.Pointer<ffi.Char>>>('__tzname');
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> get __tzname => ___tzname.value;
+
+  set __tzname(ffi.Pointer<ffi.Pointer<ffi.Char>> value) =>
+      ___tzname.value = value;
+
+  late final ffi.Pointer<ffi.Int> ___daylight = _lookup<ffi.Int>('__daylight');
+
+  int get __daylight => ___daylight.value;
+
+  set __daylight(int value) => ___daylight.value = value;
+
+  late final ffi.Pointer<ffi.Long> ___timezone =
+      _lookup<ffi.Long>('__timezone');
+
+  int get __timezone => ___timezone.value;
+
+  set __timezone(int value) => ___timezone.value = value;
+
+  late final ffi.Pointer<ffi.Pointer<ffi.Pointer<ffi.Char>>> _tzname =
+      _lookup<ffi.Pointer<ffi.Pointer<ffi.Char>>>('tzname');
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> get tzname => _tzname.value;
+
+  set tzname(ffi.Pointer<ffi.Pointer<ffi.Char>> value) => _tzname.value = value;
+
+  void tzset() {
+    return _tzset();
+  }
+
+  late final _tzsetPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('tzset');
+  late final _tzset = _tzsetPtr.asFunction<void Function()>();
+
+  late final ffi.Pointer<ffi.Int> _daylight = _lookup<ffi.Int>('daylight');
+
+  int get daylight => _daylight.value;
+
+  set daylight(int value) => _daylight.value = value;
+
+  late final ffi.Pointer<ffi.Long> _timezone = _lookup<ffi.Long>('timezone');
+
+  int get timezone => _timezone.value;
+
+  set timezone(int value) => _timezone.value = value;
+
+  int timegm(
+    ffi.Pointer<tm> __tp,
+  ) {
+    return _timegm(
+      __tp,
+    );
+  }
+
+  late final _timegmPtr =
+      _lookup<ffi.NativeFunction<time_t Function(ffi.Pointer<tm>)>>('timegm');
+  late final _timegm = _timegmPtr.asFunction<int Function(ffi.Pointer<tm>)>();
+
+  int timelocal(
+    ffi.Pointer<tm> __tp,
+  ) {
+    return _timelocal(
+      __tp,
+    );
+  }
+
+  late final _timelocalPtr =
+      _lookup<ffi.NativeFunction<time_t Function(ffi.Pointer<tm>)>>(
+          'timelocal');
+  late final _timelocal =
+      _timelocalPtr.asFunction<int Function(ffi.Pointer<tm>)>();
+
+  int dysize(
+    int __year,
+  ) {
+    return _dysize(
+      __year,
+    );
+  }
+
+  late final _dysizePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('dysize');
+  late final _dysize = _dysizePtr.asFunction<int Function(int)>();
+
+  int nanosleep(
+    ffi.Pointer<timespec> __requested_time,
+    ffi.Pointer<timespec> __remaining,
+  ) {
+    return _nanosleep(
+      __requested_time,
+      __remaining,
+    );
+  }
+
+  late final _nanosleepPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<timespec>, ffi.Pointer<timespec>)>>('nanosleep');
+  late final _nanosleep = _nanosleepPtr
+      .asFunction<int Function(ffi.Pointer<timespec>, ffi.Pointer<timespec>)>();
+
+  int clock_getres(
+    int __clock_id,
+    ffi.Pointer<timespec> __res,
+  ) {
+    return _clock_getres(
+      __clock_id,
+      __res,
+    );
+  }
+
+  late final _clock_getresPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(clockid_t, ffi.Pointer<timespec>)>>('clock_getres');
+  late final _clock_getres =
+      _clock_getresPtr.asFunction<int Function(int, ffi.Pointer<timespec>)>();
+
+  int clock_gettime(
+    int __clock_id,
+    ffi.Pointer<timespec> __tp,
+  ) {
+    return _clock_gettime(
+      __clock_id,
+      __tp,
+    );
+  }
+
+  late final _clock_gettimePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(clockid_t, ffi.Pointer<timespec>)>>('clock_gettime');
+  late final _clock_gettime =
+      _clock_gettimePtr.asFunction<int Function(int, ffi.Pointer<timespec>)>();
+
+  int clock_settime(
+    int __clock_id,
+    ffi.Pointer<timespec> __tp,
+  ) {
+    return _clock_settime(
+      __clock_id,
+      __tp,
+    );
+  }
+
+  late final _clock_settimePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(clockid_t, ffi.Pointer<timespec>)>>('clock_settime');
+  late final _clock_settime =
+      _clock_settimePtr.asFunction<int Function(int, ffi.Pointer<timespec>)>();
+
+  int clock_nanosleep(
+    int __clock_id,
+    int __flags,
+    ffi.Pointer<timespec> __req,
+    ffi.Pointer<timespec> __rem,
+  ) {
+    return _clock_nanosleep(
+      __clock_id,
+      __flags,
+      __req,
+      __rem,
+    );
+  }
+
+  late final _clock_nanosleepPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(clockid_t, ffi.Int, ffi.Pointer<timespec>,
+              ffi.Pointer<timespec>)>>('clock_nanosleep');
+  late final _clock_nanosleep = _clock_nanosleepPtr.asFunction<
+      int Function(int, int, ffi.Pointer<timespec>, ffi.Pointer<timespec>)>();
+
+  int clock_getcpuclockid(
+    int __pid,
+    ffi.Pointer<clockid_t> __clock_id,
+  ) {
+    return _clock_getcpuclockid(
+      __pid,
+      __clock_id,
+    );
+  }
+
+  late final _clock_getcpuclockidPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(pid_t, ffi.Pointer<clockid_t>)>>(
+      'clock_getcpuclockid');
+  late final _clock_getcpuclockid = _clock_getcpuclockidPtr
+      .asFunction<int Function(int, ffi.Pointer<clockid_t>)>();
+
+  int timer_create(
+    int __clock_id,
+    ffi.Pointer<sigevent> __evp,
+    ffi.Pointer<timer_t> __timerid,
+  ) {
+    return _timer_create(
+      __clock_id,
+      __evp,
+      __timerid,
+    );
+  }
+
+  late final _timer_createPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(clockid_t, ffi.Pointer<sigevent>,
+              ffi.Pointer<timer_t>)>>('timer_create');
+  late final _timer_create = _timer_createPtr.asFunction<
+      int Function(int, ffi.Pointer<sigevent>, ffi.Pointer<timer_t>)>();
+
+  int timer_delete(
+    timer_t __timerid,
+  ) {
+    return _timer_delete(
+      __timerid,
+    );
+  }
+
+  late final _timer_deletePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(timer_t)>>('timer_delete');
+  late final _timer_delete =
+      _timer_deletePtr.asFunction<int Function(timer_t)>();
+
+  int timer_settime(
+    timer_t __timerid,
+    int __flags,
+    ffi.Pointer<itimerspec> __value,
+    ffi.Pointer<itimerspec> __ovalue,
+  ) {
+    return _timer_settime(
+      __timerid,
+      __flags,
+      __value,
+      __ovalue,
+    );
+  }
+
+  late final _timer_settimePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(timer_t, ffi.Int, ffi.Pointer<itimerspec>,
+              ffi.Pointer<itimerspec>)>>('timer_settime');
+  late final _timer_settime = _timer_settimePtr.asFunction<
+      int Function(
+          timer_t, int, ffi.Pointer<itimerspec>, ffi.Pointer<itimerspec>)>();
+
+  int timer_gettime(
+    timer_t __timerid,
+    ffi.Pointer<itimerspec> __value,
+  ) {
+    return _timer_gettime(
+      __timerid,
+      __value,
+    );
+  }
+
+  late final _timer_gettimePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(timer_t, ffi.Pointer<itimerspec>)>>('timer_gettime');
+  late final _timer_gettime = _timer_gettimePtr
+      .asFunction<int Function(timer_t, ffi.Pointer<itimerspec>)>();
+
+  int timer_getoverrun(
+    timer_t __timerid,
+  ) {
+    return _timer_getoverrun(
+      __timerid,
+    );
+  }
+
+  late final _timer_getoverrunPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(timer_t)>>(
+          'timer_getoverrun');
+  late final _timer_getoverrun =
+      _timer_getoverrunPtr.asFunction<int Function(timer_t)>();
+
+  int timespec_get(
+    ffi.Pointer<timespec> __ts,
+    int __base,
+  ) {
+    return _timespec_get(
+      __ts,
+      __base,
+    );
+  }
+
+  late final _timespec_getPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<timespec>, ffi.Int)>>(
+      'timespec_get');
+  late final _timespec_get =
+      _timespec_getPtr.asFunction<int Function(ffi.Pointer<timespec>, int)>();
+
+  ffi.Pointer<ffi.Void> memcpy(
+    ffi.Pointer<ffi.Void> __dest,
+    ffi.Pointer<ffi.Void> __src,
+    int __n,
+  ) {
+    return _memcpy(
+      __dest,
+      __src,
+      __n,
+    );
+  }
+
+  late final _memcpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>, ffi.Size)>>('memcpy');
+  late final _memcpy = _memcpyPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  ffi.Pointer<ffi.Void> memmove(
+    ffi.Pointer<ffi.Void> __dest,
+    ffi.Pointer<ffi.Void> __src,
+    int __n,
+  ) {
+    return _memmove(
+      __dest,
+      __src,
+      __n,
+    );
+  }
+
+  late final _memmovePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>, ffi.Size)>>('memmove');
+  late final _memmove = _memmovePtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  ffi.Pointer<ffi.Void> memccpy(
+    ffi.Pointer<ffi.Void> __dest,
+    ffi.Pointer<ffi.Void> __src,
+    int __c,
+    int __n,
+  ) {
+    return _memccpy(
+      __dest,
+      __src,
+      __c,
+      __n,
+    );
+  }
+
+  late final _memccpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>, ffi.Int, ffi.Size)>>('memccpy');
+  late final _memccpy = _memccpyPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int, int)>();
+
+  ffi.Pointer<ffi.Void> memset(
+    ffi.Pointer<ffi.Void> __s,
+    int __c,
+    int __n,
+  ) {
+    return _memset(
+      __s,
+      __c,
+      __n,
+    );
+  }
+
+  late final _memsetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>, ffi.Int, ffi.Size)>>('memset');
+  late final _memset = _memsetPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
+
+  int memcmp(
+    ffi.Pointer<ffi.Void> __s1,
+    ffi.Pointer<ffi.Void> __s2,
+    int __n,
+  ) {
+    return _memcmp(
+      __s1,
+      __s2,
+      __n,
+    );
+  }
+
+  late final _memcmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('memcmp');
+  late final _memcmp = _memcmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  int __memcmpeq(
+    ffi.Pointer<ffi.Void> __s1,
+    ffi.Pointer<ffi.Void> __s2,
+    int __n,
+  ) {
+    return ___memcmpeq(
+      __s1,
+      __s2,
+      __n,
+    );
+  }
+
+  late final ___memcmpeqPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('__memcmpeq');
+  late final ___memcmpeq = ___memcmpeqPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  ffi.Pointer<ffi.Void> memchr(
+    ffi.Pointer<ffi.Void> __s,
+    int __c,
+    int __n,
+  ) {
+    return _memchr(
+      __s,
+      __c,
+      __n,
+    );
+  }
+
+  late final _memchrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>, ffi.Int, ffi.Size)>>('memchr');
+  late final _memchr = _memchrPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
+
+  ffi.Pointer<ffi.Char> strcpy(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+  ) {
+    return _strcpy(
+      __dest,
+      __src,
+    );
+  }
+
+  late final _strcpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcpy');
+  late final _strcpy = _strcpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strncpy(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
+  ) {
+    return _strncpy(
+      __dest,
+      __src,
+      __n,
+    );
+  }
+
+  late final _strncpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strncpy');
+  late final _strncpy = _strncpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> strcat(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+  ) {
+    return _strcat(
+      __dest,
+      __src,
+    );
+  }
+
+  late final _strcatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcat');
+  late final _strcat = _strcatPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strncat(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
+  ) {
+    return _strncat(
+      __dest,
+      __src,
+      __n,
+    );
+  }
+
+  late final _strncatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strncat');
+  late final _strncat = _strncatPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int strcmp(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+  ) {
+    return _strcmp(
+      __s1,
+      __s2,
+    );
+  }
+
+  late final _strcmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcmp');
+  late final _strcmp = _strcmpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int strncmp(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    int __n,
+  ) {
+    return _strncmp(
+      __s1,
+      __s2,
+      __n,
+    );
+  }
+
+  late final _strncmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('strncmp');
+  late final _strncmp = _strncmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int strcoll(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+  ) {
+    return _strcoll(
+      __s1,
+      __s2,
+    );
+  }
+
+  late final _strcollPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcoll');
+  late final _strcoll = _strcollPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int strxfrm(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
+  ) {
+    return _strxfrm(
+      __dest,
+      __src,
+      __n,
+    );
+  }
+
+  late final _strxfrmPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strxfrm');
+  late final _strxfrm = _strxfrmPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int strcoll_l(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    locale_t __l,
+  ) {
+    return _strcoll_l(
+      __s1,
+      __s2,
+      __l,
+    );
+  }
+
+  late final _strcoll_lPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              locale_t)>>('strcoll_l');
+  late final _strcoll_l = _strcoll_lPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, locale_t)>();
+
+  int strxfrm_l(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
+    locale_t __l,
+  ) {
+    return _strxfrm_l(
+      __dest,
+      __src,
+      __n,
+      __l,
+    );
+  }
+
+  late final _strxfrm_lPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Size, locale_t)>>('strxfrm_l');
+  late final _strxfrm_l = _strxfrm_lPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int, locale_t)>();
+
+  ffi.Pointer<ffi.Char> strdup(
+    ffi.Pointer<ffi.Char> __s,
+  ) {
+    return _strdup(
+      __s,
+    );
+  }
+
+  late final _strdupPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('strdup');
+  late final _strdup = _strdupPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strndup(
+    ffi.Pointer<ffi.Char> __string,
+    int __n,
+  ) {
+    return _strndup(
+      __string,
+      __n,
+    );
+  }
+
+  late final _strndupPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strndup');
+  late final _strndup = _strndupPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> strchr(
+    ffi.Pointer<ffi.Char> __s,
+    int __c,
+  ) {
+    return _strchr(
+      __s,
+      __c,
+    );
+  }
+
+  late final _strchrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('strchr');
+  late final _strchr = _strchrPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> strrchr(
+    ffi.Pointer<ffi.Char> __s,
+    int __c,
+  ) {
+    return _strrchr(
+      __s,
+      __c,
+    );
+  }
+
+  late final _strrchrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('strrchr');
+  late final _strrchr = _strrchrPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int strcspn(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __reject,
+  ) {
+    return _strcspn(
+      __s,
+      __reject,
+    );
+  }
+
+  late final _strcspnPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcspn');
+  late final _strcspn = _strcspnPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int strspn(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __accept,
+  ) {
+    return _strspn(
+      __s,
+      __accept,
+    );
+  }
+
+  late final _strspnPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strspn');
+  late final _strspn = _strspnPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strpbrk(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __accept,
+  ) {
+    return _strpbrk(
+      __s,
+      __accept,
+    );
+  }
+
+  late final _strpbrkPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strpbrk');
+  late final _strpbrk = _strpbrkPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strstr(
+    ffi.Pointer<ffi.Char> __haystack,
+    ffi.Pointer<ffi.Char> __needle,
+  ) {
+    return _strstr(
+      __haystack,
+      __needle,
+    );
+  }
+
+  late final _strstrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strstr');
+  late final _strstr = _strstrPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strtok(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __delim,
+  ) {
+    return _strtok(
+      __s,
+      __delim,
+    );
+  }
+
+  late final _strtokPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strtok');
+  late final _strtok = _strtokPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> __strtok_r(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __delim,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __save_ptr,
+  ) {
+    return ___strtok_r(
+      __s,
+      __delim,
+      __save_ptr,
+    );
+  }
+
+  late final ___strtok_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('__strtok_r');
+  late final ___strtok_r = ___strtok_rPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  ffi.Pointer<ffi.Char> strtok_r(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __delim,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __save_ptr,
+  ) {
+    return _strtok_r(
+      __s,
+      __delim,
+      __save_ptr,
+    );
+  }
+
+  late final _strtok_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('strtok_r');
+  late final _strtok_r = _strtok_rPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int strlen(
+    ffi.Pointer<ffi.Char> __s,
+  ) {
+    return _strlen(
+      __s,
+    );
+  }
+
+  late final _strlenPtr = _lookup<
+          ffi.NativeFunction<ffi.UnsignedLong Function(ffi.Pointer<ffi.Char>)>>(
+      'strlen');
+  late final _strlen =
+      _strlenPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int strnlen(
+    ffi.Pointer<ffi.Char> __string,
+    int __maxlen,
+  ) {
+    return _strnlen(
+      __string,
+      __maxlen,
+    );
+  }
+
+  late final _strnlenPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('strnlen');
+  late final _strnlen =
+      _strnlenPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> strerror(
+    int __errnum,
+  ) {
+    return _strerror(
+      __errnum,
+    );
+  }
+
+  late final _strerrorPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
+          'strerror');
+  late final _strerror =
+      _strerrorPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  int strerror_r(
+    int __errnum,
+    ffi.Pointer<ffi.Char> __buf,
+    int __buflen,
+  ) {
+    return _strerror_r(
+      __errnum,
+      __buf,
+      __buflen,
+    );
+  }
+
+  late final _strerror_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Size)>>('strerror_r');
+  late final _strerror_r = _strerror_rPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> strerror_l(
+    int __errnum,
+    locale_t __l,
+  ) {
+    return _strerror_l(
+      __errnum,
+      __l,
+    );
+  }
+
+  late final _strerror_lPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Int, locale_t)>>('strerror_l');
+  late final _strerror_l = _strerror_lPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(int, locale_t)>();
+
+  int bcmp(
+    ffi.Pointer<ffi.Void> __s1,
+    ffi.Pointer<ffi.Void> __s2,
+    int __n,
+  ) {
+    return _bcmp(
+      __s1,
+      __s2,
+      __n,
+    );
+  }
+
+  late final _bcmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Size)>>('bcmp');
+  late final _bcmp = _bcmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  void bcopy(
+    ffi.Pointer<ffi.Void> __src,
+    ffi.Pointer<ffi.Void> __dest,
+    int __n,
+  ) {
+    return _bcopy(
+      __src,
+      __dest,
+      __n,
+    );
+  }
+
+  late final _bcopyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('bcopy');
+  late final _bcopy = _bcopyPtr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  void bzero(
+    ffi.Pointer<ffi.Void> __s,
+    int __n,
+  ) {
+    return _bzero(
+      __s,
+      __n,
+    );
+  }
+
+  late final _bzeroPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Size)>>('bzero');
+  late final _bzero =
+      _bzeroPtr.asFunction<void Function(ffi.Pointer<ffi.Void>, int)>();
+
+  ffi.Pointer<ffi.Char> index(
+    ffi.Pointer<ffi.Char> __s,
+    int __c,
+  ) {
+    return _index(
+      __s,
+      __c,
+    );
+  }
+
+  late final _indexPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('index');
+  late final _index = _indexPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> rindex(
+    ffi.Pointer<ffi.Char> __s,
+    int __c,
+  ) {
+    return _rindex(
+      __s,
+      __c,
+    );
+  }
+
+  late final _rindexPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('rindex');
+  late final _rindex = _rindexPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int ffs(
+    int __i,
+  ) {
+    return _ffs(
+      __i,
+    );
+  }
+
+  late final _ffsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('ffs');
+  late final _ffs = _ffsPtr.asFunction<int Function(int)>();
+
+  int ffsl(
+    int __l,
+  ) {
+    return _ffsl(
+      __l,
+    );
+  }
+
+  late final _ffslPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Long)>>('ffsl');
+  late final _ffsl = _ffslPtr.asFunction<int Function(int)>();
+
+  int ffsll(
+    int __ll,
+  ) {
+    return _ffsll(
+      __ll,
+    );
+  }
+
+  late final _ffsllPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.LongLong)>>('ffsll');
+  late final _ffsll = _ffsllPtr.asFunction<int Function(int)>();
+
+  int strcasecmp(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+  ) {
+    return _strcasecmp(
+      __s1,
+      __s2,
+    );
+  }
+
+  late final _strcasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcasecmp');
+  late final _strcasecmp = _strcasecmpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int strncasecmp(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    int __n,
+  ) {
+    return _strncasecmp(
+      __s1,
+      __s2,
+      __n,
+    );
+  }
+
+  late final _strncasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('strncasecmp');
+  late final _strncasecmp = _strncasecmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int strcasecmp_l(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    locale_t __loc,
+  ) {
+    return _strcasecmp_l(
+      __s1,
+      __s2,
+      __loc,
+    );
+  }
+
+  late final _strcasecmp_lPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              locale_t)>>('strcasecmp_l');
+  late final _strcasecmp_l = _strcasecmp_lPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, locale_t)>();
+
+  int strncasecmp_l(
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    int __n,
+    locale_t __loc,
+  ) {
+    return _strncasecmp_l(
+      __s1,
+      __s2,
+      __n,
+      __loc,
+    );
+  }
+
+  late final _strncasecmp_lPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Size, locale_t)>>('strncasecmp_l');
+  late final _strncasecmp_l = _strncasecmp_lPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int, locale_t)>();
+
+  void explicit_bzero(
+    ffi.Pointer<ffi.Void> __s,
+    int __n,
+  ) {
+    return _explicit_bzero(
+      __s,
+      __n,
+    );
+  }
+
+  late final _explicit_bzeroPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Size)>>(
+      'explicit_bzero');
+  late final _explicit_bzero = _explicit_bzeroPtr
+      .asFunction<void Function(ffi.Pointer<ffi.Void>, int)>();
+
+  ffi.Pointer<ffi.Char> strsep(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __stringp,
+    ffi.Pointer<ffi.Char> __delim,
+  ) {
+    return _strsep(
+      __stringp,
+      __delim,
+    );
+  }
+
+  late final _strsepPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Char>)>>('strsep');
+  late final _strsep = _strsepPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strsignal(
+    int __sig,
+  ) {
+    return _strsignal(
+      __sig,
+    );
+  }
+
+  late final _strsignalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
+          'strsignal');
+  late final _strsignal =
+      _strsignalPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  ffi.Pointer<ffi.Char> __stpcpy(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+  ) {
+    return ___stpcpy(
+      __dest,
+      __src,
+    );
+  }
+
+  late final ___stpcpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('__stpcpy');
+  late final ___stpcpy = ___stpcpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> stpcpy(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+  ) {
+    return _stpcpy(
+      __dest,
+      __src,
+    );
+  }
+
+  late final _stpcpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('stpcpy');
+  late final _stpcpy = _stpcpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> __stpncpy(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
+  ) {
+    return ___stpncpy(
+      __dest,
+      __src,
+      __n,
+    );
+  }
+
+  late final ___stpncpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('__stpncpy');
+  late final ___stpncpy = ___stpncpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> stpncpy(
+    ffi.Pointer<ffi.Char> __dest,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
+  ) {
+    return _stpncpy(
+      __dest,
+      __src,
+      __n,
+    );
+  }
+
+  late final _stpncpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('stpncpy');
+  late final _stpncpy = _stpncpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
   ffi.Pointer<GArray> g_array_new(
     int zero_terminated,
     int clear_,
@@ -2017,6 +3452,1548 @@ class NativeLibrary {
       _lookup<ffi.NativeFunction<guint Function(gulong)>>('g_bit_storage');
   late final _g_bit_storage = _g_bit_storagePtr.asFunction<int Function(int)>();
 
+  int __ctype_get_mb_cur_max() {
+    return ___ctype_get_mb_cur_max();
+  }
+
+  late final ___ctype_get_mb_cur_maxPtr =
+      _lookup<ffi.NativeFunction<ffi.Size Function()>>(
+          '__ctype_get_mb_cur_max');
+  late final ___ctype_get_mb_cur_max =
+      ___ctype_get_mb_cur_maxPtr.asFunction<int Function()>();
+
+  double atof(
+    ffi.Pointer<ffi.Char> __nptr,
+  ) {
+    return _atof(
+      __nptr,
+    );
+  }
+
+  late final _atofPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Char>)>>(
+          'atof');
+  late final _atof =
+      _atofPtr.asFunction<double Function(ffi.Pointer<ffi.Char>)>();
+
+  int atoi(
+    ffi.Pointer<ffi.Char> __nptr,
+  ) {
+    return _atoi(
+      __nptr,
+    );
+  }
+
+  late final _atoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'atoi');
+  late final _atoi = _atoiPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int atol(
+    ffi.Pointer<ffi.Char> __nptr,
+  ) {
+    return _atol(
+      __nptr,
+    );
+  }
+
+  late final _atolPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Pointer<ffi.Char>)>>(
+          'atol');
+  late final _atol = _atolPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int atoll(
+    ffi.Pointer<ffi.Char> __nptr,
+  ) {
+    return _atoll(
+      __nptr,
+    );
+  }
+
+  late final _atollPtr =
+      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Pointer<ffi.Char>)>>(
+          'atoll');
+  late final _atoll =
+      _atollPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  double strtod(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+  ) {
+    return _strtod(
+      __nptr,
+      __endptr,
+    );
+  }
+
+  late final _strtodPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('strtod');
+  late final _strtod = _strtodPtr.asFunction<
+      double Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  double strtof(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+  ) {
+    return _strtof(
+      __nptr,
+      __endptr,
+    );
+  }
+
+  late final _strtofPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Float Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('strtof');
+  late final _strtof = _strtofPtr.asFunction<
+      double Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int strtol(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+    int __base,
+  ) {
+    return _strtol(
+      __nptr,
+      __endptr,
+      __base,
+    );
+  }
+
+  late final _strtolPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Long Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Int)>>('strtol');
+  late final _strtol = _strtolPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>, int)>();
+
+  int strtoul(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+    int __base,
+  ) {
+    return _strtoul(
+      __nptr,
+      __endptr,
+      __base,
+    );
+  }
+
+  late final _strtoulPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Int)>>('strtoul');
+  late final _strtoul = _strtoulPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>, int)>();
+
+  int strtoq(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+    int __base,
+  ) {
+    return _strtoq(
+      __nptr,
+      __endptr,
+      __base,
+    );
+  }
+
+  late final _strtoqPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.LongLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Int)>>('strtoq');
+  late final _strtoq = _strtoqPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>, int)>();
+
+  int strtouq(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+    int __base,
+  ) {
+    return _strtouq(
+      __nptr,
+      __endptr,
+      __base,
+    );
+  }
+
+  late final _strtouqPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLongLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Int)>>('strtouq');
+  late final _strtouq = _strtouqPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>, int)>();
+
+  int strtoll(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+    int __base,
+  ) {
+    return _strtoll(
+      __nptr,
+      __endptr,
+      __base,
+    );
+  }
+
+  late final _strtollPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.LongLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Int)>>('strtoll');
+  late final _strtoll = _strtollPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>, int)>();
+
+  int strtoull(
+    ffi.Pointer<ffi.Char> __nptr,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __endptr,
+    int __base,
+  ) {
+    return _strtoull(
+      __nptr,
+      __endptr,
+      __base,
+    );
+  }
+
+  late final _strtoullPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLongLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Int)>>('strtoull');
+  late final _strtoull = _strtoullPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>, int)>();
+
+  ffi.Pointer<ffi.Char> l64a(
+    int __n,
+  ) {
+    return _l64a(
+      __n,
+    );
+  }
+
+  late final _l64aPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Long)>>(
+          'l64a');
+  late final _l64a = _l64aPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  int a64l(
+    ffi.Pointer<ffi.Char> __s,
+  ) {
+    return _a64l(
+      __s,
+    );
+  }
+
+  late final _a64lPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Pointer<ffi.Char>)>>(
+          'a64l');
+  late final _a64l = _a64lPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int select(
+    int __nfds,
+    ffi.Pointer<fd_set> __readfds,
+    ffi.Pointer<fd_set> __writefds,
+    ffi.Pointer<fd_set> __exceptfds,
+    ffi.Pointer<timeval> __timeout,
+  ) {
+    return _select(
+      __nfds,
+      __readfds,
+      __writefds,
+      __exceptfds,
+      __timeout,
+    );
+  }
+
+  late final _selectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<fd_set>, ffi.Pointer<fd_set>,
+              ffi.Pointer<fd_set>, ffi.Pointer<timeval>)>>('select');
+  late final _select = _selectPtr.asFunction<
+      int Function(int, ffi.Pointer<fd_set>, ffi.Pointer<fd_set>,
+          ffi.Pointer<fd_set>, ffi.Pointer<timeval>)>();
+
+  int pselect(
+    int __nfds,
+    ffi.Pointer<fd_set> __readfds,
+    ffi.Pointer<fd_set> __writefds,
+    ffi.Pointer<fd_set> __exceptfds,
+    ffi.Pointer<timespec> __timeout,
+    ffi.Pointer<__sigset_t> __sigmask,
+  ) {
+    return _pselect(
+      __nfds,
+      __readfds,
+      __writefds,
+      __exceptfds,
+      __timeout,
+      __sigmask,
+    );
+  }
+
+  late final _pselectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int,
+              ffi.Pointer<fd_set>,
+              ffi.Pointer<fd_set>,
+              ffi.Pointer<fd_set>,
+              ffi.Pointer<timespec>,
+              ffi.Pointer<__sigset_t>)>>('pselect');
+  late final _pselect = _pselectPtr.asFunction<
+      int Function(
+          int,
+          ffi.Pointer<fd_set>,
+          ffi.Pointer<fd_set>,
+          ffi.Pointer<fd_set>,
+          ffi.Pointer<timespec>,
+          ffi.Pointer<__sigset_t>)>();
+
+  int random() {
+    return _random();
+  }
+
+  late final _randomPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function()>>('random');
+  late final _random = _randomPtr.asFunction<int Function()>();
+
+  void srandom(
+    int __seed,
+  ) {
+    return _srandom(
+      __seed,
+    );
+  }
+
+  late final _srandomPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UnsignedInt)>>(
+          'srandom');
+  late final _srandom = _srandomPtr.asFunction<void Function(int)>();
+
+  ffi.Pointer<ffi.Char> initstate(
+    int __seed,
+    ffi.Pointer<ffi.Char> __statebuf,
+    int __statelen,
+  ) {
+    return _initstate(
+      __seed,
+      __statebuf,
+      __statelen,
+    );
+  }
+
+  late final _initstatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.UnsignedInt, ffi.Pointer<ffi.Char>, ffi.Size)>>('initstate');
+  late final _initstate = _initstatePtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(int, ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> setstate(
+    ffi.Pointer<ffi.Char> __statebuf,
+  ) {
+    return _setstate(
+      __statebuf,
+    );
+  }
+
+  late final _setstatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('setstate');
+  late final _setstate = _setstatePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  int random_r(
+    ffi.Pointer<random_data> __buf,
+    ffi.Pointer<ffi.Int32> __result,
+  ) {
+    return _random_r(
+      __buf,
+      __result,
+    );
+  }
+
+  late final _random_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<random_data>, ffi.Pointer<ffi.Int32>)>>('random_r');
+  late final _random_r = _random_rPtr.asFunction<
+      int Function(ffi.Pointer<random_data>, ffi.Pointer<ffi.Int32>)>();
+
+  int srandom_r(
+    int __seed,
+    ffi.Pointer<random_data> __buf,
+  ) {
+    return _srandom_r(
+      __seed,
+      __buf,
+    );
+  }
+
+  late final _srandom_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.UnsignedInt, ffi.Pointer<random_data>)>>('srandom_r');
+  late final _srandom_r =
+      _srandom_rPtr.asFunction<int Function(int, ffi.Pointer<random_data>)>();
+
+  int initstate_r(
+    int __seed,
+    ffi.Pointer<ffi.Char> __statebuf,
+    int __statelen,
+    ffi.Pointer<random_data> __buf,
+  ) {
+    return _initstate_r(
+      __seed,
+      __statebuf,
+      __statelen,
+      __buf,
+    );
+  }
+
+  late final _initstate_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.UnsignedInt, ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<random_data>)>>('initstate_r');
+  late final _initstate_r = _initstate_rPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Char>, int, ffi.Pointer<random_data>)>();
+
+  int setstate_r(
+    ffi.Pointer<ffi.Char> __statebuf,
+    ffi.Pointer<random_data> __buf,
+  ) {
+    return _setstate_r(
+      __statebuf,
+      __buf,
+    );
+  }
+
+  late final _setstate_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<random_data>)>>('setstate_r');
+  late final _setstate_r = _setstate_rPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<random_data>)>();
+
+  int rand() {
+    return _rand();
+  }
+
+  late final _randPtr = _lookup<ffi.NativeFunction<ffi.Int Function()>>('rand');
+  late final _rand = _randPtr.asFunction<int Function()>();
+
+  void srand(
+    int __seed,
+  ) {
+    return _srand(
+      __seed,
+    );
+  }
+
+  late final _srandPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UnsignedInt)>>('srand');
+  late final _srand = _srandPtr.asFunction<void Function(int)>();
+
+  int rand_r(
+    ffi.Pointer<ffi.UnsignedInt> __seed,
+  ) {
+    return _rand_r(
+      __seed,
+    );
+  }
+
+  late final _rand_rPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.UnsignedInt>)>>(
+      'rand_r');
+  late final _rand_r =
+      _rand_rPtr.asFunction<int Function(ffi.Pointer<ffi.UnsignedInt>)>();
+
+  double drand48() {
+    return _drand48();
+  }
+
+  late final _drand48Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function()>>('drand48');
+  late final _drand48 = _drand48Ptr.asFunction<double Function()>();
+
+  double erand48(
+    ffi.Pointer<ffi.UnsignedShort> __xsubi,
+  ) {
+    return _erand48(
+      __xsubi,
+    );
+  }
+
+  late final _erand48Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Pointer<ffi.UnsignedShort>)>>('erand48');
+  late final _erand48 =
+      _erand48Ptr.asFunction<double Function(ffi.Pointer<ffi.UnsignedShort>)>();
+
+  int lrand48() {
+    return _lrand48();
+  }
+
+  late final _lrand48Ptr =
+      _lookup<ffi.NativeFunction<ffi.Long Function()>>('lrand48');
+  late final _lrand48 = _lrand48Ptr.asFunction<int Function()>();
+
+  int nrand48(
+    ffi.Pointer<ffi.UnsignedShort> __xsubi,
+  ) {
+    return _nrand48(
+      __xsubi,
+    );
+  }
+
+  late final _nrand48Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Long Function(ffi.Pointer<ffi.UnsignedShort>)>>('nrand48');
+  late final _nrand48 =
+      _nrand48Ptr.asFunction<int Function(ffi.Pointer<ffi.UnsignedShort>)>();
+
+  int mrand48() {
+    return _mrand48();
+  }
+
+  late final _mrand48Ptr =
+      _lookup<ffi.NativeFunction<ffi.Long Function()>>('mrand48');
+  late final _mrand48 = _mrand48Ptr.asFunction<int Function()>();
+
+  int jrand48(
+    ffi.Pointer<ffi.UnsignedShort> __xsubi,
+  ) {
+    return _jrand48(
+      __xsubi,
+    );
+  }
+
+  late final _jrand48Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Long Function(ffi.Pointer<ffi.UnsignedShort>)>>('jrand48');
+  late final _jrand48 =
+      _jrand48Ptr.asFunction<int Function(ffi.Pointer<ffi.UnsignedShort>)>();
+
+  void srand48(
+    int __seedval,
+  ) {
+    return _srand48(
+      __seedval,
+    );
+  }
+
+  late final _srand48Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Long)>>('srand48');
+  late final _srand48 = _srand48Ptr.asFunction<void Function(int)>();
+
+  ffi.Pointer<ffi.UnsignedShort> seed48(
+    ffi.Pointer<ffi.UnsignedShort> __seed16v,
+  ) {
+    return _seed48(
+      __seed16v,
+    );
+  }
+
+  late final _seed48Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.UnsignedShort> Function(
+              ffi.Pointer<ffi.UnsignedShort>)>>('seed48');
+  late final _seed48 = _seed48Ptr.asFunction<
+      ffi.Pointer<ffi.UnsignedShort> Function(
+          ffi.Pointer<ffi.UnsignedShort>)>();
+
+  void lcong48(
+    ffi.Pointer<ffi.UnsignedShort> __param,
+  ) {
+    return _lcong48(
+      __param,
+    );
+  }
+
+  late final _lcong48Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.UnsignedShort>)>>('lcong48');
+  late final _lcong48 =
+      _lcong48Ptr.asFunction<void Function(ffi.Pointer<ffi.UnsignedShort>)>();
+
+  int drand48_r(
+    ffi.Pointer<drand48_data> __buffer,
+    ffi.Pointer<ffi.Double> __result,
+  ) {
+    return _drand48_r(
+      __buffer,
+      __result,
+    );
+  }
+
+  late final _drand48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<drand48_data>,
+              ffi.Pointer<ffi.Double>)>>('drand48_r');
+  late final _drand48_r = _drand48_rPtr.asFunction<
+      int Function(ffi.Pointer<drand48_data>, ffi.Pointer<ffi.Double>)>();
+
+  int erand48_r(
+    ffi.Pointer<ffi.UnsignedShort> __xsubi,
+    ffi.Pointer<drand48_data> __buffer,
+    ffi.Pointer<ffi.Double> __result,
+  ) {
+    return _erand48_r(
+      __xsubi,
+      __buffer,
+      __result,
+    );
+  }
+
+  late final _erand48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.UnsignedShort>,
+              ffi.Pointer<drand48_data>,
+              ffi.Pointer<ffi.Double>)>>('erand48_r');
+  late final _erand48_r = _erand48_rPtr.asFunction<
+      int Function(ffi.Pointer<ffi.UnsignedShort>, ffi.Pointer<drand48_data>,
+          ffi.Pointer<ffi.Double>)>();
+
+  int lrand48_r(
+    ffi.Pointer<drand48_data> __buffer,
+    ffi.Pointer<ffi.Long> __result,
+  ) {
+    return _lrand48_r(
+      __buffer,
+      __result,
+    );
+  }
+
+  late final _lrand48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<drand48_data>, ffi.Pointer<ffi.Long>)>>('lrand48_r');
+  late final _lrand48_r = _lrand48_rPtr.asFunction<
+      int Function(ffi.Pointer<drand48_data>, ffi.Pointer<ffi.Long>)>();
+
+  int nrand48_r(
+    ffi.Pointer<ffi.UnsignedShort> __xsubi,
+    ffi.Pointer<drand48_data> __buffer,
+    ffi.Pointer<ffi.Long> __result,
+  ) {
+    return _nrand48_r(
+      __xsubi,
+      __buffer,
+      __result,
+    );
+  }
+
+  late final _nrand48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.UnsignedShort>,
+              ffi.Pointer<drand48_data>, ffi.Pointer<ffi.Long>)>>('nrand48_r');
+  late final _nrand48_r = _nrand48_rPtr.asFunction<
+      int Function(ffi.Pointer<ffi.UnsignedShort>, ffi.Pointer<drand48_data>,
+          ffi.Pointer<ffi.Long>)>();
+
+  int mrand48_r(
+    ffi.Pointer<drand48_data> __buffer,
+    ffi.Pointer<ffi.Long> __result,
+  ) {
+    return _mrand48_r(
+      __buffer,
+      __result,
+    );
+  }
+
+  late final _mrand48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<drand48_data>, ffi.Pointer<ffi.Long>)>>('mrand48_r');
+  late final _mrand48_r = _mrand48_rPtr.asFunction<
+      int Function(ffi.Pointer<drand48_data>, ffi.Pointer<ffi.Long>)>();
+
+  int jrand48_r(
+    ffi.Pointer<ffi.UnsignedShort> __xsubi,
+    ffi.Pointer<drand48_data> __buffer,
+    ffi.Pointer<ffi.Long> __result,
+  ) {
+    return _jrand48_r(
+      __xsubi,
+      __buffer,
+      __result,
+    );
+  }
+
+  late final _jrand48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.UnsignedShort>,
+              ffi.Pointer<drand48_data>, ffi.Pointer<ffi.Long>)>>('jrand48_r');
+  late final _jrand48_r = _jrand48_rPtr.asFunction<
+      int Function(ffi.Pointer<ffi.UnsignedShort>, ffi.Pointer<drand48_data>,
+          ffi.Pointer<ffi.Long>)>();
+
+  int srand48_r(
+    int __seedval,
+    ffi.Pointer<drand48_data> __buffer,
+  ) {
+    return _srand48_r(
+      __seedval,
+      __buffer,
+    );
+  }
+
+  late final _srand48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Long, ffi.Pointer<drand48_data>)>>('srand48_r');
+  late final _srand48_r =
+      _srand48_rPtr.asFunction<int Function(int, ffi.Pointer<drand48_data>)>();
+
+  int seed48_r(
+    ffi.Pointer<ffi.UnsignedShort> __seed16v,
+    ffi.Pointer<drand48_data> __buffer,
+  ) {
+    return _seed48_r(
+      __seed16v,
+      __buffer,
+    );
+  }
+
+  late final _seed48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.UnsignedShort>,
+              ffi.Pointer<drand48_data>)>>('seed48_r');
+  late final _seed48_r = _seed48_rPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.UnsignedShort>, ffi.Pointer<drand48_data>)>();
+
+  int lcong48_r(
+    ffi.Pointer<ffi.UnsignedShort> __param,
+    ffi.Pointer<drand48_data> __buffer,
+  ) {
+    return _lcong48_r(
+      __param,
+      __buffer,
+    );
+  }
+
+  late final _lcong48_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.UnsignedShort>,
+              ffi.Pointer<drand48_data>)>>('lcong48_r');
+  late final _lcong48_r = _lcong48_rPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.UnsignedShort>, ffi.Pointer<drand48_data>)>();
+
+  ffi.Pointer<ffi.Void> malloc(
+    int __size,
+  ) {
+    return _malloc(
+      __size,
+    );
+  }
+
+  late final _mallocPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Size)>>(
+          'malloc');
+  late final _malloc =
+      _mallocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
+
+  ffi.Pointer<ffi.Void> calloc(
+    int __nmemb,
+    int __size,
+  ) {
+    return _calloc(
+      __nmemb,
+      __size,
+    );
+  }
+
+  late final _callocPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Size, ffi.Size)>>('calloc');
+  late final _calloc =
+      _callocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int, int)>();
+
+  ffi.Pointer<ffi.Void> realloc(
+    ffi.Pointer<ffi.Void> __ptr,
+    int __size,
+  ) {
+    return _realloc(
+      __ptr,
+      __size,
+    );
+  }
+
+  late final _reallocPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>, ffi.Size)>>('realloc');
+  late final _realloc = _reallocPtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int)>();
+
+  void free(
+    ffi.Pointer<ffi.Void> __ptr,
+  ) {
+    return _free(
+      __ptr,
+    );
+  }
+
+  late final _freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'free');
+  late final _free =
+      _freePtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> reallocarray(
+    ffi.Pointer<ffi.Void> __ptr,
+    int __nmemb,
+    int __size,
+  ) {
+    return _reallocarray(
+      __ptr,
+      __nmemb,
+      __size,
+    );
+  }
+
+  late final _reallocarrayPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size)>>('reallocarray');
+  late final _reallocarray = _reallocarrayPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
+
+  ffi.Pointer<ffi.Void> alloca(
+    int __size,
+  ) {
+    return _alloca(
+      __size,
+    );
+  }
+
+  late final _allocaPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Size)>>(
+          'alloca');
+  late final _alloca =
+      _allocaPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
+
+  ffi.Pointer<ffi.Void> valloc(
+    int __size,
+  ) {
+    return _valloc(
+      __size,
+    );
+  }
+
+  late final _vallocPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Size)>>(
+          'valloc');
+  late final _valloc =
+      _vallocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
+
+  int posix_memalign(
+    ffi.Pointer<ffi.Pointer<ffi.Void>> __memptr,
+    int __alignment,
+    int __size,
+  ) {
+    return _posix_memalign(
+      __memptr,
+      __alignment,
+      __size,
+    );
+  }
+
+  late final _posix_memalignPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Pointer<ffi.Void>>, ffi.Size,
+              ffi.Size)>>('posix_memalign');
+  late final _posix_memalign = _posix_memalignPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Pointer<ffi.Void>>, int, int)>();
+
+  ffi.Pointer<ffi.Void> aligned_alloc(
+    int __alignment,
+    int __size,
+  ) {
+    return _aligned_alloc(
+      __alignment,
+      __size,
+    );
+  }
+
+  late final _aligned_allocPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Size, ffi.Size)>>('aligned_alloc');
+  late final _aligned_alloc =
+      _aligned_allocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int, int)>();
+
+  void abort() {
+    return _abort();
+  }
+
+  late final _abortPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('abort');
+  late final _abort = _abortPtr.asFunction<void Function()>();
+
+  int atexit(
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> __func,
+  ) {
+    return _atexit(
+      __func,
+    );
+  }
+
+  late final _atexitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>>('atexit');
+  late final _atexit = _atexitPtr.asFunction<
+      int Function(ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>();
+
+  int at_quick_exit(
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> __func,
+  ) {
+    return _at_quick_exit(
+      __func,
+    );
+  }
+
+  late final _at_quick_exitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(
+                  ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>>(
+      'at_quick_exit');
+  late final _at_quick_exit = _at_quick_exitPtr.asFunction<
+      int Function(ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>();
+
+  int on_exit(
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Void Function(
+                    ffi.Int __status, ffi.Pointer<ffi.Void> __arg)>>
+        __func,
+    ffi.Pointer<ffi.Void> __arg,
+  ) {
+    return _on_exit(
+      __func,
+      __arg,
+    );
+  }
+
+  late final _on_exitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Void Function(
+                          ffi.Int __status, ffi.Pointer<ffi.Void> __arg)>>,
+              ffi.Pointer<ffi.Void>)>>('on_exit');
+  late final _on_exit = _on_exitPtr.asFunction<
+      int Function(
+          ffi.Pointer<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int __status, ffi.Pointer<ffi.Void> __arg)>>,
+          ffi.Pointer<ffi.Void>)>();
+
+  void exit(
+    int __status,
+  ) {
+    return _exit1(
+      __status,
+    );
+  }
+
+  late final _exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('exit');
+  late final _exit1 = _exitPtr.asFunction<void Function(int)>();
+
+  void quick_exit(
+    int __status,
+  ) {
+    return _quick_exit(
+      __status,
+    );
+  }
+
+  late final _quick_exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('quick_exit');
+  late final _quick_exit = _quick_exitPtr.asFunction<void Function(int)>();
+
+  void _Exit(
+    int __status,
+  ) {
+    return __Exit(
+      __status,
+    );
+  }
+
+  late final __ExitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('_Exit');
+  late final __Exit = __ExitPtr.asFunction<void Function(int)>();
+
+  ffi.Pointer<ffi.Char> getenv(
+    ffi.Pointer<ffi.Char> __name,
+  ) {
+    return _getenv(
+      __name,
+    );
+  }
+
+  late final _getenvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('getenv');
+  late final _getenv = _getenvPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  int putenv(
+    ffi.Pointer<ffi.Char> __string,
+  ) {
+    return _putenv(
+      __string,
+    );
+  }
+
+  late final _putenvPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'putenv');
+  late final _putenv =
+      _putenvPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int setenv(
+    ffi.Pointer<ffi.Char> __name,
+    ffi.Pointer<ffi.Char> __value,
+    int __replace,
+  ) {
+    return _setenv(
+      __name,
+      __value,
+      __replace,
+    );
+  }
+
+  late final _setenvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Int)>>('setenv');
+  late final _setenv = _setenvPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int unsetenv(
+    ffi.Pointer<ffi.Char> __name,
+  ) {
+    return _unsetenv(
+      __name,
+    );
+  }
+
+  late final _unsetenvPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'unsetenv');
+  late final _unsetenv =
+      _unsetenvPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int clearenv() {
+    return _clearenv();
+  }
+
+  late final _clearenvPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('clearenv');
+  late final _clearenv = _clearenvPtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Char> mktemp(
+    ffi.Pointer<ffi.Char> __template,
+  ) {
+    return _mktemp(
+      __template,
+    );
+  }
+
+  late final _mktempPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('mktemp');
+  late final _mktemp = _mktempPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  int mkstemp(
+    ffi.Pointer<ffi.Char> __template,
+  ) {
+    return _mkstemp(
+      __template,
+    );
+  }
+
+  late final _mkstempPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'mkstemp');
+  late final _mkstemp =
+      _mkstempPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int mkstemps(
+    ffi.Pointer<ffi.Char> __template,
+    int __suffixlen,
+  ) {
+    return _mkstemps(
+      __template,
+      __suffixlen,
+    );
+  }
+
+  late final _mkstempsPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Int)>>(
+      'mkstemps');
+  late final _mkstemps =
+      _mkstempsPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> mkdtemp(
+    ffi.Pointer<ffi.Char> __template,
+  ) {
+    return _mkdtemp(
+      __template,
+    );
+  }
+
+  late final _mkdtempPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('mkdtemp');
+  late final _mkdtemp = _mkdtempPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  int system(
+    ffi.Pointer<ffi.Char> __command,
+  ) {
+    return _system(
+      __command,
+    );
+  }
+
+  late final _systemPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'system');
+  late final _system =
+      _systemPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> realpath(
+    ffi.Pointer<ffi.Char> __name,
+    ffi.Pointer<ffi.Char> __resolved,
+  ) {
+    return _realpath(
+      __name,
+      __resolved,
+    );
+  }
+
+  late final _realpathPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('realpath');
+  late final _realpath = _realpathPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Void> bsearch(
+    ffi.Pointer<ffi.Void> __key,
+    ffi.Pointer<ffi.Void> __base,
+    int __nmemb,
+    int __size,
+    __compar_fn_t __compar,
+  ) {
+    return _bsearch(
+      __key,
+      __base,
+      __nmemb,
+      __size,
+      __compar,
+    );
+  }
+
+  late final _bsearchPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>,
+              ffi.Size,
+              ffi.Size,
+              __compar_fn_t)>>('bsearch');
+  late final _bsearch = _bsearchPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+          ffi.Pointer<ffi.Void>, int, int, __compar_fn_t)>();
+
+  void qsort(
+    ffi.Pointer<ffi.Void> __base,
+    int __nmemb,
+    int __size,
+    __compar_fn_t __compar,
+  ) {
+    return _qsort(
+      __base,
+      __nmemb,
+      __size,
+      __compar,
+    );
+  }
+
+  late final _qsortPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
+              __compar_fn_t)>>('qsort');
+  late final _qsort = _qsortPtr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, int, int, __compar_fn_t)>();
+
+  int abs(
+    int __x,
+  ) {
+    return _abs(
+      __x,
+    );
+  }
+
+  late final _absPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('abs');
+  late final _abs = _absPtr.asFunction<int Function(int)>();
+
+  int labs(
+    int __x,
+  ) {
+    return _labs(
+      __x,
+    );
+  }
+
+  late final _labsPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Long)>>('labs');
+  late final _labs = _labsPtr.asFunction<int Function(int)>();
+
+  int llabs(
+    int __x,
+  ) {
+    return _llabs(
+      __x,
+    );
+  }
+
+  late final _llabsPtr =
+      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.LongLong)>>('llabs');
+  late final _llabs = _llabsPtr.asFunction<int Function(int)>();
+
+  div_t div(
+    int __numer,
+    int __denom,
+  ) {
+    return _div(
+      __numer,
+      __denom,
+    );
+  }
+
+  late final _divPtr =
+      _lookup<ffi.NativeFunction<div_t Function(ffi.Int, ffi.Int)>>('div');
+  late final _div = _divPtr.asFunction<div_t Function(int, int)>();
+
+  ldiv_t ldiv(
+    int __numer,
+    int __denom,
+  ) {
+    return _ldiv(
+      __numer,
+      __denom,
+    );
+  }
+
+  late final _ldivPtr =
+      _lookup<ffi.NativeFunction<ldiv_t Function(ffi.Long, ffi.Long)>>('ldiv');
+  late final _ldiv = _ldivPtr.asFunction<ldiv_t Function(int, int)>();
+
+  lldiv_t lldiv(
+    int __numer,
+    int __denom,
+  ) {
+    return _lldiv(
+      __numer,
+      __denom,
+    );
+  }
+
+  late final _lldivPtr =
+      _lookup<ffi.NativeFunction<lldiv_t Function(ffi.LongLong, ffi.LongLong)>>(
+          'lldiv');
+  late final _lldiv = _lldivPtr.asFunction<lldiv_t Function(int, int)>();
+
+  ffi.Pointer<ffi.Char> ecvt(
+    double __value,
+    int __ndigit,
+    ffi.Pointer<ffi.Int> __decpt,
+    ffi.Pointer<ffi.Int> __sign,
+  ) {
+    return _ecvt(
+      __value,
+      __ndigit,
+      __decpt,
+      __sign,
+    );
+  }
+
+  late final _ecvtPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Double, ffi.Int,
+              ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Int>)>>('ecvt');
+  late final _ecvt = _ecvtPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          double, int, ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Int>)>();
+
+  ffi.Pointer<ffi.Char> fcvt(
+    double __value,
+    int __ndigit,
+    ffi.Pointer<ffi.Int> __decpt,
+    ffi.Pointer<ffi.Int> __sign,
+  ) {
+    return _fcvt(
+      __value,
+      __ndigit,
+      __decpt,
+      __sign,
+    );
+  }
+
+  late final _fcvtPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Double, ffi.Int,
+              ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Int>)>>('fcvt');
+  late final _fcvt = _fcvtPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          double, int, ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Int>)>();
+
+  ffi.Pointer<ffi.Char> gcvt(
+    double __value,
+    int __ndigit,
+    ffi.Pointer<ffi.Char> __buf,
+  ) {
+    return _gcvt(
+      __value,
+      __ndigit,
+      __buf,
+    );
+  }
+
+  late final _gcvtPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Double, ffi.Int, ffi.Pointer<ffi.Char>)>>('gcvt');
+  late final _gcvt = _gcvtPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(double, int, ffi.Pointer<ffi.Char>)>();
+
+  int ecvt_r(
+    double __value,
+    int __ndigit,
+    ffi.Pointer<ffi.Int> __decpt,
+    ffi.Pointer<ffi.Int> __sign,
+    ffi.Pointer<ffi.Char> __buf,
+    int __len,
+  ) {
+    return _ecvt_r(
+      __value,
+      __ndigit,
+      __decpt,
+      __sign,
+      __buf,
+      __len,
+    );
+  }
+
+  late final _ecvt_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Double,
+              ffi.Int,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('ecvt_r');
+  late final _ecvt_r = _ecvt_rPtr.asFunction<
+      int Function(double, int, ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Char>, int)>();
+
+  int fcvt_r(
+    double __value,
+    int __ndigit,
+    ffi.Pointer<ffi.Int> __decpt,
+    ffi.Pointer<ffi.Int> __sign,
+    ffi.Pointer<ffi.Char> __buf,
+    int __len,
+  ) {
+    return _fcvt_r(
+      __value,
+      __ndigit,
+      __decpt,
+      __sign,
+      __buf,
+      __len,
+    );
+  }
+
+  late final _fcvt_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Double,
+              ffi.Int,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('fcvt_r');
+  late final _fcvt_r = _fcvt_rPtr.asFunction<
+      int Function(double, int, ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Char>, int)>();
+
+  int mblen(
+    ffi.Pointer<ffi.Char> __s,
+    int __n,
+  ) {
+    return _mblen(
+      __s,
+      __n,
+    );
+  }
+
+  late final _mblenPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('mblen');
+  late final _mblen =
+      _mblenPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int mbtowc(
+    ffi.Pointer<ffi.WChar> __pwc,
+    ffi.Pointer<ffi.Char> __s,
+    int __n,
+  ) {
+    return _mbtowc(
+      __pwc,
+      __s,
+      __n,
+    );
+  }
+
+  late final _mbtowcPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('mbtowc');
+  late final _mbtowc = _mbtowcPtr.asFunction<
+      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.Char>, int)>();
+
+  int wctomb(
+    ffi.Pointer<ffi.Char> __s,
+    int __wchar,
+  ) {
+    return _wctomb(
+      __s,
+      __wchar,
+    );
+  }
+
+  late final _wctombPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.WChar)>>('wctomb');
+  late final _wctomb =
+      _wctombPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int mbstowcs(
+    ffi.Pointer<ffi.WChar> __pwcs,
+    ffi.Pointer<ffi.Char> __s,
+    int __n,
+  ) {
+    return _mbstowcs(
+      __pwcs,
+      __s,
+      __n,
+    );
+  }
+
+  late final _mbstowcsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('mbstowcs');
+  late final _mbstowcs = _mbstowcsPtr.asFunction<
+      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.Char>, int)>();
+
+  int wcstombs(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.WChar> __pwcs,
+    int __n,
+  ) {
+    return _wcstombs(
+      __s,
+      __pwcs,
+      __n,
+    );
+  }
+
+  late final _wcstombsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.WChar>,
+              ffi.Size)>>('wcstombs');
+  late final _wcstombs = _wcstombsPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.WChar>, int)>();
+
+  int rpmatch(
+    ffi.Pointer<ffi.Char> __response,
+  ) {
+    return _rpmatch(
+      __response,
+    );
+  }
+
+  late final _rpmatchPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'rpmatch');
+  late final _rpmatch =
+      _rpmatchPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int getsubopt(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __optionp,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __tokens,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __valuep,
+  ) {
+    return _getsubopt(
+      __optionp,
+      __tokens,
+      __valuep,
+    );
+  }
+
+  late final _getsuboptPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('getsubopt');
+  late final _getsubopt = _getsuboptPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Pointer<ffi.Char>>,
+          ffi.Pointer<ffi.Pointer<ffi.Char>>,
+          ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int getloadavg(
+    ffi.Pointer<ffi.Double> __loadavg,
+    int __nelem,
+  ) {
+    return _getloadavg(
+      __loadavg,
+      __nelem,
+    );
+  }
+
+  late final _getloadavgPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Double>, ffi.Int)>>('getloadavg');
+  late final _getloadavg =
+      _getloadavgPtr.asFunction<int Function(ffi.Pointer<ffi.Double>, int)>();
+
   int g_thread_error_quark() {
     return _g_thread_error_quark();
   }
@@ -3017,6 +5994,504 @@ class NativeLibrary {
   late final _g_async_queue_timed_pop_unlocked =
       _g_async_queue_timed_pop_unlockedPtr.asFunction<
           gpointer Function(ffi.Pointer<GAsyncQueue>, ffi.Pointer<GTimeVal>)>();
+
+  __sighandler_t __sysv_signal(
+    int __sig,
+    __sighandler_t __handler,
+  ) {
+    return ___sysv_signal(
+      __sig,
+      __handler,
+    );
+  }
+
+  late final ___sysv_signalPtr = _lookup<
+          ffi.NativeFunction<__sighandler_t Function(ffi.Int, __sighandler_t)>>(
+      '__sysv_signal');
+  late final ___sysv_signal = ___sysv_signalPtr
+      .asFunction<__sighandler_t Function(int, __sighandler_t)>();
+
+  __sighandler_t signal(
+    int __sig,
+    __sighandler_t __handler,
+  ) {
+    return _signal(
+      __sig,
+      __handler,
+    );
+  }
+
+  late final _signalPtr = _lookup<
+          ffi.NativeFunction<__sighandler_t Function(ffi.Int, __sighandler_t)>>(
+      'signal');
+  late final _signal =
+      _signalPtr.asFunction<__sighandler_t Function(int, __sighandler_t)>();
+
+  int kill(
+    int __pid,
+    int __sig,
+  ) {
+    return _kill(
+      __pid,
+      __sig,
+    );
+  }
+
+  late final _killPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__pid_t, ffi.Int)>>('kill');
+  late final _kill = _killPtr.asFunction<int Function(int, int)>();
+
+  int killpg(
+    int __pgrp,
+    int __sig,
+  ) {
+    return _killpg(
+      __pgrp,
+      __sig,
+    );
+  }
+
+  late final _killpgPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__pid_t, ffi.Int)>>('killpg');
+  late final _killpg = _killpgPtr.asFunction<int Function(int, int)>();
+
+  int raise(
+    int __sig,
+  ) {
+    return _raise(
+      __sig,
+    );
+  }
+
+  late final _raisePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('raise');
+  late final _raise = _raisePtr.asFunction<int Function(int)>();
+
+  __sighandler_t ssignal(
+    int __sig,
+    __sighandler_t __handler,
+  ) {
+    return _ssignal(
+      __sig,
+      __handler,
+    );
+  }
+
+  late final _ssignalPtr = _lookup<
+          ffi.NativeFunction<__sighandler_t Function(ffi.Int, __sighandler_t)>>(
+      'ssignal');
+  late final _ssignal =
+      _ssignalPtr.asFunction<__sighandler_t Function(int, __sighandler_t)>();
+
+  int gsignal(
+    int __sig,
+  ) {
+    return _gsignal(
+      __sig,
+    );
+  }
+
+  late final _gsignalPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('gsignal');
+  late final _gsignal = _gsignalPtr.asFunction<int Function(int)>();
+
+  void psignal(
+    int __sig,
+    ffi.Pointer<ffi.Char> __s,
+  ) {
+    return _psignal(
+      __sig,
+      __s,
+    );
+  }
+
+  late final _psignalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int, ffi.Pointer<ffi.Char>)>>('psignal');
+  late final _psignal =
+      _psignalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Char>)>();
+
+  void psiginfo(
+    ffi.Pointer<siginfo_t> __pinfo,
+    ffi.Pointer<ffi.Char> __s,
+  ) {
+    return _psiginfo(
+      __pinfo,
+      __s,
+    );
+  }
+
+  late final _psiginfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<siginfo_t>, ffi.Pointer<ffi.Char>)>>('psiginfo');
+  late final _psiginfo = _psiginfoPtr.asFunction<
+      void Function(ffi.Pointer<siginfo_t>, ffi.Pointer<ffi.Char>)>();
+
+  int sigblock(
+    int __mask,
+  ) {
+    return _sigblock(
+      __mask,
+    );
+  }
+
+  late final _sigblockPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sigblock');
+  late final _sigblock = _sigblockPtr.asFunction<int Function(int)>();
+
+  int sigsetmask(
+    int __mask,
+  ) {
+    return _sigsetmask(
+      __mask,
+    );
+  }
+
+  late final _sigsetmaskPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sigsetmask');
+  late final _sigsetmask = _sigsetmaskPtr.asFunction<int Function(int)>();
+
+  int siggetmask() {
+    return _siggetmask();
+  }
+
+  late final _siggetmaskPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('siggetmask');
+  late final _siggetmask = _siggetmaskPtr.asFunction<int Function()>();
+
+  int sigemptyset(
+    ffi.Pointer<sigset_t> __set,
+  ) {
+    return _sigemptyset(
+      __set,
+    );
+  }
+
+  late final _sigemptysetPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigset_t>)>>(
+          'sigemptyset');
+  late final _sigemptyset =
+      _sigemptysetPtr.asFunction<int Function(ffi.Pointer<sigset_t>)>();
+
+  int sigfillset(
+    ffi.Pointer<sigset_t> __set,
+  ) {
+    return _sigfillset(
+      __set,
+    );
+  }
+
+  late final _sigfillsetPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigset_t>)>>(
+          'sigfillset');
+  late final _sigfillset =
+      _sigfillsetPtr.asFunction<int Function(ffi.Pointer<sigset_t>)>();
+
+  int sigaddset(
+    ffi.Pointer<sigset_t> __set,
+    int __signo,
+  ) {
+    return _sigaddset(
+      __set,
+      __signo,
+    );
+  }
+
+  late final _sigaddsetPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigset_t>, ffi.Int)>>(
+      'sigaddset');
+  late final _sigaddset =
+      _sigaddsetPtr.asFunction<int Function(ffi.Pointer<sigset_t>, int)>();
+
+  int sigdelset(
+    ffi.Pointer<sigset_t> __set,
+    int __signo,
+  ) {
+    return _sigdelset(
+      __set,
+      __signo,
+    );
+  }
+
+  late final _sigdelsetPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigset_t>, ffi.Int)>>(
+      'sigdelset');
+  late final _sigdelset =
+      _sigdelsetPtr.asFunction<int Function(ffi.Pointer<sigset_t>, int)>();
+
+  int sigismember(
+    ffi.Pointer<sigset_t> __set,
+    int __signo,
+  ) {
+    return _sigismember(
+      __set,
+      __signo,
+    );
+  }
+
+  late final _sigismemberPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigset_t>, ffi.Int)>>(
+      'sigismember');
+  late final _sigismember =
+      _sigismemberPtr.asFunction<int Function(ffi.Pointer<sigset_t>, int)>();
+
+  int sigprocmask(
+    int __how,
+    ffi.Pointer<sigset_t> __set,
+    ffi.Pointer<sigset_t> __oset,
+  ) {
+    return _sigprocmask(
+      __how,
+      __set,
+      __oset,
+    );
+  }
+
+  late final _sigprocmaskPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<sigset_t>,
+              ffi.Pointer<sigset_t>)>>('sigprocmask');
+  late final _sigprocmask = _sigprocmaskPtr.asFunction<
+      int Function(int, ffi.Pointer<sigset_t>, ffi.Pointer<sigset_t>)>();
+
+  int sigsuspend(
+    ffi.Pointer<sigset_t> __set,
+  ) {
+    return _sigsuspend(
+      __set,
+    );
+  }
+
+  late final _sigsuspendPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigset_t>)>>(
+          'sigsuspend');
+  late final _sigsuspend =
+      _sigsuspendPtr.asFunction<int Function(ffi.Pointer<sigset_t>)>();
+
+  int sigaction1(
+    int __sig,
+    ffi.Pointer<sigaction> __act,
+    ffi.Pointer<sigaction> __oact,
+  ) {
+    return _sigaction1(
+      __sig,
+      __act,
+      __oact,
+    );
+  }
+
+  late final _sigaction1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<sigaction>,
+              ffi.Pointer<sigaction>)>>('sigaction');
+  late final _sigaction1 = _sigaction1Ptr.asFunction<
+      int Function(int, ffi.Pointer<sigaction>, ffi.Pointer<sigaction>)>();
+
+  int sigpending(
+    ffi.Pointer<sigset_t> __set,
+  ) {
+    return _sigpending(
+      __set,
+    );
+  }
+
+  late final _sigpendingPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigset_t>)>>(
+          'sigpending');
+  late final _sigpending =
+      _sigpendingPtr.asFunction<int Function(ffi.Pointer<sigset_t>)>();
+
+  int sigwait(
+    ffi.Pointer<sigset_t> __set,
+    ffi.Pointer<ffi.Int> __sig,
+  ) {
+    return _sigwait(
+      __set,
+      __sig,
+    );
+  }
+
+  late final _sigwaitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<sigset_t>, ffi.Pointer<ffi.Int>)>>('sigwait');
+  late final _sigwait = _sigwaitPtr
+      .asFunction<int Function(ffi.Pointer<sigset_t>, ffi.Pointer<ffi.Int>)>();
+
+  int sigwaitinfo(
+    ffi.Pointer<sigset_t> __set,
+    ffi.Pointer<siginfo_t> __info,
+  ) {
+    return _sigwaitinfo(
+      __set,
+      __info,
+    );
+  }
+
+  late final _sigwaitinfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<sigset_t>, ffi.Pointer<siginfo_t>)>>('sigwaitinfo');
+  late final _sigwaitinfo = _sigwaitinfoPtr.asFunction<
+      int Function(ffi.Pointer<sigset_t>, ffi.Pointer<siginfo_t>)>();
+
+  int sigtimedwait(
+    ffi.Pointer<sigset_t> __set,
+    ffi.Pointer<siginfo_t> __info,
+    ffi.Pointer<timespec> __timeout,
+  ) {
+    return _sigtimedwait(
+      __set,
+      __info,
+      __timeout,
+    );
+  }
+
+  late final _sigtimedwaitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<sigset_t>, ffi.Pointer<siginfo_t>,
+              ffi.Pointer<timespec>)>>('sigtimedwait');
+  late final _sigtimedwait = _sigtimedwaitPtr.asFunction<
+      int Function(ffi.Pointer<sigset_t>, ffi.Pointer<siginfo_t>,
+          ffi.Pointer<timespec>)>();
+
+  int sigqueue(
+    int __pid,
+    int __sig,
+    sigval __val,
+  ) {
+    return _sigqueue(
+      __pid,
+      __sig,
+      __val,
+    );
+  }
+
+  late final _sigqueuePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__pid_t, ffi.Int, sigval)>>(
+          'sigqueue');
+  late final _sigqueue =
+      _sigqueuePtr.asFunction<int Function(int, int, sigval)>();
+
+  int sigreturn(
+    ffi.Pointer<sigcontext> __scp,
+  ) {
+    return _sigreturn(
+      __scp,
+    );
+  }
+
+  late final _sigreturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<sigcontext>)>>(
+          'sigreturn');
+  late final _sigreturn =
+      _sigreturnPtr.asFunction<int Function(ffi.Pointer<sigcontext>)>();
+
+  int siginterrupt(
+    int __sig,
+    int __interrupt,
+  ) {
+    return _siginterrupt(
+      __sig,
+      __interrupt,
+    );
+  }
+
+  late final _siginterruptPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
+          'siginterrupt');
+  late final _siginterrupt =
+      _siginterruptPtr.asFunction<int Function(int, int)>();
+
+  int sigaltstack(
+    ffi.Pointer<stack_t> __ss,
+    ffi.Pointer<stack_t> __oss,
+  ) {
+    return _sigaltstack(
+      __ss,
+      __oss,
+    );
+  }
+
+  late final _sigaltstackPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<stack_t>, ffi.Pointer<stack_t>)>>('sigaltstack');
+  late final _sigaltstack = _sigaltstackPtr
+      .asFunction<int Function(ffi.Pointer<stack_t>, ffi.Pointer<stack_t>)>();
+
+  int sigstack1(
+    ffi.Pointer<sigstack> __ss,
+    ffi.Pointer<sigstack> __oss,
+  ) {
+    return _sigstack1(
+      __ss,
+      __oss,
+    );
+  }
+
+  late final _sigstack1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<sigstack>, ffi.Pointer<sigstack>)>>('sigstack');
+  late final _sigstack1 = _sigstack1Ptr
+      .asFunction<int Function(ffi.Pointer<sigstack>, ffi.Pointer<sigstack>)>();
+
+  int pthread_sigmask(
+    int __how,
+    ffi.Pointer<__sigset_t> __newmask,
+    ffi.Pointer<__sigset_t> __oldmask,
+  ) {
+    return _pthread_sigmask(
+      __how,
+      __newmask,
+      __oldmask,
+    );
+  }
+
+  late final _pthread_sigmaskPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<__sigset_t>,
+              ffi.Pointer<__sigset_t>)>>('pthread_sigmask');
+  late final _pthread_sigmask = _pthread_sigmaskPtr.asFunction<
+      int Function(int, ffi.Pointer<__sigset_t>, ffi.Pointer<__sigset_t>)>();
+
+  int pthread_kill(
+    int __threadid,
+    int __signo,
+  ) {
+    return _pthread_kill(
+      __threadid,
+      __signo,
+    );
+  }
+
+  late final _pthread_killPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(pthread_t, ffi.Int)>>(
+          'pthread_kill');
+  late final _pthread_kill =
+      _pthread_killPtr.asFunction<int Function(int, int)>();
+
+  int __libc_current_sigrtmin() {
+    return ___libc_current_sigrtmin();
+  }
+
+  late final ___libc_current_sigrtminPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>(
+          '__libc_current_sigrtmin');
+  late final ___libc_current_sigrtmin =
+      ___libc_current_sigrtminPtr.asFunction<int Function()>();
+
+  int __libc_current_sigrtmax() {
+    return ___libc_current_sigrtmax();
+  }
+
+  late final ___libc_current_sigrtmaxPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>(
+          '__libc_current_sigrtmax');
+  late final ___libc_current_sigrtmax =
+      ___libc_current_sigrtmaxPtr.asFunction<int Function()>();
 
   void g_on_error_query(
     ffi.Pointer<gchar> prg_name,
@@ -7348,6 +10823,218 @@ class NativeLibrary {
   late final _g_date_strftime = _g_date_strftimePtr.asFunction<
       int Function(
           ffi.Pointer<gchar>, int, ffi.Pointer<gchar>, ffi.Pointer<GDate>)>();
+
+  ffi.Pointer<DIR> opendir(
+    ffi.Pointer<ffi.Char> __name,
+  ) {
+    return _opendir(
+      __name,
+    );
+  }
+
+  late final _opendirPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<DIR> Function(ffi.Pointer<ffi.Char>)>>(
+      'opendir');
+  late final _opendir = _opendirPtr
+      .asFunction<ffi.Pointer<DIR> Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<DIR> fdopendir(
+    int __fd,
+  ) {
+    return _fdopendir(
+      __fd,
+    );
+  }
+
+  late final _fdopendirPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<DIR> Function(ffi.Int)>>(
+          'fdopendir');
+  late final _fdopendir =
+      _fdopendirPtr.asFunction<ffi.Pointer<DIR> Function(int)>();
+
+  int closedir(
+    ffi.Pointer<DIR> __dirp,
+  ) {
+    return _closedir(
+      __dirp,
+    );
+  }
+
+  late final _closedirPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<DIR>)>>(
+          'closedir');
+  late final _closedir =
+      _closedirPtr.asFunction<int Function(ffi.Pointer<DIR>)>();
+
+  ffi.Pointer<dirent> readdir(
+    ffi.Pointer<DIR> __dirp,
+  ) {
+    return _readdir(
+      __dirp,
+    );
+  }
+
+  late final _readdirPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<dirent> Function(ffi.Pointer<DIR>)>>(
+      'readdir');
+  late final _readdir =
+      _readdirPtr.asFunction<ffi.Pointer<dirent> Function(ffi.Pointer<DIR>)>();
+
+  int readdir_r(
+    ffi.Pointer<DIR> __dirp,
+    ffi.Pointer<dirent> __entry,
+    ffi.Pointer<ffi.Pointer<dirent>> __result,
+  ) {
+    return _readdir_r(
+      __dirp,
+      __entry,
+      __result,
+    );
+  }
+
+  late final _readdir_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<DIR>, ffi.Pointer<dirent>,
+              ffi.Pointer<ffi.Pointer<dirent>>)>>('readdir_r');
+  late final _readdir_r = _readdir_rPtr.asFunction<
+      int Function(ffi.Pointer<DIR>, ffi.Pointer<dirent>,
+          ffi.Pointer<ffi.Pointer<dirent>>)>();
+
+  void rewinddir(
+    ffi.Pointer<DIR> __dirp,
+  ) {
+    return _rewinddir(
+      __dirp,
+    );
+  }
+
+  late final _rewinddirPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<DIR>)>>(
+          'rewinddir');
+  late final _rewinddir =
+      _rewinddirPtr.asFunction<void Function(ffi.Pointer<DIR>)>();
+
+  void seekdir(
+    ffi.Pointer<DIR> __dirp,
+    int __pos,
+  ) {
+    return _seekdir(
+      __dirp,
+      __pos,
+    );
+  }
+
+  late final _seekdirPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<DIR>, ffi.Long)>>(
+      'seekdir');
+  late final _seekdir =
+      _seekdirPtr.asFunction<void Function(ffi.Pointer<DIR>, int)>();
+
+  int telldir(
+    ffi.Pointer<DIR> __dirp,
+  ) {
+    return _telldir(
+      __dirp,
+    );
+  }
+
+  late final _telldirPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Pointer<DIR>)>>(
+          'telldir');
+  late final _telldir =
+      _telldirPtr.asFunction<int Function(ffi.Pointer<DIR>)>();
+
+  int dirfd(
+    ffi.Pointer<DIR> __dirp,
+  ) {
+    return _dirfd(
+      __dirp,
+    );
+  }
+
+  late final _dirfdPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<DIR>)>>('dirfd');
+  late final _dirfd = _dirfdPtr.asFunction<int Function(ffi.Pointer<DIR>)>();
+
+  int scandir(
+    ffi.Pointer<ffi.Char> __dir,
+    ffi.Pointer<ffi.Pointer<ffi.Pointer<dirent>>> __namelist,
+    ffi.Pointer<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<dirent>)>>
+        __selector,
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Int Function(ffi.Pointer<ffi.Pointer<dirent>>,
+                    ffi.Pointer<ffi.Pointer<dirent>>)>>
+        __cmp,
+  ) {
+    return _scandir(
+      __dir,
+      __namelist,
+      __selector,
+      __cmp,
+    );
+  }
+
+  late final _scandirPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Pointer<dirent>>>,
+              ffi.Pointer<
+                  ffi.NativeFunction<ffi.Int Function(ffi.Pointer<dirent>)>>,
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Int Function(ffi.Pointer<ffi.Pointer<dirent>>,
+                          ffi.Pointer<ffi.Pointer<dirent>>)>>)>>('scandir');
+  late final _scandir = _scandirPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Pointer<ffi.Pointer<dirent>>>,
+          ffi.Pointer<
+              ffi.NativeFunction<ffi.Int Function(ffi.Pointer<dirent>)>>,
+          ffi.Pointer<
+              ffi.NativeFunction<
+                  ffi.Int Function(ffi.Pointer<ffi.Pointer<dirent>>,
+                      ffi.Pointer<ffi.Pointer<dirent>>)>>)>();
+
+  int alphasort(
+    ffi.Pointer<ffi.Pointer<dirent>> __e1,
+    ffi.Pointer<ffi.Pointer<dirent>> __e2,
+  ) {
+    return _alphasort(
+      __e1,
+      __e2,
+    );
+  }
+
+  late final _alphasortPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Pointer<dirent>>,
+              ffi.Pointer<ffi.Pointer<dirent>>)>>('alphasort');
+  late final _alphasort = _alphasortPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Pointer<dirent>>,
+          ffi.Pointer<ffi.Pointer<dirent>>)>();
+
+  int getdirentries(
+    int __fd,
+    ffi.Pointer<ffi.Char> __buf,
+    int __nbytes,
+    ffi.Pointer<__off_t> __basep,
+  ) {
+    return _getdirentries(
+      __fd,
+      __buf,
+      __nbytes,
+      __basep,
+    );
+  }
+
+  late final _getdirentriesPtr = _lookup<
+      ffi.NativeFunction<
+          __ssize_t Function(ffi.Int, ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<__off_t>)>>('getdirentries');
+  late final _getdirentries = _getdirentriesPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Char>, int, ffi.Pointer<__off_t>)>();
 
   ffi.Pointer<GDir> g_dir_open(
     ffi.Pointer<gchar> path,
@@ -25805,6 +29492,16 @@ class NativeLibrary {
   late final _g_strv_builder_end = _g_strv_builder_endPtr
       .asFunction<GStrv Function(ffi.Pointer<GStrvBuilder>)>();
 
+  ffi.Pointer<ffi.Int> __errno_location() {
+    return ___errno_location();
+  }
+
+  late final ___errno_locationPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>(
+          '__errno_location');
+  late final ___errno_location =
+      ___errno_locationPtr.asFunction<ffi.Pointer<ffi.Int> Function()>();
+
   int g_strcmp0(
     ffi.Pointer<ffi.Char> str1,
     ffi.Pointer<ffi.Char> str2,
@@ -29621,6 +33318,1844 @@ class NativeLibrary {
           'g_thread_foreach');
   late final _g_thread_foreach =
       _g_thread_foreachPtr.asFunction<void Function(GFunc, gpointer)>();
+
+  int __sched_cpucount(
+    int __setsize,
+    ffi.Pointer<cpu_set_t> __setp,
+  ) {
+    return ___sched_cpucount(
+      __setsize,
+      __setp,
+    );
+  }
+
+  late final ___sched_cpucountPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(ffi.Size, ffi.Pointer<cpu_set_t>)>>(
+      '__sched_cpucount');
+  late final ___sched_cpucount = ___sched_cpucountPtr
+      .asFunction<int Function(int, ffi.Pointer<cpu_set_t>)>();
+
+  ffi.Pointer<cpu_set_t> __sched_cpualloc(
+    int __count,
+  ) {
+    return ___sched_cpualloc(
+      __count,
+    );
+  }
+
+  late final ___sched_cpuallocPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<cpu_set_t> Function(ffi.Size)>>(
+          '__sched_cpualloc');
+  late final ___sched_cpualloc =
+      ___sched_cpuallocPtr.asFunction<ffi.Pointer<cpu_set_t> Function(int)>();
+
+  void __sched_cpufree(
+    ffi.Pointer<cpu_set_t> __set,
+  ) {
+    return ___sched_cpufree(
+      __set,
+    );
+  }
+
+  late final ___sched_cpufreePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<cpu_set_t>)>>(
+          '__sched_cpufree');
+  late final ___sched_cpufree =
+      ___sched_cpufreePtr.asFunction<void Function(ffi.Pointer<cpu_set_t>)>();
+
+  int sched_setparam(
+    int __pid,
+    ffi.Pointer<sched_param> __param,
+  ) {
+    return _sched_setparam(
+      __pid,
+      __param,
+    );
+  }
+
+  late final _sched_setparamPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(__pid_t, ffi.Pointer<sched_param>)>>(
+      'sched_setparam');
+  late final _sched_setparam = _sched_setparamPtr
+      .asFunction<int Function(int, ffi.Pointer<sched_param>)>();
+
+  int sched_getparam(
+    int __pid,
+    ffi.Pointer<sched_param> __param,
+  ) {
+    return _sched_getparam(
+      __pid,
+      __param,
+    );
+  }
+
+  late final _sched_getparamPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(__pid_t, ffi.Pointer<sched_param>)>>(
+      'sched_getparam');
+  late final _sched_getparam = _sched_getparamPtr
+      .asFunction<int Function(int, ffi.Pointer<sched_param>)>();
+
+  int sched_setscheduler(
+    int __pid,
+    int __policy,
+    ffi.Pointer<sched_param> __param,
+  ) {
+    return _sched_setscheduler(
+      __pid,
+      __policy,
+      __param,
+    );
+  }
+
+  late final _sched_setschedulerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(__pid_t, ffi.Int,
+              ffi.Pointer<sched_param>)>>('sched_setscheduler');
+  late final _sched_setscheduler = _sched_setschedulerPtr
+      .asFunction<int Function(int, int, ffi.Pointer<sched_param>)>();
+
+  int sched_getscheduler(
+    int __pid,
+  ) {
+    return _sched_getscheduler(
+      __pid,
+    );
+  }
+
+  late final _sched_getschedulerPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__pid_t)>>(
+          'sched_getscheduler');
+  late final _sched_getscheduler =
+      _sched_getschedulerPtr.asFunction<int Function(int)>();
+
+  int sched_yield() {
+    return _sched_yield();
+  }
+
+  late final _sched_yieldPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('sched_yield');
+  late final _sched_yield = _sched_yieldPtr.asFunction<int Function()>();
+
+  int sched_get_priority_max(
+    int __algorithm,
+  ) {
+    return _sched_get_priority_max(
+      __algorithm,
+    );
+  }
+
+  late final _sched_get_priority_maxPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
+          'sched_get_priority_max');
+  late final _sched_get_priority_max =
+      _sched_get_priority_maxPtr.asFunction<int Function(int)>();
+
+  int sched_get_priority_min(
+    int __algorithm,
+  ) {
+    return _sched_get_priority_min(
+      __algorithm,
+    );
+  }
+
+  late final _sched_get_priority_minPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
+          'sched_get_priority_min');
+  late final _sched_get_priority_min =
+      _sched_get_priority_minPtr.asFunction<int Function(int)>();
+
+  int sched_rr_get_interval(
+    int __pid,
+    ffi.Pointer<timespec> __t,
+  ) {
+    return _sched_rr_get_interval(
+      __pid,
+      __t,
+    );
+  }
+
+  late final _sched_rr_get_intervalPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(__pid_t, ffi.Pointer<timespec>)>>(
+      'sched_rr_get_interval');
+  late final _sched_rr_get_interval = _sched_rr_get_intervalPtr
+      .asFunction<int Function(int, ffi.Pointer<timespec>)>();
+
+  int pthread_create(
+    ffi.Pointer<pthread_t> __newthread,
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>
+        __start_routine,
+    ffi.Pointer<ffi.Void> __arg,
+  ) {
+    return _pthread_create(
+      __newthread,
+      __attr,
+      __start_routine,
+      __arg,
+    );
+  }
+
+  late final _pthread_createPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<pthread_t>,
+              ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>,
+              ffi.Pointer<ffi.Void>)>>('pthread_create');
+  late final _pthread_create = _pthread_createPtr.asFunction<
+      int Function(
+          ffi.Pointer<pthread_t>,
+          ffi.Pointer<pthread_attr_t>,
+          ffi.Pointer<
+              ffi.NativeFunction<
+                  ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>,
+          ffi.Pointer<ffi.Void>)>();
+
+  void pthread_exit(
+    ffi.Pointer<ffi.Void> __retval,
+  ) {
+    return _pthread_exit(
+      __retval,
+    );
+  }
+
+  late final _pthread_exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'pthread_exit');
+  late final _pthread_exit =
+      _pthread_exitPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  int pthread_join(
+    int __th,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> __thread_return,
+  ) {
+    return _pthread_join(
+      __th,
+      __thread_return,
+    );
+  }
+
+  late final _pthread_joinPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              pthread_t, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('pthread_join');
+  late final _pthread_join = _pthread_joinPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  int pthread_detach(
+    int __th,
+  ) {
+    return _pthread_detach(
+      __th,
+    );
+  }
+
+  late final _pthread_detachPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(pthread_t)>>(
+          'pthread_detach');
+  late final _pthread_detach =
+      _pthread_detachPtr.asFunction<int Function(int)>();
+
+  int pthread_self() {
+    return _pthread_self();
+  }
+
+  late final _pthread_selfPtr =
+      _lookup<ffi.NativeFunction<pthread_t Function()>>('pthread_self');
+  late final _pthread_self = _pthread_selfPtr.asFunction<int Function()>();
+
+  int pthread_equal(
+    int __thread1,
+    int __thread2,
+  ) {
+    return _pthread_equal(
+      __thread1,
+      __thread2,
+    );
+  }
+
+  late final _pthread_equalPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(pthread_t, pthread_t)>>(
+          'pthread_equal');
+  late final _pthread_equal =
+      _pthread_equalPtr.asFunction<int Function(int, int)>();
+
+  int pthread_attr_init(
+    ffi.Pointer<pthread_attr_t> __attr,
+  ) {
+    return _pthread_attr_init(
+      __attr,
+    );
+  }
+
+  late final _pthread_attr_initPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_attr_t>)>>(
+      'pthread_attr_init');
+  late final _pthread_attr_init = _pthread_attr_initPtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>)>();
+
+  int pthread_attr_destroy(
+    ffi.Pointer<pthread_attr_t> __attr,
+  ) {
+    return _pthread_attr_destroy(
+      __attr,
+    );
+  }
+
+  late final _pthread_attr_destroyPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_attr_t>)>>(
+      'pthread_attr_destroy');
+  late final _pthread_attr_destroy = _pthread_attr_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>)>();
+
+  int pthread_attr_getdetachstate(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Int> __detachstate,
+  ) {
+    return _pthread_attr_getdetachstate(
+      __attr,
+      __detachstate,
+    );
+  }
+
+  late final _pthread_attr_getdetachstatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_attr_getdetachstate');
+  late final _pthread_attr_getdetachstate =
+      _pthread_attr_getdetachstatePtr.asFunction<
+          int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_attr_setdetachstate(
+    ffi.Pointer<pthread_attr_t> __attr,
+    int __detachstate,
+  ) {
+    return _pthread_attr_setdetachstate(
+      __attr,
+      __detachstate,
+    );
+  }
+
+  late final _pthread_attr_setdetachstatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Int)>>('pthread_attr_setdetachstate');
+  late final _pthread_attr_setdetachstate = _pthread_attr_setdetachstatePtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>, int)>();
+
+  int pthread_attr_getguardsize(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Size> __guardsize,
+  ) {
+    return _pthread_attr_getguardsize(
+      __attr,
+      __guardsize,
+    );
+  }
+
+  late final _pthread_attr_getguardsizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Size>)>>('pthread_attr_getguardsize');
+  late final _pthread_attr_getguardsize =
+      _pthread_attr_getguardsizePtr.asFunction<
+          int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Size>)>();
+
+  int pthread_attr_setguardsize(
+    ffi.Pointer<pthread_attr_t> __attr,
+    int __guardsize,
+  ) {
+    return _pthread_attr_setguardsize(
+      __attr,
+      __guardsize,
+    );
+  }
+
+  late final _pthread_attr_setguardsizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Size)>>('pthread_attr_setguardsize');
+  late final _pthread_attr_setguardsize = _pthread_attr_setguardsizePtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>, int)>();
+
+  int pthread_attr_getschedparam(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<sched_param> __param,
+  ) {
+    return _pthread_attr_getschedparam(
+      __attr,
+      __param,
+    );
+  }
+
+  late final _pthread_attr_getschedparamPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<sched_param>)>>('pthread_attr_getschedparam');
+  late final _pthread_attr_getschedparam =
+      _pthread_attr_getschedparamPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_attr_t>, ffi.Pointer<sched_param>)>();
+
+  int pthread_attr_setschedparam(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<sched_param> __param,
+  ) {
+    return _pthread_attr_setschedparam(
+      __attr,
+      __param,
+    );
+  }
+
+  late final _pthread_attr_setschedparamPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<sched_param>)>>('pthread_attr_setschedparam');
+  late final _pthread_attr_setschedparam =
+      _pthread_attr_setschedparamPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_attr_t>, ffi.Pointer<sched_param>)>();
+
+  int pthread_attr_getschedpolicy(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Int> __policy,
+  ) {
+    return _pthread_attr_getschedpolicy(
+      __attr,
+      __policy,
+    );
+  }
+
+  late final _pthread_attr_getschedpolicyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_attr_getschedpolicy');
+  late final _pthread_attr_getschedpolicy =
+      _pthread_attr_getschedpolicyPtr.asFunction<
+          int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_attr_setschedpolicy(
+    ffi.Pointer<pthread_attr_t> __attr,
+    int __policy,
+  ) {
+    return _pthread_attr_setschedpolicy(
+      __attr,
+      __policy,
+    );
+  }
+
+  late final _pthread_attr_setschedpolicyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Int)>>('pthread_attr_setschedpolicy');
+  late final _pthread_attr_setschedpolicy = _pthread_attr_setschedpolicyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>, int)>();
+
+  int pthread_attr_getinheritsched(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Int> __inherit,
+  ) {
+    return _pthread_attr_getinheritsched(
+      __attr,
+      __inherit,
+    );
+  }
+
+  late final _pthread_attr_getinheritschedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_attr_getinheritsched');
+  late final _pthread_attr_getinheritsched =
+      _pthread_attr_getinheritschedPtr.asFunction<
+          int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_attr_setinheritsched(
+    ffi.Pointer<pthread_attr_t> __attr,
+    int __inherit,
+  ) {
+    return _pthread_attr_setinheritsched(
+      __attr,
+      __inherit,
+    );
+  }
+
+  late final _pthread_attr_setinheritschedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Int)>>('pthread_attr_setinheritsched');
+  late final _pthread_attr_setinheritsched = _pthread_attr_setinheritschedPtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>, int)>();
+
+  int pthread_attr_getscope(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Int> __scope,
+  ) {
+    return _pthread_attr_getscope(
+      __attr,
+      __scope,
+    );
+  }
+
+  late final _pthread_attr_getscopePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_attr_getscope');
+  late final _pthread_attr_getscope = _pthread_attr_getscopePtr.asFunction<
+      int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_attr_setscope(
+    ffi.Pointer<pthread_attr_t> __attr,
+    int __scope,
+  ) {
+    return _pthread_attr_setscope(
+      __attr,
+      __scope,
+    );
+  }
+
+  late final _pthread_attr_setscopePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<pthread_attr_t>, ffi.Int)>>('pthread_attr_setscope');
+  late final _pthread_attr_setscope = _pthread_attr_setscopePtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>, int)>();
+
+  int pthread_attr_getstackaddr(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> __stackaddr,
+  ) {
+    return _pthread_attr_getstackaddr(
+      __attr,
+      __stackaddr,
+    );
+  }
+
+  late final _pthread_attr_getstackaddrPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+                  ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+      'pthread_attr_getstackaddr');
+  late final _pthread_attr_getstackaddr =
+      _pthread_attr_getstackaddrPtr.asFunction<
+          int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+
+  int pthread_attr_setstackaddr(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Void> __stackaddr,
+  ) {
+    return _pthread_attr_setstackaddr(
+      __attr,
+      __stackaddr,
+    );
+  }
+
+  late final _pthread_attr_setstackaddrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Void>)>>('pthread_attr_setstackaddr');
+  late final _pthread_attr_setstackaddr =
+      _pthread_attr_setstackaddrPtr.asFunction<
+          int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Void>)>();
+
+  int pthread_attr_getstacksize(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Size> __stacksize,
+  ) {
+    return _pthread_attr_getstacksize(
+      __attr,
+      __stacksize,
+    );
+  }
+
+  late final _pthread_attr_getstacksizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Size>)>>('pthread_attr_getstacksize');
+  late final _pthread_attr_getstacksize =
+      _pthread_attr_getstacksizePtr.asFunction<
+          int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Size>)>();
+
+  int pthread_attr_setstacksize(
+    ffi.Pointer<pthread_attr_t> __attr,
+    int __stacksize,
+  ) {
+    return _pthread_attr_setstacksize(
+      __attr,
+      __stacksize,
+    );
+  }
+
+  late final _pthread_attr_setstacksizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>,
+              ffi.Size)>>('pthread_attr_setstacksize');
+  late final _pthread_attr_setstacksize = _pthread_attr_setstacksizePtr
+      .asFunction<int Function(ffi.Pointer<pthread_attr_t>, int)>();
+
+  int pthread_attr_getstack(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> __stackaddr,
+    ffi.Pointer<ffi.Size> __stacksize,
+  ) {
+    return _pthread_attr_getstack(
+      __attr,
+      __stackaddr,
+      __stacksize,
+    );
+  }
+
+  late final _pthread_attr_getstackPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<pthread_attr_t>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Size>)>>('pthread_attr_getstack');
+  late final _pthread_attr_getstack = _pthread_attr_getstackPtr.asFunction<
+      int Function(ffi.Pointer<pthread_attr_t>,
+          ffi.Pointer<ffi.Pointer<ffi.Void>>, ffi.Pointer<ffi.Size>)>();
+
+  int pthread_attr_setstack(
+    ffi.Pointer<pthread_attr_t> __attr,
+    ffi.Pointer<ffi.Void> __stackaddr,
+    int __stacksize,
+  ) {
+    return _pthread_attr_setstack(
+      __attr,
+      __stackaddr,
+      __stacksize,
+    );
+  }
+
+  late final _pthread_attr_setstackPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('pthread_attr_setstack');
+  late final _pthread_attr_setstack = _pthread_attr_setstackPtr.asFunction<
+      int Function(ffi.Pointer<pthread_attr_t>, ffi.Pointer<ffi.Void>, int)>();
+
+  int pthread_setschedparam(
+    int __target_thread,
+    int __policy,
+    ffi.Pointer<sched_param> __param,
+  ) {
+    return _pthread_setschedparam(
+      __target_thread,
+      __policy,
+      __param,
+    );
+  }
+
+  late final _pthread_setschedparamPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(pthread_t, ffi.Int,
+              ffi.Pointer<sched_param>)>>('pthread_setschedparam');
+  late final _pthread_setschedparam = _pthread_setschedparamPtr
+      .asFunction<int Function(int, int, ffi.Pointer<sched_param>)>();
+
+  int pthread_getschedparam(
+    int __target_thread,
+    ffi.Pointer<ffi.Int> __policy,
+    ffi.Pointer<sched_param> __param,
+  ) {
+    return _pthread_getschedparam(
+      __target_thread,
+      __policy,
+      __param,
+    );
+  }
+
+  late final _pthread_getschedparamPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(pthread_t, ffi.Pointer<ffi.Int>,
+              ffi.Pointer<sched_param>)>>('pthread_getschedparam');
+  late final _pthread_getschedparam = _pthread_getschedparamPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int>, ffi.Pointer<sched_param>)>();
+
+  int pthread_setschedprio(
+    int __target_thread,
+    int __prio,
+  ) {
+    return _pthread_setschedprio(
+      __target_thread,
+      __prio,
+    );
+  }
+
+  late final _pthread_setschedprioPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(pthread_t, ffi.Int)>>(
+          'pthread_setschedprio');
+  late final _pthread_setschedprio =
+      _pthread_setschedprioPtr.asFunction<int Function(int, int)>();
+
+  int pthread_once(
+    ffi.Pointer<pthread_once_t> __once_control,
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> __init_routine,
+  ) {
+    return _pthread_once(
+      __once_control,
+      __init_routine,
+    );
+  }
+
+  late final _pthread_oncePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(ffi.Pointer<pthread_once_t>,
+                  ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>>(
+      'pthread_once');
+  late final _pthread_once = _pthread_oncePtr.asFunction<
+      int Function(ffi.Pointer<pthread_once_t>,
+          ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>();
+
+  int pthread_setcancelstate(
+    int __state,
+    ffi.Pointer<ffi.Int> __oldstate,
+  ) {
+    return _pthread_setcancelstate(
+      __state,
+      __oldstate,
+    );
+  }
+
+  late final _pthread_setcancelstatePtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Int>)>>(
+      'pthread_setcancelstate');
+  late final _pthread_setcancelstate = _pthread_setcancelstatePtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_setcanceltype(
+    int __type,
+    ffi.Pointer<ffi.Int> __oldtype,
+  ) {
+    return _pthread_setcanceltype(
+      __type,
+      __oldtype,
+    );
+  }
+
+  late final _pthread_setcanceltypePtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Int>)>>(
+      'pthread_setcanceltype');
+  late final _pthread_setcanceltype = _pthread_setcanceltypePtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_cancel(
+    int __th,
+  ) {
+    return _pthread_cancel(
+      __th,
+    );
+  }
+
+  late final _pthread_cancelPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(pthread_t)>>(
+          'pthread_cancel');
+  late final _pthread_cancel =
+      _pthread_cancelPtr.asFunction<int Function(int)>();
+
+  void pthread_testcancel() {
+    return _pthread_testcancel();
+  }
+
+  late final _pthread_testcancelPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('pthread_testcancel');
+  late final _pthread_testcancel =
+      _pthread_testcancelPtr.asFunction<void Function()>();
+
+  void __pthread_register_cancel(
+    ffi.Pointer<__pthread_unwind_buf_t> __buf,
+  ) {
+    return ___pthread_register_cancel(
+      __buf,
+    );
+  }
+
+  late final ___pthread_register_cancelPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<__pthread_unwind_buf_t>)>>(
+      '__pthread_register_cancel');
+  late final ___pthread_register_cancel = ___pthread_register_cancelPtr
+      .asFunction<void Function(ffi.Pointer<__pthread_unwind_buf_t>)>();
+
+  void __pthread_unregister_cancel(
+    ffi.Pointer<__pthread_unwind_buf_t> __buf,
+  ) {
+    return ___pthread_unregister_cancel(
+      __buf,
+    );
+  }
+
+  late final ___pthread_unregister_cancelPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<__pthread_unwind_buf_t>)>>(
+      '__pthread_unregister_cancel');
+  late final ___pthread_unregister_cancel = ___pthread_unregister_cancelPtr
+      .asFunction<void Function(ffi.Pointer<__pthread_unwind_buf_t>)>();
+
+  void __pthread_unwind_next(
+    ffi.Pointer<__pthread_unwind_buf_t> __buf,
+  ) {
+    return ___pthread_unwind_next(
+      __buf,
+    );
+  }
+
+  late final ___pthread_unwind_nextPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<__pthread_unwind_buf_t>)>>('__pthread_unwind_next');
+  late final ___pthread_unwind_next = ___pthread_unwind_nextPtr
+      .asFunction<void Function(ffi.Pointer<__pthread_unwind_buf_t>)>();
+
+  int __sigsetjmp(
+    ffi.Pointer<__jmp_buf_tag> __env,
+    int __savemask,
+  ) {
+    return ___sigsetjmp(
+      __env,
+      __savemask,
+    );
+  }
+
+  late final ___sigsetjmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<__jmp_buf_tag>, ffi.Int)>>('__sigsetjmp');
+  late final ___sigsetjmp = ___sigsetjmpPtr
+      .asFunction<int Function(ffi.Pointer<__jmp_buf_tag>, int)>();
+
+  int pthread_mutex_init(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+    ffi.Pointer<pthread_mutexattr_t> __mutexattr,
+  ) {
+    return _pthread_mutex_init(
+      __mutex,
+      __mutexattr,
+    );
+  }
+
+  late final _pthread_mutex_initPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutex_t>,
+              ffi.Pointer<pthread_mutexattr_t>)>>('pthread_mutex_init');
+  late final _pthread_mutex_init = _pthread_mutex_initPtr.asFunction<
+      int Function(
+          ffi.Pointer<pthread_mutex_t>, ffi.Pointer<pthread_mutexattr_t>)>();
+
+  int pthread_mutex_destroy(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+  ) {
+    return _pthread_mutex_destroy(
+      __mutex,
+    );
+  }
+
+  late final _pthread_mutex_destroyPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_mutex_t>)>>(
+      'pthread_mutex_destroy');
+  late final _pthread_mutex_destroy = _pthread_mutex_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutex_t>)>();
+
+  int pthread_mutex_trylock(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+  ) {
+    return _pthread_mutex_trylock(
+      __mutex,
+    );
+  }
+
+  late final _pthread_mutex_trylockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_mutex_t>)>>(
+      'pthread_mutex_trylock');
+  late final _pthread_mutex_trylock = _pthread_mutex_trylockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutex_t>)>();
+
+  int pthread_mutex_lock(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+  ) {
+    return _pthread_mutex_lock(
+      __mutex,
+    );
+  }
+
+  late final _pthread_mutex_lockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_mutex_t>)>>(
+      'pthread_mutex_lock');
+  late final _pthread_mutex_lock = _pthread_mutex_lockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutex_t>)>();
+
+  int pthread_mutex_timedlock(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+    ffi.Pointer<timespec> __abstime,
+  ) {
+    return _pthread_mutex_timedlock(
+      __mutex,
+      __abstime,
+    );
+  }
+
+  late final _pthread_mutex_timedlockPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutex_t>,
+              ffi.Pointer<timespec>)>>('pthread_mutex_timedlock');
+  late final _pthread_mutex_timedlock = _pthread_mutex_timedlockPtr.asFunction<
+      int Function(ffi.Pointer<pthread_mutex_t>, ffi.Pointer<timespec>)>();
+
+  int pthread_mutex_unlock(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+  ) {
+    return _pthread_mutex_unlock(
+      __mutex,
+    );
+  }
+
+  late final _pthread_mutex_unlockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_mutex_t>)>>(
+      'pthread_mutex_unlock');
+  late final _pthread_mutex_unlock = _pthread_mutex_unlockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutex_t>)>();
+
+  int pthread_mutex_getprioceiling(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+    ffi.Pointer<ffi.Int> __prioceiling,
+  ) {
+    return _pthread_mutex_getprioceiling(
+      __mutex,
+      __prioceiling,
+    );
+  }
+
+  late final _pthread_mutex_getprioceilingPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutex_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_mutex_getprioceiling');
+  late final _pthread_mutex_getprioceiling =
+      _pthread_mutex_getprioceilingPtr.asFunction<
+          int Function(ffi.Pointer<pthread_mutex_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_mutex_setprioceiling(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+    int __prioceiling,
+    ffi.Pointer<ffi.Int> __old_ceiling,
+  ) {
+    return _pthread_mutex_setprioceiling(
+      __mutex,
+      __prioceiling,
+      __old_ceiling,
+    );
+  }
+
+  late final _pthread_mutex_setprioceilingPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutex_t>, ffi.Int,
+              ffi.Pointer<ffi.Int>)>>('pthread_mutex_setprioceiling');
+  late final _pthread_mutex_setprioceiling =
+      _pthread_mutex_setprioceilingPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_mutex_t>, int, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_mutex_consistent(
+    ffi.Pointer<pthread_mutex_t> __mutex,
+  ) {
+    return _pthread_mutex_consistent(
+      __mutex,
+    );
+  }
+
+  late final _pthread_mutex_consistentPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_mutex_t>)>>(
+      'pthread_mutex_consistent');
+  late final _pthread_mutex_consistent = _pthread_mutex_consistentPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutex_t>)>();
+
+  int pthread_mutexattr_init(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+  ) {
+    return _pthread_mutexattr_init(
+      __attr,
+    );
+  }
+
+  late final _pthread_mutexattr_initPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>)>>(
+      'pthread_mutexattr_init');
+  late final _pthread_mutexattr_init = _pthread_mutexattr_initPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutexattr_t>)>();
+
+  int pthread_mutexattr_destroy(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+  ) {
+    return _pthread_mutexattr_destroy(
+      __attr,
+    );
+  }
+
+  late final _pthread_mutexattr_destroyPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>)>>(
+      'pthread_mutexattr_destroy');
+  late final _pthread_mutexattr_destroy = _pthread_mutexattr_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutexattr_t>)>();
+
+  int pthread_mutexattr_getpshared(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    ffi.Pointer<ffi.Int> __pshared,
+  ) {
+    return _pthread_mutexattr_getpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_mutexattr_getpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_mutexattr_getpshared');
+  late final _pthread_mutexattr_getpshared =
+      _pthread_mutexattr_getpsharedPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_mutexattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_mutexattr_setpshared(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    int __pshared,
+  ) {
+    return _pthread_mutexattr_setpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_mutexattr_setpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Int)>>('pthread_mutexattr_setpshared');
+  late final _pthread_mutexattr_setpshared = _pthread_mutexattr_setpsharedPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutexattr_t>, int)>();
+
+  int pthread_mutexattr_gettype(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    ffi.Pointer<ffi.Int> __kind,
+  ) {
+    return _pthread_mutexattr_gettype(
+      __attr,
+      __kind,
+    );
+  }
+
+  late final _pthread_mutexattr_gettypePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_mutexattr_gettype');
+  late final _pthread_mutexattr_gettype =
+      _pthread_mutexattr_gettypePtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_mutexattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_mutexattr_settype(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    int __kind,
+  ) {
+    return _pthread_mutexattr_settype(
+      __attr,
+      __kind,
+    );
+  }
+
+  late final _pthread_mutexattr_settypePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Int)>>('pthread_mutexattr_settype');
+  late final _pthread_mutexattr_settype = _pthread_mutexattr_settypePtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutexattr_t>, int)>();
+
+  int pthread_mutexattr_getprotocol(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    ffi.Pointer<ffi.Int> __protocol,
+  ) {
+    return _pthread_mutexattr_getprotocol(
+      __attr,
+      __protocol,
+    );
+  }
+
+  late final _pthread_mutexattr_getprotocolPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_mutexattr_getprotocol');
+  late final _pthread_mutexattr_getprotocol =
+      _pthread_mutexattr_getprotocolPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_mutexattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_mutexattr_setprotocol(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    int __protocol,
+  ) {
+    return _pthread_mutexattr_setprotocol(
+      __attr,
+      __protocol,
+    );
+  }
+
+  late final _pthread_mutexattr_setprotocolPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Int)>>('pthread_mutexattr_setprotocol');
+  late final _pthread_mutexattr_setprotocol = _pthread_mutexattr_setprotocolPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutexattr_t>, int)>();
+
+  int pthread_mutexattr_getprioceiling(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    ffi.Pointer<ffi.Int> __prioceiling,
+  ) {
+    return _pthread_mutexattr_getprioceiling(
+      __attr,
+      __prioceiling,
+    );
+  }
+
+  late final _pthread_mutexattr_getprioceilingPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_mutexattr_getprioceiling');
+  late final _pthread_mutexattr_getprioceiling =
+      _pthread_mutexattr_getprioceilingPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_mutexattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_mutexattr_setprioceiling(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    int __prioceiling,
+  ) {
+    return _pthread_mutexattr_setprioceiling(
+      __attr,
+      __prioceiling,
+    );
+  }
+
+  late final _pthread_mutexattr_setprioceilingPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Int)>>('pthread_mutexattr_setprioceiling');
+  late final _pthread_mutexattr_setprioceiling =
+      _pthread_mutexattr_setprioceilingPtr
+          .asFunction<int Function(ffi.Pointer<pthread_mutexattr_t>, int)>();
+
+  int pthread_mutexattr_getrobust(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    ffi.Pointer<ffi.Int> __robustness,
+  ) {
+    return _pthread_mutexattr_getrobust(
+      __attr,
+      __robustness,
+    );
+  }
+
+  late final _pthread_mutexattr_getrobustPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_mutexattr_getrobust');
+  late final _pthread_mutexattr_getrobust =
+      _pthread_mutexattr_getrobustPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_mutexattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_mutexattr_setrobust(
+    ffi.Pointer<pthread_mutexattr_t> __attr,
+    int __robustness,
+  ) {
+    return _pthread_mutexattr_setrobust(
+      __attr,
+      __robustness,
+    );
+  }
+
+  late final _pthread_mutexattr_setrobustPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_mutexattr_t>,
+              ffi.Int)>>('pthread_mutexattr_setrobust');
+  late final _pthread_mutexattr_setrobust = _pthread_mutexattr_setrobustPtr
+      .asFunction<int Function(ffi.Pointer<pthread_mutexattr_t>, int)>();
+
+  int pthread_rwlock_init(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+    ffi.Pointer<pthread_rwlockattr_t> __attr,
+  ) {
+    return _pthread_rwlock_init(
+      __rwlock,
+      __attr,
+    );
+  }
+
+  late final _pthread_rwlock_initPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_rwlock_t>,
+              ffi.Pointer<pthread_rwlockattr_t>)>>('pthread_rwlock_init');
+  late final _pthread_rwlock_init = _pthread_rwlock_initPtr.asFunction<
+      int Function(
+          ffi.Pointer<pthread_rwlock_t>, ffi.Pointer<pthread_rwlockattr_t>)>();
+
+  int pthread_rwlock_destroy(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+  ) {
+    return _pthread_rwlock_destroy(
+      __rwlock,
+    );
+  }
+
+  late final _pthread_rwlock_destroyPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlock_t>)>>(
+      'pthread_rwlock_destroy');
+  late final _pthread_rwlock_destroy = _pthread_rwlock_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlock_t>)>();
+
+  int pthread_rwlock_rdlock(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+  ) {
+    return _pthread_rwlock_rdlock(
+      __rwlock,
+    );
+  }
+
+  late final _pthread_rwlock_rdlockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlock_t>)>>(
+      'pthread_rwlock_rdlock');
+  late final _pthread_rwlock_rdlock = _pthread_rwlock_rdlockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlock_t>)>();
+
+  int pthread_rwlock_tryrdlock(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+  ) {
+    return _pthread_rwlock_tryrdlock(
+      __rwlock,
+    );
+  }
+
+  late final _pthread_rwlock_tryrdlockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlock_t>)>>(
+      'pthread_rwlock_tryrdlock');
+  late final _pthread_rwlock_tryrdlock = _pthread_rwlock_tryrdlockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlock_t>)>();
+
+  int pthread_rwlock_timedrdlock(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+    ffi.Pointer<timespec> __abstime,
+  ) {
+    return _pthread_rwlock_timedrdlock(
+      __rwlock,
+      __abstime,
+    );
+  }
+
+  late final _pthread_rwlock_timedrdlockPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_rwlock_t>,
+              ffi.Pointer<timespec>)>>('pthread_rwlock_timedrdlock');
+  late final _pthread_rwlock_timedrdlock =
+      _pthread_rwlock_timedrdlockPtr.asFunction<
+          int Function(ffi.Pointer<pthread_rwlock_t>, ffi.Pointer<timespec>)>();
+
+  int pthread_rwlock_wrlock(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+  ) {
+    return _pthread_rwlock_wrlock(
+      __rwlock,
+    );
+  }
+
+  late final _pthread_rwlock_wrlockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlock_t>)>>(
+      'pthread_rwlock_wrlock');
+  late final _pthread_rwlock_wrlock = _pthread_rwlock_wrlockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlock_t>)>();
+
+  int pthread_rwlock_trywrlock(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+  ) {
+    return _pthread_rwlock_trywrlock(
+      __rwlock,
+    );
+  }
+
+  late final _pthread_rwlock_trywrlockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlock_t>)>>(
+      'pthread_rwlock_trywrlock');
+  late final _pthread_rwlock_trywrlock = _pthread_rwlock_trywrlockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlock_t>)>();
+
+  int pthread_rwlock_timedwrlock(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+    ffi.Pointer<timespec> __abstime,
+  ) {
+    return _pthread_rwlock_timedwrlock(
+      __rwlock,
+      __abstime,
+    );
+  }
+
+  late final _pthread_rwlock_timedwrlockPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_rwlock_t>,
+              ffi.Pointer<timespec>)>>('pthread_rwlock_timedwrlock');
+  late final _pthread_rwlock_timedwrlock =
+      _pthread_rwlock_timedwrlockPtr.asFunction<
+          int Function(ffi.Pointer<pthread_rwlock_t>, ffi.Pointer<timespec>)>();
+
+  int pthread_rwlock_unlock(
+    ffi.Pointer<pthread_rwlock_t> __rwlock,
+  ) {
+    return _pthread_rwlock_unlock(
+      __rwlock,
+    );
+  }
+
+  late final _pthread_rwlock_unlockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlock_t>)>>(
+      'pthread_rwlock_unlock');
+  late final _pthread_rwlock_unlock = _pthread_rwlock_unlockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlock_t>)>();
+
+  int pthread_rwlockattr_init(
+    ffi.Pointer<pthread_rwlockattr_t> __attr,
+  ) {
+    return _pthread_rwlockattr_init(
+      __attr,
+    );
+  }
+
+  late final _pthread_rwlockattr_initPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlockattr_t>)>>(
+      'pthread_rwlockattr_init');
+  late final _pthread_rwlockattr_init = _pthread_rwlockattr_initPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlockattr_t>)>();
+
+  int pthread_rwlockattr_destroy(
+    ffi.Pointer<pthread_rwlockattr_t> __attr,
+  ) {
+    return _pthread_rwlockattr_destroy(
+      __attr,
+    );
+  }
+
+  late final _pthread_rwlockattr_destroyPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(ffi.Pointer<pthread_rwlockattr_t>)>>(
+      'pthread_rwlockattr_destroy');
+  late final _pthread_rwlockattr_destroy = _pthread_rwlockattr_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlockattr_t>)>();
+
+  int pthread_rwlockattr_getpshared(
+    ffi.Pointer<pthread_rwlockattr_t> __attr,
+    ffi.Pointer<ffi.Int> __pshared,
+  ) {
+    return _pthread_rwlockattr_getpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_rwlockattr_getpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_rwlockattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_rwlockattr_getpshared');
+  late final _pthread_rwlockattr_getpshared =
+      _pthread_rwlockattr_getpsharedPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_rwlockattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_rwlockattr_setpshared(
+    ffi.Pointer<pthread_rwlockattr_t> __attr,
+    int __pshared,
+  ) {
+    return _pthread_rwlockattr_setpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_rwlockattr_setpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_rwlockattr_t>,
+              ffi.Int)>>('pthread_rwlockattr_setpshared');
+  late final _pthread_rwlockattr_setpshared = _pthread_rwlockattr_setpsharedPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlockattr_t>, int)>();
+
+  int pthread_rwlockattr_getkind_np(
+    ffi.Pointer<pthread_rwlockattr_t> __attr,
+    ffi.Pointer<ffi.Int> __pref,
+  ) {
+    return _pthread_rwlockattr_getkind_np(
+      __attr,
+      __pref,
+    );
+  }
+
+  late final _pthread_rwlockattr_getkind_npPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_rwlockattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_rwlockattr_getkind_np');
+  late final _pthread_rwlockattr_getkind_np =
+      _pthread_rwlockattr_getkind_npPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_rwlockattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_rwlockattr_setkind_np(
+    ffi.Pointer<pthread_rwlockattr_t> __attr,
+    int __pref,
+  ) {
+    return _pthread_rwlockattr_setkind_np(
+      __attr,
+      __pref,
+    );
+  }
+
+  late final _pthread_rwlockattr_setkind_npPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_rwlockattr_t>,
+              ffi.Int)>>('pthread_rwlockattr_setkind_np');
+  late final _pthread_rwlockattr_setkind_np = _pthread_rwlockattr_setkind_npPtr
+      .asFunction<int Function(ffi.Pointer<pthread_rwlockattr_t>, int)>();
+
+  int pthread_cond_init(
+    ffi.Pointer<pthread_cond_t> __cond,
+    ffi.Pointer<pthread_condattr_t> __cond_attr,
+  ) {
+    return _pthread_cond_init(
+      __cond,
+      __cond_attr,
+    );
+  }
+
+  late final _pthread_cond_initPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_cond_t>,
+              ffi.Pointer<pthread_condattr_t>)>>('pthread_cond_init');
+  late final _pthread_cond_init = _pthread_cond_initPtr.asFunction<
+      int Function(
+          ffi.Pointer<pthread_cond_t>, ffi.Pointer<pthread_condattr_t>)>();
+
+  int pthread_cond_destroy(
+    ffi.Pointer<pthread_cond_t> __cond,
+  ) {
+    return _pthread_cond_destroy(
+      __cond,
+    );
+  }
+
+  late final _pthread_cond_destroyPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_cond_t>)>>(
+      'pthread_cond_destroy');
+  late final _pthread_cond_destroy = _pthread_cond_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_cond_t>)>();
+
+  int pthread_cond_signal(
+    ffi.Pointer<pthread_cond_t> __cond,
+  ) {
+    return _pthread_cond_signal(
+      __cond,
+    );
+  }
+
+  late final _pthread_cond_signalPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_cond_t>)>>(
+      'pthread_cond_signal');
+  late final _pthread_cond_signal = _pthread_cond_signalPtr
+      .asFunction<int Function(ffi.Pointer<pthread_cond_t>)>();
+
+  int pthread_cond_broadcast(
+    ffi.Pointer<pthread_cond_t> __cond,
+  ) {
+    return _pthread_cond_broadcast(
+      __cond,
+    );
+  }
+
+  late final _pthread_cond_broadcastPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_cond_t>)>>(
+      'pthread_cond_broadcast');
+  late final _pthread_cond_broadcast = _pthread_cond_broadcastPtr
+      .asFunction<int Function(ffi.Pointer<pthread_cond_t>)>();
+
+  int pthread_cond_wait(
+    ffi.Pointer<pthread_cond_t> __cond,
+    ffi.Pointer<pthread_mutex_t> __mutex,
+  ) {
+    return _pthread_cond_wait(
+      __cond,
+      __mutex,
+    );
+  }
+
+  late final _pthread_cond_waitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_cond_t>,
+              ffi.Pointer<pthread_mutex_t>)>>('pthread_cond_wait');
+  late final _pthread_cond_wait = _pthread_cond_waitPtr.asFunction<
+      int Function(
+          ffi.Pointer<pthread_cond_t>, ffi.Pointer<pthread_mutex_t>)>();
+
+  int pthread_cond_timedwait(
+    ffi.Pointer<pthread_cond_t> __cond,
+    ffi.Pointer<pthread_mutex_t> __mutex,
+    ffi.Pointer<timespec> __abstime,
+  ) {
+    return _pthread_cond_timedwait(
+      __cond,
+      __mutex,
+      __abstime,
+    );
+  }
+
+  late final _pthread_cond_timedwaitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<pthread_cond_t>,
+              ffi.Pointer<pthread_mutex_t>,
+              ffi.Pointer<timespec>)>>('pthread_cond_timedwait');
+  late final _pthread_cond_timedwait = _pthread_cond_timedwaitPtr.asFunction<
+      int Function(ffi.Pointer<pthread_cond_t>, ffi.Pointer<pthread_mutex_t>,
+          ffi.Pointer<timespec>)>();
+
+  int pthread_condattr_init(
+    ffi.Pointer<pthread_condattr_t> __attr,
+  ) {
+    return _pthread_condattr_init(
+      __attr,
+    );
+  }
+
+  late final _pthread_condattr_initPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(ffi.Pointer<pthread_condattr_t>)>>(
+      'pthread_condattr_init');
+  late final _pthread_condattr_init = _pthread_condattr_initPtr
+      .asFunction<int Function(ffi.Pointer<pthread_condattr_t>)>();
+
+  int pthread_condattr_destroy(
+    ffi.Pointer<pthread_condattr_t> __attr,
+  ) {
+    return _pthread_condattr_destroy(
+      __attr,
+    );
+  }
+
+  late final _pthread_condattr_destroyPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Int Function(ffi.Pointer<pthread_condattr_t>)>>(
+      'pthread_condattr_destroy');
+  late final _pthread_condattr_destroy = _pthread_condattr_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_condattr_t>)>();
+
+  int pthread_condattr_getpshared(
+    ffi.Pointer<pthread_condattr_t> __attr,
+    ffi.Pointer<ffi.Int> __pshared,
+  ) {
+    return _pthread_condattr_getpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_condattr_getpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_condattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_condattr_getpshared');
+  late final _pthread_condattr_getpshared =
+      _pthread_condattr_getpsharedPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_condattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_condattr_setpshared(
+    ffi.Pointer<pthread_condattr_t> __attr,
+    int __pshared,
+  ) {
+    return _pthread_condattr_setpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_condattr_setpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_condattr_t>,
+              ffi.Int)>>('pthread_condattr_setpshared');
+  late final _pthread_condattr_setpshared = _pthread_condattr_setpsharedPtr
+      .asFunction<int Function(ffi.Pointer<pthread_condattr_t>, int)>();
+
+  int pthread_condattr_getclock(
+    ffi.Pointer<pthread_condattr_t> __attr,
+    ffi.Pointer<__clockid_t> __clock_id,
+  ) {
+    return _pthread_condattr_getclock(
+      __attr,
+      __clock_id,
+    );
+  }
+
+  late final _pthread_condattr_getclockPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_condattr_t>,
+              ffi.Pointer<__clockid_t>)>>('pthread_condattr_getclock');
+  late final _pthread_condattr_getclock =
+      _pthread_condattr_getclockPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_condattr_t>, ffi.Pointer<__clockid_t>)>();
+
+  int pthread_condattr_setclock(
+    ffi.Pointer<pthread_condattr_t> __attr,
+    int __clock_id,
+  ) {
+    return _pthread_condattr_setclock(
+      __attr,
+      __clock_id,
+    );
+  }
+
+  late final _pthread_condattr_setclockPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_condattr_t>,
+              __clockid_t)>>('pthread_condattr_setclock');
+  late final _pthread_condattr_setclock = _pthread_condattr_setclockPtr
+      .asFunction<int Function(ffi.Pointer<pthread_condattr_t>, int)>();
+
+  int pthread_barrier_init(
+    ffi.Pointer<pthread_barrier_t> __barrier,
+    ffi.Pointer<pthread_barrierattr_t> __attr,
+    int __count,
+  ) {
+    return _pthread_barrier_init(
+      __barrier,
+      __attr,
+      __count,
+    );
+  }
+
+  late final _pthread_barrier_initPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<pthread_barrier_t>,
+              ffi.Pointer<pthread_barrierattr_t>,
+              ffi.UnsignedInt)>>('pthread_barrier_init');
+  late final _pthread_barrier_init = _pthread_barrier_initPtr.asFunction<
+      int Function(ffi.Pointer<pthread_barrier_t>,
+          ffi.Pointer<pthread_barrierattr_t>, int)>();
+
+  int pthread_barrier_destroy(
+    ffi.Pointer<pthread_barrier_t> __barrier,
+  ) {
+    return _pthread_barrier_destroy(
+      __barrier,
+    );
+  }
+
+  late final _pthread_barrier_destroyPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_barrier_t>)>>(
+      'pthread_barrier_destroy');
+  late final _pthread_barrier_destroy = _pthread_barrier_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_barrier_t>)>();
+
+  int pthread_barrier_wait(
+    ffi.Pointer<pthread_barrier_t> __barrier,
+  ) {
+    return _pthread_barrier_wait(
+      __barrier,
+    );
+  }
+
+  late final _pthread_barrier_waitPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<pthread_barrier_t>)>>(
+      'pthread_barrier_wait');
+  late final _pthread_barrier_wait = _pthread_barrier_waitPtr
+      .asFunction<int Function(ffi.Pointer<pthread_barrier_t>)>();
+
+  int pthread_barrierattr_init(
+    ffi.Pointer<pthread_barrierattr_t> __attr,
+  ) {
+    return _pthread_barrierattr_init(
+      __attr,
+    );
+  }
+
+  late final _pthread_barrierattr_initPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<pthread_barrierattr_t>)>>('pthread_barrierattr_init');
+  late final _pthread_barrierattr_init = _pthread_barrierattr_initPtr
+      .asFunction<int Function(ffi.Pointer<pthread_barrierattr_t>)>();
+
+  int pthread_barrierattr_destroy(
+    ffi.Pointer<pthread_barrierattr_t> __attr,
+  ) {
+    return _pthread_barrierattr_destroy(
+      __attr,
+    );
+  }
+
+  late final _pthread_barrierattr_destroyPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(ffi.Pointer<pthread_barrierattr_t>)>>(
+      'pthread_barrierattr_destroy');
+  late final _pthread_barrierattr_destroy = _pthread_barrierattr_destroyPtr
+      .asFunction<int Function(ffi.Pointer<pthread_barrierattr_t>)>();
+
+  int pthread_barrierattr_getpshared(
+    ffi.Pointer<pthread_barrierattr_t> __attr,
+    ffi.Pointer<ffi.Int> __pshared,
+  ) {
+    return _pthread_barrierattr_getpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_barrierattr_getpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_barrierattr_t>,
+              ffi.Pointer<ffi.Int>)>>('pthread_barrierattr_getpshared');
+  late final _pthread_barrierattr_getpshared =
+      _pthread_barrierattr_getpsharedPtr.asFunction<
+          int Function(
+              ffi.Pointer<pthread_barrierattr_t>, ffi.Pointer<ffi.Int>)>();
+
+  int pthread_barrierattr_setpshared(
+    ffi.Pointer<pthread_barrierattr_t> __attr,
+    int __pshared,
+  ) {
+    return _pthread_barrierattr_setpshared(
+      __attr,
+      __pshared,
+    );
+  }
+
+  late final _pthread_barrierattr_setpsharedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<pthread_barrierattr_t>,
+              ffi.Int)>>('pthread_barrierattr_setpshared');
+  late final _pthread_barrierattr_setpshared =
+      _pthread_barrierattr_setpsharedPtr
+          .asFunction<int Function(ffi.Pointer<pthread_barrierattr_t>, int)>();
+
+  int pthread_key_create(
+    ffi.Pointer<pthread_key_t> __key,
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+        __destr_function,
+  ) {
+    return _pthread_key_create(
+      __key,
+      __destr_function,
+    );
+  }
+
+  late final _pthread_key_createPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<pthread_key_t>,
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Void Function(
+                          ffi.Pointer<ffi.Void>)>>)>>('pthread_key_create');
+  late final _pthread_key_create = _pthread_key_createPtr.asFunction<
+      int Function(
+          ffi.Pointer<pthread_key_t>,
+          ffi.Pointer<
+              ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>)>();
+
+  int pthread_key_delete(
+    int __key,
+  ) {
+    return _pthread_key_delete(
+      __key,
+    );
+  }
+
+  late final _pthread_key_deletePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(pthread_key_t)>>(
+          'pthread_key_delete');
+  late final _pthread_key_delete =
+      _pthread_key_deletePtr.asFunction<int Function(int)>();
+
+  ffi.Pointer<ffi.Void> pthread_getspecific(
+    int __key,
+  ) {
+    return _pthread_getspecific(
+      __key,
+    );
+  }
+
+  late final _pthread_getspecificPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(pthread_key_t)>>(
+      'pthread_getspecific');
+  late final _pthread_getspecific =
+      _pthread_getspecificPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
+
+  int pthread_setspecific(
+    int __key,
+    ffi.Pointer<ffi.Void> __pointer,
+  ) {
+    return _pthread_setspecific(
+      __key,
+      __pointer,
+    );
+  }
+
+  late final _pthread_setspecificPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              pthread_key_t, ffi.Pointer<ffi.Void>)>>('pthread_setspecific');
+  late final _pthread_setspecific = _pthread_setspecificPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Void>)>();
+
+  int pthread_getcpuclockid(
+    int __thread_id,
+    ffi.Pointer<__clockid_t> __clock_id,
+  ) {
+    return _pthread_getcpuclockid(
+      __thread_id,
+      __clock_id,
+    );
+  }
+
+  late final _pthread_getcpuclockidPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              pthread_t, ffi.Pointer<__clockid_t>)>>('pthread_getcpuclockid');
+  late final _pthread_getcpuclockid = _pthread_getcpuclockidPtr
+      .asFunction<int Function(int, ffi.Pointer<__clockid_t>)>();
+
+  int pthread_atfork(
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> __prepare,
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> __parent,
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> __child,
+  ) {
+    return _pthread_atfork(
+      __prepare,
+      __parent,
+      __child,
+    );
+  }
+
+  late final _pthread_atforkPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(
+                  ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>,
+                  ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>,
+                  ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>>(
+      'pthread_atfork');
+  late final _pthread_atfork = _pthread_atforkPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>,
+          ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>,
+          ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>)>();
 
   void g_static_mutex_init(
     ffi.Pointer<GStaticMutex> mutex,
@@ -44478,6 +50013,1554 @@ class NativeLibrary {
       _g_converter_output_stream_get_converterPtr.asFunction<
           ffi.Pointer<GConverter> Function(
               ffi.Pointer<GConverterOutputStream>)>();
+
+  int access(
+    ffi.Pointer<ffi.Char> __name,
+    int __type,
+  ) {
+    return _access(
+      __name,
+      __type,
+    );
+  }
+
+  late final _accessPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Int)>>(
+      'access');
+  late final _access =
+      _accessPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int faccessat(
+    int __fd,
+    ffi.Pointer<ffi.Char> __file,
+    int __type,
+    int __flag,
+  ) {
+    return _faccessat(
+      __fd,
+      __file,
+      __type,
+      __flag,
+    );
+  }
+
+  late final _faccessatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int)>>('faccessat');
+  late final _faccessat = _faccessatPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>, int, int)>();
+
+  int lseek(
+    int __fd,
+    int __offset,
+    int __whence,
+  ) {
+    return _lseek(
+      __fd,
+      __offset,
+      __whence,
+    );
+  }
+
+  late final _lseekPtr =
+      _lookup<ffi.NativeFunction<__off_t Function(ffi.Int, __off_t, ffi.Int)>>(
+          'lseek');
+  late final _lseek = _lseekPtr.asFunction<int Function(int, int, int)>();
+
+  int close(
+    int __fd,
+  ) {
+    return _close(
+      __fd,
+    );
+  }
+
+  late final _closePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('close');
+  late final _close = _closePtr.asFunction<int Function(int)>();
+
+  void closefrom(
+    int __lowfd,
+  ) {
+    return _closefrom(
+      __lowfd,
+    );
+  }
+
+  late final _closefromPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('closefrom');
+  late final _closefrom = _closefromPtr.asFunction<void Function(int)>();
+
+  int read(
+    int __fd,
+    ffi.Pointer<ffi.Void> __buf,
+    int __nbytes,
+  ) {
+    return _read(
+      __fd,
+      __buf,
+      __nbytes,
+    );
+  }
+
+  late final _readPtr = _lookup<
+      ffi.NativeFunction<
+          ssize_t Function(ffi.Int, ffi.Pointer<ffi.Void>, ffi.Size)>>('read');
+  late final _read =
+      _readPtr.asFunction<int Function(int, ffi.Pointer<ffi.Void>, int)>();
+
+  int write(
+    int __fd,
+    ffi.Pointer<ffi.Void> __buf,
+    int __n,
+  ) {
+    return _write(
+      __fd,
+      __buf,
+      __n,
+    );
+  }
+
+  late final _writePtr = _lookup<
+      ffi.NativeFunction<
+          ssize_t Function(ffi.Int, ffi.Pointer<ffi.Void>, ffi.Size)>>('write');
+  late final _write =
+      _writePtr.asFunction<int Function(int, ffi.Pointer<ffi.Void>, int)>();
+
+  int pread(
+    int __fd,
+    ffi.Pointer<ffi.Void> __buf,
+    int __nbytes,
+    int __offset,
+  ) {
+    return _pread(
+      __fd,
+      __buf,
+      __nbytes,
+      __offset,
+    );
+  }
+
+  late final _preadPtr = _lookup<
+      ffi.NativeFunction<
+          ssize_t Function(
+              ffi.Int, ffi.Pointer<ffi.Void>, ffi.Size, __off_t)>>('pread');
+  late final _pread = _preadPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Void>, int, int)>();
+
+  int pwrite(
+    int __fd,
+    ffi.Pointer<ffi.Void> __buf,
+    int __n,
+    int __offset,
+  ) {
+    return _pwrite(
+      __fd,
+      __buf,
+      __n,
+      __offset,
+    );
+  }
+
+  late final _pwritePtr = _lookup<
+      ffi.NativeFunction<
+          ssize_t Function(
+              ffi.Int, ffi.Pointer<ffi.Void>, ffi.Size, __off_t)>>('pwrite');
+  late final _pwrite = _pwritePtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Void>, int, int)>();
+
+  int pipe(
+    ffi.Pointer<ffi.Int> __pipedes,
+  ) {
+    return _pipe(
+      __pipedes,
+    );
+  }
+
+  late final _pipePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Int>)>>(
+          'pipe');
+  late final _pipe = _pipePtr.asFunction<int Function(ffi.Pointer<ffi.Int>)>();
+
+  int alarm(
+    int __seconds,
+  ) {
+    return _alarm(
+      __seconds,
+    );
+  }
+
+  late final _alarmPtr =
+      _lookup<ffi.NativeFunction<ffi.UnsignedInt Function(ffi.UnsignedInt)>>(
+          'alarm');
+  late final _alarm = _alarmPtr.asFunction<int Function(int)>();
+
+  int sleep(
+    int __seconds,
+  ) {
+    return _sleep(
+      __seconds,
+    );
+  }
+
+  late final _sleepPtr =
+      _lookup<ffi.NativeFunction<ffi.UnsignedInt Function(ffi.UnsignedInt)>>(
+          'sleep');
+  late final _sleep = _sleepPtr.asFunction<int Function(int)>();
+
+  int ualarm(
+    int __value,
+    int __interval,
+  ) {
+    return _ualarm(
+      __value,
+      __interval,
+    );
+  }
+
+  late final _ualarmPtr = _lookup<
+      ffi.NativeFunction<
+          __useconds_t Function(__useconds_t, __useconds_t)>>('ualarm');
+  late final _ualarm = _ualarmPtr.asFunction<int Function(int, int)>();
+
+  int usleep(
+    int __useconds,
+  ) {
+    return _usleep(
+      __useconds,
+    );
+  }
+
+  late final _usleepPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__useconds_t)>>('usleep');
+  late final _usleep = _usleepPtr.asFunction<int Function(int)>();
+
+  int pause() {
+    return _pause();
+  }
+
+  late final _pausePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('pause');
+  late final _pause = _pausePtr.asFunction<int Function()>();
+
+  int chown(
+    ffi.Pointer<ffi.Char> __file,
+    int __owner,
+    int __group,
+  ) {
+    return _chown(
+      __file,
+      __owner,
+      __group,
+    );
+  }
+
+  late final _chownPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, __uid_t, __gid_t)>>('chown');
+  late final _chown =
+      _chownPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int, int)>();
+
+  int fchown(
+    int __fd,
+    int __owner,
+    int __group,
+  ) {
+    return _fchown(
+      __fd,
+      __owner,
+      __group,
+    );
+  }
+
+  late final _fchownPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, __uid_t, __gid_t)>>(
+          'fchown');
+  late final _fchown = _fchownPtr.asFunction<int Function(int, int, int)>();
+
+  int lchown(
+    ffi.Pointer<ffi.Char> __file,
+    int __owner,
+    int __group,
+  ) {
+    return _lchown(
+      __file,
+      __owner,
+      __group,
+    );
+  }
+
+  late final _lchownPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, __uid_t, __gid_t)>>('lchown');
+  late final _lchown =
+      _lchownPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int, int)>();
+
+  int fchownat(
+    int __fd,
+    ffi.Pointer<ffi.Char> __file,
+    int __owner,
+    int __group,
+    int __flag,
+  ) {
+    return _fchownat(
+      __fd,
+      __file,
+      __owner,
+      __group,
+      __flag,
+    );
+  }
+
+  late final _fchownatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>, __uid_t, __gid_t,
+              ffi.Int)>>('fchownat');
+  late final _fchownat = _fchownatPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>, int, int, int)>();
+
+  int chdir(
+    ffi.Pointer<ffi.Char> __path,
+  ) {
+    return _chdir(
+      __path,
+    );
+  }
+
+  late final _chdirPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'chdir');
+  late final _chdir =
+      _chdirPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int fchdir(
+    int __fd,
+  ) {
+    return _fchdir(
+      __fd,
+    );
+  }
+
+  late final _fchdirPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('fchdir');
+  late final _fchdir = _fchdirPtr.asFunction<int Function(int)>();
+
+  ffi.Pointer<ffi.Char> getcwd(
+    ffi.Pointer<ffi.Char> __buf,
+    int __size,
+  ) {
+    return _getcwd(
+      __buf,
+      __size,
+    );
+  }
+
+  late final _getcwdPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('getcwd');
+  late final _getcwd = _getcwdPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> getwd(
+    ffi.Pointer<ffi.Char> __buf,
+  ) {
+    return _getwd(
+      __buf,
+    );
+  }
+
+  late final _getwdPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('getwd');
+  late final _getwd = _getwdPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  int dup(
+    int __fd,
+  ) {
+    return _dup(
+      __fd,
+    );
+  }
+
+  late final _dupPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('dup');
+  late final _dup = _dupPtr.asFunction<int Function(int)>();
+
+  int dup2(
+    int __fd,
+    int __fd2,
+  ) {
+    return _dup2(
+      __fd,
+      __fd2,
+    );
+  }
+
+  late final _dup2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>('dup2');
+  late final _dup2 = _dup2Ptr.asFunction<int Function(int, int)>();
+
+  late final ffi.Pointer<ffi.Pointer<ffi.Pointer<ffi.Char>>> ___environ =
+      _lookup<ffi.Pointer<ffi.Pointer<ffi.Char>>>('__environ');
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> get __environ => ___environ.value;
+
+  set __environ(ffi.Pointer<ffi.Pointer<ffi.Char>> value) =>
+      ___environ.value = value;
+
+  int execve(
+    ffi.Pointer<ffi.Char> __path,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __argv,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __envp,
+  ) {
+    return _execve(
+      __path,
+      __argv,
+      __envp,
+    );
+  }
+
+  late final _execvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('execve');
+  late final _execve = _execvePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>,
+          ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int fexecve(
+    int __fd,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __argv,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __envp,
+  ) {
+    return _fexecve(
+      __fd,
+      __argv,
+      __envp,
+    );
+  }
+
+  late final _fexecvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('fexecve');
+  late final _fexecve = _fexecvePtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Pointer<ffi.Char>>,
+          ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int execv(
+    ffi.Pointer<ffi.Char> __path,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __argv,
+  ) {
+    return _execv(
+      __path,
+      __argv,
+    );
+  }
+
+  late final _execvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('execv');
+  late final _execv = _execvPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int execle(
+    ffi.Pointer<ffi.Char> __path,
+    ffi.Pointer<ffi.Char> __arg,
+  ) {
+    return _execle(
+      __path,
+      __arg,
+    );
+  }
+
+  late final _execlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('execle');
+  late final _execle = _execlePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int execl(
+    ffi.Pointer<ffi.Char> __path,
+    ffi.Pointer<ffi.Char> __arg,
+  ) {
+    return _execl(
+      __path,
+      __arg,
+    );
+  }
+
+  late final _execlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('execl');
+  late final _execl = _execlPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int execvp(
+    ffi.Pointer<ffi.Char> __file,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __argv,
+  ) {
+    return _execvp(
+      __file,
+      __argv,
+    );
+  }
+
+  late final _execvpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('execvp');
+  late final _execvp = _execvpPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int execlp(
+    ffi.Pointer<ffi.Char> __file,
+    ffi.Pointer<ffi.Char> __arg,
+  ) {
+    return _execlp(
+      __file,
+      __arg,
+    );
+  }
+
+  late final _execlpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('execlp');
+  late final _execlp = _execlpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int nice(
+    int __inc,
+  ) {
+    return _nice(
+      __inc,
+    );
+  }
+
+  late final _nicePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('nice');
+  late final _nice = _nicePtr.asFunction<int Function(int)>();
+
+  void _exit(
+    int __status,
+  ) {
+    return __exit(
+      __status,
+    );
+  }
+
+  late final __exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('_exit');
+  late final __exit = __exitPtr.asFunction<void Function(int)>();
+
+  int pathconf(
+    ffi.Pointer<ffi.Char> __path,
+    int __name,
+  ) {
+    return _pathconf(
+      __path,
+      __name,
+    );
+  }
+
+  late final _pathconfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Long Function(ffi.Pointer<ffi.Char>, ffi.Int)>>('pathconf');
+  late final _pathconf =
+      _pathconfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int fpathconf(
+    int __fd,
+    int __name,
+  ) {
+    return _fpathconf(
+      __fd,
+      __name,
+    );
+  }
+
+  late final _fpathconfPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Int, ffi.Int)>>(
+          'fpathconf');
+  late final _fpathconf = _fpathconfPtr.asFunction<int Function(int, int)>();
+
+  int sysconf(
+    int __name,
+  ) {
+    return _sysconf(
+      __name,
+    );
+  }
+
+  late final _sysconfPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Int)>>('sysconf');
+  late final _sysconf = _sysconfPtr.asFunction<int Function(int)>();
+
+  int confstr(
+    int __name,
+    ffi.Pointer<ffi.Char> __buf,
+    int __len,
+  ) {
+    return _confstr(
+      __name,
+      __buf,
+      __len,
+    );
+  }
+
+  late final _confstrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Size)>>('confstr');
+  late final _confstr =
+      _confstrPtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>, int)>();
+
+  int getpid() {
+    return _getpid();
+  }
+
+  late final _getpidPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function()>>('getpid');
+  late final _getpid = _getpidPtr.asFunction<int Function()>();
+
+  int getppid() {
+    return _getppid();
+  }
+
+  late final _getppidPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function()>>('getppid');
+  late final _getppid = _getppidPtr.asFunction<int Function()>();
+
+  int getpgrp() {
+    return _getpgrp();
+  }
+
+  late final _getpgrpPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function()>>('getpgrp');
+  late final _getpgrp = _getpgrpPtr.asFunction<int Function()>();
+
+  int __getpgid(
+    int __pid,
+  ) {
+    return ___getpgid(
+      __pid,
+    );
+  }
+
+  late final ___getpgidPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function(__pid_t)>>('__getpgid');
+  late final ___getpgid = ___getpgidPtr.asFunction<int Function(int)>();
+
+  int getpgid(
+    int __pid,
+  ) {
+    return _getpgid(
+      __pid,
+    );
+  }
+
+  late final _getpgidPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function(__pid_t)>>('getpgid');
+  late final _getpgid = _getpgidPtr.asFunction<int Function(int)>();
+
+  int setpgid(
+    int __pid,
+    int __pgid,
+  ) {
+    return _setpgid(
+      __pid,
+      __pgid,
+    );
+  }
+
+  late final _setpgidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__pid_t, __pid_t)>>(
+          'setpgid');
+  late final _setpgid = _setpgidPtr.asFunction<int Function(int, int)>();
+
+  int setpgrp() {
+    return _setpgrp();
+  }
+
+  late final _setpgrpPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('setpgrp');
+  late final _setpgrp = _setpgrpPtr.asFunction<int Function()>();
+
+  int setsid() {
+    return _setsid();
+  }
+
+  late final _setsidPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function()>>('setsid');
+  late final _setsid = _setsidPtr.asFunction<int Function()>();
+
+  int getsid(
+    int __pid,
+  ) {
+    return _getsid(
+      __pid,
+    );
+  }
+
+  late final _getsidPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function(__pid_t)>>('getsid');
+  late final _getsid = _getsidPtr.asFunction<int Function(int)>();
+
+  int getuid() {
+    return _getuid();
+  }
+
+  late final _getuidPtr =
+      _lookup<ffi.NativeFunction<__uid_t Function()>>('getuid');
+  late final _getuid = _getuidPtr.asFunction<int Function()>();
+
+  int geteuid() {
+    return _geteuid();
+  }
+
+  late final _geteuidPtr =
+      _lookup<ffi.NativeFunction<__uid_t Function()>>('geteuid');
+  late final _geteuid = _geteuidPtr.asFunction<int Function()>();
+
+  int getgid() {
+    return _getgid();
+  }
+
+  late final _getgidPtr =
+      _lookup<ffi.NativeFunction<__gid_t Function()>>('getgid');
+  late final _getgid = _getgidPtr.asFunction<int Function()>();
+
+  int getegid() {
+    return _getegid();
+  }
+
+  late final _getegidPtr =
+      _lookup<ffi.NativeFunction<__gid_t Function()>>('getegid');
+  late final _getegid = _getegidPtr.asFunction<int Function()>();
+
+  int getgroups(
+    int __size,
+    ffi.Pointer<__gid_t> __list,
+  ) {
+    return _getgroups(
+      __size,
+      __list,
+    );
+  }
+
+  late final _getgroupsPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<__gid_t>)>>(
+      'getgroups');
+  late final _getgroups =
+      _getgroupsPtr.asFunction<int Function(int, ffi.Pointer<__gid_t>)>();
+
+  int setuid(
+    int __uid,
+  ) {
+    return _setuid(
+      __uid,
+    );
+  }
+
+  late final _setuidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__uid_t)>>('setuid');
+  late final _setuid = _setuidPtr.asFunction<int Function(int)>();
+
+  int setreuid(
+    int __ruid,
+    int __euid,
+  ) {
+    return _setreuid(
+      __ruid,
+      __euid,
+    );
+  }
+
+  late final _setreuidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__uid_t, __uid_t)>>(
+          'setreuid');
+  late final _setreuid = _setreuidPtr.asFunction<int Function(int, int)>();
+
+  int seteuid(
+    int __uid,
+  ) {
+    return _seteuid(
+      __uid,
+    );
+  }
+
+  late final _seteuidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__uid_t)>>('seteuid');
+  late final _seteuid = _seteuidPtr.asFunction<int Function(int)>();
+
+  int setgid(
+    int __gid,
+  ) {
+    return _setgid(
+      __gid,
+    );
+  }
+
+  late final _setgidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__gid_t)>>('setgid');
+  late final _setgid = _setgidPtr.asFunction<int Function(int)>();
+
+  int setregid(
+    int __rgid,
+    int __egid,
+  ) {
+    return _setregid(
+      __rgid,
+      __egid,
+    );
+  }
+
+  late final _setregidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__gid_t, __gid_t)>>(
+          'setregid');
+  late final _setregid = _setregidPtr.asFunction<int Function(int, int)>();
+
+  int setegid(
+    int __gid,
+  ) {
+    return _setegid(
+      __gid,
+    );
+  }
+
+  late final _setegidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(__gid_t)>>('setegid');
+  late final _setegid = _setegidPtr.asFunction<int Function(int)>();
+
+  int fork() {
+    return _fork();
+  }
+
+  late final _forkPtr = _lookup<ffi.NativeFunction<__pid_t Function()>>('fork');
+  late final _fork = _forkPtr.asFunction<int Function()>();
+
+  int vfork() {
+    return _vfork();
+  }
+
+  late final _vforkPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('vfork');
+  late final _vfork = _vforkPtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Char> ttyname(
+    int __fd,
+  ) {
+    return _ttyname(
+      __fd,
+    );
+  }
+
+  late final _ttynamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
+          'ttyname');
+  late final _ttyname =
+      _ttynamePtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  int ttyname_r(
+    int __fd,
+    ffi.Pointer<ffi.Char> __buf,
+    int __buflen,
+  ) {
+    return _ttyname_r(
+      __fd,
+      __buf,
+      __buflen,
+    );
+  }
+
+  late final _ttyname_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Size)>>('ttyname_r');
+  late final _ttyname_r =
+      _ttyname_rPtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>, int)>();
+
+  int isatty(
+    int __fd,
+  ) {
+    return _isatty(
+      __fd,
+    );
+  }
+
+  late final _isattyPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('isatty');
+  late final _isatty = _isattyPtr.asFunction<int Function(int)>();
+
+  int ttyslot() {
+    return _ttyslot();
+  }
+
+  late final _ttyslotPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('ttyslot');
+  late final _ttyslot = _ttyslotPtr.asFunction<int Function()>();
+
+  int link(
+    ffi.Pointer<ffi.Char> __from,
+    ffi.Pointer<ffi.Char> __to,
+  ) {
+    return _link(
+      __from,
+      __to,
+    );
+  }
+
+  late final _linkPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('link');
+  late final _link = _linkPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int linkat(
+    int __fromfd,
+    ffi.Pointer<ffi.Char> __from,
+    int __tofd,
+    ffi.Pointer<ffi.Char> __to,
+    int __flags,
+  ) {
+    return _linkat(
+      __fromfd,
+      __from,
+      __tofd,
+      __to,
+      __flags,
+    );
+  }
+
+  late final _linkatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int,
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('linkat');
+  late final _linkat = _linkatPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>, int)>();
+
+  int symlink(
+    ffi.Pointer<ffi.Char> __from,
+    ffi.Pointer<ffi.Char> __to,
+  ) {
+    return _symlink(
+      __from,
+      __to,
+    );
+  }
+
+  late final _symlinkPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('symlink');
+  late final _symlink = _symlinkPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int readlink(
+    ffi.Pointer<ffi.Char> __path,
+    ffi.Pointer<ffi.Char> __buf,
+    int __len,
+  ) {
+    return _readlink(
+      __path,
+      __buf,
+      __len,
+    );
+  }
+
+  late final _readlinkPtr = _lookup<
+      ffi.NativeFunction<
+          ssize_t Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('readlink');
+  late final _readlink = _readlinkPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int symlinkat(
+    ffi.Pointer<ffi.Char> __from,
+    int __tofd,
+    ffi.Pointer<ffi.Char> __to,
+  ) {
+    return _symlinkat(
+      __from,
+      __tofd,
+      __to,
+    );
+  }
+
+  late final _symlinkatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Int,
+              ffi.Pointer<ffi.Char>)>>('symlinkat');
+  late final _symlinkat = _symlinkatPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
+
+  int readlinkat(
+    int __fd,
+    ffi.Pointer<ffi.Char> __path,
+    ffi.Pointer<ffi.Char> __buf,
+    int __len,
+  ) {
+    return _readlinkat(
+      __fd,
+      __path,
+      __buf,
+      __len,
+    );
+  }
+
+  late final _readlinkatPtr = _lookup<
+      ffi.NativeFunction<
+          ssize_t Function(ffi.Int, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('readlinkat');
+  late final _readlinkat = _readlinkatPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int unlink(
+    ffi.Pointer<ffi.Char> __name,
+  ) {
+    return _unlink(
+      __name,
+    );
+  }
+
+  late final _unlinkPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'unlink');
+  late final _unlink =
+      _unlinkPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int unlinkat(
+    int __fd,
+    ffi.Pointer<ffi.Char> __name,
+    int __flag,
+  ) {
+    return _unlinkat(
+      __fd,
+      __name,
+      __flag,
+    );
+  }
+
+  late final _unlinkatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int)>>('unlinkat');
+  late final _unlinkat =
+      _unlinkatPtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>, int)>();
+
+  int rmdir(
+    ffi.Pointer<ffi.Char> __path,
+  ) {
+    return _rmdir(
+      __path,
+    );
+  }
+
+  late final _rmdirPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'rmdir');
+  late final _rmdir =
+      _rmdirPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int tcgetpgrp(
+    int __fd,
+  ) {
+    return _tcgetpgrp(
+      __fd,
+    );
+  }
+
+  late final _tcgetpgrpPtr =
+      _lookup<ffi.NativeFunction<__pid_t Function(ffi.Int)>>('tcgetpgrp');
+  late final _tcgetpgrp = _tcgetpgrpPtr.asFunction<int Function(int)>();
+
+  int tcsetpgrp(
+    int __fd,
+    int __pgrp_id,
+  ) {
+    return _tcsetpgrp(
+      __fd,
+      __pgrp_id,
+    );
+  }
+
+  late final _tcsetpgrpPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, __pid_t)>>(
+          'tcsetpgrp');
+  late final _tcsetpgrp = _tcsetpgrpPtr.asFunction<int Function(int, int)>();
+
+  ffi.Pointer<ffi.Char> getlogin() {
+    return _getlogin();
+  }
+
+  late final _getloginPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>('getlogin');
+  late final _getlogin =
+      _getloginPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  int getlogin_r(
+    ffi.Pointer<ffi.Char> __name,
+    int __name_len,
+  ) {
+    return _getlogin_r(
+      __name,
+      __name_len,
+    );
+  }
+
+  late final _getlogin_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('getlogin_r');
+  late final _getlogin_r =
+      _getlogin_rPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int setlogin(
+    ffi.Pointer<ffi.Char> __name,
+  ) {
+    return _setlogin(
+      __name,
+    );
+  }
+
+  late final _setloginPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'setlogin');
+  late final _setlogin =
+      _setloginPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  late final ffi.Pointer<ffi.Pointer<ffi.Char>> _optarg =
+      _lookup<ffi.Pointer<ffi.Char>>('optarg');
+
+  ffi.Pointer<ffi.Char> get optarg => _optarg.value;
+
+  set optarg(ffi.Pointer<ffi.Char> value) => _optarg.value = value;
+
+  late final ffi.Pointer<ffi.Int> _optind = _lookup<ffi.Int>('optind');
+
+  int get optind => _optind.value;
+
+  set optind(int value) => _optind.value = value;
+
+  late final ffi.Pointer<ffi.Int> _opterr = _lookup<ffi.Int>('opterr');
+
+  int get opterr => _opterr.value;
+
+  set opterr(int value) => _opterr.value = value;
+
+  late final ffi.Pointer<ffi.Int> _optopt = _lookup<ffi.Int>('optopt');
+
+  int get optopt => _optopt.value;
+
+  set optopt(int value) => _optopt.value = value;
+
+  int getopt(
+    int ___argc,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> ___argv,
+    ffi.Pointer<ffi.Char> __shortopts,
+  ) {
+    return _getopt(
+      ___argc,
+      ___argv,
+      __shortopts,
+    );
+  }
+
+  late final _getoptPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Char>)>>('getopt');
+  late final _getopt = _getoptPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>)>();
+
+  int gethostname(
+    ffi.Pointer<ffi.Char> __name,
+    int __len,
+  ) {
+    return _gethostname(
+      __name,
+      __len,
+    );
+  }
+
+  late final _gethostnamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('gethostname');
+  late final _gethostname =
+      _gethostnamePtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int sethostname(
+    ffi.Pointer<ffi.Char> __name,
+    int __len,
+  ) {
+    return _sethostname(
+      __name,
+      __len,
+    );
+  }
+
+  late final _sethostnamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('sethostname');
+  late final _sethostname =
+      _sethostnamePtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int sethostid(
+    int __id,
+  ) {
+    return _sethostid(
+      __id,
+    );
+  }
+
+  late final _sethostidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Long)>>('sethostid');
+  late final _sethostid = _sethostidPtr.asFunction<int Function(int)>();
+
+  int getdomainname(
+    ffi.Pointer<ffi.Char> __name,
+    int __len,
+  ) {
+    return _getdomainname(
+      __name,
+      __len,
+    );
+  }
+
+  late final _getdomainnamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('getdomainname');
+  late final _getdomainname =
+      _getdomainnamePtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int setdomainname(
+    ffi.Pointer<ffi.Char> __name,
+    int __len,
+  ) {
+    return _setdomainname(
+      __name,
+      __len,
+    );
+  }
+
+  late final _setdomainnamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('setdomainname');
+  late final _setdomainname =
+      _setdomainnamePtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int vhangup() {
+    return _vhangup();
+  }
+
+  late final _vhangupPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('vhangup');
+  late final _vhangup = _vhangupPtr.asFunction<int Function()>();
+
+  int revoke(
+    ffi.Pointer<ffi.Char> __file,
+  ) {
+    return _revoke(
+      __file,
+    );
+  }
+
+  late final _revokePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'revoke');
+  late final _revoke =
+      _revokePtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int profil(
+    ffi.Pointer<ffi.UnsignedShort> __sample_buffer,
+    int __size,
+    int __offset,
+    int __scale,
+  ) {
+    return _profil(
+      __sample_buffer,
+      __size,
+      __offset,
+      __scale,
+    );
+  }
+
+  late final _profilPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.UnsignedShort>, ffi.Size, ffi.Size,
+              ffi.UnsignedInt)>>('profil');
+  late final _profil = _profilPtr.asFunction<
+      int Function(ffi.Pointer<ffi.UnsignedShort>, int, int, int)>();
+
+  int acct(
+    ffi.Pointer<ffi.Char> __name,
+  ) {
+    return _acct(
+      __name,
+    );
+  }
+
+  late final _acctPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'acct');
+  late final _acct = _acctPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> getusershell() {
+    return _getusershell();
+  }
+
+  late final _getusershellPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'getusershell');
+  late final _getusershell =
+      _getusershellPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  void endusershell() {
+    return _endusershell();
+  }
+
+  late final _endusershellPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('endusershell');
+  late final _endusershell = _endusershellPtr.asFunction<void Function()>();
+
+  void setusershell() {
+    return _setusershell();
+  }
+
+  late final _setusershellPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('setusershell');
+  late final _setusershell = _setusershellPtr.asFunction<void Function()>();
+
+  int daemon(
+    int __nochdir,
+    int __noclose,
+  ) {
+    return _daemon(
+      __nochdir,
+      __noclose,
+    );
+  }
+
+  late final _daemonPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>('daemon');
+  late final _daemon = _daemonPtr.asFunction<int Function(int, int)>();
+
+  int chroot(
+    ffi.Pointer<ffi.Char> __path,
+  ) {
+    return _chroot(
+      __path,
+    );
+  }
+
+  late final _chrootPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'chroot');
+  late final _chroot =
+      _chrootPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> getpass(
+    ffi.Pointer<ffi.Char> __prompt,
+  ) {
+    return _getpass(
+      __prompt,
+    );
+  }
+
+  late final _getpassPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('getpass');
+  late final _getpass = _getpassPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  int fsync(
+    int __fd,
+  ) {
+    return _fsync(
+      __fd,
+    );
+  }
+
+  late final _fsyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('fsync');
+  late final _fsync = _fsyncPtr.asFunction<int Function(int)>();
+
+  int gethostid() {
+    return _gethostid();
+  }
+
+  late final _gethostidPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function()>>('gethostid');
+  late final _gethostid = _gethostidPtr.asFunction<int Function()>();
+
+  void sync1() {
+    return _sync1();
+  }
+
+  late final _sync1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('sync');
+  late final _sync1 = _sync1Ptr.asFunction<void Function()>();
+
+  int getpagesize() {
+    return _getpagesize();
+  }
+
+  late final _getpagesizePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('getpagesize');
+  late final _getpagesize = _getpagesizePtr.asFunction<int Function()>();
+
+  int getdtablesize() {
+    return _getdtablesize();
+  }
+
+  late final _getdtablesizePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('getdtablesize');
+  late final _getdtablesize = _getdtablesizePtr.asFunction<int Function()>();
+
+  int truncate(
+    ffi.Pointer<ffi.Char> __file,
+    int __length,
+  ) {
+    return _truncate(
+      __file,
+      __length,
+    );
+  }
+
+  late final _truncatePtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>, __off_t)>>(
+      'truncate');
+  late final _truncate =
+      _truncatePtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int ftruncate(
+    int __fd,
+    int __length,
+  ) {
+    return _ftruncate(
+      __fd,
+      __length,
+    );
+  }
+
+  late final _ftruncatePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, __off_t)>>(
+          'ftruncate');
+  late final _ftruncate = _ftruncatePtr.asFunction<int Function(int, int)>();
+
+  int brk(
+    ffi.Pointer<ffi.Void> __addr,
+  ) {
+    return _brk(
+      __addr,
+    );
+  }
+
+  late final _brkPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>(
+          'brk');
+  late final _brk = _brkPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> sbrk(
+    int __delta,
+  ) {
+    return _sbrk(
+      __delta,
+    );
+  }
+
+  late final _sbrkPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.IntPtr)>>(
+          'sbrk');
+  late final _sbrk = _sbrkPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
+
+  int syscall(
+    int __sysno,
+  ) {
+    return _syscall(
+      __sysno,
+    );
+  }
+
+  late final _syscallPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Long)>>('syscall');
+  late final _syscall = _syscallPtr.asFunction<int Function(int)>();
+
+  int lockf(
+    int __fd,
+    int __cmd,
+    int __len,
+  ) {
+    return _lockf(
+      __fd,
+      __cmd,
+      __len,
+    );
+  }
+
+  late final _lockfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, __off_t)>>(
+          'lockf');
+  late final _lockf = _lockfPtr.asFunction<int Function(int, int, int)>();
+
+  int fdatasync(
+    int __fildes,
+  ) {
+    return _fdatasync(
+      __fildes,
+    );
+  }
+
+  late final _fdatasyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('fdatasync');
+  late final _fdatasync = _fdatasyncPtr.asFunction<int Function(int)>();
+
+  ffi.Pointer<ffi.Char> crypt(
+    ffi.Pointer<ffi.Char> __key,
+    ffi.Pointer<ffi.Char> __salt,
+  ) {
+    return _crypt(
+      __key,
+      __salt,
+    );
+  }
+
+  late final _cryptPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('crypt');
+  late final _crypt = _cryptPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int getentropy(
+    ffi.Pointer<ffi.Void> __buffer,
+    int __length,
+  ) {
+    return _getentropy(
+      __buffer,
+      __length,
+    );
+  }
+
+  late final _getentropyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Size)>>('getentropy');
+  late final _getentropy =
+      _getentropyPtr.asFunction<int Function(ffi.Pointer<ffi.Void>, int)>();
 
   int g_credentials_get_type() {
     return _g_credentials_get_type();
@@ -76691,7 +83774,4907 @@ class NativeLibrary {
   late final _g_zlib_decompressor_get_file_info =
       _g_zlib_decompressor_get_file_infoPtr.asFunction<
           ffi.Pointer<GFileInfo> Function(ffi.Pointer<GZlibDecompressor>)>();
+
+  int flatpak_error_get_type() {
+    return _flatpak_error_get_type();
+  }
+
+  late final _flatpak_error_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('flatpak_error_get_type');
+  late final _flatpak_error_get_type =
+      _flatpak_error_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_update_flags_get_type() {
+    return _flatpak_update_flags_get_type();
+  }
+
+  late final _flatpak_update_flags_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_update_flags_get_type');
+  late final _flatpak_update_flags_get_type =
+      _flatpak_update_flags_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_install_flags_get_type() {
+    return _flatpak_install_flags_get_type();
+  }
+
+  late final _flatpak_install_flags_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_install_flags_get_type');
+  late final _flatpak_install_flags_get_type =
+      _flatpak_install_flags_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_uninstall_flags_get_type() {
+    return _flatpak_uninstall_flags_get_type();
+  }
+
+  late final _flatpak_uninstall_flags_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_uninstall_flags_get_type');
+  late final _flatpak_uninstall_flags_get_type =
+      _flatpak_uninstall_flags_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_launch_flags_get_type() {
+    return _flatpak_launch_flags_get_type();
+  }
+
+  late final _flatpak_launch_flags_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_launch_flags_get_type');
+  late final _flatpak_launch_flags_get_type =
+      _flatpak_launch_flags_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_query_flags_get_type() {
+    return _flatpak_query_flags_get_type();
+  }
+
+  late final _flatpak_query_flags_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_query_flags_get_type');
+  late final _flatpak_query_flags_get_type =
+      _flatpak_query_flags_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_storage_type_get_type() {
+    return _flatpak_storage_type_get_type();
+  }
+
+  late final _flatpak_storage_type_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_storage_type_get_type');
+  late final _flatpak_storage_type_get_type =
+      _flatpak_storage_type_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_portal_error_get_type() {
+    return _flatpak_portal_error_get_type();
+  }
+
+  late final _flatpak_portal_error_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_portal_error_get_type');
+  late final _flatpak_portal_error_get_type =
+      _flatpak_portal_error_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_ref_kind_get_type() {
+    return _flatpak_ref_kind_get_type();
+  }
+
+  late final _flatpak_ref_kind_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_ref_kind_get_type');
+  late final _flatpak_ref_kind_get_type =
+      _flatpak_ref_kind_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_remote_type_get_type() {
+    return _flatpak_remote_type_get_type();
+  }
+
+  late final _flatpak_remote_type_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_remote_type_get_type');
+  late final _flatpak_remote_type_get_type =
+      _flatpak_remote_type_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_transaction_operation_type_get_type() {
+    return _flatpak_transaction_operation_type_get_type();
+  }
+
+  late final _flatpak_transaction_operation_type_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_transaction_operation_type_get_type');
+  late final _flatpak_transaction_operation_type_get_type =
+      _flatpak_transaction_operation_type_get_typePtr
+          .asFunction<int Function()>();
+
+  int flatpak_transaction_error_details_get_type() {
+    return _flatpak_transaction_error_details_get_type();
+  }
+
+  late final _flatpak_transaction_error_details_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_transaction_error_details_get_type');
+  late final _flatpak_transaction_error_details_get_type =
+      _flatpak_transaction_error_details_get_typePtr
+          .asFunction<int Function()>();
+
+  int flatpak_transaction_result_get_type() {
+    return _flatpak_transaction_result_get_type();
+  }
+
+  late final _flatpak_transaction_result_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_transaction_result_get_type');
+  late final _flatpak_transaction_result_get_type =
+      _flatpak_transaction_result_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_transaction_remote_reason_get_type() {
+    return _flatpak_transaction_remote_reason_get_type();
+  }
+
+  late final _flatpak_transaction_remote_reason_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_transaction_remote_reason_get_type');
+  late final _flatpak_transaction_remote_reason_get_type =
+      _flatpak_transaction_remote_reason_get_typePtr
+          .asFunction<int Function()>();
+
+  int flatpak_error_quark() {
+    return _flatpak_error_quark();
+  }
+
+  late final _flatpak_error_quarkPtr =
+      _lookup<ffi.NativeFunction<GQuark Function()>>('flatpak_error_quark');
+  late final _flatpak_error_quark =
+      _flatpak_error_quarkPtr.asFunction<int Function()>();
+
+  int flatpak_portal_error_quark() {
+    return _flatpak_portal_error_quark();
+  }
+
+  late final _flatpak_portal_error_quarkPtr =
+      _lookup<ffi.NativeFunction<GQuark Function()>>(
+          'flatpak_portal_error_quark');
+  late final _flatpak_portal_error_quark =
+      _flatpak_portal_error_quarkPtr.asFunction<int Function()>();
+
+  int flatpak_ref_get_type() {
+    return _flatpak_ref_get_type();
+  }
+
+  late final _flatpak_ref_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('flatpak_ref_get_type');
+  late final _flatpak_ref_get_type =
+      _flatpak_ref_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Char> flatpak_ref_get_name(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_get_name(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_get_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRef>)>>('flatpak_ref_get_name');
+  late final _flatpak_ref_get_name = _flatpak_ref_get_namePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_ref_get_arch(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_get_arch(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_get_archPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRef>)>>('flatpak_ref_get_arch');
+  late final _flatpak_ref_get_arch = _flatpak_ref_get_archPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_ref_get_branch(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_get_branch(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_get_branchPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRef>)>>('flatpak_ref_get_branch');
+  late final _flatpak_ref_get_branch = _flatpak_ref_get_branchPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_ref_get_commit(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_get_commit(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_get_commitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRef>)>>('flatpak_ref_get_commit');
+  late final _flatpak_ref_get_commit = _flatpak_ref_get_commitPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRef>)>();
+
+  int flatpak_ref_get_kind(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_get_kind(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_get_kindPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FlatpakRef>)>>(
+          'flatpak_ref_get_kind');
+  late final _flatpak_ref_get_kind = _flatpak_ref_get_kindPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_ref_format_ref(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_format_ref(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_format_refPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRef>)>>('flatpak_ref_format_ref');
+  late final _flatpak_ref_format_ref = _flatpak_ref_format_refPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_ref_format_ref_cached(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_format_ref_cached(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_format_ref_cachedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRef>)>>('flatpak_ref_format_ref_cached');
+  late final _flatpak_ref_format_ref_cached = _flatpak_ref_format_ref_cachedPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRef>)>();
+
+  ffi.Pointer<FlatpakRef> flatpak_ref_parse(
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_ref_parse(
+      ref,
+      error,
+    );
+  }
+
+  late final _flatpak_ref_parsePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<FlatpakRef> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('flatpak_ref_parse');
+  late final _flatpak_ref_parse = _flatpak_ref_parsePtr.asFunction<
+      ffi.Pointer<FlatpakRef> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_ref_get_collection_id(
+    ffi.Pointer<FlatpakRef> self,
+  ) {
+    return _flatpak_ref_get_collection_id(
+      self,
+    );
+  }
+
+  late final _flatpak_ref_get_collection_idPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRef>)>>('flatpak_ref_get_collection_id');
+  late final _flatpak_ref_get_collection_id = _flatpak_ref_get_collection_idPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRef>)>();
+
+  int flatpak_installed_ref_get_type() {
+    return _flatpak_installed_ref_get_type();
+  }
+
+  late final _flatpak_installed_ref_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_installed_ref_get_type');
+  late final _flatpak_installed_ref_get_type =
+      _flatpak_installed_ref_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_origin(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_origin(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_originPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_origin');
+  late final _flatpak_installed_ref_get_origin =
+      _flatpak_installed_ref_get_originPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> flatpak_installed_ref_get_subpaths(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_subpaths(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_subpathsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_subpaths');
+  late final _flatpak_installed_ref_get_subpaths =
+      _flatpak_installed_ref_get_subpathsPtr.asFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<FlatpakInstalledRef>)>();
+
+  int flatpak_installed_ref_get_installed_size(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_installed_size(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_installed_sizePtr = _lookup<
+          ffi
+          .NativeFunction<guint64 Function(ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_installed_size');
+  late final _flatpak_installed_ref_get_installed_size =
+      _flatpak_installed_ref_get_installed_sizePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_deploy_dir(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_deploy_dir(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_deploy_dirPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_deploy_dir');
+  late final _flatpak_installed_ref_get_deploy_dir =
+      _flatpak_installed_ref_get_deploy_dirPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_latest_commit(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_latest_commit(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_latest_commitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_latest_commit');
+  late final _flatpak_installed_ref_get_latest_commit =
+      _flatpak_installed_ref_get_latest_commitPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_appdata_name(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_appdata_name(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_appdata_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_appdata_name');
+  late final _flatpak_installed_ref_get_appdata_name =
+      _flatpak_installed_ref_get_appdata_namePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_appdata_summary(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_appdata_summary(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_appdata_summaryPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_appdata_summary');
+  late final _flatpak_installed_ref_get_appdata_summary =
+      _flatpak_installed_ref_get_appdata_summaryPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_appdata_version(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_appdata_version(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_appdata_versionPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_appdata_version');
+  late final _flatpak_installed_ref_get_appdata_version =
+      _flatpak_installed_ref_get_appdata_versionPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_appdata_license(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_appdata_license(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_appdata_licensePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_appdata_license');
+  late final _flatpak_installed_ref_get_appdata_license =
+      _flatpak_installed_ref_get_appdata_licensePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_appdata_content_rating_type(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_appdata_content_rating_type(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_appdata_content_rating_typePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<ffi.Char> Function(
+                      ffi.Pointer<FlatpakInstalledRef>)>>(
+          'flatpak_installed_ref_get_appdata_content_rating_type');
+  late final _flatpak_installed_ref_get_appdata_content_rating_type =
+      _flatpak_installed_ref_get_appdata_content_rating_typePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<GHashTable> flatpak_installed_ref_get_appdata_content_rating(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_appdata_content_rating(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_appdata_content_ratingPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GHashTable> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_appdata_content_rating');
+  late final _flatpak_installed_ref_get_appdata_content_rating =
+      _flatpak_installed_ref_get_appdata_content_ratingPtr.asFunction<
+          ffi.Pointer<GHashTable> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  int flatpak_installed_ref_get_is_current(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_is_current(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_is_currentPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_is_current');
+  late final _flatpak_installed_ref_get_is_current =
+      _flatpak_installed_ref_get_is_currentPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<GBytes> flatpak_installed_ref_load_metadata(
+    ffi.Pointer<FlatpakInstalledRef> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installed_ref_load_metadata(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installed_ref_load_metadataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GBytes> Function(
+                  ffi.Pointer<FlatpakInstalledRef>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installed_ref_load_metadata');
+  late final _flatpak_installed_ref_load_metadata =
+      _flatpak_installed_ref_load_metadataPtr.asFunction<
+          ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakInstalledRef>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GBytes> flatpak_installed_ref_load_appdata(
+    ffi.Pointer<FlatpakInstalledRef> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installed_ref_load_appdata(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installed_ref_load_appdataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GBytes> Function(
+                  ffi.Pointer<FlatpakInstalledRef>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installed_ref_load_appdata');
+  late final _flatpak_installed_ref_load_appdata =
+      _flatpak_installed_ref_load_appdataPtr.asFunction<
+          ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakInstalledRef>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_eol(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_eol(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_eolPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_eol');
+  late final _flatpak_installed_ref_get_eol =
+      _flatpak_installed_ref_get_eolPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installed_ref_get_eol_rebase(
+    ffi.Pointer<FlatpakInstalledRef> self,
+  ) {
+    return _flatpak_installed_ref_get_eol_rebase(
+      self,
+    );
+  }
+
+  late final _flatpak_installed_ref_get_eol_rebasePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstalledRef>)>>(
+      'flatpak_installed_ref_get_eol_rebase');
+  late final _flatpak_installed_ref_get_eol_rebase =
+      _flatpak_installed_ref_get_eol_rebasePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstalledRef>)>();
+
+  int flatpak_remote_ref_get_type() {
+    return _flatpak_remote_ref_get_type();
+  }
+
+  late final _flatpak_remote_ref_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_remote_ref_get_type');
+  late final _flatpak_remote_ref_get_type =
+      _flatpak_remote_ref_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_ref_get_remote_name(
+    ffi.Pointer<FlatpakRemoteRef> self,
+  ) {
+    return _flatpak_remote_ref_get_remote_name(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_ref_get_remote_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemoteRef>)>>(
+      'flatpak_remote_ref_get_remote_name');
+  late final _flatpak_remote_ref_get_remote_name =
+      _flatpak_remote_ref_get_remote_namePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemoteRef>)>();
+
+  int flatpak_remote_ref_get_installed_size(
+    ffi.Pointer<FlatpakRemoteRef> self,
+  ) {
+    return _flatpak_remote_ref_get_installed_size(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_ref_get_installed_sizePtr = _lookup<
+          ffi.NativeFunction<guint64 Function(ffi.Pointer<FlatpakRemoteRef>)>>(
+      'flatpak_remote_ref_get_installed_size');
+  late final _flatpak_remote_ref_get_installed_size =
+      _flatpak_remote_ref_get_installed_sizePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakRemoteRef>)>();
+
+  int flatpak_remote_ref_get_download_size(
+    ffi.Pointer<FlatpakRemoteRef> self,
+  ) {
+    return _flatpak_remote_ref_get_download_size(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_ref_get_download_sizePtr = _lookup<
+          ffi.NativeFunction<guint64 Function(ffi.Pointer<FlatpakRemoteRef>)>>(
+      'flatpak_remote_ref_get_download_size');
+  late final _flatpak_remote_ref_get_download_size =
+      _flatpak_remote_ref_get_download_sizePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakRemoteRef>)>();
+
+  ffi.Pointer<GBytes> flatpak_remote_ref_get_metadata(
+    ffi.Pointer<FlatpakRemoteRef> self,
+  ) {
+    return _flatpak_remote_ref_get_metadata(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_ref_get_metadataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakRemoteRef>)>>(
+      'flatpak_remote_ref_get_metadata');
+  late final _flatpak_remote_ref_get_metadata =
+      _flatpak_remote_ref_get_metadataPtr.asFunction<
+          ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakRemoteRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_ref_get_eol(
+    ffi.Pointer<FlatpakRemoteRef> self,
+  ) {
+    return _flatpak_remote_ref_get_eol(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_ref_get_eolPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemoteRef>)>>('flatpak_remote_ref_get_eol');
+  late final _flatpak_remote_ref_get_eol =
+      _flatpak_remote_ref_get_eolPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemoteRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_ref_get_eol_rebase(
+    ffi.Pointer<FlatpakRemoteRef> self,
+  ) {
+    return _flatpak_remote_ref_get_eol_rebase(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_ref_get_eol_rebasePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemoteRef>)>>(
+      'flatpak_remote_ref_get_eol_rebase');
+  late final _flatpak_remote_ref_get_eol_rebase =
+      _flatpak_remote_ref_get_eol_rebasePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemoteRef>)>();
+
+  int flatpak_related_ref_get_type() {
+    return _flatpak_related_ref_get_type();
+  }
+
+  late final _flatpak_related_ref_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_related_ref_get_type');
+  late final _flatpak_related_ref_get_type =
+      _flatpak_related_ref_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> flatpak_related_ref_get_subpaths(
+    ffi.Pointer<FlatpakRelatedRef> self,
+  ) {
+    return _flatpak_related_ref_get_subpaths(
+      self,
+    );
+  }
+
+  late final _flatpak_related_ref_get_subpathsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                  ffi.Pointer<FlatpakRelatedRef>)>>(
+      'flatpak_related_ref_get_subpaths');
+  late final _flatpak_related_ref_get_subpaths =
+      _flatpak_related_ref_get_subpathsPtr.asFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<FlatpakRelatedRef>)>();
+
+  int flatpak_related_ref_should_download(
+    ffi.Pointer<FlatpakRelatedRef> self,
+  ) {
+    return _flatpak_related_ref_should_download(
+      self,
+    );
+  }
+
+  late final _flatpak_related_ref_should_downloadPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakRelatedRef>)>>(
+      'flatpak_related_ref_should_download');
+  late final _flatpak_related_ref_should_download =
+      _flatpak_related_ref_should_downloadPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakRelatedRef>)>();
+
+  int flatpak_related_ref_should_delete(
+    ffi.Pointer<FlatpakRelatedRef> self,
+  ) {
+    return _flatpak_related_ref_should_delete(
+      self,
+    );
+  }
+
+  late final _flatpak_related_ref_should_deletePtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakRelatedRef>)>>(
+      'flatpak_related_ref_should_delete');
+  late final _flatpak_related_ref_should_delete =
+      _flatpak_related_ref_should_deletePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakRelatedRef>)>();
+
+  int flatpak_related_ref_should_autoprune(
+    ffi.Pointer<FlatpakRelatedRef> self,
+  ) {
+    return _flatpak_related_ref_should_autoprune(
+      self,
+    );
+  }
+
+  late final _flatpak_related_ref_should_autoprunePtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakRelatedRef>)>>(
+      'flatpak_related_ref_should_autoprune');
+  late final _flatpak_related_ref_should_autoprune =
+      _flatpak_related_ref_should_autoprunePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakRelatedRef>)>();
+
+  int flatpak_bundle_ref_get_type() {
+    return _flatpak_bundle_ref_get_type();
+  }
+
+  late final _flatpak_bundle_ref_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_bundle_ref_get_type');
+  late final _flatpak_bundle_ref_get_type =
+      _flatpak_bundle_ref_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<FlatpakBundleRef> flatpak_bundle_ref_new(
+    ffi.Pointer<GFile> file,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_bundle_ref_new(
+      file,
+      error,
+    );
+  }
+
+  late final _flatpak_bundle_ref_newPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<FlatpakBundleRef> Function(ffi.Pointer<GFile>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('flatpak_bundle_ref_new');
+  late final _flatpak_bundle_ref_new = _flatpak_bundle_ref_newPtr.asFunction<
+      ffi.Pointer<FlatpakBundleRef> Function(
+          ffi.Pointer<GFile>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GFile> flatpak_bundle_ref_get_file(
+    ffi.Pointer<FlatpakBundleRef> self,
+  ) {
+    return _flatpak_bundle_ref_get_file(
+      self,
+    );
+  }
+
+  late final _flatpak_bundle_ref_get_filePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GFile> Function(
+              ffi.Pointer<FlatpakBundleRef>)>>('flatpak_bundle_ref_get_file');
+  late final _flatpak_bundle_ref_get_file = _flatpak_bundle_ref_get_filePtr
+      .asFunction<ffi.Pointer<GFile> Function(ffi.Pointer<FlatpakBundleRef>)>();
+
+  ffi.Pointer<GBytes> flatpak_bundle_ref_get_metadata(
+    ffi.Pointer<FlatpakBundleRef> self,
+  ) {
+    return _flatpak_bundle_ref_get_metadata(
+      self,
+    );
+  }
+
+  late final _flatpak_bundle_ref_get_metadataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakBundleRef>)>>(
+      'flatpak_bundle_ref_get_metadata');
+  late final _flatpak_bundle_ref_get_metadata =
+      _flatpak_bundle_ref_get_metadataPtr.asFunction<
+          ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakBundleRef>)>();
+
+  ffi.Pointer<GBytes> flatpak_bundle_ref_get_appstream(
+    ffi.Pointer<FlatpakBundleRef> self,
+  ) {
+    return _flatpak_bundle_ref_get_appstream(
+      self,
+    );
+  }
+
+  late final _flatpak_bundle_ref_get_appstreamPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakBundleRef>)>>(
+      'flatpak_bundle_ref_get_appstream');
+  late final _flatpak_bundle_ref_get_appstream =
+      _flatpak_bundle_ref_get_appstreamPtr.asFunction<
+          ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakBundleRef>)>();
+
+  ffi.Pointer<GBytes> flatpak_bundle_ref_get_icon(
+    ffi.Pointer<FlatpakBundleRef> self,
+    int size,
+  ) {
+    return _flatpak_bundle_ref_get_icon(
+      self,
+      size,
+    );
+  }
+
+  late final _flatpak_bundle_ref_get_iconPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakBundleRef>,
+              ffi.Int)>>('flatpak_bundle_ref_get_icon');
+  late final _flatpak_bundle_ref_get_icon =
+      _flatpak_bundle_ref_get_iconPtr.asFunction<
+          ffi.Pointer<GBytes> Function(ffi.Pointer<FlatpakBundleRef>, int)>();
+
+  ffi.Pointer<ffi.Char> flatpak_bundle_ref_get_origin(
+    ffi.Pointer<FlatpakBundleRef> self,
+  ) {
+    return _flatpak_bundle_ref_get_origin(
+      self,
+    );
+  }
+
+  late final _flatpak_bundle_ref_get_originPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakBundleRef>)>>('flatpak_bundle_ref_get_origin');
+  late final _flatpak_bundle_ref_get_origin =
+      _flatpak_bundle_ref_get_originPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakBundleRef>)>();
+
+  int flatpak_bundle_ref_get_installed_size(
+    ffi.Pointer<FlatpakBundleRef> self,
+  ) {
+    return _flatpak_bundle_ref_get_installed_size(
+      self,
+    );
+  }
+
+  late final _flatpak_bundle_ref_get_installed_sizePtr = _lookup<
+          ffi.NativeFunction<guint64 Function(ffi.Pointer<FlatpakBundleRef>)>>(
+      'flatpak_bundle_ref_get_installed_size');
+  late final _flatpak_bundle_ref_get_installed_size =
+      _flatpak_bundle_ref_get_installed_sizePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakBundleRef>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_bundle_ref_get_runtime_repo_url(
+    ffi.Pointer<FlatpakBundleRef> self,
+  ) {
+    return _flatpak_bundle_ref_get_runtime_repo_url(
+      self,
+    );
+  }
+
+  late final _flatpak_bundle_ref_get_runtime_repo_urlPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakBundleRef>)>>(
+      'flatpak_bundle_ref_get_runtime_repo_url');
+  late final _flatpak_bundle_ref_get_runtime_repo_url =
+      _flatpak_bundle_ref_get_runtime_repo_urlPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakBundleRef>)>();
+
+  int flatpak_remote_get_type() {
+    return _flatpak_remote_get_type();
+  }
+
+  late final _flatpak_remote_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>('flatpak_remote_get_type');
+  late final _flatpak_remote_get_type =
+      _flatpak_remote_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<FlatpakRemote> flatpak_remote_new(
+    ffi.Pointer<ffi.Char> name,
+  ) {
+    return _flatpak_remote_new(
+      name,
+    );
+  }
+
+  late final _flatpak_remote_newPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<FlatpakRemote> Function(
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_new');
+  late final _flatpak_remote_new = _flatpak_remote_newPtr
+      .asFunction<ffi.Pointer<FlatpakRemote> Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<FlatpakRemote> flatpak_remote_new_from_file(
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<GBytes> data,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_remote_new_from_file(
+      name,
+      data,
+      error,
+    );
+  }
+
+  late final _flatpak_remote_new_from_filePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakRemote> Function(ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GBytes>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_remote_new_from_file');
+  late final _flatpak_remote_new_from_file =
+      _flatpak_remote_new_from_filePtr.asFunction<
+          ffi.Pointer<FlatpakRemote> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GBytes>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_name(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_name(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_name');
+  late final _flatpak_remote_get_name = _flatpak_remote_get_namePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  ffi.Pointer<GFile> flatpak_remote_get_appstream_dir(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> arch,
+  ) {
+    return _flatpak_remote_get_appstream_dir(
+      self,
+      arch,
+    );
+  }
+
+  late final _flatpak_remote_get_appstream_dirPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GFile> Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_get_appstream_dir');
+  late final _flatpak_remote_get_appstream_dir =
+      _flatpak_remote_get_appstream_dirPtr.asFunction<
+          ffi.Pointer<GFile> Function(
+              ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<GFile> flatpak_remote_get_appstream_timestamp(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> arch,
+  ) {
+    return _flatpak_remote_get_appstream_timestamp(
+      self,
+      arch,
+    );
+  }
+
+  late final _flatpak_remote_get_appstream_timestampPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GFile> Function(
+                  ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>>(
+      'flatpak_remote_get_appstream_timestamp');
+  late final _flatpak_remote_get_appstream_timestamp =
+      _flatpak_remote_get_appstream_timestampPtr.asFunction<
+          ffi.Pointer<GFile> Function(
+              ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_url(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_url(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_urlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_url');
+  late final _flatpak_remote_get_url = _flatpak_remote_get_urlPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_url(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> url,
+  ) {
+    return _flatpak_remote_set_url(
+      self,
+      url,
+    );
+  }
+
+  late final _flatpak_remote_set_urlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_url');
+  late final _flatpak_remote_set_url = _flatpak_remote_set_urlPtr.asFunction<
+      void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_collection_id(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_collection_id(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_collection_idPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_collection_id');
+  late final _flatpak_remote_get_collection_id =
+      _flatpak_remote_get_collection_idPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_collection_id(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> collection_id,
+  ) {
+    return _flatpak_remote_set_collection_id(
+      self,
+      collection_id,
+    );
+  }
+
+  late final _flatpak_remote_set_collection_idPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_collection_id');
+  late final _flatpak_remote_set_collection_id =
+      _flatpak_remote_set_collection_idPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_title(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_title(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_titlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_title');
+  late final _flatpak_remote_get_title = _flatpak_remote_get_titlePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_title(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> title,
+  ) {
+    return _flatpak_remote_set_title(
+      self,
+      title,
+    );
+  }
+
+  late final _flatpak_remote_set_titlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_title');
+  late final _flatpak_remote_set_title =
+      _flatpak_remote_set_titlePtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_comment(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_comment(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_commentPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_comment');
+  late final _flatpak_remote_get_comment = _flatpak_remote_get_commentPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_comment(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> comment,
+  ) {
+    return _flatpak_remote_set_comment(
+      self,
+      comment,
+    );
+  }
+
+  late final _flatpak_remote_set_commentPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_comment');
+  late final _flatpak_remote_set_comment =
+      _flatpak_remote_set_commentPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_description(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_description(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_descriptionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_description');
+  late final _flatpak_remote_get_description =
+      _flatpak_remote_get_descriptionPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_description(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> description,
+  ) {
+    return _flatpak_remote_set_description(
+      self,
+      description,
+    );
+  }
+
+  late final _flatpak_remote_set_descriptionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_description');
+  late final _flatpak_remote_set_description =
+      _flatpak_remote_set_descriptionPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_homepage(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_homepage(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_homepagePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_homepage');
+  late final _flatpak_remote_get_homepage = _flatpak_remote_get_homepagePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_homepage(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> homepage,
+  ) {
+    return _flatpak_remote_set_homepage(
+      self,
+      homepage,
+    );
+  }
+
+  late final _flatpak_remote_set_homepagePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_homepage');
+  late final _flatpak_remote_set_homepage =
+      _flatpak_remote_set_homepagePtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_icon(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_icon(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_iconPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_icon');
+  late final _flatpak_remote_get_icon = _flatpak_remote_get_iconPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_icon(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> icon,
+  ) {
+    return _flatpak_remote_set_icon(
+      self,
+      icon,
+    );
+  }
+
+  late final _flatpak_remote_set_iconPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_icon');
+  late final _flatpak_remote_set_icon = _flatpak_remote_set_iconPtr.asFunction<
+      void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_default_branch(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_default_branch(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_default_branchPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>>(
+      'flatpak_remote_get_default_branch');
+  late final _flatpak_remote_get_default_branch =
+      _flatpak_remote_get_default_branchPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_default_branch(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> default_branch,
+  ) {
+    return _flatpak_remote_set_default_branch(
+      self,
+      default_branch,
+    );
+  }
+
+  late final _flatpak_remote_set_default_branchPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_default_branch');
+  late final _flatpak_remote_set_default_branch =
+      _flatpak_remote_set_default_branchPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_main_ref(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_main_ref(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_main_refPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_main_ref');
+  late final _flatpak_remote_get_main_ref = _flatpak_remote_get_main_refPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_main_ref(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> main_ref,
+  ) {
+    return _flatpak_remote_set_main_ref(
+      self,
+      main_ref,
+    );
+  }
+
+  late final _flatpak_remote_set_main_refPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_main_ref');
+  late final _flatpak_remote_set_main_ref =
+      _flatpak_remote_set_main_refPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  int flatpak_remote_get_gpg_verify(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_gpg_verify(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_gpg_verifyPtr = _lookup<
+          ffi.NativeFunction<gboolean Function(ffi.Pointer<FlatpakRemote>)>>(
+      'flatpak_remote_get_gpg_verify');
+  late final _flatpak_remote_get_gpg_verify = _flatpak_remote_get_gpg_verifyPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_gpg_verify(
+    ffi.Pointer<FlatpakRemote> self,
+    int gpg_verify,
+  ) {
+    return _flatpak_remote_set_gpg_verify(
+      self,
+      gpg_verify,
+    );
+  }
+
+  late final _flatpak_remote_set_gpg_verifyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              gboolean)>>('flatpak_remote_set_gpg_verify');
+  late final _flatpak_remote_set_gpg_verify = _flatpak_remote_set_gpg_verifyPtr
+      .asFunction<void Function(ffi.Pointer<FlatpakRemote>, int)>();
+
+  void flatpak_remote_set_gpg_key(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<GBytes> gpg_key,
+  ) {
+    return _flatpak_remote_set_gpg_key(
+      self,
+      gpg_key,
+    );
+  }
+
+  late final _flatpak_remote_set_gpg_keyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<GBytes>)>>('flatpak_remote_set_gpg_key');
+  late final _flatpak_remote_set_gpg_key =
+      _flatpak_remote_set_gpg_keyPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<GBytes>)>();
+
+  int flatpak_remote_get_noenumerate(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_noenumerate(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_noenumeratePtr = _lookup<
+          ffi.NativeFunction<gboolean Function(ffi.Pointer<FlatpakRemote>)>>(
+      'flatpak_remote_get_noenumerate');
+  late final _flatpak_remote_get_noenumerate =
+      _flatpak_remote_get_noenumeratePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_noenumerate(
+    ffi.Pointer<FlatpakRemote> self,
+    int noenumerate,
+  ) {
+    return _flatpak_remote_set_noenumerate(
+      self,
+      noenumerate,
+    );
+  }
+
+  late final _flatpak_remote_set_noenumeratePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              gboolean)>>('flatpak_remote_set_noenumerate');
+  late final _flatpak_remote_set_noenumerate =
+      _flatpak_remote_set_noenumeratePtr
+          .asFunction<void Function(ffi.Pointer<FlatpakRemote>, int)>();
+
+  int flatpak_remote_get_nodeps(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_nodeps(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_nodepsPtr = _lookup<
+          ffi.NativeFunction<gboolean Function(ffi.Pointer<FlatpakRemote>)>>(
+      'flatpak_remote_get_nodeps');
+  late final _flatpak_remote_get_nodeps = _flatpak_remote_get_nodepsPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_nodeps(
+    ffi.Pointer<FlatpakRemote> self,
+    int nodeps,
+  ) {
+    return _flatpak_remote_set_nodeps(
+      self,
+      nodeps,
+    );
+  }
+
+  late final _flatpak_remote_set_nodepsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              gboolean)>>('flatpak_remote_set_nodeps');
+  late final _flatpak_remote_set_nodeps = _flatpak_remote_set_nodepsPtr
+      .asFunction<void Function(ffi.Pointer<FlatpakRemote>, int)>();
+
+  int flatpak_remote_get_disabled(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_disabled(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_disabledPtr = _lookup<
+          ffi.NativeFunction<gboolean Function(ffi.Pointer<FlatpakRemote>)>>(
+      'flatpak_remote_get_disabled');
+  late final _flatpak_remote_get_disabled = _flatpak_remote_get_disabledPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_disabled(
+    ffi.Pointer<FlatpakRemote> self,
+    int disabled,
+  ) {
+    return _flatpak_remote_set_disabled(
+      self,
+      disabled,
+    );
+  }
+
+  late final _flatpak_remote_set_disabledPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              gboolean)>>('flatpak_remote_set_disabled');
+  late final _flatpak_remote_set_disabled = _flatpak_remote_set_disabledPtr
+      .asFunction<void Function(ffi.Pointer<FlatpakRemote>, int)>();
+
+  int flatpak_remote_get_prio(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_prio(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_prioPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FlatpakRemote>)>>(
+          'flatpak_remote_get_prio');
+  late final _flatpak_remote_get_prio = _flatpak_remote_get_prioPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_prio(
+    ffi.Pointer<FlatpakRemote> self,
+    int prio,
+  ) {
+    return _flatpak_remote_set_prio(
+      self,
+      prio,
+    );
+  }
+
+  late final _flatpak_remote_set_prioPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<FlatpakRemote>, ffi.Int)>>('flatpak_remote_set_prio');
+  late final _flatpak_remote_set_prio = _flatpak_remote_set_prioPtr
+      .asFunction<void Function(ffi.Pointer<FlatpakRemote>, int)>();
+
+  ffi.Pointer<ffi.Char> flatpak_remote_get_filter(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_filter(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_filterPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakRemote>)>>('flatpak_remote_get_filter');
+  late final _flatpak_remote_get_filter = _flatpak_remote_get_filterPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakRemote>)>();
+
+  void flatpak_remote_set_filter(
+    ffi.Pointer<FlatpakRemote> self,
+    ffi.Pointer<ffi.Char> filter_path,
+  ) {
+    return _flatpak_remote_set_filter(
+      self,
+      filter_path,
+    );
+  }
+
+  late final _flatpak_remote_set_filterPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_remote_set_filter');
+  late final _flatpak_remote_set_filter =
+      _flatpak_remote_set_filterPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakRemote>, ffi.Pointer<ffi.Char>)>();
+
+  int flatpak_remote_get_remote_type(
+    ffi.Pointer<FlatpakRemote> self,
+  ) {
+    return _flatpak_remote_get_remote_type(
+      self,
+    );
+  }
+
+  late final _flatpak_remote_get_remote_typePtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FlatpakRemote>)>>(
+      'flatpak_remote_get_remote_type');
+  late final _flatpak_remote_get_remote_type =
+      _flatpak_remote_get_remote_typePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakRemote>)>();
+
+  int flatpak_instance_get_type() {
+    return _flatpak_instance_get_type();
+  }
+
+  late final _flatpak_instance_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_instance_get_type');
+  late final _flatpak_instance_get_type =
+      _flatpak_instance_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<GPtrArray> flatpak_instance_get_all() {
+    return _flatpak_instance_get_all();
+  }
+
+  late final _flatpak_instance_get_allPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<GPtrArray> Function()>>(
+          'flatpak_instance_get_all');
+  late final _flatpak_instance_get_all = _flatpak_instance_get_allPtr
+      .asFunction<ffi.Pointer<GPtrArray> Function()>();
+
+  ffi.Pointer<ffi.Char> flatpak_instance_get_id(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_id(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_idPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstance>)>>('flatpak_instance_get_id');
+  late final _flatpak_instance_get_id = _flatpak_instance_get_idPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_instance_get_app(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_app(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_appPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstance>)>>('flatpak_instance_get_app');
+  late final _flatpak_instance_get_app =
+      _flatpak_instance_get_appPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_instance_get_arch(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_arch(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_archPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstance>)>>('flatpak_instance_get_arch');
+  late final _flatpak_instance_get_arch =
+      _flatpak_instance_get_archPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_instance_get_branch(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_branch(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_branchPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstance>)>>('flatpak_instance_get_branch');
+  late final _flatpak_instance_get_branch =
+      _flatpak_instance_get_branchPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_instance_get_commit(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_commit(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_commitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstance>)>>('flatpak_instance_get_commit');
+  late final _flatpak_instance_get_commit =
+      _flatpak_instance_get_commitPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_instance_get_runtime(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_runtime(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_runtimePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstance>)>>('flatpak_instance_get_runtime');
+  late final _flatpak_instance_get_runtime =
+      _flatpak_instance_get_runtimePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_instance_get_runtime_commit(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_runtime_commit(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_runtime_commitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>>(
+      'flatpak_instance_get_runtime_commit');
+  late final _flatpak_instance_get_runtime_commit =
+      _flatpak_instance_get_runtime_commitPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  int flatpak_instance_get_pid(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_pid(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_pidPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FlatpakInstance>)>>(
+      'flatpak_instance_get_pid');
+  late final _flatpak_instance_get_pid = _flatpak_instance_get_pidPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakInstance>)>();
+
+  int flatpak_instance_get_child_pid(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_child_pid(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_child_pidPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FlatpakInstance>)>>(
+      'flatpak_instance_get_child_pid');
+  late final _flatpak_instance_get_child_pid =
+      _flatpak_instance_get_child_pidPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakInstance>)>();
+
+  ffi.Pointer<GKeyFile> flatpak_instance_get_info(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_get_info(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_get_infoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<GKeyFile> Function(
+              ffi.Pointer<FlatpakInstance>)>>('flatpak_instance_get_info');
+  late final _flatpak_instance_get_info =
+      _flatpak_instance_get_infoPtr.asFunction<
+          ffi.Pointer<GKeyFile> Function(ffi.Pointer<FlatpakInstance>)>();
+
+  int flatpak_instance_is_running(
+    ffi.Pointer<FlatpakInstance> self,
+  ) {
+    return _flatpak_instance_is_running(
+      self,
+    );
+  }
+
+  late final _flatpak_instance_is_runningPtr = _lookup<
+          ffi.NativeFunction<gboolean Function(ffi.Pointer<FlatpakInstance>)>>(
+      'flatpak_instance_is_running');
+  late final _flatpak_instance_is_running = _flatpak_instance_is_runningPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakInstance>)>();
+
+  int flatpak_installation_get_type() {
+    return _flatpak_installation_get_type();
+  }
+
+  late final _flatpak_installation_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_installation_get_type');
+  late final _flatpak_installation_get_type =
+      _flatpak_installation_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Char> flatpak_get_default_arch() {
+    return _flatpak_get_default_arch();
+  }
+
+  late final _flatpak_get_default_archPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'flatpak_get_default_arch');
+  late final _flatpak_get_default_arch = _flatpak_get_default_archPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> flatpak_get_supported_arches() {
+    return _flatpak_get_supported_arches();
+  }
+
+  late final _flatpak_get_supported_archesPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Pointer<ffi.Char>> Function()>>(
+      'flatpak_get_supported_arches');
+  late final _flatpak_get_supported_arches = _flatpak_get_supported_archesPtr
+      .asFunction<ffi.Pointer<ffi.Pointer<ffi.Char>> Function()>();
+
+  ffi.Pointer<GPtrArray> flatpak_get_system_installations(
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_get_system_installations(
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_get_system_installationsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_get_system_installations');
+  late final _flatpak_get_system_installations =
+      _flatpak_get_system_installationsPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstallation> flatpak_installation_new_system(
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_new_system(
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_new_systemPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstallation> Function(
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_new_system');
+  late final _flatpak_installation_new_system =
+      _flatpak_installation_new_systemPtr.asFunction<
+          ffi.Pointer<FlatpakInstallation> Function(
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstallation> flatpak_installation_new_system_with_id(
+    ffi.Pointer<ffi.Char> id,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_new_system_with_id(
+      id,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_new_system_with_idPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstallation> Function(
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_new_system_with_id');
+  late final _flatpak_installation_new_system_with_id =
+      _flatpak_installation_new_system_with_idPtr.asFunction<
+          ffi.Pointer<FlatpakInstallation> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstallation> flatpak_installation_new_user(
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_new_user(
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_new_userPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstallation> Function(
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_new_user');
+  late final _flatpak_installation_new_user =
+      _flatpak_installation_new_userPtr.asFunction<
+          ffi.Pointer<FlatpakInstallation> Function(
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstallation> flatpak_installation_new_for_path(
+    ffi.Pointer<GFile> path,
+    int user,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_new_for_path(
+      path,
+      user,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_new_for_pathPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstallation> Function(
+                  ffi.Pointer<GFile>,
+                  gboolean,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_new_for_path');
+  late final _flatpak_installation_new_for_path =
+      _flatpak_installation_new_for_pathPtr.asFunction<
+          ffi.Pointer<FlatpakInstallation> Function(ffi.Pointer<GFile>, int,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  void flatpak_installation_set_no_interaction(
+    ffi.Pointer<FlatpakInstallation> self,
+    int no_interaction,
+  ) {
+    return _flatpak_installation_set_no_interaction(
+      self,
+      no_interaction,
+    );
+  }
+
+  late final _flatpak_installation_set_no_interactionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakInstallation>,
+              gboolean)>>('flatpak_installation_set_no_interaction');
+  late final _flatpak_installation_set_no_interaction =
+      _flatpak_installation_set_no_interactionPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakInstallation>, int)>();
+
+  int flatpak_installation_get_no_interaction(
+    ffi.Pointer<FlatpakInstallation> self,
+  ) {
+    return _flatpak_installation_get_no_interaction(
+      self,
+    );
+  }
+
+  late final _flatpak_installation_get_no_interactionPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_installation_get_no_interaction');
+  late final _flatpak_installation_get_no_interaction =
+      _flatpak_installation_get_no_interactionPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakInstallation>)>();
+
+  int flatpak_installation_drop_caches(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_drop_caches(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_drop_cachesPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_drop_caches');
+  late final _flatpak_installation_drop_caches =
+      _flatpak_installation_drop_cachesPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_get_is_user(
+    ffi.Pointer<FlatpakInstallation> self,
+  ) {
+    return _flatpak_installation_get_is_user(
+      self,
+    );
+  }
+
+  late final _flatpak_installation_get_is_userPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_installation_get_is_user');
+  late final _flatpak_installation_get_is_user =
+      _flatpak_installation_get_is_userPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakInstallation>)>();
+
+  ffi.Pointer<GFile> flatpak_installation_get_path(
+    ffi.Pointer<FlatpakInstallation> self,
+  ) {
+    return _flatpak_installation_get_path(
+      self,
+    );
+  }
+
+  late final _flatpak_installation_get_pathPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GFile> Function(ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_installation_get_path');
+  late final _flatpak_installation_get_path =
+      _flatpak_installation_get_pathPtr.asFunction<
+          ffi.Pointer<GFile> Function(ffi.Pointer<FlatpakInstallation>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installation_get_id(
+    ffi.Pointer<FlatpakInstallation> self,
+  ) {
+    return _flatpak_installation_get_id(
+      self,
+    );
+  }
+
+  late final _flatpak_installation_get_idPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_installation_get_id');
+  late final _flatpak_installation_get_id =
+      _flatpak_installation_get_idPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstallation>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installation_get_display_name(
+    ffi.Pointer<FlatpakInstallation> self,
+  ) {
+    return _flatpak_installation_get_display_name(
+      self,
+    );
+  }
+
+  late final _flatpak_installation_get_display_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_installation_get_display_name');
+  late final _flatpak_installation_get_display_name =
+      _flatpak_installation_get_display_namePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakInstallation>)>();
+
+  int flatpak_installation_get_priority(
+    ffi.Pointer<FlatpakInstallation> self,
+  ) {
+    return _flatpak_installation_get_priority(
+      self,
+    );
+  }
+
+  late final _flatpak_installation_get_priorityPtr = _lookup<
+          ffi.NativeFunction<gint Function(ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_installation_get_priority');
+  late final _flatpak_installation_get_priority =
+      _flatpak_installation_get_priorityPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakInstallation>)>();
+
+  int flatpak_installation_get_storage_type(
+    ffi.Pointer<FlatpakInstallation> self,
+  ) {
+    return _flatpak_installation_get_storage_type(
+      self,
+    );
+  }
+
+  late final _flatpak_installation_get_storage_typePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_installation_get_storage_type');
+  late final _flatpak_installation_get_storage_type =
+      _flatpak_installation_get_storage_typePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakInstallation>)>();
+
+  int flatpak_installation_launch(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    ffi.Pointer<ffi.Char> commit,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_launch(
+      self,
+      name,
+      arch,
+      branch,
+      commit,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_launchPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_launch');
+  late final _flatpak_installation_launch =
+      _flatpak_installation_launchPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_launch_full(
+    ffi.Pointer<FlatpakInstallation> self,
+    int flags,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    ffi.Pointer<ffi.Char> commit,
+    ffi.Pointer<ffi.Pointer<FlatpakInstance>> instance_out,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_launch_full(
+      self,
+      flags,
+      name,
+      arch,
+      branch,
+      commit,
+      instance_out,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_launch_fullPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<FlatpakInstance>>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_launch_full');
+  late final _flatpak_installation_launch_full =
+      _flatpak_installation_launch_fullPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<FlatpakInstance>>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GFileMonitor> flatpak_installation_create_monitor(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_create_monitor(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_create_monitorPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GFileMonitor> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_create_monitor');
+  late final _flatpak_installation_create_monitor =
+      _flatpak_installation_create_monitorPtr.asFunction<
+          ffi.Pointer<GFileMonitor> Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_installed_refs(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_installed_refs(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_installed_refsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_installed_refs');
+  late final _flatpak_installation_list_installed_refs =
+      _flatpak_installation_list_installed_refsPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_installed_refs_by_kind(
+    ffi.Pointer<FlatpakInstallation> self,
+    int kind,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_installed_refs_by_kind(
+      self,
+      kind,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_installed_refs_by_kindPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_installed_refs_by_kind');
+  late final _flatpak_installation_list_installed_refs_by_kind =
+      _flatpak_installation_list_installed_refs_by_kindPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(ffi.Pointer<FlatpakInstallation>, int,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_installed_refs_for_update(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_installed_refs_for_update(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_installed_refs_for_updatePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_installed_refs_for_update');
+  late final _flatpak_installation_list_installed_refs_for_update =
+      _flatpak_installation_list_installed_refs_for_updatePtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_unused_refs(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_unused_refs(
+      self,
+      arch,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_unused_refsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_unused_refs');
+  late final _flatpak_installation_list_unused_refs =
+      _flatpak_installation_list_unused_refsPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_unused_refs_with_options(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<GHashTable> metadata_injection,
+    ffi.Pointer<GVariant> options,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_unused_refs_with_options(
+      self,
+      arch,
+      metadata_injection,
+      options,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_unused_refs_with_optionsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GHashTable>,
+                  ffi.Pointer<GVariant>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_unused_refs_with_options');
+  late final _flatpak_installation_list_unused_refs_with_options =
+      _flatpak_installation_list_unused_refs_with_optionsPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GHashTable>,
+              ffi.Pointer<GVariant>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_pinned_refs(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_pinned_refs(
+      self,
+      arch,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_pinned_refsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_pinned_refs');
+  late final _flatpak_installation_list_pinned_refs =
+      _flatpak_installation_list_pinned_refsPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstalledRef> flatpak_installation_get_installed_ref(
+    ffi.Pointer<FlatpakInstallation> self,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_get_installed_ref(
+      self,
+      kind,
+      name,
+      arch,
+      branch,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_get_installed_refPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstalledRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_get_installed_ref');
+  late final _flatpak_installation_get_installed_ref =
+      _flatpak_installation_get_installed_refPtr.asFunction<
+          ffi.Pointer<FlatpakInstalledRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstalledRef>
+      flatpak_installation_get_current_installed_app(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_get_current_installed_app(
+      self,
+      name,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_get_current_installed_appPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstalledRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_get_current_installed_app');
+  late final _flatpak_installation_get_current_installed_app =
+      _flatpak_installation_get_current_installed_appPtr.asFunction<
+          ffi.Pointer<FlatpakInstalledRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_remotes(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_remotes(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_remotesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_remotes');
+  late final _flatpak_installation_list_remotes =
+      _flatpak_installation_list_remotesPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_remotes_by_type(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Int32> types,
+    int num_types,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_remotes_by_type(
+      self,
+      types,
+      num_types,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_remotes_by_typePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Int32>,
+                  gsize,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_remotes_by_type');
+  late final _flatpak_installation_list_remotes_by_type =
+      _flatpak_installation_list_remotes_by_typePtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Int32>,
+              int,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakRemote> flatpak_installation_get_remote_by_name(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<gchar> name,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_get_remote_by_name(
+      self,
+      name,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_get_remote_by_namePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakRemote> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<gchar>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_get_remote_by_name');
+  late final _flatpak_installation_get_remote_by_name =
+      _flatpak_installation_get_remote_by_namePtr.asFunction<
+          ffi.Pointer<FlatpakRemote> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<gchar>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_add_remote(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<FlatpakRemote> remote,
+    int if_needed,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_add_remote(
+      self,
+      remote,
+      if_needed,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_add_remotePtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<FlatpakRemote>,
+                  gboolean,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_add_remote');
+  late final _flatpak_installation_add_remote =
+      _flatpak_installation_add_remotePtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<FlatpakRemote>,
+              int,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_modify_remote(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<FlatpakRemote> remote,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_modify_remote(
+      self,
+      remote,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_modify_remotePtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<FlatpakRemote>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_modify_remote');
+  late final _flatpak_installation_modify_remote =
+      _flatpak_installation_modify_remotePtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<FlatpakRemote>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_remove_remote(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_remove_remote(
+      self,
+      name,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_remove_remotePtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_remove_remote');
+  late final _flatpak_installation_remove_remote =
+      _flatpak_installation_remove_remotePtr.asFunction<
+          int Function(ffi.Pointer<FlatpakInstallation>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_update_remote_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_update_remote_sync(
+      self,
+      name,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_update_remote_syncPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_update_remote_sync');
+  late final _flatpak_installation_update_remote_sync =
+      _flatpak_installation_update_remote_syncPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakInstallation>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_set_config_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> key,
+    ffi.Pointer<ffi.Char> value,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_set_config_sync(
+      self,
+      key,
+      value,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_set_config_syncPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_set_config_sync');
+  late final _flatpak_installation_set_config_sync =
+      _flatpak_installation_set_config_syncPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_get_min_free_space_bytes(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<guint64> out_bytes,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_get_min_free_space_bytes(
+      self,
+      out_bytes,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_get_min_free_space_bytesPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<guint64>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_get_min_free_space_bytes');
+  late final _flatpak_installation_get_min_free_space_bytes =
+      _flatpak_installation_get_min_free_space_bytesPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakInstallation>, ffi.Pointer<guint64>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installation_get_config(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> key,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_get_config(
+      self,
+      key,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_get_configPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_get_config');
+  late final _flatpak_installation_get_config =
+      _flatpak_installation_get_configPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> flatpak_installation_get_default_languages(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_get_default_languages(
+      self,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_get_default_languagesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_get_default_languages');
+  late final _flatpak_installation_get_default_languages =
+      _flatpak_installation_get_default_languagesPtr.asFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> flatpak_installation_get_default_locales(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_get_default_locales(
+      self,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_get_default_localesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_get_default_locales');
+  late final _flatpak_installation_get_default_locales =
+      _flatpak_installation_get_default_localesPtr.asFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_installation_load_app_overrides(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> app_id,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_load_app_overrides(
+      self,
+      app_id,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_load_app_overridesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_load_app_overrides');
+  late final _flatpak_installation_load_app_overrides =
+      _flatpak_installation_load_app_overridesPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstalledRef> flatpak_installation_install(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_install(
+      self,
+      remote_name,
+      kind,
+      name,
+      arch,
+      branch,
+      progress,
+      progress_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_installPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstalledRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_install');
+  late final _flatpak_installation_install =
+      _flatpak_installation_installPtr.asFunction<
+          ffi.Pointer<FlatpakInstalledRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstalledRef> flatpak_installation_install_full(
+    ffi.Pointer<FlatpakInstallation> self,
+    int flags,
+    ffi.Pointer<ffi.Char> remote_name,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> subpaths,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_install_full(
+      self,
+      flags,
+      remote_name,
+      kind,
+      name,
+      arch,
+      branch,
+      subpaths,
+      progress,
+      progress_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_install_fullPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstalledRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_install_full');
+  late final _flatpak_installation_install_full =
+      _flatpak_installation_install_fullPtr.asFunction<
+          ffi.Pointer<FlatpakInstalledRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstalledRef> flatpak_installation_update(
+    ffi.Pointer<FlatpakInstallation> self,
+    int flags,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_update(
+      self,
+      flags,
+      kind,
+      name,
+      arch,
+      branch,
+      progress,
+      progress_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_updatePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstalledRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_update');
+  late final _flatpak_installation_update =
+      _flatpak_installation_updatePtr.asFunction<
+          ffi.Pointer<FlatpakInstalledRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              int,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstalledRef> flatpak_installation_update_full(
+    ffi.Pointer<FlatpakInstallation> self,
+    int flags,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> subpaths,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_update_full(
+      self,
+      flags,
+      kind,
+      name,
+      arch,
+      branch,
+      subpaths,
+      progress,
+      progress_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_update_fullPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstalledRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_update_full');
+  late final _flatpak_installation_update_full =
+      _flatpak_installation_update_fullPtr.asFunction<
+          ffi.Pointer<FlatpakInstalledRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              int,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakInstalledRef> flatpak_installation_install_bundle(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GFile> file,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_install_bundle(
+      self,
+      file,
+      progress,
+      progress_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_install_bundlePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstalledRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GFile>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_install_bundle');
+  late final _flatpak_installation_install_bundle =
+      _flatpak_installation_install_bundlePtr.asFunction<
+          ffi.Pointer<FlatpakInstalledRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GFile>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakRemoteRef> flatpak_installation_install_ref_file(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GBytes> ref_file_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_install_ref_file(
+      self,
+      ref_file_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_install_ref_filePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakRemoteRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GBytes>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_install_ref_file');
+  late final _flatpak_installation_install_ref_file =
+      _flatpak_installation_install_ref_filePtr.asFunction<
+          ffi.Pointer<FlatpakRemoteRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GBytes>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_uninstall(
+    ffi.Pointer<FlatpakInstallation> self,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_uninstall(
+      self,
+      kind,
+      name,
+      arch,
+      branch,
+      progress,
+      progress_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_uninstallPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_uninstall');
+  late final _flatpak_installation_uninstall =
+      _flatpak_installation_uninstallPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_uninstall_full(
+    ffi.Pointer<FlatpakInstallation> self,
+    int flags,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_uninstall_full(
+      self,
+      flags,
+      kind,
+      name,
+      arch,
+      branch,
+      progress,
+      progress_data,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_uninstall_fullPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Int32,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_uninstall_full');
+  late final _flatpak_installation_uninstall_full =
+      _flatpak_installation_uninstall_fullPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              int,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_fetch_remote_size_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<FlatpakRef> ref,
+    ffi.Pointer<guint64> download_size,
+    ffi.Pointer<guint64> installed_size,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_fetch_remote_size_sync(
+      self,
+      remote_name,
+      ref,
+      download_size,
+      installed_size,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_fetch_remote_size_syncPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<FlatpakRef>,
+                  ffi.Pointer<guint64>,
+                  ffi.Pointer<guint64>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_fetch_remote_size_sync');
+  late final _flatpak_installation_fetch_remote_size_sync =
+      _flatpak_installation_fetch_remote_size_syncPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<FlatpakRef>,
+              ffi.Pointer<guint64>,
+              ffi.Pointer<guint64>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GBytes> flatpak_installation_fetch_remote_metadata_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<FlatpakRef> ref,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_fetch_remote_metadata_sync(
+      self,
+      remote_name,
+      ref,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_fetch_remote_metadata_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GBytes> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<FlatpakRef>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_fetch_remote_metadata_sync');
+  late final _flatpak_installation_fetch_remote_metadata_sync =
+      _flatpak_installation_fetch_remote_metadata_syncPtr.asFunction<
+          ffi.Pointer<GBytes> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<FlatpakRef>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_remote_refs_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_or_uri,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_remote_refs_sync(
+      self,
+      remote_or_uri,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_remote_refs_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_remote_refs_sync');
+  late final _flatpak_installation_list_remote_refs_sync =
+      _flatpak_installation_list_remote_refs_syncPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_remote_refs_sync_full(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_or_uri,
+    int flags,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_remote_refs_sync_full(
+      self,
+      remote_or_uri,
+      flags,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_remote_refs_sync_fullPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Int32,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_remote_refs_sync_full');
+  late final _flatpak_installation_list_remote_refs_sync_full =
+      _flatpak_installation_list_remote_refs_sync_fullPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakRemoteRef> flatpak_installation_fetch_remote_ref_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_fetch_remote_ref_sync(
+      self,
+      remote_name,
+      kind,
+      name,
+      arch,
+      branch,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_fetch_remote_ref_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakRemoteRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_fetch_remote_ref_sync');
+  late final _flatpak_installation_fetch_remote_ref_sync =
+      _flatpak_installation_fetch_remote_ref_syncPtr.asFunction<
+          ffi.Pointer<FlatpakRemoteRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakRemoteRef> flatpak_installation_fetch_remote_ref_sync_full(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    int kind,
+    ffi.Pointer<ffi.Char> name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<ffi.Char> branch,
+    int flags,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_fetch_remote_ref_sync_full(
+      self,
+      remote_name,
+      kind,
+      name,
+      arch,
+      branch,
+      flags,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_fetch_remote_ref_sync_fullPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakRemoteRef> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Int32,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Int32,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_fetch_remote_ref_sync_full');
+  late final _flatpak_installation_fetch_remote_ref_sync_full =
+      _flatpak_installation_fetch_remote_ref_sync_fullPtr.asFunction<
+          ffi.Pointer<FlatpakRemoteRef> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              int,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_update_appstream_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<ffi.Char> arch,
+    ffi.Pointer<gboolean> out_changed,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_update_appstream_sync(
+      self,
+      remote_name,
+      arch,
+      out_changed,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_update_appstream_syncPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<gboolean>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_update_appstream_sync');
+  late final _flatpak_installation_update_appstream_sync =
+      _flatpak_installation_update_appstream_syncPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<gboolean>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_update_appstream_full_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<ffi.Char> arch,
+    FlatpakProgressCallback progress,
+    gpointer progress_data,
+    ffi.Pointer<gboolean> out_changed,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_update_appstream_full_sync(
+      self,
+      remote_name,
+      arch,
+      progress,
+      progress_data,
+      out_changed,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_update_appstream_full_syncPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  FlatpakProgressCallback,
+                  gpointer,
+                  ffi.Pointer<gboolean>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_update_appstream_full_sync');
+  late final _flatpak_installation_update_appstream_full_sync =
+      _flatpak_installation_update_appstream_full_syncPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              FlatpakProgressCallback,
+              gpointer,
+              ffi.Pointer<gboolean>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_remote_related_refs_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_remote_related_refs_sync(
+      self,
+      remote_name,
+      ref,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_remote_related_refs_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_list_remote_related_refs_sync');
+  late final _flatpak_installation_list_remote_related_refs_sync =
+      _flatpak_installation_list_remote_related_refs_syncPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray>
+      flatpak_installation_list_remote_related_refs_for_installed_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_remote_related_refs_for_installed_sync(
+      self,
+      remote_name,
+      ref,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_remote_related_refs_for_installed_syncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<GPtrArray> Function(
+                      ffi.Pointer<FlatpakInstallation>,
+                      ffi.Pointer<ffi.Char>,
+                      ffi.Pointer<ffi.Char>,
+                      ffi.Pointer<GCancellable>,
+                      ffi.Pointer<ffi.Pointer<GError>>)>>(
+          'flatpak_installation_list_remote_related_refs_for_installed_sync');
+  late final _flatpak_installation_list_remote_related_refs_for_installed_sync =
+      _flatpak_installation_list_remote_related_refs_for_installed_syncPtr
+          .asFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_installation_list_installed_related_refs_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_list_installed_related_refs_sync(
+      self,
+      remote_name,
+      ref,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_list_installed_related_refs_syncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<GPtrArray> Function(
+                      ffi.Pointer<FlatpakInstallation>,
+                      ffi.Pointer<ffi.Char>,
+                      ffi.Pointer<ffi.Char>,
+                      ffi.Pointer<GCancellable>,
+                      ffi.Pointer<ffi.Pointer<GError>>)>>(
+          'flatpak_installation_list_installed_related_refs_sync');
+  late final _flatpak_installation_list_installed_related_refs_sync =
+      _flatpak_installation_list_installed_related_refs_syncPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_remove_local_ref_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<ffi.Char> remote_name,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_remove_local_ref_sync(
+      self,
+      remote_name,
+      ref,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_remove_local_ref_syncPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_remove_local_ref_sync');
+  late final _flatpak_installation_remove_local_ref_sync =
+      _flatpak_installation_remove_local_ref_syncPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_cleanup_local_refs_sync(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_cleanup_local_refs_sync(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_cleanup_local_refs_syncPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_cleanup_local_refs_sync');
+  late final _flatpak_installation_cleanup_local_refs_sync =
+      _flatpak_installation_cleanup_local_refs_syncPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_prune_local_repo(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_prune_local_repo(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_prune_local_repoPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_prune_local_repo');
+  late final _flatpak_installation_prune_local_repo =
+      _flatpak_installation_prune_local_repoPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_installation_run_triggers(
+    ffi.Pointer<FlatpakInstallation> self,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_installation_run_triggers(
+      self,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_installation_run_triggersPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_installation_run_triggers');
+  late final _flatpak_installation_run_triggers =
+      _flatpak_installation_run_triggersPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_transaction_progress_get_type() {
+    return _flatpak_transaction_progress_get_type();
+  }
+
+  late final _flatpak_transaction_progress_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_transaction_progress_get_type');
+  late final _flatpak_transaction_progress_get_type =
+      _flatpak_transaction_progress_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_transaction_operation_get_type() {
+    return _flatpak_transaction_operation_get_type();
+  }
+
+  late final _flatpak_transaction_operation_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_transaction_operation_get_type');
+  late final _flatpak_transaction_operation_get_type =
+      _flatpak_transaction_operation_get_typePtr.asFunction<int Function()>();
+
+  int flatpak_transaction_get_type() {
+    return _flatpak_transaction_get_type();
+  }
+
+  late final _flatpak_transaction_get_typePtr =
+      _lookup<ffi.NativeFunction<GType Function()>>(
+          'flatpak_transaction_get_type');
+  late final _flatpak_transaction_get_type =
+      _flatpak_transaction_get_typePtr.asFunction<int Function()>();
+
+  ffi.Pointer<FlatpakTransaction> flatpak_transaction_new_for_installation(
+    ffi.Pointer<FlatpakInstallation> installation,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_new_for_installation(
+      installation,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_new_for_installationPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakTransaction> Function(
+                  ffi.Pointer<FlatpakInstallation>,
+                  ffi.Pointer<GCancellable>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_transaction_new_for_installation');
+  late final _flatpak_transaction_new_for_installation =
+      _flatpak_transaction_new_for_installationPtr.asFunction<
+          ffi.Pointer<FlatpakTransaction> Function(
+              ffi.Pointer<FlatpakInstallation>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  void flatpak_transaction_progress_set_update_frequency(
+    ffi.Pointer<FlatpakTransactionProgress> self,
+    int update_interval,
+  ) {
+    return _flatpak_transaction_progress_set_update_frequency(
+      self,
+      update_interval,
+    );
+  }
+
+  late final _flatpak_transaction_progress_set_update_frequencyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransactionProgress>,
+              guint)>>('flatpak_transaction_progress_set_update_frequency');
+  late final _flatpak_transaction_progress_set_update_frequency =
+      _flatpak_transaction_progress_set_update_frequencyPtr.asFunction<
+          void Function(ffi.Pointer<FlatpakTransactionProgress>, int)>();
+
+  ffi.Pointer<ffi.Char> flatpak_transaction_progress_get_status(
+    ffi.Pointer<FlatpakTransactionProgress> self,
+  ) {
+    return _flatpak_transaction_progress_get_status(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_progress_get_statusPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakTransactionProgress>)>>(
+      'flatpak_transaction_progress_get_status');
+  late final _flatpak_transaction_progress_get_status =
+      _flatpak_transaction_progress_get_statusPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakTransactionProgress>)>();
+
+  int flatpak_transaction_progress_get_is_estimating(
+    ffi.Pointer<FlatpakTransactionProgress> self,
+  ) {
+    return _flatpak_transaction_progress_get_is_estimating(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_progress_get_is_estimatingPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<FlatpakTransactionProgress>)>>(
+      'flatpak_transaction_progress_get_is_estimating');
+  late final _flatpak_transaction_progress_get_is_estimating =
+      _flatpak_transaction_progress_get_is_estimatingPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionProgress>)>();
+
+  int flatpak_transaction_progress_get_progress(
+    ffi.Pointer<FlatpakTransactionProgress> self,
+  ) {
+    return _flatpak_transaction_progress_get_progress(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_progress_get_progressPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(ffi.Pointer<FlatpakTransactionProgress>)>>(
+      'flatpak_transaction_progress_get_progress');
+  late final _flatpak_transaction_progress_get_progress =
+      _flatpak_transaction_progress_get_progressPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionProgress>)>();
+
+  int flatpak_transaction_progress_get_bytes_transferred(
+    ffi.Pointer<FlatpakTransactionProgress> self,
+  ) {
+    return _flatpak_transaction_progress_get_bytes_transferred(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_progress_get_bytes_transferredPtr = _lookup<
+          ffi.NativeFunction<
+              guint64 Function(ffi.Pointer<FlatpakTransactionProgress>)>>(
+      'flatpak_transaction_progress_get_bytes_transferred');
+  late final _flatpak_transaction_progress_get_bytes_transferred =
+      _flatpak_transaction_progress_get_bytes_transferredPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionProgress>)>();
+
+  int flatpak_transaction_progress_get_start_time(
+    ffi.Pointer<FlatpakTransactionProgress> self,
+  ) {
+    return _flatpak_transaction_progress_get_start_time(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_progress_get_start_timePtr = _lookup<
+          ffi.NativeFunction<
+              guint64 Function(ffi.Pointer<FlatpakTransactionProgress>)>>(
+      'flatpak_transaction_progress_get_start_time');
+  late final _flatpak_transaction_progress_get_start_time =
+      _flatpak_transaction_progress_get_start_timePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionProgress>)>();
+
+  int flatpak_transaction_operation_get_operation_type(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_operation_type(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_operation_typePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_operation_type');
+  late final _flatpak_transaction_operation_get_operation_type =
+      _flatpak_transaction_operation_get_operation_typePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_transaction_operation_get_ref(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_ref(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_refPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_ref');
+  late final _flatpak_transaction_operation_get_ref =
+      _flatpak_transaction_operation_get_refPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<GPtrArray> flatpak_transaction_operation_get_related_to_ops(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_related_to_ops(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_related_to_opsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GPtrArray> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_related_to_ops');
+  late final _flatpak_transaction_operation_get_related_to_ops =
+      _flatpak_transaction_operation_get_related_to_opsPtr.asFunction<
+          ffi.Pointer<GPtrArray> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  int flatpak_transaction_operation_get_is_skipped(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_is_skipped(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_is_skippedPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_is_skipped');
+  late final _flatpak_transaction_operation_get_is_skipped =
+      _flatpak_transaction_operation_get_is_skippedPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_transaction_operation_get_remote(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_remote(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_remotePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_remote');
+  late final _flatpak_transaction_operation_get_remote =
+      _flatpak_transaction_operation_get_remotePtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<GFile> flatpak_transaction_operation_get_bundle_path(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_bundle_path(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_bundle_pathPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GFile> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_bundle_path');
+  late final _flatpak_transaction_operation_get_bundle_path =
+      _flatpak_transaction_operation_get_bundle_pathPtr.asFunction<
+          ffi.Pointer<GFile> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_transaction_operation_get_commit(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_commit(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_commitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_commit');
+  late final _flatpak_transaction_operation_get_commit =
+      _flatpak_transaction_operation_get_commitPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  int flatpak_transaction_operation_get_download_size(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_download_size(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_download_sizePtr = _lookup<
+          ffi.NativeFunction<
+              guint64 Function(ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_download_size');
+  late final _flatpak_transaction_operation_get_download_size =
+      _flatpak_transaction_operation_get_download_sizePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  int flatpak_transaction_operation_get_installed_size(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_installed_size(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_installed_sizePtr = _lookup<
+          ffi.NativeFunction<
+              guint64 Function(ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_installed_size');
+  late final _flatpak_transaction_operation_get_installed_size =
+      _flatpak_transaction_operation_get_installed_sizePtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<GKeyFile> flatpak_transaction_operation_get_metadata(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_metadata(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_metadataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GKeyFile> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_metadata');
+  late final _flatpak_transaction_operation_get_metadata =
+      _flatpak_transaction_operation_get_metadataPtr.asFunction<
+          ffi.Pointer<GKeyFile> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<GKeyFile> flatpak_transaction_operation_get_old_metadata(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_old_metadata(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_old_metadataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GKeyFile> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_old_metadata');
+  late final _flatpak_transaction_operation_get_old_metadata =
+      _flatpak_transaction_operation_get_old_metadataPtr.asFunction<
+          ffi.Pointer<GKeyFile> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<ffi.Pointer<ffi.Char>> flatpak_transaction_operation_get_subpaths(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_subpaths(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_subpathsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                  ffi.Pointer<FlatpakTransactionOperation>)>>(
+      'flatpak_transaction_operation_get_subpaths');
+  late final _flatpak_transaction_operation_get_subpaths =
+      _flatpak_transaction_operation_get_subpathsPtr.asFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  int flatpak_transaction_operation_get_requires_authentication(
+    ffi.Pointer<FlatpakTransactionOperation> self,
+  ) {
+    return _flatpak_transaction_operation_get_requires_authentication(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_operation_get_requires_authenticationPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  gboolean Function(ffi.Pointer<FlatpakTransactionOperation>)>>(
+          'flatpak_transaction_operation_get_requires_authentication');
+  late final _flatpak_transaction_operation_get_requires_authentication =
+      _flatpak_transaction_operation_get_requires_authenticationPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransactionOperation>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_transaction_operation_type_to_string(
+    int kind,
+  ) {
+    return _flatpak_transaction_operation_type_to_string(
+      kind,
+    );
+  }
+
+  late final _flatpak_transaction_operation_type_to_stringPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int32)>>(
+          'flatpak_transaction_operation_type_to_string');
+  late final _flatpak_transaction_operation_type_to_string =
+      _flatpak_transaction_operation_type_to_stringPtr
+          .asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  void flatpak_transaction_set_no_pull(
+    ffi.Pointer<FlatpakTransaction> self,
+    int no_pull,
+  ) {
+    return _flatpak_transaction_set_no_pull(
+      self,
+      no_pull,
+    );
+  }
+
+  late final _flatpak_transaction_set_no_pullPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_no_pull');
+  late final _flatpak_transaction_set_no_pull =
+      _flatpak_transaction_set_no_pullPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  int flatpak_transaction_get_no_pull(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_get_no_pull(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_get_no_pullPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_get_no_pull');
+  late final _flatpak_transaction_get_no_pull =
+      _flatpak_transaction_get_no_pullPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
+
+  void flatpak_transaction_set_no_deploy(
+    ffi.Pointer<FlatpakTransaction> self,
+    int no_deploy,
+  ) {
+    return _flatpak_transaction_set_no_deploy(
+      self,
+      no_deploy,
+    );
+  }
+
+  late final _flatpak_transaction_set_no_deployPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_no_deploy');
+  late final _flatpak_transaction_set_no_deploy =
+      _flatpak_transaction_set_no_deployPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  int flatpak_transaction_get_no_deploy(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_get_no_deploy(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_get_no_deployPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_get_no_deploy');
+  late final _flatpak_transaction_get_no_deploy =
+      _flatpak_transaction_get_no_deployPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
+
+  void flatpak_transaction_set_disable_static_deltas(
+    ffi.Pointer<FlatpakTransaction> self,
+    int disable_static_deltas,
+  ) {
+    return _flatpak_transaction_set_disable_static_deltas(
+      self,
+      disable_static_deltas,
+    );
+  }
+
+  late final _flatpak_transaction_set_disable_static_deltasPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_disable_static_deltas');
+  late final _flatpak_transaction_set_disable_static_deltas =
+      _flatpak_transaction_set_disable_static_deltasPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_disable_prune(
+    ffi.Pointer<FlatpakTransaction> self,
+    int disable_prune,
+  ) {
+    return _flatpak_transaction_set_disable_prune(
+      self,
+      disable_prune,
+    );
+  }
+
+  late final _flatpak_transaction_set_disable_prunePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_disable_prune');
+  late final _flatpak_transaction_set_disable_prune =
+      _flatpak_transaction_set_disable_prunePtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_disable_dependencies(
+    ffi.Pointer<FlatpakTransaction> self,
+    int disable_dependencies,
+  ) {
+    return _flatpak_transaction_set_disable_dependencies(
+      self,
+      disable_dependencies,
+    );
+  }
+
+  late final _flatpak_transaction_set_disable_dependenciesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_disable_dependencies');
+  late final _flatpak_transaction_set_disable_dependencies =
+      _flatpak_transaction_set_disable_dependenciesPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_disable_related(
+    ffi.Pointer<FlatpakTransaction> self,
+    int disable_related,
+  ) {
+    return _flatpak_transaction_set_disable_related(
+      self,
+      disable_related,
+    );
+  }
+
+  late final _flatpak_transaction_set_disable_relatedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_disable_related');
+  late final _flatpak_transaction_set_disable_related =
+      _flatpak_transaction_set_disable_relatedPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_disable_auto_pin(
+    ffi.Pointer<FlatpakTransaction> self,
+    int disable_pin,
+  ) {
+    return _flatpak_transaction_set_disable_auto_pin(
+      self,
+      disable_pin,
+    );
+  }
+
+  late final _flatpak_transaction_set_disable_auto_pinPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_disable_auto_pin');
+  late final _flatpak_transaction_set_disable_auto_pin =
+      _flatpak_transaction_set_disable_auto_pinPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_reinstall(
+    ffi.Pointer<FlatpakTransaction> self,
+    int reinstall,
+  ) {
+    return _flatpak_transaction_set_reinstall(
+      self,
+      reinstall,
+    );
+  }
+
+  late final _flatpak_transaction_set_reinstallPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_reinstall');
+  late final _flatpak_transaction_set_reinstall =
+      _flatpak_transaction_set_reinstallPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_no_interaction(
+    ffi.Pointer<FlatpakTransaction> self,
+    int no_interaction,
+  ) {
+    return _flatpak_transaction_set_no_interaction(
+      self,
+      no_interaction,
+    );
+  }
+
+  late final _flatpak_transaction_set_no_interactionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_no_interaction');
+  late final _flatpak_transaction_set_no_interaction =
+      _flatpak_transaction_set_no_interactionPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_force_uninstall(
+    ffi.Pointer<FlatpakTransaction> self,
+    int force_uninstall,
+  ) {
+    return _flatpak_transaction_set_force_uninstall(
+      self,
+      force_uninstall,
+    );
+  }
+
+  late final _flatpak_transaction_set_force_uninstallPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              gboolean)>>('flatpak_transaction_set_force_uninstall');
+  late final _flatpak_transaction_set_force_uninstall =
+      _flatpak_transaction_set_force_uninstallPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_set_default_arch(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<ffi.Char> arch,
+  ) {
+    return _flatpak_transaction_set_default_arch(
+      self,
+      arch,
+    );
+  }
+
+  late final _flatpak_transaction_set_default_archPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_transaction_set_default_arch');
+  late final _flatpak_transaction_set_default_arch =
+      _flatpak_transaction_set_default_archPtr.asFunction<
+          void Function(
+              ffi.Pointer<FlatpakTransaction>, ffi.Pointer<ffi.Char>)>();
+
+  void flatpak_transaction_set_parent_window(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<ffi.Char> parent_window,
+  ) {
+    return _flatpak_transaction_set_parent_window(
+      self,
+      parent_window,
+    );
+  }
+
+  late final _flatpak_transaction_set_parent_windowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_transaction_set_parent_window');
+  late final _flatpak_transaction_set_parent_window =
+      _flatpak_transaction_set_parent_windowPtr.asFunction<
+          void Function(
+              ffi.Pointer<FlatpakTransaction>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> flatpak_transaction_get_parent_window(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_get_parent_window(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_get_parent_windowPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_get_parent_window');
+  late final _flatpak_transaction_get_parent_window =
+      _flatpak_transaction_get_parent_windowPtr.asFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<FlatpakTransaction>)>();
+
+  void flatpak_transaction_set_include_unused_uninstall_ops(
+    ffi.Pointer<FlatpakTransaction> self,
+    int include_unused_uninstall_ops,
+  ) {
+    return _flatpak_transaction_set_include_unused_uninstall_ops(
+      self,
+      include_unused_uninstall_ops,
+    );
+  }
+
+  late final _flatpak_transaction_set_include_unused_uninstall_opsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<FlatpakTransaction>, gboolean)>>(
+      'flatpak_transaction_set_include_unused_uninstall_ops');
+  late final _flatpak_transaction_set_include_unused_uninstall_ops =
+      _flatpak_transaction_set_include_unused_uninstall_opsPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  int flatpak_transaction_get_include_unused_uninstall_ops(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_get_include_unused_uninstall_ops(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_get_include_unused_uninstall_opsPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_get_include_unused_uninstall_ops');
+  late final _flatpak_transaction_get_include_unused_uninstall_ops =
+      _flatpak_transaction_get_include_unused_uninstall_opsPtr
+          .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
+
+  void flatpak_transaction_add_dependency_source(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<FlatpakInstallation> installation,
+  ) {
+    return _flatpak_transaction_add_dependency_source(
+      self,
+      installation,
+    );
+  }
+
+  late final _flatpak_transaction_add_dependency_sourcePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+                  ffi.Pointer<FlatpakInstallation>)>>(
+      'flatpak_transaction_add_dependency_source');
+  late final _flatpak_transaction_add_dependency_source =
+      _flatpak_transaction_add_dependency_sourcePtr.asFunction<
+          void Function(ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<FlatpakInstallation>)>();
+
+  void flatpak_transaction_add_sideload_repo(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<ffi.Char> path,
+  ) {
+    return _flatpak_transaction_add_sideload_repo(
+      self,
+      path,
+    );
+  }
+
+  late final _flatpak_transaction_add_sideload_repoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<ffi.Char>)>>('flatpak_transaction_add_sideload_repo');
+  late final _flatpak_transaction_add_sideload_repo =
+      _flatpak_transaction_add_sideload_repoPtr.asFunction<
+          void Function(
+              ffi.Pointer<FlatpakTransaction>, ffi.Pointer<ffi.Char>)>();
+
+  void flatpak_transaction_add_default_dependency_sources(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_add_default_dependency_sources(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_add_default_dependency_sourcesPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_add_default_dependency_sources');
+  late final _flatpak_transaction_add_default_dependency_sources =
+      _flatpak_transaction_add_default_dependency_sourcesPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>)>();
+
+  int flatpak_transaction_run(
+    ffi.Pointer<FlatpakTransaction> transaction,
+    ffi.Pointer<GCancellable> cancellable,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_run(
+      transaction,
+      cancellable,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_runPtr = _lookup<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<GCancellable>,
+              ffi.Pointer<ffi.Pointer<GError>>)>>('flatpak_transaction_run');
+  late final _flatpak_transaction_run = _flatpak_transaction_runPtr.asFunction<
+      int Function(ffi.Pointer<FlatpakTransaction>, ffi.Pointer<GCancellable>,
+          ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  ffi.Pointer<FlatpakTransactionOperation>
+      flatpak_transaction_get_current_operation(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_get_current_operation(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_get_current_operationPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakTransactionOperation> Function(
+                  ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_get_current_operation');
+  late final _flatpak_transaction_get_current_operation =
+      _flatpak_transaction_get_current_operationPtr.asFunction<
+          ffi.Pointer<FlatpakTransactionOperation> Function(
+              ffi.Pointer<FlatpakTransaction>)>();
+
+  ffi.Pointer<FlatpakInstallation> flatpak_transaction_get_installation(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_get_installation(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_get_installationPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<FlatpakInstallation> Function(
+                  ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_get_installation');
+  late final _flatpak_transaction_get_installation =
+      _flatpak_transaction_get_installationPtr.asFunction<
+          ffi.Pointer<FlatpakInstallation> Function(
+              ffi.Pointer<FlatpakTransaction>)>();
+
+  ffi.Pointer<GList> flatpak_transaction_get_operations(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_get_operations(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_get_operationsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<GList> Function(ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_get_operations');
+  late final _flatpak_transaction_get_operations =
+      _flatpak_transaction_get_operationsPtr.asFunction<
+          ffi.Pointer<GList> Function(ffi.Pointer<FlatpakTransaction>)>();
+
+  void flatpak_transaction_abort_webflow(
+    ffi.Pointer<FlatpakTransaction> self,
+    int id,
+  ) {
+    return _flatpak_transaction_abort_webflow(
+      self,
+      id,
+    );
+  }
+
+  late final _flatpak_transaction_abort_webflowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
+              guint)>>('flatpak_transaction_abort_webflow');
+  late final _flatpak_transaction_abort_webflow =
+      _flatpak_transaction_abort_webflowPtr
+          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
+
+  void flatpak_transaction_complete_basic_auth(
+    ffi.Pointer<FlatpakTransaction> self,
+    int id,
+    ffi.Pointer<ffi.Char> user,
+    ffi.Pointer<ffi.Char> password,
+    ffi.Pointer<GVariant> options,
+  ) {
+    return _flatpak_transaction_complete_basic_auth(
+      self,
+      id,
+      user,
+      password,
+      options,
+    );
+  }
+
+  late final _flatpak_transaction_complete_basic_authPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Pointer<FlatpakTransaction>,
+                  guint,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<GVariant>)>>(
+      'flatpak_transaction_complete_basic_auth');
+  late final _flatpak_transaction_complete_basic_auth =
+      _flatpak_transaction_complete_basic_authPtr.asFunction<
+          void Function(
+              ffi.Pointer<FlatpakTransaction>,
+              int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<GVariant>)>();
+
+  int flatpak_transaction_add_install(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<ffi.Char> remote,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> subpaths,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_add_install(
+      self,
+      remote,
+      ref,
+      subpaths,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_add_installPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakTransaction>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_transaction_add_install');
+  late final _flatpak_transaction_add_install =
+      _flatpak_transaction_add_installPtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_transaction_add_rebase(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<ffi.Char> remote,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> subpaths,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> previous_ids,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_add_rebase(
+      self,
+      remote,
+      ref,
+      subpaths,
+      previous_ids,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_add_rebasePtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakTransaction>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_transaction_add_rebase');
+  late final _flatpak_transaction_add_rebase =
+      _flatpak_transaction_add_rebasePtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_transaction_add_install_bundle(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<GFile> file,
+    ffi.Pointer<GBytes> gpg_data,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_add_install_bundle(
+      self,
+      file,
+      gpg_data,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_add_install_bundlePtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakTransaction>,
+                  ffi.Pointer<GFile>,
+                  ffi.Pointer<GBytes>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_transaction_add_install_bundle');
+  late final _flatpak_transaction_add_install_bundle =
+      _flatpak_transaction_add_install_bundlePtr.asFunction<
+          int Function(ffi.Pointer<FlatpakTransaction>, ffi.Pointer<GFile>,
+              ffi.Pointer<GBytes>, ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_transaction_add_install_flatpakref(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<GBytes> flatpakref_data,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_add_install_flatpakref(
+      self,
+      flatpakref_data,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_add_install_flatpakrefPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<FlatpakTransaction>,
+                  ffi.Pointer<GBytes>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_transaction_add_install_flatpakref');
+  late final _flatpak_transaction_add_install_flatpakref =
+      _flatpak_transaction_add_install_flatpakrefPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakTransaction>, ffi.Pointer<GBytes>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_transaction_add_update(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> subpaths,
+    ffi.Pointer<ffi.Char> commit,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_add_update(
+      self,
+      ref,
+      subpaths,
+      commit,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_add_updatePtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakTransaction>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
+                  ffi.Pointer<ffi.Char>,
+                  ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_transaction_add_update');
+  late final _flatpak_transaction_add_update =
+      _flatpak_transaction_add_updatePtr.asFunction<
+          int Function(
+              ffi.Pointer<FlatpakTransaction>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_transaction_add_uninstall(
+    ffi.Pointer<FlatpakTransaction> self,
+    ffi.Pointer<ffi.Char> ref,
+    ffi.Pointer<ffi.Pointer<GError>> error,
+  ) {
+    return _flatpak_transaction_add_uninstall(
+      self,
+      ref,
+      error,
+    );
+  }
+
+  late final _flatpak_transaction_add_uninstallPtr = _lookup<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<FlatpakTransaction>,
+                  ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<GError>>)>>(
+      'flatpak_transaction_add_uninstall');
+  late final _flatpak_transaction_add_uninstall =
+      _flatpak_transaction_add_uninstallPtr.asFunction<
+          int Function(ffi.Pointer<FlatpakTransaction>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<GError>>)>();
+
+  int flatpak_transaction_is_empty(
+    ffi.Pointer<FlatpakTransaction> self,
+  ) {
+    return _flatpak_transaction_is_empty(
+      self,
+    );
+  }
+
+  late final _flatpak_transaction_is_emptyPtr = _lookup<
+          ffi
+          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakTransaction>)>>(
+      'flatpak_transaction_is_empty');
+  late final _flatpak_transaction_is_empty = _flatpak_transaction_is_emptyPtr
+      .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
 }
+
+final class max_align_t extends ffi.Opaque {}
+
+final class __fsid_t extends ffi.Struct {
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.Int> __val;
+}
+
+final class tm extends ffi.Struct {
+  @ffi.Int()
+  external int tm_sec;
+
+  @ffi.Int()
+  external int tm_min;
+
+  @ffi.Int()
+  external int tm_hour;
+
+  @ffi.Int()
+  external int tm_mday;
+
+  @ffi.Int()
+  external int tm_mon;
+
+  @ffi.Int()
+  external int tm_year;
+
+  @ffi.Int()
+  external int tm_wday;
+
+  @ffi.Int()
+  external int tm_yday;
+
+  @ffi.Int()
+  external int tm_isdst;
+
+  @ffi.Long()
+  external int tm_gmtoff;
+
+  external ffi.Pointer<ffi.Char> tm_zone;
+}
+
+final class timespec extends ffi.Struct {
+  @__time_t()
+  external int tv_sec;
+
+  @__syscall_slong_t()
+  external int tv_nsec;
+}
+
+typedef __time_t = ffi.Long;
+typedef Dart__time_t = int;
+typedef __syscall_slong_t = ffi.Long;
+typedef Dart__syscall_slong_t = int;
+
+final class itimerspec extends ffi.Struct {
+  external timespec it_interval;
+
+  external timespec it_value;
+}
+
+final class sigevent extends ffi.Struct {
+  external __sigval_t sigev_value;
+
+  @ffi.Int()
+  external int sigev_signo;
+
+  @ffi.Int()
+  external int sigev_notify;
+
+  external UnnamedUnion1 _sigev_un;
+}
+
+typedef __sigval_t = sigval;
+
+final class sigval extends ffi.Union {
+  @ffi.Int()
+  external int sival_int;
+
+  external ffi.Pointer<ffi.Void> sival_ptr;
+}
+
+final class UnnamedUnion1 extends ffi.Union {
+  @ffi.Array.multi([12])
+  external ffi.Array<ffi.Int> _pad;
+
+  @__pid_t()
+  external int _tid;
+
+  external UnnamedStruct1 _sigev_thread;
+}
+
+typedef __pid_t = ffi.Int;
+typedef Dart__pid_t = int;
+
+final class UnnamedStruct1 extends ffi.Struct {
+  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function(__sigval_t)>>
+      _function;
+
+  external ffi.Pointer<pthread_attr_t> _attribute;
+}
+
+final class pthread_attr_t extends ffi.Union {
+  @ffi.Array.multi([56])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Long()
+  external int __align;
+}
+
+final class __locale_struct extends ffi.Struct {
+  @ffi.Array.multi([13])
+  external ffi.Array<ffi.Pointer<__locale_data>> __locales;
+
+  external ffi.Pointer<ffi.UnsignedShort> __ctype_b;
+
+  external ffi.Pointer<ffi.Int> __ctype_tolower;
+
+  external ffi.Pointer<ffi.Int> __ctype_toupper;
+
+  @ffi.Array.multi([13])
+  external ffi.Array<ffi.Pointer<ffi.Char>> __names;
+}
+
+final class __locale_data extends ffi.Opaque {}
+
+typedef clock_t = __clock_t;
+typedef __clock_t = ffi.Long;
+typedef Dart__clock_t = int;
+typedef time_t = __time_t;
+typedef locale_t = __locale_t;
+typedef __locale_t = ffi.Pointer<__locale_struct>;
+typedef clockid_t = __clockid_t;
+typedef __clockid_t = ffi.Int;
+typedef Dart__clockid_t = int;
+typedef pid_t = __pid_t;
+typedef timer_t = __timer_t;
+typedef __timer_t = ffi.Pointer<ffi.Void>;
 
 final class _GDoubleIEEE754 extends ffi.Opaque {}
 
@@ -76945,6 +88928,282 @@ typedef GVoidFunc = ffi.Pointer<ffi.NativeFunction<GVoidFuncFunction>>;
 typedef GVoidFuncFunction = ffi.Void Function();
 typedef DartGVoidFuncFunction = void Function();
 
+final class div_t extends ffi.Struct {
+  @ffi.Int()
+  external int quot;
+
+  @ffi.Int()
+  external int rem;
+}
+
+final class ldiv_t extends ffi.Struct {
+  @ffi.Long()
+  external int quot;
+
+  @ffi.Long()
+  external int rem;
+}
+
+final class lldiv_t extends ffi.Struct {
+  @ffi.LongLong()
+  external int quot;
+
+  @ffi.LongLong()
+  external int rem;
+}
+
+final class __sigset_t extends ffi.Struct {
+  @ffi.Array.multi([16])
+  external ffi.Array<ffi.UnsignedLong> __val;
+}
+
+final class timeval extends ffi.Struct {
+  @__time_t()
+  external int tv_sec;
+
+  @__suseconds_t()
+  external int tv_usec;
+}
+
+typedef __suseconds_t = ffi.Long;
+typedef Dart__suseconds_t = int;
+
+final class fd_set extends ffi.Struct {
+  @ffi.Array.multi([16])
+  external ffi.Array<__fd_mask> __fds_bits;
+}
+
+typedef __fd_mask = ffi.Long;
+typedef Dart__fd_mask = int;
+
+final class __atomic_wide_counter extends ffi.Union {
+  @ffi.UnsignedLongLong()
+  external int __value64;
+
+  external UnnamedStruct4 __value32;
+}
+
+final class UnnamedStruct4 extends ffi.Struct {
+  @ffi.UnsignedInt()
+  external int __low;
+
+  @ffi.UnsignedInt()
+  external int __high;
+}
+
+final class __pthread_internal_list extends ffi.Struct {
+  external ffi.Pointer<__pthread_internal_list> __prev;
+
+  external ffi.Pointer<__pthread_internal_list> __next;
+}
+
+final class __pthread_internal_slist extends ffi.Struct {
+  external ffi.Pointer<__pthread_internal_slist> __next;
+}
+
+final class __pthread_mutex_s extends ffi.Struct {
+  @ffi.Int()
+  external int __lock;
+
+  @ffi.UnsignedInt()
+  external int __count;
+
+  @ffi.Int()
+  external int __owner;
+
+  @ffi.UnsignedInt()
+  external int __nusers;
+
+  @ffi.Int()
+  external int __kind;
+
+  @ffi.Short()
+  external int __spins;
+
+  @ffi.Short()
+  external int __elision;
+
+  external __pthread_list_t __list;
+}
+
+typedef __pthread_list_t = __pthread_internal_list;
+
+final class __pthread_rwlock_arch_t extends ffi.Struct {
+  @ffi.UnsignedInt()
+  external int __readers;
+
+  @ffi.UnsignedInt()
+  external int __writers;
+
+  @ffi.UnsignedInt()
+  external int __wrphase_futex;
+
+  @ffi.UnsignedInt()
+  external int __writers_futex;
+
+  @ffi.UnsignedInt()
+  external int __pad3;
+
+  @ffi.UnsignedInt()
+  external int __pad4;
+
+  @ffi.Int()
+  external int __cur_writer;
+
+  @ffi.Int()
+  external int __shared;
+
+  @ffi.SignedChar()
+  external int __rwelision;
+
+  @ffi.Array.multi([7])
+  external ffi.Array<ffi.UnsignedChar> __pad1;
+
+  @ffi.UnsignedLong()
+  external int __pad2;
+
+  @ffi.UnsignedInt()
+  external int __flags;
+}
+
+final class __pthread_cond_s extends ffi.Struct {
+  external __atomic_wide_counter __wseq;
+
+  external __atomic_wide_counter __g1_start;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.UnsignedInt> __g_refs;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.UnsignedInt> __g_size;
+
+  @ffi.UnsignedInt()
+  external int __g1_orig_size;
+
+  @ffi.UnsignedInt()
+  external int __wrefs;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.UnsignedInt> __g_signals;
+}
+
+final class __once_flag extends ffi.Struct {
+  @ffi.Int()
+  external int __data;
+}
+
+final class pthread_mutexattr_t extends ffi.Union {
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Int()
+  external int __align;
+}
+
+final class pthread_condattr_t extends ffi.Union {
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Int()
+  external int __align;
+}
+
+final class pthread_mutex_t extends ffi.Union {
+  external __pthread_mutex_s __data;
+
+  @ffi.Array.multi([40])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Long()
+  external int __align;
+}
+
+final class pthread_cond_t extends ffi.Union {
+  external __pthread_cond_s __data;
+
+  @ffi.Array.multi([48])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.LongLong()
+  external int __align;
+}
+
+final class pthread_rwlock_t extends ffi.Union {
+  external __pthread_rwlock_arch_t __data;
+
+  @ffi.Array.multi([56])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Long()
+  external int __align;
+}
+
+final class pthread_rwlockattr_t extends ffi.Union {
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Long()
+  external int __align;
+}
+
+final class pthread_barrier_t extends ffi.Union {
+  @ffi.Array.multi([32])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Long()
+  external int __align;
+}
+
+final class pthread_barrierattr_t extends ffi.Union {
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.Char> __size;
+
+  @ffi.Int()
+  external int __align;
+}
+
+final class random_data extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> fptr;
+
+  external ffi.Pointer<ffi.Int32> rptr;
+
+  external ffi.Pointer<ffi.Int32> state;
+
+  @ffi.Int()
+  external int rand_type;
+
+  @ffi.Int()
+  external int rand_deg;
+
+  @ffi.Int()
+  external int rand_sep;
+
+  external ffi.Pointer<ffi.Int32> end_ptr;
+}
+
+final class drand48_data extends ffi.Struct {
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.UnsignedShort> __x;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.UnsignedShort> __old_x;
+
+  @ffi.UnsignedShort()
+  external int __c;
+
+  @ffi.UnsignedShort()
+  external int __init;
+
+  @ffi.UnsignedLongLong()
+  external int __a;
+}
+
+typedef __compar_fn_t = ffi.Pointer<ffi.NativeFunction<__compar_fn_tFunction>>;
+typedef __compar_fn_tFunction = ffi.Int Function(
+    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
+typedef Dart__compar_fn_tFunction = int Function(
+    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
+
 abstract class GThreadError {
   static const int G_THREAD_ERROR_AGAIN = 0;
 }
@@ -77033,6 +89292,460 @@ final class _GAsyncQueue extends ffi.Opaque {}
 
 typedef GAsyncQueue = _GAsyncQueue;
 typedef GTimeVal = _GTimeVal;
+
+final class siginfo_t extends ffi.Struct {
+  @ffi.Int()
+  external int si_signo;
+
+  @ffi.Int()
+  external int si_errno;
+
+  @ffi.Int()
+  external int si_code;
+
+  @ffi.Int()
+  external int __pad0;
+
+  external UnnamedUnion2 _sifields;
+}
+
+final class UnnamedUnion2 extends ffi.Union {
+  @ffi.Array.multi([28])
+  external ffi.Array<ffi.Int> _pad;
+
+  external UnnamedStruct5 _kill;
+
+  external UnnamedStruct6 _timer;
+
+  external UnnamedStruct7 _rt;
+
+  external UnnamedStruct8 _sigchld;
+
+  external UnnamedStruct9 _sigfault;
+
+  external UnnamedStruct11 _sigpoll;
+
+  external UnnamedStruct12 _sigsys;
+}
+
+final class UnnamedStruct5 extends ffi.Struct {
+  @__pid_t()
+  external int si_pid;
+
+  @__uid_t()
+  external int si_uid;
+}
+
+typedef __uid_t = ffi.UnsignedInt;
+typedef Dart__uid_t = int;
+
+final class UnnamedStruct6 extends ffi.Struct {
+  @ffi.Int()
+  external int si_tid;
+
+  @ffi.Int()
+  external int si_overrun;
+
+  external __sigval_t si_sigval;
+}
+
+final class UnnamedStruct7 extends ffi.Struct {
+  @__pid_t()
+  external int si_pid;
+
+  @__uid_t()
+  external int si_uid;
+
+  external __sigval_t si_sigval;
+}
+
+final class UnnamedStruct8 extends ffi.Struct {
+  @__pid_t()
+  external int si_pid;
+
+  @__uid_t()
+  external int si_uid;
+
+  @ffi.Int()
+  external int si_status;
+
+  @__clock_t()
+  external int si_utime;
+
+  @__clock_t()
+  external int si_stime;
+}
+
+final class UnnamedStruct9 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> si_addr;
+
+  @ffi.Short()
+  external int si_addr_lsb;
+
+  external UnnamedUnion3 _bounds;
+}
+
+final class UnnamedUnion3 extends ffi.Union {
+  external UnnamedStruct10 _addr_bnd;
+
+  @__uint32_t()
+  external int _pkey;
+}
+
+final class UnnamedStruct10 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> _lower;
+
+  external ffi.Pointer<ffi.Void> _upper;
+}
+
+typedef __uint32_t = ffi.UnsignedInt;
+typedef Dart__uint32_t = int;
+
+final class UnnamedStruct11 extends ffi.Struct {
+  @ffi.Long()
+  external int si_band;
+
+  @ffi.Int()
+  external int si_fd;
+}
+
+final class UnnamedStruct12 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> _call_addr;
+
+  @ffi.Int()
+  external int _syscall;
+
+  @ffi.UnsignedInt()
+  external int _arch;
+}
+
+typedef __sighandler_t
+    = ffi.Pointer<ffi.NativeFunction<__sighandler_tFunction>>;
+typedef __sighandler_tFunction = ffi.Void Function(ffi.Int);
+typedef Dart__sighandler_tFunction = void Function(int);
+typedef sigset_t = __sigset_t;
+
+final class sigaction extends ffi.Struct {
+  external UnnamedUnion4 __sigaction_handler;
+
+  external __sigset_t sa_mask;
+
+  @ffi.Int()
+  external int sa_flags;
+
+  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> sa_restorer;
+}
+
+final class UnnamedUnion4 extends ffi.Union {
+  external __sighandler_t sa_handler;
+
+  external ffi.Pointer<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int, ffi.Pointer<siginfo_t>, ffi.Pointer<ffi.Void>)>>
+      sa_sigaction;
+}
+
+final class _fpx_sw_bytes extends ffi.Struct {
+  @__uint32_t()
+  external int magic1;
+
+  @__uint32_t()
+  external int extended_size;
+
+  @__uint64_t()
+  external int xstate_bv;
+
+  @__uint32_t()
+  external int xstate_size;
+
+  @ffi.Array.multi([7])
+  external ffi.Array<__uint32_t> __glibc_reserved1;
+}
+
+typedef __uint64_t = ffi.UnsignedLong;
+typedef Dart__uint64_t = int;
+
+final class _fpreg extends ffi.Struct {
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.UnsignedShort> significand;
+
+  @ffi.UnsignedShort()
+  external int exponent;
+}
+
+final class _fpxreg extends ffi.Struct {
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.UnsignedShort> significand;
+
+  @ffi.UnsignedShort()
+  external int exponent;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.UnsignedShort> __glibc_reserved1;
+}
+
+final class _xmmreg extends ffi.Struct {
+  @ffi.Array.multi([4])
+  external ffi.Array<__uint32_t> element;
+}
+
+final class _fpstate extends ffi.Struct {
+  @__uint16_t()
+  external int cwd;
+
+  @__uint16_t()
+  external int swd;
+
+  @__uint16_t()
+  external int ftw;
+
+  @__uint16_t()
+  external int fop;
+
+  @__uint64_t()
+  external int rip;
+
+  @__uint64_t()
+  external int rdp;
+
+  @__uint32_t()
+  external int mxcsr;
+
+  @__uint32_t()
+  external int mxcr_mask;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<_fpxreg> _st;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<_xmmreg> _xmm;
+
+  @ffi.Array.multi([24])
+  external ffi.Array<__uint32_t> __glibc_reserved1;
+}
+
+typedef __uint16_t = ffi.UnsignedShort;
+typedef Dart__uint16_t = int;
+
+final class sigcontext extends ffi.Struct {
+  @__uint64_t()
+  external int r8;
+
+  @__uint64_t()
+  external int r9;
+
+  @__uint64_t()
+  external int r10;
+
+  @__uint64_t()
+  external int r11;
+
+  @__uint64_t()
+  external int r12;
+
+  @__uint64_t()
+  external int r13;
+
+  @__uint64_t()
+  external int r14;
+
+  @__uint64_t()
+  external int r15;
+
+  @__uint64_t()
+  external int rdi;
+
+  @__uint64_t()
+  external int rsi;
+
+  @__uint64_t()
+  external int rbp;
+
+  @__uint64_t()
+  external int rbx;
+
+  @__uint64_t()
+  external int rdx;
+
+  @__uint64_t()
+  external int rax;
+
+  @__uint64_t()
+  external int rcx;
+
+  @__uint64_t()
+  external int rsp;
+
+  @__uint64_t()
+  external int rip;
+
+  @__uint64_t()
+  external int eflags;
+
+  @ffi.UnsignedShort()
+  external int cs;
+
+  @ffi.UnsignedShort()
+  external int gs;
+
+  @ffi.UnsignedShort()
+  external int fs;
+
+  @ffi.UnsignedShort()
+  external int __pad0;
+
+  @__uint64_t()
+  external int err;
+
+  @__uint64_t()
+  external int trapno;
+
+  @__uint64_t()
+  external int oldmask;
+
+  @__uint64_t()
+  external int cr2;
+
+  external UnnamedUnion5 unnamed;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<__uint64_t> __reserved1;
+}
+
+final class UnnamedUnion5 extends ffi.Union {
+  external ffi.Pointer<_fpstate> fpstate;
+
+  @__uint64_t()
+  external int __fpstate_word;
+}
+
+final class _xsave_hdr extends ffi.Struct {
+  @__uint64_t()
+  external int xstate_bv;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<__uint64_t> __glibc_reserved1;
+
+  @ffi.Array.multi([5])
+  external ffi.Array<__uint64_t> __glibc_reserved2;
+}
+
+final class _ymmh_state extends ffi.Struct {
+  @ffi.Array.multi([64])
+  external ffi.Array<__uint32_t> ymmh_space;
+}
+
+final class _xstate extends ffi.Struct {
+  external _fpstate fpstate;
+
+  external _xsave_hdr xstate_hdr;
+
+  external _ymmh_state ymmh;
+}
+
+final class stack_t extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ss_sp;
+
+  @ffi.Int()
+  external int ss_flags;
+
+  @ffi.Size()
+  external int ss_size;
+}
+
+final class _libc_fpxreg extends ffi.Struct {
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.UnsignedShort> significand;
+
+  @ffi.UnsignedShort()
+  external int exponent;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.UnsignedShort> __glibc_reserved1;
+}
+
+final class _libc_xmmreg extends ffi.Struct {
+  @ffi.Array.multi([4])
+  external ffi.Array<__uint32_t> element;
+}
+
+final class _libc_fpstate extends ffi.Struct {
+  @__uint16_t()
+  external int cwd;
+
+  @__uint16_t()
+  external int swd;
+
+  @__uint16_t()
+  external int ftw;
+
+  @__uint16_t()
+  external int fop;
+
+  @__uint64_t()
+  external int rip;
+
+  @__uint64_t()
+  external int rdp;
+
+  @__uint32_t()
+  external int mxcsr;
+
+  @__uint32_t()
+  external int mxcr_mask;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<_libc_fpxreg> _st;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<_libc_xmmreg> _xmm;
+
+  @ffi.Array.multi([24])
+  external ffi.Array<__uint32_t> __glibc_reserved1;
+}
+
+final class mcontext_t extends ffi.Struct {
+  @ffi.Array.multi([23])
+  external ffi.Array<greg_t> gregs;
+
+  external fpregset_t fpregs;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.UnsignedLongLong> __reserved1;
+}
+
+typedef greg_t = ffi.LongLong;
+typedef Dartgreg_t = int;
+typedef fpregset_t = ffi.Pointer<_libc_fpstate>;
+
+final class ucontext_t extends ffi.Struct {
+  @ffi.UnsignedLong()
+  external int uc_flags;
+
+  external ffi.Pointer<ucontext_t> uc_link;
+
+  external stack_t uc_stack;
+
+  external mcontext_t uc_mcontext;
+
+  external sigset_t uc_sigmask;
+
+  external _libc_fpstate __fpregs_mem;
+
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.UnsignedLongLong> __ssp;
+}
+
+final class sigstack extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ss_sp;
+
+  @ffi.Int()
+  external int ss_onstack;
+}
+
+typedef pthread_t = ffi.UnsignedLong;
+typedef Dartpthread_t = int;
 typedef guchar = ffi.UnsignedChar;
 typedef Dartguchar = int;
 
@@ -77109,9 +89822,6 @@ final class _GBookmarkFile extends ffi.Opaque {}
 ///
 /// An opaque data structure representing a set of bookmarks.
 typedef GBookmarkFile = _GBookmarkFile;
-typedef time_t = __time_t;
-typedef __time_t = ffi.Long;
-typedef Dart__time_t = int;
 
 /// GChecksumType:
 /// @G_CHECKSUM_MD5: Use the MD5 hashing algorithm
@@ -77241,39 +89951,33 @@ typedef guint16 = ffi.UnsignedShort;
 typedef Dartguint16 = int;
 typedef GTime = gint32;
 
-final class tm extends ffi.Struct {
-  @ffi.Int()
-  external int tm_sec;
+final class dirent extends ffi.Struct {
+  @__ino_t()
+  external int d_ino;
 
-  @ffi.Int()
-  external int tm_min;
+  @__off_t()
+  external int d_off;
 
-  @ffi.Int()
-  external int tm_hour;
+  @ffi.UnsignedShort()
+  external int d_reclen;
 
-  @ffi.Int()
-  external int tm_mday;
+  @ffi.UnsignedChar()
+  external int d_type;
 
-  @ffi.Int()
-  external int tm_mon;
-
-  @ffi.Int()
-  external int tm_year;
-
-  @ffi.Int()
-  external int tm_wday;
-
-  @ffi.Int()
-  external int tm_yday;
-
-  @ffi.Int()
-  external int tm_isdst;
-
-  @ffi.Long()
-  external int tm_gmtoff;
-
-  external ffi.Pointer<ffi.Char> tm_zone;
+  @ffi.Array.multi([256])
+  external ffi.Array<ffi.Char> d_name;
 }
+
+typedef __ino_t = ffi.UnsignedLong;
+typedef Dart__ino_t = int;
+typedef __off_t = ffi.Long;
+typedef Dart__off_t = int;
+
+final class __dirstream extends ffi.Opaque {}
+
+typedef DIR = __dirstream;
+typedef __ssize_t = ffi.Long;
+typedef Dart__ssize_t = int;
 
 final class _GDir extends ffi.Opaque {}
 
@@ -78767,17 +91471,17 @@ final class _GVariantIter extends ffi.Struct {
 typedef GVariantIter = _GVariantIter;
 
 final class _GVariantBuilder extends ffi.Struct {
-  external UnnamedUnion1 u;
+  external UnnamedUnion6 u;
 }
 
-final class UnnamedUnion1 extends ffi.Union {
-  external UnnamedStruct3 s;
+final class UnnamedUnion6 extends ffi.Union {
+  external UnnamedStruct13 s;
 
   @ffi.Array.multi([16])
   external ffi.Array<gsize> x;
 }
 
-final class UnnamedStruct3 extends ffi.Struct {
+final class UnnamedStruct13 extends ffi.Struct {
   @gsize()
   external int partial_magic;
 
@@ -78812,17 +91516,17 @@ abstract class GVariantParseError {
 typedef GVariantBuilder = _GVariantBuilder;
 
 final class _GVariantDict extends ffi.Struct {
-  external UnnamedUnion2 u;
+  external UnnamedUnion7 u;
 }
 
-final class UnnamedUnion2 extends ffi.Union {
-  external UnnamedStruct4 s;
+final class UnnamedUnion7 extends ffi.Union {
+  external UnnamedStruct14 s;
 
   @ffi.Array.multi([16])
   external ffi.Array<gsize> x;
 }
 
-final class UnnamedStruct4 extends ffi.Struct {
+final class UnnamedStruct14 extends ffi.Struct {
   external ffi.Pointer<GVariant> asv;
 
   @gsize()
@@ -80389,53 +93093,82 @@ final class _GThreadFunctions extends ffi.Struct {
 
 typedef GThreadFunctions = _GThreadFunctions;
 
+final class sched_param extends ffi.Struct {
+  @ffi.Int()
+  external int sched_priority;
+}
+
+final class cpu_set_t extends ffi.Struct {
+  @ffi.Array.multi([16])
+  external ffi.Array<__cpu_mask> __bits;
+}
+
+typedef __cpu_mask = ffi.UnsignedLong;
+typedef Dart__cpu_mask = int;
+
+final class __jmp_buf_tag extends ffi.Struct {
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Long> __jmpbuf;
+
+  @ffi.Int()
+  external int __mask_was_saved;
+
+  external __sigset_t __saved_mask;
+}
+
+final class _pthread_cleanup_buffer extends ffi.Struct {
+  external ffi
+      .Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+      __routine;
+
+  external ffi.Pointer<ffi.Void> __arg;
+
+  @ffi.Int()
+  external int __canceltype;
+
+  external ffi.Pointer<_pthread_cleanup_buffer> __prev;
+}
+
+typedef pthread_once_t = ffi.Int;
+typedef Dartpthread_once_t = int;
+
+final class __cancel_jmp_buf_tag extends ffi.Struct {
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Long> __cancel_jmp_buf;
+
+  @ffi.Int()
+  external int __mask_was_saved;
+}
+
+final class __pthread_unwind_buf_t extends ffi.Struct {
+  @ffi.Array.multi([1])
+  external ffi.Array<__cancel_jmp_buf_tag> __cancel_jmp_buf;
+
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.Pointer<ffi.Void>> __pad;
+}
+
+final class __pthread_cleanup_frame extends ffi.Struct {
+  external ffi
+      .Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+      __cancel_routine;
+
+  external ffi.Pointer<ffi.Void> __cancel_arg;
+
+  @ffi.Int()
+  external int __do_it;
+
+  @ffi.Int()
+  external int __cancel_type;
+}
+
+typedef pthread_key_t = ffi.UnsignedInt;
+typedef Dartpthread_key_t = int;
+
 final class GStaticMutex extends ffi.Struct {
   external ffi.Pointer<GMutex> mutex;
 
   external pthread_mutex_t unused;
-}
-
-final class pthread_mutex_t extends ffi.Union {
-  external __pthread_mutex_s __data;
-
-  @ffi.Array.multi([40])
-  external ffi.Array<ffi.Char> __size;
-
-  @ffi.Long()
-  external int __align;
-}
-
-final class __pthread_mutex_s extends ffi.Struct {
-  @ffi.Int()
-  external int __lock;
-
-  @ffi.UnsignedInt()
-  external int __count;
-
-  @ffi.Int()
-  external int __owner;
-
-  @ffi.UnsignedInt()
-  external int __nusers;
-
-  @ffi.Int()
-  external int __kind;
-
-  @ffi.Short()
-  external int __spins;
-
-  @ffi.Short()
-  external int __elision;
-
-  external __pthread_list_t __list;
-}
-
-typedef __pthread_list_t = __pthread_internal_list;
-
-final class __pthread_internal_list extends ffi.Struct {
-  external ffi.Pointer<__pthread_internal_list> __prev;
-
-  external ffi.Pointer<__pthread_internal_list> __next;
 }
 
 final class _GStaticRecMutex extends ffi.Struct {
@@ -80444,10 +93177,10 @@ final class _GStaticRecMutex extends ffi.Struct {
   @guint()
   external int depth;
 
-  external UnnamedUnion3 unused;
+  external UnnamedUnion8 unused;
 }
 
-final class UnnamedUnion3 extends ffi.Union {
+final class UnnamedUnion8 extends ffi.Union {
   @pthread_t()
   external int owner;
 
@@ -80455,8 +93188,6 @@ final class UnnamedUnion3 extends ffi.Union {
   external double dummy;
 }
 
-typedef pthread_t = ffi.UnsignedLong;
-typedef Dartpthread_t = int;
 typedef GStaticRecMutex = _GStaticRecMutex;
 
 final class _GStaticRWLock extends ffi.Struct {
@@ -80505,12 +93236,12 @@ final class _GValue extends ffi.Struct {
   external int g_type;
 
   @ffi.Array.multi([2])
-  external ffi.Array<UnnamedUnion4> data;
+  external ffi.Array<UnnamedUnion9> data;
 }
 
 typedef GType = gsize;
 
-final class UnnamedUnion4 extends ffi.Union {
+final class UnnamedUnion9 extends ffi.Union {
   @gint()
   external int v_int;
 
@@ -81980,10 +94711,10 @@ typedef DartGToggleNotifyFunction = void Function(
     gpointer data, ffi.Pointer<GObject> object, Dartgint is_last_ref);
 
 final class GWeakRef extends ffi.Struct {
-  external UnnamedUnion5 priv;
+  external UnnamedUnion10 priv;
 }
 
-final class UnnamedUnion5 extends ffi.Union {
+final class UnnamedUnion10 extends ffi.Union {
   external gpointer p;
 }
 
@@ -86991,16 +99722,16 @@ final class _GConverterOutputStreamClass extends ffi.Struct {
 }
 
 typedef GConverterOutputStream = _GConverterOutputStream;
+typedef ssize_t = __ssize_t;
+typedef __useconds_t = ffi.UnsignedInt;
+typedef Dart__useconds_t = int;
+typedef __gid_t = ffi.UnsignedInt;
+typedef Dart__gid_t = int;
 
 final class _GCredentialsClass extends ffi.Opaque {}
 
 typedef GCredentials = _GCredentials;
-typedef pid_t = __pid_t;
-typedef __pid_t = ffi.Int;
-typedef Dart__pid_t = int;
 typedef uid_t = __uid_t;
-typedef __uid_t = ffi.UnsignedInt;
-typedef Dart__uid_t = int;
 
 /// GDatagramBasedInterface:
 /// @g_iface: The parent interface.
@@ -92168,6 +104899,1302 @@ final class _GZlibDecompressorClass extends ffi.Struct {
 
 typedef GZlibDecompressor = _GZlibDecompressor;
 
+/// FlatpakError:
+/// @FLATPAK_ERROR_ALREADY_INSTALLED: App/runtime/remote is already installed
+/// @FLATPAK_ERROR_NOT_INSTALLED: App/runtime is not installed
+/// @FLATPAK_ERROR_ONLY_PULLED: App/runtime was only pulled into the local
+/// repository but not installed.
+/// @FLATPAK_ERROR_DIFFERENT_REMOTE: The App/Runtime is already installed, but from a different remote.
+/// @FLATPAK_ERROR_ABORTED: The transaction was aborted (returned %TRUE in operation-error signal).
+/// @FLATPAK_ERROR_SKIPPED: The App/Runtime install was skipped due to earlier errors.
+/// @FLATPAK_ERROR_NEED_NEW_FLATPAK: The App/Runtime needs a more recent version of flatpak.
+/// @FLATPAK_ERROR_REMOTE_NOT_FOUND: The specified remote was not found.
+/// @FLATPAK_ERROR_RUNTIME_NOT_FOUND: A runtime needed for the app was not found.
+/// @FLATPAK_ERROR_DOWNGRADE: The pulled commit is a downgrade, and a downgrade wasn't
+/// specifically allowed. (Since: 1.0)
+/// @FLATPAK_ERROR_INVALID_REF: A ref could not be parsed. (Since: 1.0.3)
+/// @FLATPAK_ERROR_INVALID_DATA: Invalid data. (Since: 1.0.3)
+/// @FLATPAK_ERROR_UNTRUSTED: Missing GPG key or signature. (Since: 1.0.3)
+/// @FLATPAK_ERROR_SETUP_FAILED: Sandbox setup failed. (Since: 1.0.3)
+/// @FLATPAK_ERROR_EXPORT_FAILED: Exporting data failed. (Since: 1.0.3)
+/// @FLATPAK_ERROR_REMOTE_USED: Remote can't be uninstalled. (Since: 1.0.3)
+/// @FLATPAK_ERROR_RUNTIME_USED: Runtime can't be uninstalled. (Since: 1.0.3)
+/// @FLATPAK_ERROR_INVALID_NAME: Application, runtime or remote name is invalid. (Since: 1.0.3)
+/// @FLATPAK_ERROR_OUT_OF_SPACE: More disk space needed. (Since: 1.2.0)
+/// @FLATPAK_ERROR_WRONG_USER: An operation is being attempted by the wrong user (such as
+/// root operating on a user installation). (Since: 1.2.0)
+/// @FLATPAK_ERROR_NOT_CACHED: Cached data was requested, but it was not available. (Since: 1.4.0)
+/// @FLATPAK_ERROR_REF_NOT_FOUND: The specified ref was not found. (Since: 1.4.0)
+/// @FLATPAK_ERROR_PERMISSION_DENIED: An operation was not allowed by the administrative policy.
+/// For example, an app is not allowed to be installed due
+/// to not complying with the parental controls policy. (Since: 1.5.1)
+/// @FLATPAK_ERROR_AUTHENTICATION_FAILED: An authentication operation failed, for example, no
+/// correct password was supplied. (Since: 1.7.3)
+/// @FLATPAK_ERROR_NOT_AUTHORIZED: An operation tried to access a ref, or information about it that it
+/// was not authorized. For example, when succesfully authenticating with a
+/// server but the user doesn't have permissions for a private ref. (Since: 1.7.3)
+///
+/// Error codes for library functions.
+abstract class FlatpakError {
+  static const int FLATPAK_ERROR_ALREADY_INSTALLED = 0;
+  static const int FLATPAK_ERROR_NOT_INSTALLED = 1;
+  static const int FLATPAK_ERROR_ONLY_PULLED = 2;
+  static const int FLATPAK_ERROR_DIFFERENT_REMOTE = 3;
+  static const int FLATPAK_ERROR_ABORTED = 4;
+  static const int FLATPAK_ERROR_SKIPPED = 5;
+  static const int FLATPAK_ERROR_NEED_NEW_FLATPAK = 6;
+  static const int FLATPAK_ERROR_REMOTE_NOT_FOUND = 7;
+  static const int FLATPAK_ERROR_RUNTIME_NOT_FOUND = 8;
+  static const int FLATPAK_ERROR_DOWNGRADE = 9;
+  static const int FLATPAK_ERROR_INVALID_REF = 10;
+  static const int FLATPAK_ERROR_INVALID_DATA = 11;
+  static const int FLATPAK_ERROR_UNTRUSTED = 12;
+  static const int FLATPAK_ERROR_SETUP_FAILED = 13;
+  static const int FLATPAK_ERROR_EXPORT_FAILED = 14;
+  static const int FLATPAK_ERROR_REMOTE_USED = 15;
+  static const int FLATPAK_ERROR_RUNTIME_USED = 16;
+  static const int FLATPAK_ERROR_INVALID_NAME = 17;
+  static const int FLATPAK_ERROR_OUT_OF_SPACE = 18;
+  static const int FLATPAK_ERROR_WRONG_USER = 19;
+  static const int FLATPAK_ERROR_NOT_CACHED = 20;
+  static const int FLATPAK_ERROR_REF_NOT_FOUND = 21;
+  static const int FLATPAK_ERROR_PERMISSION_DENIED = 22;
+  static const int FLATPAK_ERROR_AUTHENTICATION_FAILED = 23;
+  static const int FLATPAK_ERROR_NOT_AUTHORIZED = 24;
+}
+
+/// FlatpakPortalError:
+/// @FLATPAK_PORTAL_ERROR_FAILED: General portal failure
+/// @FLATPAK_PORTAL_ERROR_INVALID_ARGUMENT: An argument was invalid
+/// @FLATPAK_PORTAL_ERROR_NOT_FOUND: The object was not found
+/// @FLATPAK_PORTAL_ERROR_EXISTS: The object already exists
+/// @FLATPAK_PORTAL_ERROR_NOT_ALLOWED: The call was not allowed
+/// @FLATPAK_PORTAL_ERROR_CANCELLED: The call was cancelled by the user
+/// @FLATPAK_PORTAL_ERROR_WINDOW_DESTROYED: The window was destroyed by the user
+///
+/// Error codes returned by portal calls.
+abstract class FlatpakPortalError {
+  static const int FLATPAK_PORTAL_ERROR_FAILED = 0;
+  static const int FLATPAK_PORTAL_ERROR_INVALID_ARGUMENT = 1;
+  static const int FLATPAK_PORTAL_ERROR_NOT_FOUND = 2;
+  static const int FLATPAK_PORTAL_ERROR_EXISTS = 3;
+  static const int FLATPAK_PORTAL_ERROR_NOT_ALLOWED = 4;
+  static const int FLATPAK_PORTAL_ERROR_CANCELLED = 5;
+  static const int FLATPAK_PORTAL_ERROR_WINDOW_DESTROYED = 6;
+}
+
+final class _FlatpakRef extends ffi.Struct {
+  external GObject parent;
+}
+
+final class FlatpakRefClass extends ffi.Struct {
+  external GObjectClass parent_class;
+}
+
+/// FlatpakRefKind:
+/// @FLATPAK_REF_KIND_APP: An application
+/// @FLATPAK_REF_KIND_RUNTIME: A runtime that applications can use.
+///
+/// The kind of artifact that a FlatpakRef refers to.
+abstract class FlatpakRefKind {
+  static const int FLATPAK_REF_KIND_APP = 0;
+  static const int FLATPAK_REF_KIND_RUNTIME = 1;
+}
+
+typedef FlatpakRef = _FlatpakRef;
+
+final class _FlatpakInstalledRef extends ffi.Struct {
+  external FlatpakRef parent;
+}
+
+final class FlatpakInstalledRefClass extends ffi.Struct {
+  external FlatpakRefClass parent_class;
+}
+
+typedef FlatpakInstalledRef = _FlatpakInstalledRef;
+
+final class _FlatpakRemoteRef extends ffi.Struct {
+  external FlatpakRef parent;
+}
+
+final class FlatpakRemoteRefClass extends ffi.Struct {
+  external FlatpakRefClass parent_class;
+}
+
+typedef FlatpakRemoteRef = _FlatpakRemoteRef;
+
+final class _FlatpakRelatedRef extends ffi.Struct {
+  external FlatpakRef parent;
+}
+
+final class FlatpakRelatedRefClass extends ffi.Struct {
+  external FlatpakRefClass parent_class;
+}
+
+typedef FlatpakRelatedRef = _FlatpakRelatedRef;
+
+final class _FlatpakBundleRef extends ffi.Struct {
+  external FlatpakRef parent;
+}
+
+final class FlatpakBundleRefClass extends ffi.Struct {
+  external FlatpakRefClass parent_class;
+}
+
+typedef FlatpakBundleRef = _FlatpakBundleRef;
+
+/// FlatpakRemoteType:
+/// @FLATPAK_REMOTE_TYPE_STATIC: Statically configured remote
+/// @FLATPAK_REMOTE_TYPE_USB: Dynamically detected local pathname remote
+/// @FLATPAK_REMOTE_TYPE_LAN: Dynamically detected network remote
+///
+/// Different types of @FlatpakRemote.
+abstract class FlatpakRemoteType {
+  static const int FLATPAK_REMOTE_TYPE_STATIC = 0;
+  static const int FLATPAK_REMOTE_TYPE_USB = 1;
+  static const int FLATPAK_REMOTE_TYPE_LAN = 2;
+}
+
+final class _FlatpakRemote extends ffi.Struct {
+  external GObject parent;
+}
+
+final class FlatpakRemoteClass extends ffi.Struct {
+  external GObjectClass parent_class;
+}
+
+typedef FlatpakRemote = _FlatpakRemote;
+
+final class _FlatpakInstallation extends ffi.Struct {
+  external GObject parent;
+}
+
+final class _FlatpakInstance extends ffi.Struct {
+  external GObject parent;
+}
+
+final class FlatpakInstanceClass extends ffi.Struct {
+  external GObjectClass parent_class;
+}
+
+typedef FlatpakInstance = _FlatpakInstance;
+
+final class FlatpakInstallationClass extends ffi.Struct {
+  external GObjectClass parent_class;
+}
+
+/// FlatpakUpdateFlags:
+/// @FLATPAK_UPDATE_FLAGS_NONE: Fetch remote builds and install the latest one (default)
+/// @FLATPAK_UPDATE_FLAGS_NO_DEPLOY: Don't install any new builds that might be fetched
+/// @FLATPAK_UPDATE_FLAGS_NO_PULL: Don't try to fetch new builds from the remote repo
+/// @FLATPAK_UPDATE_FLAGS_NO_STATIC_DELTAS: Don't use static deltas when pulling
+/// @FLATPAK_UPDATE_FLAGS_NO_PRUNE: Don't prune the local OSTree repository after updating (Since: 0.11.8)
+/// @FLATPAK_UPDATE_FLAGS_NO_TRIGGERS: Don't call triggers after updating. If used,
+/// the caller must later call flatpak_installation_run_triggers() to update
+/// the exported files. (Since: 1.0.3)
+///
+/// Flags to alter the behavior of flatpak_installation_update().
+abstract class FlatpakUpdateFlags {
+  static const int FLATPAK_UPDATE_FLAGS_NONE = 0;
+  static const int FLATPAK_UPDATE_FLAGS_NO_DEPLOY = 1;
+  static const int FLATPAK_UPDATE_FLAGS_NO_PULL = 2;
+  static const int FLATPAK_UPDATE_FLAGS_NO_STATIC_DELTAS = 4;
+  static const int FLATPAK_UPDATE_FLAGS_NO_PRUNE = 8;
+  static const int FLATPAK_UPDATE_FLAGS_NO_TRIGGERS = 16;
+}
+
+/// FlatpakInstallFlags:
+/// @FLATPAK_INSTALL_FLAGS_NONE: Default
+/// @FLATPAK_INSTALL_FLAGS_NO_STATIC_DELTAS: Don't use static deltas when pulling
+/// @FLATPAK_INSTALL_FLAGS_NO_DEPLOY: Don't install any new builds that might be fetched
+/// @FLATPAK_INSTALL_FLAGS_NO_PULL: Don't try to fetch new builds from the remote repo
+/// @FLATPAK_INSTALL_FLAGS_NO_TRIGGERS: Don't call triggers after installing. If used,
+/// the caller must later call flatpak_installation_run_triggers() to update
+/// the exported files. (Since: 1.0.3)
+///
+/// Flags to alter the behavior of flatpak_installation_install_full().
+abstract class FlatpakInstallFlags {
+  static const int FLATPAK_INSTALL_FLAGS_NONE = 0;
+  static const int FLATPAK_INSTALL_FLAGS_NO_STATIC_DELTAS = 1;
+  static const int FLATPAK_INSTALL_FLAGS_NO_DEPLOY = 4;
+  static const int FLATPAK_INSTALL_FLAGS_NO_PULL = 8;
+  static const int FLATPAK_INSTALL_FLAGS_NO_TRIGGERS = 16;
+}
+
+/// FlatpakUninstallFlags:
+/// @FLATPAK_UNINSTALL_FLAGS_NONE: Default
+/// @FLATPAK_UNINSTALL_FLAGS_NO_PRUNE: Don't prune the local OSTree repository after uninstalling
+/// @FLATPAK_UNINSTALL_FLAGS_NO_TRIGGERS: Don't call triggers after uninstalling. If used,
+/// the caller must later call flatpak_installation_run_triggers() to update
+/// the exported file. (Since: 1.0.3)
+///
+/// Flags to alter the behavior of flatpak_installation_uninstall_full().
+///
+/// Since: 0.11.8
+abstract class FlatpakUninstallFlags {
+  static const int FLATPAK_UNINSTALL_FLAGS_NONE = 0;
+  static const int FLATPAK_UNINSTALL_FLAGS_NO_PRUNE = 1;
+  static const int FLATPAK_UNINSTALL_FLAGS_NO_TRIGGERS = 2;
+}
+
+/// FlatpakLaunchFlags:
+/// @FLATPAK_LAUNCH_FLAGS_NONE: Default
+/// @FLATPAK_LAUNCH_FLAGS_DO_NOT_REAP: Do not reap the child. Use this if you want to wait
+/// for the child with g_child_watch_add(). (Since: 1.1)
+///
+/// Flags to alter the behavior of flatpak_installation_launch_full().
+abstract class FlatpakLaunchFlags {
+  static const int FLATPAK_LAUNCH_FLAGS_NONE = 0;
+  static const int FLATPAK_LAUNCH_FLAGS_DO_NOT_REAP = 1;
+}
+
+/// FlatpakQueryFlags:
+/// @FLATPAK_QUERY_FLAGS_NONE: Default
+/// @FLATPAK_QUERY_FLAGS_ONLY_CACHED: Don't do any network i/o, but only return cached data.
+/// This can return stale data, or a #FLATPAK_ERROR_NOT_CACHED error, however it is a
+/// lot more efficient if you're doing many requests.
+/// @FLATPAK_QUERY_FLAGS_ONLY_SIDELOADED: Only list refs available from sideload
+/// repos; see flatpak(1). (Since: 1.7)
+/// @FLATPAK_QUERY_FLAGS_ALL_ARCHES: Include refs from all arches, not just the primary ones. (Since: 1.11.2)
+///
+/// Flags to alter the behavior of e.g flatpak_installation_list_remote_refs_sync_full().
+///
+/// Since: 1.3.3
+abstract class FlatpakQueryFlags {
+  static const int FLATPAK_QUERY_FLAGS_NONE = 0;
+  static const int FLATPAK_QUERY_FLAGS_ONLY_CACHED = 1;
+  static const int FLATPAK_QUERY_FLAGS_ONLY_SIDELOADED = 2;
+  static const int FLATPAK_QUERY_FLAGS_ALL_ARCHES = 4;
+}
+
+/// FlatpakStorageType:
+/// @FLATPAK_STORAGE_TYPE_DEFAULT: default
+/// @FLATPAK_STORAGE_TYPE_HARD_DISK: installation is on a hard disk
+/// @FLATPAK_STORAGE_TYPE_SDCARD: installation is on a SD card
+/// @FLATPAK_STORAGE_TYPE_MMC: installation is on an MMC
+/// @FLATPAK_STORAGE_TYPE_NETWORK: installation is on the network
+///
+/// Information about the storage of an installation.
+///
+/// Since: 0.6.15
+abstract class FlatpakStorageType {
+  static const int FLATPAK_STORAGE_TYPE_DEFAULT = 0;
+  static const int FLATPAK_STORAGE_TYPE_HARD_DISK = 1;
+  static const int FLATPAK_STORAGE_TYPE_SDCARD = 2;
+  static const int FLATPAK_STORAGE_TYPE_MMC = 3;
+  static const int FLATPAK_STORAGE_TYPE_NETWORK = 4;
+}
+
+typedef FlatpakInstallation = _FlatpakInstallation;
+
+/// FlatpakProgressCallback:
+/// @status: A status string, suitable for display
+/// @progress: percentage of completion
+/// @estimating: whether @progress is just an estimate
+/// @user_data: User data passed to the caller
+///
+/// The progress callback is called repeatedly during long-running operations
+/// such as installations or updates, and can be used to update progress information
+/// in a user interface.
+///
+/// The callback occurs in the thread-default context of the caller.
+typedef FlatpakProgressCallback
+    = ffi.Pointer<ffi.NativeFunction<FlatpakProgressCallbackFunction>>;
+typedef FlatpakProgressCallbackFunction = ffi.Void Function(
+    ffi.Pointer<ffi.Char> status,
+    guint progress,
+    gboolean estimating,
+    gpointer user_data);
+typedef DartFlatpakProgressCallbackFunction = void Function(
+    ffi.Pointer<ffi.Char> status,
+    Dartguint progress,
+    Dartgint estimating,
+    gpointer user_data);
+
+/// FlatpakTransactionOperationType
+/// @FLATPAK_TRANSACTION_OPERATION_INSTALL: Install a ref from a remote
+/// @FLATPAK_TRANSACTION_OPERATION_UPDATE: Update an installed ref
+/// @FLATPAK_TRANSACTION_OPERATION_INSTALL_BUNDLE: Install a bundle from a file
+/// @FLATPAK_TRANSACTION_OPERATION_UNINSTALL: Uninstall a ref
+/// @FLATPAK_TRANSACTION_OPERATION_LAST_TYPE: The (currently) last operation type
+///
+/// The type of a #FlatpakTransactionOperation.
+abstract class FlatpakTransactionOperationType {
+  static const int FLATPAK_TRANSACTION_OPERATION_INSTALL = 0;
+  static const int FLATPAK_TRANSACTION_OPERATION_UPDATE = 1;
+  static const int FLATPAK_TRANSACTION_OPERATION_INSTALL_BUNDLE = 2;
+  static const int FLATPAK_TRANSACTION_OPERATION_UNINSTALL = 3;
+  static const int FLATPAK_TRANSACTION_OPERATION_LAST_TYPE = 4;
+}
+
+/// FlatpakTransactionErrorDetails
+/// @FLATPAK_TRANSACTION_ERROR_DETAILS_NON_FATAL: The operation failure was not fatal
+///
+/// The details for #FlatpakTransaction::operation-error.
+abstract class FlatpakTransactionErrorDetails {
+  static const int FLATPAK_TRANSACTION_ERROR_DETAILS_NON_FATAL = 1;
+}
+
+/// FlatpakTransactionResult
+/// @FLATPAK_TRANSACTION_RESULT_NO_CHANGE: The update caused no changes
+///
+/// The details for #FlatpakTransaction::operation-done.
+abstract class FlatpakTransactionResult {
+  static const int FLATPAK_TRANSACTION_RESULT_NO_CHANGE = 1;
+}
+
+/// FlatpakTransactionRemoteReason
+/// @FLATPAK_TRANSACTION_REMOTE_GENERIC_REPO: The remote specified in the flatpakref has other apps too
+/// @FLATPAK_TRANSACTION_REMOTE_RUNTIME_DEPS: The remote has runtimes needed for the app
+///
+/// The reason for #FlatpakTransaction::add-new-remote.
+abstract class FlatpakTransactionRemoteReason {
+  static const int FLATPAK_TRANSACTION_REMOTE_GENERIC_REPO = 0;
+  static const int FLATPAK_TRANSACTION_REMOTE_RUNTIME_DEPS = 1;
+}
+
+final class _FlatpakTransactionProgress extends ffi.Opaque {}
+
+final class FlatpakTransactionProgressClass extends ffi.Struct {
+  external GObjectClass parent_class;
+}
+
+final class _FlatpakTransactionOperation extends ffi.Opaque {}
+
+final class FlatpakTransactionOperationClass extends ffi.Struct {
+  external GObjectClass parent_class;
+}
+
+final class _FlatpakTransaction extends ffi.Struct {
+  external GObject parent_instance;
+}
+
+final class _FlatpakTransactionClass extends ffi.Struct {
+  external GObjectClass parent_class;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<FlatpakTransactionOperation> operation,
+              ffi.Pointer<FlatpakTransactionProgress> progress)>> new_operation;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<FlatpakTransactionOperation> operation,
+              ffi.Pointer<ffi.Char> commit,
+              ffi.Int32 details)>> operation_done;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<FlatpakTransactionOperation> operation,
+              ffi.Pointer<GError> error,
+              ffi.Int32 detail)>> operation_error;
+
+  external ffi.Pointer<
+          ffi.NativeFunction<
+              ffi.Int Function(
+                  ffi.Pointer<FlatpakTransaction> transaction,
+                  ffi.Pointer<ffi.Char> for_ref,
+                  ffi.Pointer<ffi.Char> runtime_ref,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>> remotes)>>
+      choose_remote_for_ref;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<ffi.Char> ref,
+              ffi.Pointer<ffi.Char> reason,
+              ffi.Pointer<ffi.Char> rebase)>> end_of_lifed;
+
+  external ffi.Pointer<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<FlatpakTransaction> transaction)>>
+      ready;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Int32 reason,
+              ffi.Pointer<ffi.Char> from_id,
+              ffi.Pointer<ffi.Char> remote_name,
+              ffi.Pointer<ffi.Char> url)>> add_new_remote;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<GCancellable> cancellable,
+              ffi.Pointer<ffi.Pointer<GError>> error)>> run;
+
+  external ffi.Pointer<
+          ffi.NativeFunction<
+              gboolean Function(
+                  ffi.Pointer<FlatpakTransaction> transaction,
+                  ffi.Pointer<ffi.Char> remote,
+                  ffi.Pointer<ffi.Char> ref,
+                  ffi.Pointer<ffi.Char> reason,
+                  ffi.Pointer<ffi.Char> rebased_to_ref,
+                  ffi.Pointer<ffi.Pointer<ffi.Char>> previous_ids)>>
+      end_of_lifed_with_rebase;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<ffi.Char> remote,
+              ffi.Pointer<ffi.Char> url,
+              ffi.Pointer<GVariant> options,
+              guint id)>> webflow_start;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<GVariant> options, guint id)>> webflow_done;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          gboolean Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<ffi.Char> remote,
+              ffi.Pointer<ffi.Char> realm,
+              ffi.Pointer<GVariant> options,
+              guint id)>> basic_auth_start;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<FlatpakTransaction> transaction,
+              ffi.Pointer<ffi.Char> remote,
+              ffi.Pointer<ffi.Char> authenticator_ref)>> install_authenticator;
+
+  external ffi.Pointer<
+          ffi.NativeFunction<
+              gboolean Function(ffi.Pointer<FlatpakTransaction> transaction)>>
+      ready_pre_auth;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<gpointer> padding;
+}
+
+typedef FlatpakTransaction = _FlatpakTransaction;
+typedef FlatpakTransactionOperation = _FlatpakTransactionOperation;
+typedef FlatpakTransactionProgress = _FlatpakTransactionProgress;
+
+const int SI_ASYNCNL = -60;
+
+const int SI_DETHREAD = -7;
+
+const int SI_TKILL = -6;
+
+const int SI_SIGIO = -5;
+
+const int SI_ASYNCIO = -4;
+
+const int SI_MESGQ = -3;
+
+const int SI_TIMER = -2;
+
+const int SI_QUEUE = -1;
+
+const int SI_USER = 0;
+
+const int SI_KERNEL = 128;
+
+const int ILL_ILLOPC = 1;
+
+const int ILL_ILLOPN = 2;
+
+const int ILL_ILLADR = 3;
+
+const int ILL_ILLTRP = 4;
+
+const int ILL_PRVOPC = 5;
+
+const int ILL_PRVREG = 6;
+
+const int ILL_COPROC = 7;
+
+const int ILL_BADSTK = 8;
+
+const int ILL_BADIADDR = 9;
+
+const int FPE_INTDIV = 1;
+
+const int FPE_INTOVF = 2;
+
+const int FPE_FLTDIV = 3;
+
+const int FPE_FLTOVF = 4;
+
+const int FPE_FLTUND = 5;
+
+const int FPE_FLTRES = 6;
+
+const int FPE_FLTINV = 7;
+
+const int FPE_FLTSUB = 8;
+
+const int FPE_FLTUNK = 14;
+
+const int FPE_CONDTRAP = 15;
+
+const int SEGV_MAPERR = 1;
+
+const int SEGV_ACCERR = 2;
+
+const int SEGV_BNDERR = 3;
+
+const int SEGV_PKUERR = 4;
+
+const int SEGV_ACCADI = 5;
+
+const int SEGV_ADIDERR = 6;
+
+const int SEGV_ADIPERR = 7;
+
+const int SEGV_MTEAERR = 8;
+
+const int SEGV_MTESERR = 9;
+
+const int BUS_ADRALN = 1;
+
+const int BUS_ADRERR = 2;
+
+const int BUS_OBJERR = 3;
+
+const int BUS_MCEERR_AR = 4;
+
+const int BUS_MCEERR_AO = 5;
+
+const int CLD_EXITED = 1;
+
+const int CLD_KILLED = 2;
+
+const int CLD_DUMPED = 3;
+
+const int CLD_TRAPPED = 4;
+
+const int CLD_STOPPED = 5;
+
+const int CLD_CONTINUED = 6;
+
+const int POLL_IN = 1;
+
+const int POLL_OUT = 2;
+
+const int POLL_MSG = 3;
+
+const int POLL_ERR = 4;
+
+const int POLL_PRI = 5;
+
+const int POLL_HUP = 6;
+
+const int SIGEV_SIGNAL = 0;
+
+const int SIGEV_NONE = 1;
+
+const int SIGEV_THREAD = 2;
+
+const int SIGEV_THREAD_ID = 4;
+
+const int SS_ONSTACK = 1;
+
+const int SS_DISABLE = 2;
+
+const int DT_UNKNOWN = 0;
+
+const int DT_FIFO = 1;
+
+const int DT_CHR = 2;
+
+const int DT_DIR = 4;
+
+const int DT_BLK = 6;
+
+const int DT_REG = 8;
+
+const int DT_LNK = 10;
+
+const int DT_SOCK = 12;
+
+const int DT_WHT = 14;
+
+const int PTHREAD_CREATE_JOINABLE = 0;
+
+const int PTHREAD_CREATE_DETACHED = 1;
+
+const int PTHREAD_MUTEX_TIMED_NP = 0;
+
+const int PTHREAD_MUTEX_RECURSIVE_NP = 1;
+
+const int PTHREAD_MUTEX_ERRORCHECK_NP = 2;
+
+const int PTHREAD_MUTEX_ADAPTIVE_NP = 3;
+
+const int PTHREAD_MUTEX_NORMAL = 0;
+
+const int PTHREAD_MUTEX_RECURSIVE = 1;
+
+const int PTHREAD_MUTEX_ERRORCHECK = 2;
+
+const int PTHREAD_MUTEX_DEFAULT = 0;
+
+const int PTHREAD_MUTEX_STALLED = 0;
+
+const int PTHREAD_MUTEX_STALLED_NP = 0;
+
+const int PTHREAD_MUTEX_ROBUST = 1;
+
+const int PTHREAD_MUTEX_ROBUST_NP = 1;
+
+const int PTHREAD_PRIO_NONE = 0;
+
+const int PTHREAD_PRIO_INHERIT = 1;
+
+const int PTHREAD_PRIO_PROTECT = 2;
+
+const int PTHREAD_RWLOCK_PREFER_READER_NP = 0;
+
+const int PTHREAD_RWLOCK_PREFER_WRITER_NP = 1;
+
+const int PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP = 2;
+
+const int PTHREAD_RWLOCK_DEFAULT_NP = 0;
+
+const int PTHREAD_INHERIT_SCHED = 0;
+
+const int PTHREAD_EXPLICIT_SCHED = 1;
+
+const int PTHREAD_SCOPE_SYSTEM = 0;
+
+const int PTHREAD_SCOPE_PROCESS = 1;
+
+const int PTHREAD_PROCESS_PRIVATE = 0;
+
+const int PTHREAD_PROCESS_SHARED = 1;
+
+const int PTHREAD_CANCEL_ENABLE = 0;
+
+const int PTHREAD_CANCEL_DISABLE = 1;
+
+const int PTHREAD_CANCEL_DEFERRED = 0;
+
+const int PTHREAD_CANCEL_ASYNCHRONOUS = 1;
+
+const int _PC_LINK_MAX = 0;
+
+const int _PC_MAX_CANON = 1;
+
+const int _PC_MAX_INPUT = 2;
+
+const int _PC_NAME_MAX = 3;
+
+const int _PC_PATH_MAX = 4;
+
+const int _PC_PIPE_BUF = 5;
+
+const int _PC_CHOWN_RESTRICTED = 6;
+
+const int _PC_NO_TRUNC = 7;
+
+const int _PC_VDISABLE = 8;
+
+const int _PC_SYNC_IO = 9;
+
+const int _PC_ASYNC_IO = 10;
+
+const int _PC_PRIO_IO = 11;
+
+const int _PC_SOCK_MAXBUF = 12;
+
+const int _PC_FILESIZEBITS = 13;
+
+const int _PC_REC_INCR_XFER_SIZE = 14;
+
+const int _PC_REC_MAX_XFER_SIZE = 15;
+
+const int _PC_REC_MIN_XFER_SIZE = 16;
+
+const int _PC_REC_XFER_ALIGN = 17;
+
+const int _PC_ALLOC_SIZE_MIN = 18;
+
+const int _PC_SYMLINK_MAX = 19;
+
+const int _PC_2_SYMLINKS = 20;
+
+const int _SC_ARG_MAX = 0;
+
+const int _SC_CHILD_MAX = 1;
+
+const int _SC_CLK_TCK = 2;
+
+const int _SC_NGROUPS_MAX = 3;
+
+const int _SC_OPEN_MAX = 4;
+
+const int _SC_STREAM_MAX = 5;
+
+const int _SC_TZNAME_MAX = 6;
+
+const int _SC_JOB_CONTROL = 7;
+
+const int _SC_SAVED_IDS = 8;
+
+const int _SC_REALTIME_SIGNALS = 9;
+
+const int _SC_PRIORITY_SCHEDULING = 10;
+
+const int _SC_TIMERS = 11;
+
+const int _SC_ASYNCHRONOUS_IO = 12;
+
+const int _SC_PRIORITIZED_IO = 13;
+
+const int _SC_SYNCHRONIZED_IO = 14;
+
+const int _SC_FSYNC = 15;
+
+const int _SC_MAPPED_FILES = 16;
+
+const int _SC_MEMLOCK = 17;
+
+const int _SC_MEMLOCK_RANGE = 18;
+
+const int _SC_MEMORY_PROTECTION = 19;
+
+const int _SC_MESSAGE_PASSING = 20;
+
+const int _SC_SEMAPHORES = 21;
+
+const int _SC_SHARED_MEMORY_OBJECTS = 22;
+
+const int _SC_AIO_LISTIO_MAX = 23;
+
+const int _SC_AIO_MAX = 24;
+
+const int _SC_AIO_PRIO_DELTA_MAX = 25;
+
+const int _SC_DELAYTIMER_MAX = 26;
+
+const int _SC_MQ_OPEN_MAX = 27;
+
+const int _SC_MQ_PRIO_MAX = 28;
+
+const int _SC_VERSION = 29;
+
+const int _SC_PAGESIZE = 30;
+
+const int _SC_RTSIG_MAX = 31;
+
+const int _SC_SEM_NSEMS_MAX = 32;
+
+const int _SC_SEM_VALUE_MAX = 33;
+
+const int _SC_SIGQUEUE_MAX = 34;
+
+const int _SC_TIMER_MAX = 35;
+
+const int _SC_BC_BASE_MAX = 36;
+
+const int _SC_BC_DIM_MAX = 37;
+
+const int _SC_BC_SCALE_MAX = 38;
+
+const int _SC_BC_STRING_MAX = 39;
+
+const int _SC_COLL_WEIGHTS_MAX = 40;
+
+const int _SC_EQUIV_CLASS_MAX = 41;
+
+const int _SC_EXPR_NEST_MAX = 42;
+
+const int _SC_LINE_MAX = 43;
+
+const int _SC_RE_DUP_MAX = 44;
+
+const int _SC_CHARCLASS_NAME_MAX = 45;
+
+const int _SC_2_VERSION = 46;
+
+const int _SC_2_C_BIND = 47;
+
+const int _SC_2_C_DEV = 48;
+
+const int _SC_2_FORT_DEV = 49;
+
+const int _SC_2_FORT_RUN = 50;
+
+const int _SC_2_SW_DEV = 51;
+
+const int _SC_2_LOCALEDEF = 52;
+
+const int _SC_PII = 53;
+
+const int _SC_PII_XTI = 54;
+
+const int _SC_PII_SOCKET = 55;
+
+const int _SC_PII_INTERNET = 56;
+
+const int _SC_PII_OSI = 57;
+
+const int _SC_POLL = 58;
+
+const int _SC_SELECT = 59;
+
+const int _SC_UIO_MAXIOV = 60;
+
+const int _SC_IOV_MAX = 60;
+
+const int _SC_PII_INTERNET_STREAM = 61;
+
+const int _SC_PII_INTERNET_DGRAM = 62;
+
+const int _SC_PII_OSI_COTS = 63;
+
+const int _SC_PII_OSI_CLTS = 64;
+
+const int _SC_PII_OSI_M = 65;
+
+const int _SC_T_IOV_MAX = 66;
+
+const int _SC_THREADS = 67;
+
+const int _SC_THREAD_SAFE_FUNCTIONS = 68;
+
+const int _SC_GETGR_R_SIZE_MAX = 69;
+
+const int _SC_GETPW_R_SIZE_MAX = 70;
+
+const int _SC_LOGIN_NAME_MAX = 71;
+
+const int _SC_TTY_NAME_MAX = 72;
+
+const int _SC_THREAD_DESTRUCTOR_ITERATIONS = 73;
+
+const int _SC_THREAD_KEYS_MAX = 74;
+
+const int _SC_THREAD_STACK_MIN = 75;
+
+const int _SC_THREAD_THREADS_MAX = 76;
+
+const int _SC_THREAD_ATTR_STACKADDR = 77;
+
+const int _SC_THREAD_ATTR_STACKSIZE = 78;
+
+const int _SC_THREAD_PRIORITY_SCHEDULING = 79;
+
+const int _SC_THREAD_PRIO_INHERIT = 80;
+
+const int _SC_THREAD_PRIO_PROTECT = 81;
+
+const int _SC_THREAD_PROCESS_SHARED = 82;
+
+const int _SC_NPROCESSORS_CONF = 83;
+
+const int _SC_NPROCESSORS_ONLN = 84;
+
+const int _SC_PHYS_PAGES = 85;
+
+const int _SC_AVPHYS_PAGES = 86;
+
+const int _SC_ATEXIT_MAX = 87;
+
+const int _SC_PASS_MAX = 88;
+
+const int _SC_XOPEN_VERSION = 89;
+
+const int _SC_XOPEN_XCU_VERSION = 90;
+
+const int _SC_XOPEN_UNIX = 91;
+
+const int _SC_XOPEN_CRYPT = 92;
+
+const int _SC_XOPEN_ENH_I18N = 93;
+
+const int _SC_XOPEN_SHM = 94;
+
+const int _SC_2_CHAR_TERM = 95;
+
+const int _SC_2_C_VERSION = 96;
+
+const int _SC_2_UPE = 97;
+
+const int _SC_XOPEN_XPG2 = 98;
+
+const int _SC_XOPEN_XPG3 = 99;
+
+const int _SC_XOPEN_XPG4 = 100;
+
+const int _SC_CHAR_BIT = 101;
+
+const int _SC_CHAR_MAX = 102;
+
+const int _SC_CHAR_MIN = 103;
+
+const int _SC_INT_MAX = 104;
+
+const int _SC_INT_MIN = 105;
+
+const int _SC_LONG_BIT = 106;
+
+const int _SC_WORD_BIT = 107;
+
+const int _SC_MB_LEN_MAX = 108;
+
+const int _SC_NZERO = 109;
+
+const int _SC_SSIZE_MAX = 110;
+
+const int _SC_SCHAR_MAX = 111;
+
+const int _SC_SCHAR_MIN = 112;
+
+const int _SC_SHRT_MAX = 113;
+
+const int _SC_SHRT_MIN = 114;
+
+const int _SC_UCHAR_MAX = 115;
+
+const int _SC_UINT_MAX = 116;
+
+const int _SC_ULONG_MAX = 117;
+
+const int _SC_USHRT_MAX = 118;
+
+const int _SC_NL_ARGMAX = 119;
+
+const int _SC_NL_LANGMAX = 120;
+
+const int _SC_NL_MSGMAX = 121;
+
+const int _SC_NL_NMAX = 122;
+
+const int _SC_NL_SETMAX = 123;
+
+const int _SC_NL_TEXTMAX = 124;
+
+const int _SC_XBS5_ILP32_OFF32 = 125;
+
+const int _SC_XBS5_ILP32_OFFBIG = 126;
+
+const int _SC_XBS5_LP64_OFF64 = 127;
+
+const int _SC_XBS5_LPBIG_OFFBIG = 128;
+
+const int _SC_XOPEN_LEGACY = 129;
+
+const int _SC_XOPEN_REALTIME = 130;
+
+const int _SC_XOPEN_REALTIME_THREADS = 131;
+
+const int _SC_ADVISORY_INFO = 132;
+
+const int _SC_BARRIERS = 133;
+
+const int _SC_BASE = 134;
+
+const int _SC_C_LANG_SUPPORT = 135;
+
+const int _SC_C_LANG_SUPPORT_R = 136;
+
+const int _SC_CLOCK_SELECTION = 137;
+
+const int _SC_CPUTIME = 138;
+
+const int _SC_THREAD_CPUTIME = 139;
+
+const int _SC_DEVICE_IO = 140;
+
+const int _SC_DEVICE_SPECIFIC = 141;
+
+const int _SC_DEVICE_SPECIFIC_R = 142;
+
+const int _SC_FD_MGMT = 143;
+
+const int _SC_FIFO = 144;
+
+const int _SC_PIPE = 145;
+
+const int _SC_FILE_ATTRIBUTES = 146;
+
+const int _SC_FILE_LOCKING = 147;
+
+const int _SC_FILE_SYSTEM = 148;
+
+const int _SC_MONOTONIC_CLOCK = 149;
+
+const int _SC_MULTI_PROCESS = 150;
+
+const int _SC_SINGLE_PROCESS = 151;
+
+const int _SC_NETWORKING = 152;
+
+const int _SC_READER_WRITER_LOCKS = 153;
+
+const int _SC_SPIN_LOCKS = 154;
+
+const int _SC_REGEXP = 155;
+
+const int _SC_REGEX_VERSION = 156;
+
+const int _SC_SHELL = 157;
+
+const int _SC_SIGNALS = 158;
+
+const int _SC_SPAWN = 159;
+
+const int _SC_SPORADIC_SERVER = 160;
+
+const int _SC_THREAD_SPORADIC_SERVER = 161;
+
+const int _SC_SYSTEM_DATABASE = 162;
+
+const int _SC_SYSTEM_DATABASE_R = 163;
+
+const int _SC_TIMEOUTS = 164;
+
+const int _SC_TYPED_MEMORY_OBJECTS = 165;
+
+const int _SC_USER_GROUPS = 166;
+
+const int _SC_USER_GROUPS_R = 167;
+
+const int _SC_2_PBS = 168;
+
+const int _SC_2_PBS_ACCOUNTING = 169;
+
+const int _SC_2_PBS_LOCATE = 170;
+
+const int _SC_2_PBS_MESSAGE = 171;
+
+const int _SC_2_PBS_TRACK = 172;
+
+const int _SC_SYMLOOP_MAX = 173;
+
+const int _SC_STREAMS = 174;
+
+const int _SC_2_PBS_CHECKPOINT = 175;
+
+const int _SC_V6_ILP32_OFF32 = 176;
+
+const int _SC_V6_ILP32_OFFBIG = 177;
+
+const int _SC_V6_LP64_OFF64 = 178;
+
+const int _SC_V6_LPBIG_OFFBIG = 179;
+
+const int _SC_HOST_NAME_MAX = 180;
+
+const int _SC_TRACE = 181;
+
+const int _SC_TRACE_EVENT_FILTER = 182;
+
+const int _SC_TRACE_INHERIT = 183;
+
+const int _SC_TRACE_LOG = 184;
+
+const int _SC_LEVEL1_ICACHE_SIZE = 185;
+
+const int _SC_LEVEL1_ICACHE_ASSOC = 186;
+
+const int _SC_LEVEL1_ICACHE_LINESIZE = 187;
+
+const int _SC_LEVEL1_DCACHE_SIZE = 188;
+
+const int _SC_LEVEL1_DCACHE_ASSOC = 189;
+
+const int _SC_LEVEL1_DCACHE_LINESIZE = 190;
+
+const int _SC_LEVEL2_CACHE_SIZE = 191;
+
+const int _SC_LEVEL2_CACHE_ASSOC = 192;
+
+const int _SC_LEVEL2_CACHE_LINESIZE = 193;
+
+const int _SC_LEVEL3_CACHE_SIZE = 194;
+
+const int _SC_LEVEL3_CACHE_ASSOC = 195;
+
+const int _SC_LEVEL3_CACHE_LINESIZE = 196;
+
+const int _SC_LEVEL4_CACHE_SIZE = 197;
+
+const int _SC_LEVEL4_CACHE_ASSOC = 198;
+
+const int _SC_LEVEL4_CACHE_LINESIZE = 199;
+
+const int _SC_IPV6 = 235;
+
+const int _SC_RAW_SOCKETS = 236;
+
+const int _SC_V7_ILP32_OFF32 = 237;
+
+const int _SC_V7_ILP32_OFFBIG = 238;
+
+const int _SC_V7_LP64_OFF64 = 239;
+
+const int _SC_V7_LPBIG_OFFBIG = 240;
+
+const int _SC_SS_REPL_MAX = 241;
+
+const int _SC_TRACE_EVENT_NAME_MAX = 242;
+
+const int _SC_TRACE_NAME_MAX = 243;
+
+const int _SC_TRACE_SYS_MAX = 244;
+
+const int _SC_TRACE_USER_EVENT_MAX = 245;
+
+const int _SC_XOPEN_STREAMS = 246;
+
+const int _SC_THREAD_ROBUST_PRIO_INHERIT = 247;
+
+const int _SC_THREAD_ROBUST_PRIO_PROTECT = 248;
+
+const int _SC_MINSIGSTKSZ = 249;
+
+const int _SC_SIGSTKSZ = 250;
+
+const int _CS_PATH = 0;
+
+const int _CS_V6_WIDTH_RESTRICTED_ENVS = 1;
+
+const int _CS_GNU_LIBC_VERSION = 2;
+
+const int _CS_GNU_LIBPTHREAD_VERSION = 3;
+
+const int _CS_V5_WIDTH_RESTRICTED_ENVS = 4;
+
+const int _CS_V7_WIDTH_RESTRICTED_ENVS = 5;
+
+const int _CS_LFS_CFLAGS = 1000;
+
+const int _CS_LFS_LDFLAGS = 1001;
+
+const int _CS_LFS_LIBS = 1002;
+
+const int _CS_LFS_LINTFLAGS = 1003;
+
+const int _CS_LFS64_CFLAGS = 1004;
+
+const int _CS_LFS64_LDFLAGS = 1005;
+
+const int _CS_LFS64_LIBS = 1006;
+
+const int _CS_LFS64_LINTFLAGS = 1007;
+
+const int _CS_XBS5_ILP32_OFF32_CFLAGS = 1100;
+
+const int _CS_XBS5_ILP32_OFF32_LDFLAGS = 1101;
+
+const int _CS_XBS5_ILP32_OFF32_LIBS = 1102;
+
+const int _CS_XBS5_ILP32_OFF32_LINTFLAGS = 1103;
+
+const int _CS_XBS5_ILP32_OFFBIG_CFLAGS = 1104;
+
+const int _CS_XBS5_ILP32_OFFBIG_LDFLAGS = 1105;
+
+const int _CS_XBS5_ILP32_OFFBIG_LIBS = 1106;
+
+const int _CS_XBS5_ILP32_OFFBIG_LINTFLAGS = 1107;
+
+const int _CS_XBS5_LP64_OFF64_CFLAGS = 1108;
+
+const int _CS_XBS5_LP64_OFF64_LDFLAGS = 1109;
+
+const int _CS_XBS5_LP64_OFF64_LIBS = 1110;
+
+const int _CS_XBS5_LP64_OFF64_LINTFLAGS = 1111;
+
+const int _CS_XBS5_LPBIG_OFFBIG_CFLAGS = 1112;
+
+const int _CS_XBS5_LPBIG_OFFBIG_LDFLAGS = 1113;
+
+const int _CS_XBS5_LPBIG_OFFBIG_LIBS = 1114;
+
+const int _CS_XBS5_LPBIG_OFFBIG_LINTFLAGS = 1115;
+
+const int _CS_POSIX_V6_ILP32_OFF32_CFLAGS = 1116;
+
+const int _CS_POSIX_V6_ILP32_OFF32_LDFLAGS = 1117;
+
+const int _CS_POSIX_V6_ILP32_OFF32_LIBS = 1118;
+
+const int _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS = 1119;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS = 1120;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS = 1121;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_LIBS = 1122;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS = 1123;
+
+const int _CS_POSIX_V6_LP64_OFF64_CFLAGS = 1124;
+
+const int _CS_POSIX_V6_LP64_OFF64_LDFLAGS = 1125;
+
+const int _CS_POSIX_V6_LP64_OFF64_LIBS = 1126;
+
+const int _CS_POSIX_V6_LP64_OFF64_LINTFLAGS = 1127;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS = 1128;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS = 1129;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_LIBS = 1130;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS = 1131;
+
+const int _CS_POSIX_V7_ILP32_OFF32_CFLAGS = 1132;
+
+const int _CS_POSIX_V7_ILP32_OFF32_LDFLAGS = 1133;
+
+const int _CS_POSIX_V7_ILP32_OFF32_LIBS = 1134;
+
+const int _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS = 1135;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS = 1136;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS = 1137;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_LIBS = 1138;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS = 1139;
+
+const int _CS_POSIX_V7_LP64_OFF64_CFLAGS = 1140;
+
+const int _CS_POSIX_V7_LP64_OFF64_LDFLAGS = 1141;
+
+const int _CS_POSIX_V7_LP64_OFF64_LIBS = 1142;
+
+const int _CS_POSIX_V7_LP64_OFF64_LINTFLAGS = 1143;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS = 1144;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS = 1145;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_LIBS = 1146;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS = 1147;
+
+const int _CS_V6_ENV = 1148;
+
+const int _CS_V7_ENV = 1149;
+
+const int NULL = 0;
+
 const int g_macro__has_attribute = 0;
 
 const int g_macro__has_feature = 0;
@@ -92182,11 +106209,493 @@ const String G_GNUC_PRETTY_FUNCTION = '';
 
 const int G_ANALYZER_ANALYZING = 0;
 
-const String G_STRLOC = '/tmp/ILCRWF/temp_for_macros.hpp:39';
+const String G_STRLOC = '/tmp/LLPASG/temp_for_macros.hpp:53';
 
 const int FALSE = 0;
 
 const int TRUE = 1;
+
+const int _LIBC_LIMITS_H_ = 1;
+
+const int _FEATURES_H = 1;
+
+const int _DEFAULT_SOURCE = 1;
+
+const int __GLIBC_USE_ISOC2X = 1;
+
+const int __USE_ISOC11 = 1;
+
+const int __USE_ISOC99 = 1;
+
+const int __USE_ISOC95 = 1;
+
+const int _POSIX_SOURCE = 1;
+
+const int _POSIX_C_SOURCE = 200809;
+
+const int __USE_POSIX = 1;
+
+const int __USE_POSIX2 = 1;
+
+const int __USE_POSIX199309 = 1;
+
+const int __USE_POSIX199506 = 1;
+
+const int __USE_XOPEN2K = 1;
+
+const int __USE_XOPEN2K8 = 1;
+
+const int _ATFILE_SOURCE = 1;
+
+const int __WORDSIZE = 64;
+
+const int __WORDSIZE_TIME64_COMPAT32 = 1;
+
+const int __SYSCALL_WORDSIZE = 64;
+
+const int __TIMESIZE = 64;
+
+const int __USE_MISC = 1;
+
+const int __USE_ATFILE = 1;
+
+const int __USE_FORTIFY_LEVEL = 0;
+
+const int __GLIBC_USE_DEPRECATED_GETS = 0;
+
+const int __GLIBC_USE_DEPRECATED_SCANF = 0;
+
+const int _STDC_PREDEF_H = 1;
+
+const int __STDC_IEC_559__ = 1;
+
+const int __STDC_IEC_60559_BFP__ = 201404;
+
+const int __STDC_IEC_559_COMPLEX__ = 1;
+
+const int __STDC_IEC_60559_COMPLEX__ = 201404;
+
+const int __STDC_ISO_10646__ = 201706;
+
+const int __GNU_LIBRARY__ = 6;
+
+const int __GLIBC__ = 2;
+
+const int __GLIBC_MINOR__ = 35;
+
+const int _SYS_CDEFS_H = 1;
+
+const int __THROW = 1;
+
+const int __THROWNL = 1;
+
+const int __glibc_c99_flexarr_available = 1;
+
+const int __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI = 0;
+
+const int __HAVE_GENERIC_SELECTION = 0;
+
+const int __GLIBC_USE_LIB_EXT2 = 1;
+
+const int __GLIBC_USE_IEC_60559_BFP_EXT = 1;
+
+const int __GLIBC_USE_IEC_60559_BFP_EXT_C2X = 1;
+
+const int __GLIBC_USE_IEC_60559_EXT = 1;
+
+const int __GLIBC_USE_IEC_60559_FUNCS_EXT = 1;
+
+const int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X = 1;
+
+const int __GLIBC_USE_IEC_60559_TYPES_EXT = 1;
+
+const int MB_LEN_MAX = 16;
+
+const int SCHAR_MAX = 127;
+
+const int SHRT_MAX = 32767;
+
+const int INT_MAX = 2147483647;
+
+const int LONG_MAX = 9223372036854775807;
+
+const int SCHAR_MIN = -128;
+
+const int SHRT_MIN = -32768;
+
+const int INT_MIN = -2147483648;
+
+const int LONG_MIN = -9223372036854775808;
+
+const int UCHAR_MAX = 255;
+
+const int USHRT_MAX = 65535;
+
+const int UINT_MAX = 4294967295;
+
+const int ULONG_MAX = -1;
+
+const int CHAR_BIT = 8;
+
+const int CHAR_MIN = -128;
+
+const int CHAR_MAX = 127;
+
+const int LLONG_MAX = 9223372036854775807;
+
+const int LLONG_MIN = -9223372036854775808;
+
+const int ULLONG_MAX = -1;
+
+const int _BITS_POSIX1_LIM_H = 1;
+
+const int _POSIX_AIO_LISTIO_MAX = 2;
+
+const int _POSIX_AIO_MAX = 1;
+
+const int _POSIX_ARG_MAX = 4096;
+
+const int _POSIX_CHILD_MAX = 25;
+
+const int _POSIX_DELAYTIMER_MAX = 32;
+
+const int _POSIX_HOST_NAME_MAX = 255;
+
+const int _POSIX_LINK_MAX = 8;
+
+const int _POSIX_LOGIN_NAME_MAX = 9;
+
+const int _POSIX_MAX_CANON = 255;
+
+const int _POSIX_MAX_INPUT = 255;
+
+const int _POSIX_MQ_OPEN_MAX = 8;
+
+const int _POSIX_MQ_PRIO_MAX = 32;
+
+const int _POSIX_NAME_MAX = 14;
+
+const int _POSIX_NGROUPS_MAX = 8;
+
+const int _POSIX_OPEN_MAX = 20;
+
+const int _POSIX_PATH_MAX = 256;
+
+const int _POSIX_PIPE_BUF = 512;
+
+const int _POSIX_RE_DUP_MAX = 255;
+
+const int _POSIX_RTSIG_MAX = 8;
+
+const int _POSIX_SEM_NSEMS_MAX = 256;
+
+const int _POSIX_SEM_VALUE_MAX = 32767;
+
+const int _POSIX_SIGQUEUE_MAX = 32;
+
+const int _POSIX_SSIZE_MAX = 32767;
+
+const int _POSIX_STREAM_MAX = 8;
+
+const int _POSIX_SYMLINK_MAX = 255;
+
+const int _POSIX_SYMLOOP_MAX = 8;
+
+const int _POSIX_TIMER_MAX = 32;
+
+const int _POSIX_TTY_NAME_MAX = 9;
+
+const int _POSIX_TZNAME_MAX = 6;
+
+const int _POSIX_CLOCKRES_MIN = 20000000;
+
+const int NGROUPS_MAX = 65536;
+
+const int MAX_CANON = 255;
+
+const int MAX_INPUT = 255;
+
+const int NAME_MAX = 255;
+
+const int PATH_MAX = 4096;
+
+const int PIPE_BUF = 4096;
+
+const int XATTR_NAME_MAX = 255;
+
+const int XATTR_SIZE_MAX = 65536;
+
+const int XATTR_LIST_MAX = 65536;
+
+const int RTSIG_MAX = 32;
+
+const int _POSIX_THREAD_KEYS_MAX = 128;
+
+const int PTHREAD_KEYS_MAX = 1024;
+
+const int _POSIX_THREAD_DESTRUCTOR_ITERATIONS = 4;
+
+const int PTHREAD_DESTRUCTOR_ITERATIONS = 4;
+
+const int _POSIX_THREAD_THREADS_MAX = 64;
+
+const int AIO_PRIO_DELTA_MAX = 20;
+
+const int DELAYTIMER_MAX = 2147483647;
+
+const int TTY_NAME_MAX = 32;
+
+const int LOGIN_NAME_MAX = 256;
+
+const int HOST_NAME_MAX = 64;
+
+const int MQ_PRIO_MAX = 32768;
+
+const int SEM_VALUE_MAX = 2147483647;
+
+const int SSIZE_MAX = 9223372036854775807;
+
+const int _BITS_POSIX2_LIM_H = 1;
+
+const int _POSIX2_BC_BASE_MAX = 99;
+
+const int _POSIX2_BC_DIM_MAX = 2048;
+
+const int _POSIX2_BC_SCALE_MAX = 99;
+
+const int _POSIX2_BC_STRING_MAX = 1000;
+
+const int _POSIX2_COLL_WEIGHTS_MAX = 2;
+
+const int _POSIX2_EXPR_NEST_MAX = 32;
+
+const int _POSIX2_LINE_MAX = 2048;
+
+const int _POSIX2_RE_DUP_MAX = 255;
+
+const int _POSIX2_CHARCLASS_NAME_MAX = 14;
+
+const int BC_BASE_MAX = 99;
+
+const int BC_DIM_MAX = 2048;
+
+const int BC_SCALE_MAX = 99;
+
+const int BC_STRING_MAX = 1000;
+
+const int COLL_WEIGHTS_MAX = 255;
+
+const int EXPR_NEST_MAX = 32;
+
+const int LINE_MAX = 2048;
+
+const int CHARCLASS_NAME_MAX = 2048;
+
+const int RE_DUP_MAX = 32767;
+
+const int FLT_EVAL_METHOD = 0;
+
+const int FLT_RADIX = 2;
+
+const int FLT_MANT_DIG = 24;
+
+const int DBL_MANT_DIG = 53;
+
+const int LDBL_MANT_DIG = 64;
+
+const int DECIMAL_DIG = 21;
+
+const int FLT_DIG = 6;
+
+const int DBL_DIG = 15;
+
+const int LDBL_DIG = 18;
+
+const int FLT_MIN_EXP = -125;
+
+const int DBL_MIN_EXP = -1021;
+
+const int LDBL_MIN_EXP = -16381;
+
+const int FLT_MIN_10_EXP = -37;
+
+const int DBL_MIN_10_EXP = -307;
+
+const int LDBL_MIN_10_EXP = -4931;
+
+const int FLT_MAX_EXP = 128;
+
+const int DBL_MAX_EXP = 1024;
+
+const int LDBL_MAX_EXP = 16384;
+
+const int FLT_MAX_10_EXP = 38;
+
+const int DBL_MAX_10_EXP = 308;
+
+const int LDBL_MAX_10_EXP = 4932;
+
+const double FLT_MAX = 3.4028234663852886e+38;
+
+const double DBL_MAX = 1.7976931348623157e+308;
+
+const double LDBL_MAX = double.infinity;
+
+const double FLT_EPSILON = 1.1920928955078125e-7;
+
+const double DBL_EPSILON = 2.220446049250313e-16;
+
+const double LDBL_EPSILON = 1.0842021724855044e-19;
+
+const double FLT_MIN = 1.1754943508222875e-38;
+
+const double DBL_MIN = 2.2250738585072014e-308;
+
+const double LDBL_MIN = 0.0;
+
+const double FLT_TRUE_MIN = 1.401298464324817e-45;
+
+const double DBL_TRUE_MIN = 5e-324;
+
+const double LDBL_TRUE_MIN = 0.0;
+
+const int FLT_DECIMAL_DIG = 9;
+
+const int DBL_DECIMAL_DIG = 17;
+
+const int LDBL_DECIMAL_DIG = 21;
+
+const int FLT_HAS_SUBNORM = 1;
+
+const int DBL_HAS_SUBNORM = 1;
+
+const int LDBL_HAS_SUBNORM = 1;
+
+const double G_MINFLOAT = 1.1754943508222875e-38;
+
+const double G_MAXFLOAT = 3.4028234663852886e+38;
+
+const double G_MINDOUBLE = 2.2250738585072014e-308;
+
+const double G_MAXDOUBLE = 1.7976931348623157e+308;
+
+const int G_MINSHORT = -32768;
+
+const int G_MAXSHORT = 32767;
+
+const int G_MAXUSHORT = 65535;
+
+const int G_MININT = -2147483648;
+
+const int G_MAXINT = 2147483647;
+
+const int G_MAXUINT = 4294967295;
+
+const int G_MINLONG = -9223372036854775808;
+
+const int G_MAXLONG = 9223372036854775807;
+
+const int G_MAXULONG = -1;
+
+const String G_GINT16_MODIFIER = 'h';
+
+const String G_GINT16_FORMAT = 'hi';
+
+const String G_GUINT16_FORMAT = 'hu';
+
+const String G_GINT32_MODIFIER = '';
+
+const String G_GINT32_FORMAT = 'i';
+
+const String G_GUINT32_FORMAT = 'u';
+
+const int G_HAVE_GINT64 = 1;
+
+const String G_GINT64_MODIFIER = 'l';
+
+const String G_GINT64_FORMAT = 'li';
+
+const String G_GUINT64_FORMAT = 'lu';
+
+const int GLIB_SIZEOF_VOID_P = 8;
+
+const int GLIB_SIZEOF_LONG = 8;
+
+const int GLIB_SIZEOF_SIZE_T = 8;
+
+const int GLIB_SIZEOF_SSIZE_T = 8;
+
+const String G_GSIZE_MODIFIER = 'l';
+
+const String G_GSSIZE_MODIFIER = 'l';
+
+const String G_GSIZE_FORMAT = 'lu';
+
+const String G_GSSIZE_FORMAT = 'li';
+
+const int G_MAXSIZE = -1;
+
+const int G_MINSSIZE = -9223372036854775808;
+
+const int G_MAXSSIZE = 9223372036854775807;
+
+const int G_MINOFFSET = -9223372036854775808;
+
+const int G_MAXOFFSET = 9223372036854775807;
+
+const String G_GOFFSET_MODIFIER = 'l';
+
+const String G_GOFFSET_FORMAT = 'li';
+
+const String G_POLLFD_FORMAT = '%d';
+
+const String G_GINTPTR_MODIFIER = 'l';
+
+const String G_GINTPTR_FORMAT = 'li';
+
+const String G_GUINTPTR_FORMAT = 'lu';
+
+const int GLIB_MAJOR_VERSION = 2;
+
+const int GLIB_MINOR_VERSION = 72;
+
+const int GLIB_MICRO_VERSION = 4;
+
+const int G_VA_COPY_AS_ARRAY = 1;
+
+const int G_HAVE_ISO_VARARGS = 1;
+
+const int G_HAVE_GROWING_STACK = 0;
+
+const int G_HAVE_GNUC_VISIBILITY = 1;
+
+const int G_HAVE_GNUC_VARARGS = 1;
+
+const int G_BYTE_ORDER = 1234;
+
+const String G_MODULE_SUFFIX = 'so';
+
+const String G_PID_FORMAT = 'i';
+
+const int GLIB_SYSDEF_AF_UNIX = 1;
+
+const int GLIB_SYSDEF_AF_INET = 2;
+
+const int GLIB_SYSDEF_AF_INET6 = 10;
+
+const int GLIB_SYSDEF_MSG_OOB = 1;
+
+const int GLIB_SYSDEF_MSG_PEEK = 2;
+
+const int GLIB_SYSDEF_MSG_DONTROUTE = 4;
+
+const int G_DIR_SEPARATOR = 47;
+
+const String G_DIR_SEPARATOR_S = '/';
+
+const int G_SEARCHPATH_SEPARATOR = 58;
+
+const String G_SEARCHPATH_SEPARATOR_S = ':';
 
 const int GLIB_VERSION_2_26 = 137728;
 
@@ -92244,6 +106753,88 @@ const int GLIB_VERSION_MIN_REQUIRED = 149504;
 
 const int GLIB_VERSION_MAX_ALLOWED = 149504;
 
+const int _TIME_H = 1;
+
+const int _BITS_TIME_H = 1;
+
+const int _BITS_TYPES_H = 1;
+
+const int _BITS_TYPESIZES_H = 1;
+
+const int __OFF_T_MATCHES_OFF64_T = 1;
+
+const int __INO_T_MATCHES_INO64_T = 1;
+
+const int __RLIM_T_MATCHES_RLIM64_T = 1;
+
+const int __STATFS_MATCHES_STATFS64 = 1;
+
+const int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 = 1;
+
+const int __FD_SETSIZE = 1024;
+
+const int _BITS_TIME64_H = 1;
+
+const int CLOCKS_PER_SEC = 1000000;
+
+const int CLOCK_REALTIME = 0;
+
+const int CLOCK_MONOTONIC = 1;
+
+const int CLOCK_PROCESS_CPUTIME_ID = 2;
+
+const int CLOCK_THREAD_CPUTIME_ID = 3;
+
+const int CLOCK_MONOTONIC_RAW = 4;
+
+const int CLOCK_REALTIME_COARSE = 5;
+
+const int CLOCK_MONOTONIC_COARSE = 6;
+
+const int CLOCK_BOOTTIME = 7;
+
+const int CLOCK_REALTIME_ALARM = 8;
+
+const int CLOCK_BOOTTIME_ALARM = 9;
+
+const int CLOCK_TAI = 11;
+
+const int TIMER_ABSTIME = 1;
+
+const int __clock_t_defined = 1;
+
+const int __time_t_defined = 1;
+
+const int __struct_tm_defined = 1;
+
+const int _STRUCT_TIMESPEC = 1;
+
+const int _BITS_ENDIAN_H = 1;
+
+const int __LITTLE_ENDIAN = 1234;
+
+const int __BIG_ENDIAN = 4321;
+
+const int __PDP_ENDIAN = 3412;
+
+const int _BITS_ENDIANNESS_H = 1;
+
+const int __BYTE_ORDER = 1234;
+
+const int __FLOAT_WORD_ORDER = 1234;
+
+const int __clockid_t_defined = 1;
+
+const int __timer_t_defined = 1;
+
+const int __itimerspec_defined = 1;
+
+const int _BITS_TYPES_LOCALE_T_H = 1;
+
+const int _BITS_TYPES___LOCALE_T_H = 1;
+
+const int TIME_UTC = 1;
+
 const int G_MININT8 = -128;
 
 const int G_MAXINT8 = 127;
@@ -92294,6 +106885,12 @@ const int G_IEEE754_DOUBLE_BIAS = 1023;
 
 const double G_LOG_2_BASE_10 = 0.3010299956639812;
 
+const int _STRING_H = 1;
+
+const int _STRINGS_H = 1;
+
+const int __GNUC_VA_LIST = 1;
+
 const String G_OS_INFO_KEY_NAME = 'NAME';
 
 const String G_OS_INFO_KEY_PRETTY_NAME = 'PRETTY_NAME';
@@ -92316,6 +106913,424 @@ const String G_OS_INFO_KEY_BUG_REPORT_URL = 'BUG_REPORT_URL';
 
 const String G_OS_INFO_KEY_PRIVACY_POLICY_URL = 'PRIVACY_POLICY_URL';
 
+const int _STDLIB_H = 1;
+
+const int WNOHANG = 1;
+
+const int WUNTRACED = 2;
+
+const int WSTOPPED = 2;
+
+const int WEXITED = 4;
+
+const int WCONTINUED = 8;
+
+const int WNOWAIT = 16777216;
+
+const int __WNOTHREAD = 536870912;
+
+const int __WALL = 1073741824;
+
+const int __WCLONE = 2147483648;
+
+const int __W_CONTINUED = 65535;
+
+const int __WCOREFLAG = 128;
+
+const int __HAVE_FLOAT128 = 0;
+
+const int __HAVE_DISTINCT_FLOAT128 = 0;
+
+const int __HAVE_FLOAT64X = 1;
+
+const int __HAVE_FLOAT64X_LONG_DOUBLE = 1;
+
+const int __HAVE_FLOAT16 = 0;
+
+const int __HAVE_FLOAT32 = 1;
+
+const int __HAVE_FLOAT64 = 1;
+
+const int __HAVE_FLOAT32X = 1;
+
+const int __HAVE_FLOAT128X = 0;
+
+const int __HAVE_DISTINCT_FLOAT16 = 0;
+
+const int __HAVE_DISTINCT_FLOAT32 = 0;
+
+const int __HAVE_DISTINCT_FLOAT64 = 0;
+
+const int __HAVE_DISTINCT_FLOAT32X = 0;
+
+const int __HAVE_DISTINCT_FLOAT64X = 0;
+
+const int __HAVE_DISTINCT_FLOAT128X = 0;
+
+const int __HAVE_FLOAT128_UNLIKE_LDBL = 0;
+
+const int __HAVE_FLOATN_NOT_TYPEDEF = 0;
+
+const int __ldiv_t_defined = 1;
+
+const int __lldiv_t_defined = 1;
+
+const int RAND_MAX = 2147483647;
+
+const int EXIT_FAILURE = 1;
+
+const int EXIT_SUCCESS = 0;
+
+const int _SYS_TYPES_H = 1;
+
+const int _BITS_STDINT_INTN_H = 1;
+
+const int __BIT_TYPES_DEFINED__ = 1;
+
+const int _ENDIAN_H = 1;
+
+const int LITTLE_ENDIAN = 1234;
+
+const int BIG_ENDIAN = 4321;
+
+const int PDP_ENDIAN = 3412;
+
+const int BYTE_ORDER = 1234;
+
+const int _BITS_BYTESWAP_H = 1;
+
+const int _BITS_UINTN_IDENTITY_H = 1;
+
+const int _SYS_SELECT_H = 1;
+
+const int __sigset_t_defined = 1;
+
+const int _SIGSET_NWORDS = 16;
+
+const int __timeval_defined = 1;
+
+const int __NFDBITS = 64;
+
+const int FD_SETSIZE = 1024;
+
+const int NFDBITS = 64;
+
+const int _BITS_PTHREADTYPES_COMMON_H = 1;
+
+const int _THREAD_SHARED_TYPES_H = 1;
+
+const int _BITS_PTHREADTYPES_ARCH_H = 1;
+
+const int __SIZEOF_PTHREAD_MUTEX_T = 40;
+
+const int __SIZEOF_PTHREAD_ATTR_T = 56;
+
+const int __SIZEOF_PTHREAD_RWLOCK_T = 56;
+
+const int __SIZEOF_PTHREAD_BARRIER_T = 32;
+
+const int __SIZEOF_PTHREAD_MUTEXATTR_T = 4;
+
+const int __SIZEOF_PTHREAD_COND_T = 48;
+
+const int __SIZEOF_PTHREAD_CONDATTR_T = 4;
+
+const int __SIZEOF_PTHREAD_RWLOCKATTR_T = 8;
+
+const int __SIZEOF_PTHREAD_BARRIERATTR_T = 4;
+
+const int _THREAD_MUTEX_INTERNAL_H = 1;
+
+const int __PTHREAD_MUTEX_HAVE_PREV = 1;
+
+const int __PTHREAD_RWLOCK_ELISION_EXTRA = 0;
+
+const int __have_pthread_attr_t = 1;
+
+const int _ALLOCA_H = 1;
+
+const int _BITS_SIGNUM_GENERIC_H = 1;
+
+const int SIGINT = 2;
+
+const int SIGILL = 4;
+
+const int SIGABRT = 6;
+
+const int SIGFPE = 8;
+
+const int SIGSEGV = 11;
+
+const int SIGTERM = 15;
+
+const int SIGHUP = 1;
+
+const int SIGQUIT = 3;
+
+const int SIGTRAP = 5;
+
+const int SIGKILL = 9;
+
+const int SIGPIPE = 13;
+
+const int SIGALRM = 14;
+
+const int SIGIO = 29;
+
+const int SIGIOT = 6;
+
+const int SIGCLD = 17;
+
+const int _BITS_SIGNUM_ARCH_H = 1;
+
+const int SIGSTKFLT = 16;
+
+const int SIGPWR = 30;
+
+const int SIGBUS = 7;
+
+const int SIGSYS = 31;
+
+const int SIGURG = 23;
+
+const int SIGSTOP = 19;
+
+const int SIGTSTP = 20;
+
+const int SIGCONT = 18;
+
+const int SIGCHLD = 17;
+
+const int SIGTTIN = 21;
+
+const int SIGTTOU = 22;
+
+const int SIGPOLL = 29;
+
+const int SIGXFSZ = 25;
+
+const int SIGXCPU = 24;
+
+const int SIGVTALRM = 26;
+
+const int SIGPROF = 27;
+
+const int SIGUSR1 = 10;
+
+const int SIGUSR2 = 12;
+
+const int SIGWINCH = 28;
+
+const int __SIGRTMIN = 32;
+
+const int __SIGRTMAX = 64;
+
+const int _NSIG = 65;
+
+const int __sig_atomic_t_defined = 1;
+
+const int __siginfo_t_defined = 1;
+
+const int __SI_MAX_SIZE = 128;
+
+const int __SI_PAD_SIZE = 28;
+
+const int _BITS_SIGINFO_ARCH_H = 1;
+
+const int __SI_ERRNO_THEN_CODE = 1;
+
+const int __SI_HAVE_SIGSYS = 1;
+
+const int _BITS_SIGINFO_CONSTS_H = 1;
+
+const int __SI_ASYNCIO_AFTER_SIGIO = 1;
+
+const int SI_ASYNCNL1 = -60;
+
+const int SI_DETHREAD1 = -7;
+
+const int SI_TKILL1 = -6;
+
+const int SI_SIGIO1 = -5;
+
+const int SI_ASYNCIO1 = -4;
+
+const int SI_MESGQ1 = -3;
+
+const int SI_TIMER1 = -2;
+
+const int SI_QUEUE1 = -1;
+
+const int SI_USER1 = 0;
+
+const int SI_KERNEL1 = 128;
+
+const int ILL_ILLOPC1 = 1;
+
+const int ILL_ILLOPN1 = 2;
+
+const int ILL_ILLADR1 = 3;
+
+const int ILL_ILLTRP1 = 4;
+
+const int ILL_PRVOPC1 = 5;
+
+const int ILL_PRVREG1 = 6;
+
+const int ILL_COPROC1 = 7;
+
+const int ILL_BADSTK1 = 8;
+
+const int ILL_BADIADDR1 = 9;
+
+const int FPE_INTDIV1 = 1;
+
+const int FPE_INTOVF1 = 2;
+
+const int FPE_FLTDIV1 = 3;
+
+const int FPE_FLTOVF1 = 4;
+
+const int FPE_FLTUND1 = 5;
+
+const int FPE_FLTRES1 = 6;
+
+const int FPE_FLTINV1 = 7;
+
+const int FPE_FLTSUB1 = 8;
+
+const int FPE_FLTUNK1 = 14;
+
+const int FPE_CONDTRAP1 = 15;
+
+const int SEGV_MAPERR1 = 1;
+
+const int SEGV_ACCERR1 = 2;
+
+const int SEGV_BNDERR1 = 3;
+
+const int SEGV_PKUERR1 = 4;
+
+const int SEGV_ACCADI1 = 5;
+
+const int SEGV_ADIDERR1 = 6;
+
+const int SEGV_ADIPERR1 = 7;
+
+const int SEGV_MTEAERR1 = 8;
+
+const int SEGV_MTESERR1 = 9;
+
+const int BUS_ADRALN1 = 1;
+
+const int BUS_ADRERR1 = 2;
+
+const int BUS_OBJERR1 = 3;
+
+const int BUS_MCEERR_AR1 = 4;
+
+const int BUS_MCEERR_AO1 = 5;
+
+const int CLD_EXITED1 = 1;
+
+const int CLD_KILLED1 = 2;
+
+const int CLD_DUMPED1 = 3;
+
+const int CLD_TRAPPED1 = 4;
+
+const int CLD_STOPPED1 = 5;
+
+const int CLD_CONTINUED1 = 6;
+
+const int POLL_IN1 = 1;
+
+const int POLL_OUT1 = 2;
+
+const int POLL_MSG1 = 3;
+
+const int POLL_ERR1 = 4;
+
+const int POLL_PRI1 = 5;
+
+const int POLL_HUP1 = 6;
+
+const int __sigevent_t_defined = 1;
+
+const int __SIGEV_MAX_SIZE = 64;
+
+const int __SIGEV_PAD_SIZE = 12;
+
+const int _BITS_SIGEVENT_CONSTS_H = 1;
+
+const int SIGEV_SIGNAL1 = 0;
+
+const int SIGEV_NONE1 = 1;
+
+const int SIGEV_THREAD1 = 2;
+
+const int SIGEV_THREAD_ID1 = 4;
+
+const int NSIG = 65;
+
+const int _BITS_SIGACTION_H = 1;
+
+const int SA_NOCLDSTOP = 1;
+
+const int SA_NOCLDWAIT = 2;
+
+const int SA_SIGINFO = 4;
+
+const int SA_ONSTACK = 134217728;
+
+const int SA_RESTART = 268435456;
+
+const int SA_NODEFER = 1073741824;
+
+const int SA_RESETHAND = 2147483648;
+
+const int SA_INTERRUPT = 536870912;
+
+const int SA_NOMASK = 1073741824;
+
+const int SA_ONESHOT = 2147483648;
+
+const int SA_STACK = 134217728;
+
+const int SIG_BLOCK = 0;
+
+const int SIG_UNBLOCK = 1;
+
+const int SIG_SETMASK = 2;
+
+const int _BITS_SIGCONTEXT_H = 1;
+
+const int FP_XSTATE_MAGIC1 = 1179670611;
+
+const int FP_XSTATE_MAGIC2 = 1179670597;
+
+const int FP_XSTATE_MAGIC2_SIZE = 4;
+
+const int __stack_t_defined = 1;
+
+const int _SYS_UCONTEXT_H = 1;
+
+const int __NGREG = 23;
+
+const int NGREG = 23;
+
+const int _BITS_SIGSTACK_H = 1;
+
+const int _BITS_SS_FLAGS_H = 1;
+
+const int SS_ONSTACK1 = 1;
+
+const int SS_DISABLE1 = 2;
+
+const int __sigstack_defined = 1;
+
+const int _BITS_SIGTHREAD_H = 1;
+
 const int G_TIME_SPAN_DAY = 86400000000;
 
 const int G_TIME_SPAN_HOUR = 3600000000;
@@ -92333,6 +107348,30 @@ const int G_DATE_BAD_JULIAN = 0;
 const int G_DATE_BAD_DAY = 0;
 
 const int G_DATE_BAD_YEAR = 0;
+
+const int _DIRENT_H = 1;
+
+const int _DIRENT_MATCHES_DIRENT64 = 1;
+
+const int DT_UNKNOWN1 = 0;
+
+const int DT_FIFO1 = 1;
+
+const int DT_CHR1 = 2;
+
+const int DT_DIR1 = 4;
+
+const int DT_BLK1 = 6;
+
+const int DT_REG1 = 8;
+
+const int DT_LNK1 = 10;
+
+const int DT_SOCK1 = 12;
+
+const int DT_WHT1 = 14;
+
+const int MAXNAMLEN = 255;
 
 const int G_MEM_ALIGN = 8;
 
@@ -92428,6 +107467,278 @@ const String G_STR_DELIMITERS = '_-|> <.';
 
 const int G_ASCII_DTOSTR_BUF_SIZE = 39;
 
+const int _ERRNO_H = 1;
+
+const int _BITS_ERRNO_H = 1;
+
+const int EPERM = 1;
+
+const int ENOENT = 2;
+
+const int ESRCH = 3;
+
+const int EINTR = 4;
+
+const int EIO = 5;
+
+const int ENXIO = 6;
+
+const int E2BIG = 7;
+
+const int ENOEXEC = 8;
+
+const int EBADF = 9;
+
+const int ECHILD = 10;
+
+const int EAGAIN = 11;
+
+const int ENOMEM = 12;
+
+const int EACCES = 13;
+
+const int EFAULT = 14;
+
+const int ENOTBLK = 15;
+
+const int EBUSY = 16;
+
+const int EEXIST = 17;
+
+const int EXDEV = 18;
+
+const int ENODEV = 19;
+
+const int ENOTDIR = 20;
+
+const int EISDIR = 21;
+
+const int EINVAL = 22;
+
+const int ENFILE = 23;
+
+const int EMFILE = 24;
+
+const int ENOTTY = 25;
+
+const int ETXTBSY = 26;
+
+const int EFBIG = 27;
+
+const int ENOSPC = 28;
+
+const int ESPIPE = 29;
+
+const int EROFS = 30;
+
+const int EMLINK = 31;
+
+const int EPIPE = 32;
+
+const int EDOM = 33;
+
+const int ERANGE = 34;
+
+const int EDEADLK = 35;
+
+const int ENAMETOOLONG = 36;
+
+const int ENOLCK = 37;
+
+const int ENOSYS = 38;
+
+const int ENOTEMPTY = 39;
+
+const int ELOOP = 40;
+
+const int EWOULDBLOCK = 11;
+
+const int ENOMSG = 42;
+
+const int EIDRM = 43;
+
+const int ECHRNG = 44;
+
+const int EL2NSYNC = 45;
+
+const int EL3HLT = 46;
+
+const int EL3RST = 47;
+
+const int ELNRNG = 48;
+
+const int EUNATCH = 49;
+
+const int ENOCSI = 50;
+
+const int EL2HLT = 51;
+
+const int EBADE = 52;
+
+const int EBADR = 53;
+
+const int EXFULL = 54;
+
+const int ENOANO = 55;
+
+const int EBADRQC = 56;
+
+const int EBADSLT = 57;
+
+const int EDEADLOCK = 35;
+
+const int EBFONT = 59;
+
+const int ENOSTR = 60;
+
+const int ENODATA = 61;
+
+const int ETIME = 62;
+
+const int ENOSR = 63;
+
+const int ENONET = 64;
+
+const int ENOPKG = 65;
+
+const int EREMOTE = 66;
+
+const int ENOLINK = 67;
+
+const int EADV = 68;
+
+const int ESRMNT = 69;
+
+const int ECOMM = 70;
+
+const int EPROTO = 71;
+
+const int EMULTIHOP = 72;
+
+const int EDOTDOT = 73;
+
+const int EBADMSG = 74;
+
+const int EOVERFLOW = 75;
+
+const int ENOTUNIQ = 76;
+
+const int EBADFD = 77;
+
+const int EREMCHG = 78;
+
+const int ELIBACC = 79;
+
+const int ELIBBAD = 80;
+
+const int ELIBSCN = 81;
+
+const int ELIBMAX = 82;
+
+const int ELIBEXEC = 83;
+
+const int EILSEQ = 84;
+
+const int ERESTART = 85;
+
+const int ESTRPIPE = 86;
+
+const int EUSERS = 87;
+
+const int ENOTSOCK = 88;
+
+const int EDESTADDRREQ = 89;
+
+const int EMSGSIZE = 90;
+
+const int EPROTOTYPE = 91;
+
+const int ENOPROTOOPT = 92;
+
+const int EPROTONOSUPPORT = 93;
+
+const int ESOCKTNOSUPPORT = 94;
+
+const int EOPNOTSUPP = 95;
+
+const int EPFNOSUPPORT = 96;
+
+const int EAFNOSUPPORT = 97;
+
+const int EADDRINUSE = 98;
+
+const int EADDRNOTAVAIL = 99;
+
+const int ENETDOWN = 100;
+
+const int ENETUNREACH = 101;
+
+const int ENETRESET = 102;
+
+const int ECONNABORTED = 103;
+
+const int ECONNRESET = 104;
+
+const int ENOBUFS = 105;
+
+const int EISCONN = 106;
+
+const int ENOTCONN = 107;
+
+const int ESHUTDOWN = 108;
+
+const int ETOOMANYREFS = 109;
+
+const int ETIMEDOUT = 110;
+
+const int ECONNREFUSED = 111;
+
+const int EHOSTDOWN = 112;
+
+const int EHOSTUNREACH = 113;
+
+const int EALREADY = 114;
+
+const int EINPROGRESS = 115;
+
+const int ESTALE = 116;
+
+const int EUCLEAN = 117;
+
+const int ENOTNAM = 118;
+
+const int ENAVAIL = 119;
+
+const int EISNAM = 120;
+
+const int EREMOTEIO = 121;
+
+const int EDQUOT = 122;
+
+const int ENOMEDIUM = 123;
+
+const int EMEDIUMTYPE = 124;
+
+const int ECANCELED = 125;
+
+const int ENOKEY = 126;
+
+const int EKEYEXPIRED = 127;
+
+const int EKEYREVOKED = 128;
+
+const int EKEYREJECTED = 129;
+
+const int EOWNERDEAD = 130;
+
+const int ENOTRECOVERABLE = 131;
+
+const int ERFKILL = 132;
+
+const int EHWPOISON = 133;
+
+const int ENOTSUP = 95;
+
 const String G_TEST_OPTION_ISOLATE_DIRS = 'isolate_dirs';
 
 const int G_USEC_PER_SEC = 1000000;
@@ -92451,6 +107762,58 @@ const int G_ALLOCATOR_LIST = 1;
 const int G_ALLOCATOR_SLIST = 2;
 
 const int G_ALLOCATOR_NODE = 3;
+
+const int _PTHREAD_H = 1;
+
+const int _SCHED_H = 1;
+
+const int _BITS_SCHED_H = 1;
+
+const int SCHED_OTHER = 0;
+
+const int SCHED_FIFO = 1;
+
+const int SCHED_RR = 2;
+
+const int _BITS_TYPES_STRUCT_SCHED_PARAM = 1;
+
+const int _BITS_CPU_SET_H = 1;
+
+const int __CPU_SETSIZE = 1024;
+
+const int __NCPUBITS = 64;
+
+const int _BITS_SETJMP_H = 1;
+
+const int __jmp_buf_tag_defined = 1;
+
+const int PTHREAD_CREATE_JOINABLE1 = 0;
+
+const int PTHREAD_CREATE_DETACHED1 = 1;
+
+const int PTHREAD_INHERIT_SCHED1 = 0;
+
+const int PTHREAD_EXPLICIT_SCHED1 = 1;
+
+const int PTHREAD_SCOPE_SYSTEM1 = 0;
+
+const int PTHREAD_SCOPE_PROCESS1 = 1;
+
+const int PTHREAD_PROCESS_PRIVATE1 = 0;
+
+const int PTHREAD_PROCESS_SHARED1 = 1;
+
+const int PTHREAD_CANCEL_ENABLE1 = 0;
+
+const int PTHREAD_CANCEL_DISABLE1 = 1;
+
+const int PTHREAD_CANCEL_DEFERRED1 = 0;
+
+const int PTHREAD_CANCEL_ASYNCHRONOUS1 = 1;
+
+const int PTHREAD_ONCE_INIT = 0;
+
+const int PTHREAD_BARRIER_SERIAL_THREAD = -1;
 
 const int G_TYPE_FUNDAMENTAL_MAX = 1020;
 
@@ -92527,6 +107890,839 @@ const int G_SIGNAL_FLAGS_MASK = 511;
 const int G_SIGNAL_MATCH_MASK = 63;
 
 const int G_SIGNAL_TYPE_STATIC_SCOPE = 1;
+
+const int _UNISTD_H = 1;
+
+const int _POSIX_VERSION = 200809;
+
+const int __POSIX2_THIS_VERSION = 200809;
+
+const int _POSIX2_VERSION = 200809;
+
+const int _POSIX2_C_VERSION = 200809;
+
+const int _POSIX2_C_BIND = 200809;
+
+const int _POSIX2_C_DEV = 200809;
+
+const int _POSIX2_SW_DEV = 200809;
+
+const int _POSIX2_LOCALEDEF = 200809;
+
+const int _XOPEN_VERSION = 700;
+
+const int _XOPEN_XCU_VERSION = 4;
+
+const int _XOPEN_XPG2 = 1;
+
+const int _XOPEN_XPG3 = 1;
+
+const int _XOPEN_XPG4 = 1;
+
+const int _XOPEN_UNIX = 1;
+
+const int _XOPEN_ENH_I18N = 1;
+
+const int _XOPEN_LEGACY = 1;
+
+const int _BITS_POSIX_OPT_H = 1;
+
+const int _POSIX_JOB_CONTROL = 1;
+
+const int _POSIX_SAVED_IDS = 1;
+
+const int _POSIX_PRIORITY_SCHEDULING = 200809;
+
+const int _POSIX_SYNCHRONIZED_IO = 200809;
+
+const int _POSIX_FSYNC = 200809;
+
+const int _POSIX_MAPPED_FILES = 200809;
+
+const int _POSIX_MEMLOCK = 200809;
+
+const int _POSIX_MEMLOCK_RANGE = 200809;
+
+const int _POSIX_MEMORY_PROTECTION = 200809;
+
+const int _POSIX_CHOWN_RESTRICTED = 0;
+
+const int _POSIX_VDISABLE = 0;
+
+const int _POSIX_NO_TRUNC = 1;
+
+const int _XOPEN_REALTIME = 1;
+
+const int _XOPEN_REALTIME_THREADS = 1;
+
+const int _XOPEN_SHM = 1;
+
+const int _POSIX_THREADS = 200809;
+
+const int _POSIX_REENTRANT_FUNCTIONS = 1;
+
+const int _POSIX_THREAD_SAFE_FUNCTIONS = 200809;
+
+const int _POSIX_THREAD_PRIORITY_SCHEDULING = 200809;
+
+const int _POSIX_THREAD_ATTR_STACKSIZE = 200809;
+
+const int _POSIX_THREAD_ATTR_STACKADDR = 200809;
+
+const int _POSIX_THREAD_PRIO_INHERIT = 200809;
+
+const int _POSIX_THREAD_PRIO_PROTECT = 200809;
+
+const int _POSIX_THREAD_ROBUST_PRIO_INHERIT = 200809;
+
+const int _POSIX_THREAD_ROBUST_PRIO_PROTECT = -1;
+
+const int _POSIX_SEMAPHORES = 200809;
+
+const int _POSIX_REALTIME_SIGNALS = 200809;
+
+const int _POSIX_ASYNCHRONOUS_IO = 200809;
+
+const int _POSIX_ASYNC_IO = 1;
+
+const int _LFS_ASYNCHRONOUS_IO = 1;
+
+const int _POSIX_PRIORITIZED_IO = 200809;
+
+const int _LFS64_ASYNCHRONOUS_IO = 1;
+
+const int _LFS_LARGEFILE = 1;
+
+const int _LFS64_LARGEFILE = 1;
+
+const int _LFS64_STDIO = 1;
+
+const int _POSIX_SHARED_MEMORY_OBJECTS = 200809;
+
+const int _POSIX_CPUTIME = 0;
+
+const int _POSIX_THREAD_CPUTIME = 0;
+
+const int _POSIX_REGEXP = 1;
+
+const int _POSIX_READER_WRITER_LOCKS = 200809;
+
+const int _POSIX_SHELL = 1;
+
+const int _POSIX_TIMEOUTS = 200809;
+
+const int _POSIX_SPIN_LOCKS = 200809;
+
+const int _POSIX_SPAWN = 200809;
+
+const int _POSIX_TIMERS = 200809;
+
+const int _POSIX_BARRIERS = 200809;
+
+const int _POSIX_MESSAGE_PASSING = 200809;
+
+const int _POSIX_THREAD_PROCESS_SHARED = 200809;
+
+const int _POSIX_MONOTONIC_CLOCK = 0;
+
+const int _POSIX_CLOCK_SELECTION = 200809;
+
+const int _POSIX_ADVISORY_INFO = 200809;
+
+const int _POSIX_IPV6 = 200809;
+
+const int _POSIX_RAW_SOCKETS = 200809;
+
+const int _POSIX2_CHAR_TERM = 200809;
+
+const int _POSIX_SPORADIC_SERVER = -1;
+
+const int _POSIX_THREAD_SPORADIC_SERVER = -1;
+
+const int _POSIX_TRACE = -1;
+
+const int _POSIX_TRACE_EVENT_FILTER = -1;
+
+const int _POSIX_TRACE_INHERIT = -1;
+
+const int _POSIX_TRACE_LOG = -1;
+
+const int _POSIX_TYPED_MEMORY_OBJECTS = -1;
+
+const int _POSIX_V7_LPBIG_OFFBIG = -1;
+
+const int _POSIX_V6_LPBIG_OFFBIG = -1;
+
+const int _XBS5_LPBIG_OFFBIG = -1;
+
+const int _POSIX_V7_LP64_OFF64 = 1;
+
+const int _POSIX_V6_LP64_OFF64 = 1;
+
+const int _XBS5_LP64_OFF64 = 1;
+
+const String __ILP32_OFF32_CFLAGS = '-m32';
+
+const String __ILP32_OFF32_LDFLAGS = '-m32';
+
+const String __ILP32_OFFBIG_CFLAGS =
+    '-m32 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64';
+
+const String __ILP32_OFFBIG_LDFLAGS = '-m32';
+
+const String __LP64_OFF64_CFLAGS = '-m64';
+
+const String __LP64_OFF64_LDFLAGS = '-m64';
+
+const int STDIN_FILENO = 0;
+
+const int STDOUT_FILENO = 1;
+
+const int STDERR_FILENO = 2;
+
+const int R_OK = 4;
+
+const int W_OK = 2;
+
+const int X_OK = 1;
+
+const int F_OK = 0;
+
+const int SEEK_SET = 0;
+
+const int SEEK_CUR = 1;
+
+const int SEEK_END = 2;
+
+const int L_SET = 0;
+
+const int L_INCR = 1;
+
+const int L_XTND = 2;
+
+const int _PC_LINK_MAX1 = 0;
+
+const int _PC_MAX_CANON1 = 1;
+
+const int _PC_MAX_INPUT1 = 2;
+
+const int _PC_NAME_MAX1 = 3;
+
+const int _PC_PATH_MAX1 = 4;
+
+const int _PC_PIPE_BUF1 = 5;
+
+const int _PC_CHOWN_RESTRICTED1 = 6;
+
+const int _PC_NO_TRUNC1 = 7;
+
+const int _PC_VDISABLE1 = 8;
+
+const int _PC_SYNC_IO1 = 9;
+
+const int _PC_ASYNC_IO1 = 10;
+
+const int _PC_PRIO_IO1 = 11;
+
+const int _PC_SOCK_MAXBUF1 = 12;
+
+const int _PC_FILESIZEBITS1 = 13;
+
+const int _PC_REC_INCR_XFER_SIZE1 = 14;
+
+const int _PC_REC_MAX_XFER_SIZE1 = 15;
+
+const int _PC_REC_MIN_XFER_SIZE1 = 16;
+
+const int _PC_REC_XFER_ALIGN1 = 17;
+
+const int _PC_ALLOC_SIZE_MIN1 = 18;
+
+const int _PC_SYMLINK_MAX1 = 19;
+
+const int _PC_2_SYMLINKS1 = 20;
+
+const int _SC_ARG_MAX1 = 0;
+
+const int _SC_CHILD_MAX1 = 1;
+
+const int _SC_CLK_TCK1 = 2;
+
+const int _SC_NGROUPS_MAX1 = 3;
+
+const int _SC_OPEN_MAX1 = 4;
+
+const int _SC_STREAM_MAX1 = 5;
+
+const int _SC_TZNAME_MAX1 = 6;
+
+const int _SC_JOB_CONTROL1 = 7;
+
+const int _SC_SAVED_IDS1 = 8;
+
+const int _SC_REALTIME_SIGNALS1 = 9;
+
+const int _SC_PRIORITY_SCHEDULING1 = 10;
+
+const int _SC_TIMERS1 = 11;
+
+const int _SC_ASYNCHRONOUS_IO1 = 12;
+
+const int _SC_PRIORITIZED_IO1 = 13;
+
+const int _SC_SYNCHRONIZED_IO1 = 14;
+
+const int _SC_FSYNC1 = 15;
+
+const int _SC_MAPPED_FILES1 = 16;
+
+const int _SC_MEMLOCK1 = 17;
+
+const int _SC_MEMLOCK_RANGE1 = 18;
+
+const int _SC_MEMORY_PROTECTION1 = 19;
+
+const int _SC_MESSAGE_PASSING1 = 20;
+
+const int _SC_SEMAPHORES1 = 21;
+
+const int _SC_SHARED_MEMORY_OBJECTS1 = 22;
+
+const int _SC_AIO_LISTIO_MAX1 = 23;
+
+const int _SC_AIO_MAX1 = 24;
+
+const int _SC_AIO_PRIO_DELTA_MAX1 = 25;
+
+const int _SC_DELAYTIMER_MAX1 = 26;
+
+const int _SC_MQ_OPEN_MAX1 = 27;
+
+const int _SC_MQ_PRIO_MAX1 = 28;
+
+const int _SC_VERSION1 = 29;
+
+const int _SC_PAGESIZE1 = 30;
+
+const int _SC_PAGE_SIZE = 30;
+
+const int _SC_RTSIG_MAX1 = 31;
+
+const int _SC_SEM_NSEMS_MAX1 = 32;
+
+const int _SC_SEM_VALUE_MAX1 = 33;
+
+const int _SC_SIGQUEUE_MAX1 = 34;
+
+const int _SC_TIMER_MAX1 = 35;
+
+const int _SC_BC_BASE_MAX1 = 36;
+
+const int _SC_BC_DIM_MAX1 = 37;
+
+const int _SC_BC_SCALE_MAX1 = 38;
+
+const int _SC_BC_STRING_MAX1 = 39;
+
+const int _SC_COLL_WEIGHTS_MAX1 = 40;
+
+const int _SC_EQUIV_CLASS_MAX1 = 41;
+
+const int _SC_EXPR_NEST_MAX1 = 42;
+
+const int _SC_LINE_MAX1 = 43;
+
+const int _SC_RE_DUP_MAX1 = 44;
+
+const int _SC_CHARCLASS_NAME_MAX1 = 45;
+
+const int _SC_2_VERSION1 = 46;
+
+const int _SC_2_C_BIND1 = 47;
+
+const int _SC_2_C_DEV1 = 48;
+
+const int _SC_2_FORT_DEV1 = 49;
+
+const int _SC_2_FORT_RUN1 = 50;
+
+const int _SC_2_SW_DEV1 = 51;
+
+const int _SC_2_LOCALEDEF1 = 52;
+
+const int _SC_PII1 = 53;
+
+const int _SC_PII_XTI1 = 54;
+
+const int _SC_PII_SOCKET1 = 55;
+
+const int _SC_PII_INTERNET1 = 56;
+
+const int _SC_PII_OSI1 = 57;
+
+const int _SC_POLL1 = 58;
+
+const int _SC_SELECT1 = 59;
+
+const int _SC_UIO_MAXIOV1 = 60;
+
+const int _SC_IOV_MAX1 = 60;
+
+const int _SC_PII_INTERNET_STREAM1 = 61;
+
+const int _SC_PII_INTERNET_DGRAM1 = 62;
+
+const int _SC_PII_OSI_COTS1 = 63;
+
+const int _SC_PII_OSI_CLTS1 = 64;
+
+const int _SC_PII_OSI_M1 = 65;
+
+const int _SC_T_IOV_MAX1 = 66;
+
+const int _SC_THREADS1 = 67;
+
+const int _SC_THREAD_SAFE_FUNCTIONS1 = 68;
+
+const int _SC_GETGR_R_SIZE_MAX1 = 69;
+
+const int _SC_GETPW_R_SIZE_MAX1 = 70;
+
+const int _SC_LOGIN_NAME_MAX1 = 71;
+
+const int _SC_TTY_NAME_MAX1 = 72;
+
+const int _SC_THREAD_DESTRUCTOR_ITERATIONS1 = 73;
+
+const int _SC_THREAD_KEYS_MAX1 = 74;
+
+const int _SC_THREAD_STACK_MIN1 = 75;
+
+const int _SC_THREAD_THREADS_MAX1 = 76;
+
+const int _SC_THREAD_ATTR_STACKADDR1 = 77;
+
+const int _SC_THREAD_ATTR_STACKSIZE1 = 78;
+
+const int _SC_THREAD_PRIORITY_SCHEDULING1 = 79;
+
+const int _SC_THREAD_PRIO_INHERIT1 = 80;
+
+const int _SC_THREAD_PRIO_PROTECT1 = 81;
+
+const int _SC_THREAD_PROCESS_SHARED1 = 82;
+
+const int _SC_NPROCESSORS_CONF1 = 83;
+
+const int _SC_NPROCESSORS_ONLN1 = 84;
+
+const int _SC_PHYS_PAGES1 = 85;
+
+const int _SC_AVPHYS_PAGES1 = 86;
+
+const int _SC_ATEXIT_MAX1 = 87;
+
+const int _SC_PASS_MAX1 = 88;
+
+const int _SC_XOPEN_VERSION1 = 89;
+
+const int _SC_XOPEN_XCU_VERSION1 = 90;
+
+const int _SC_XOPEN_UNIX1 = 91;
+
+const int _SC_XOPEN_CRYPT1 = 92;
+
+const int _SC_XOPEN_ENH_I18N1 = 93;
+
+const int _SC_XOPEN_SHM1 = 94;
+
+const int _SC_2_CHAR_TERM1 = 95;
+
+const int _SC_2_C_VERSION1 = 96;
+
+const int _SC_2_UPE1 = 97;
+
+const int _SC_XOPEN_XPG21 = 98;
+
+const int _SC_XOPEN_XPG31 = 99;
+
+const int _SC_XOPEN_XPG41 = 100;
+
+const int _SC_CHAR_BIT1 = 101;
+
+const int _SC_CHAR_MAX1 = 102;
+
+const int _SC_CHAR_MIN1 = 103;
+
+const int _SC_INT_MAX1 = 104;
+
+const int _SC_INT_MIN1 = 105;
+
+const int _SC_LONG_BIT1 = 106;
+
+const int _SC_WORD_BIT1 = 107;
+
+const int _SC_MB_LEN_MAX1 = 108;
+
+const int _SC_NZERO1 = 109;
+
+const int _SC_SSIZE_MAX1 = 110;
+
+const int _SC_SCHAR_MAX1 = 111;
+
+const int _SC_SCHAR_MIN1 = 112;
+
+const int _SC_SHRT_MAX1 = 113;
+
+const int _SC_SHRT_MIN1 = 114;
+
+const int _SC_UCHAR_MAX1 = 115;
+
+const int _SC_UINT_MAX1 = 116;
+
+const int _SC_ULONG_MAX1 = 117;
+
+const int _SC_USHRT_MAX1 = 118;
+
+const int _SC_NL_ARGMAX1 = 119;
+
+const int _SC_NL_LANGMAX1 = 120;
+
+const int _SC_NL_MSGMAX1 = 121;
+
+const int _SC_NL_NMAX1 = 122;
+
+const int _SC_NL_SETMAX1 = 123;
+
+const int _SC_NL_TEXTMAX1 = 124;
+
+const int _SC_XBS5_ILP32_OFF321 = 125;
+
+const int _SC_XBS5_ILP32_OFFBIG1 = 126;
+
+const int _SC_XBS5_LP64_OFF641 = 127;
+
+const int _SC_XBS5_LPBIG_OFFBIG1 = 128;
+
+const int _SC_XOPEN_LEGACY1 = 129;
+
+const int _SC_XOPEN_REALTIME1 = 130;
+
+const int _SC_XOPEN_REALTIME_THREADS1 = 131;
+
+const int _SC_ADVISORY_INFO1 = 132;
+
+const int _SC_BARRIERS1 = 133;
+
+const int _SC_BASE1 = 134;
+
+const int _SC_C_LANG_SUPPORT1 = 135;
+
+const int _SC_C_LANG_SUPPORT_R1 = 136;
+
+const int _SC_CLOCK_SELECTION1 = 137;
+
+const int _SC_CPUTIME1 = 138;
+
+const int _SC_THREAD_CPUTIME1 = 139;
+
+const int _SC_DEVICE_IO1 = 140;
+
+const int _SC_DEVICE_SPECIFIC1 = 141;
+
+const int _SC_DEVICE_SPECIFIC_R1 = 142;
+
+const int _SC_FD_MGMT1 = 143;
+
+const int _SC_FIFO1 = 144;
+
+const int _SC_PIPE1 = 145;
+
+const int _SC_FILE_ATTRIBUTES1 = 146;
+
+const int _SC_FILE_LOCKING1 = 147;
+
+const int _SC_FILE_SYSTEM1 = 148;
+
+const int _SC_MONOTONIC_CLOCK1 = 149;
+
+const int _SC_MULTI_PROCESS1 = 150;
+
+const int _SC_SINGLE_PROCESS1 = 151;
+
+const int _SC_NETWORKING1 = 152;
+
+const int _SC_READER_WRITER_LOCKS1 = 153;
+
+const int _SC_SPIN_LOCKS1 = 154;
+
+const int _SC_REGEXP1 = 155;
+
+const int _SC_REGEX_VERSION1 = 156;
+
+const int _SC_SHELL1 = 157;
+
+const int _SC_SIGNALS1 = 158;
+
+const int _SC_SPAWN1 = 159;
+
+const int _SC_SPORADIC_SERVER1 = 160;
+
+const int _SC_THREAD_SPORADIC_SERVER1 = 161;
+
+const int _SC_SYSTEM_DATABASE1 = 162;
+
+const int _SC_SYSTEM_DATABASE_R1 = 163;
+
+const int _SC_TIMEOUTS1 = 164;
+
+const int _SC_TYPED_MEMORY_OBJECTS1 = 165;
+
+const int _SC_USER_GROUPS1 = 166;
+
+const int _SC_USER_GROUPS_R1 = 167;
+
+const int _SC_2_PBS1 = 168;
+
+const int _SC_2_PBS_ACCOUNTING1 = 169;
+
+const int _SC_2_PBS_LOCATE1 = 170;
+
+const int _SC_2_PBS_MESSAGE1 = 171;
+
+const int _SC_2_PBS_TRACK1 = 172;
+
+const int _SC_SYMLOOP_MAX1 = 173;
+
+const int _SC_STREAMS1 = 174;
+
+const int _SC_2_PBS_CHECKPOINT1 = 175;
+
+const int _SC_V6_ILP32_OFF321 = 176;
+
+const int _SC_V6_ILP32_OFFBIG1 = 177;
+
+const int _SC_V6_LP64_OFF641 = 178;
+
+const int _SC_V6_LPBIG_OFFBIG1 = 179;
+
+const int _SC_HOST_NAME_MAX1 = 180;
+
+const int _SC_TRACE1 = 181;
+
+const int _SC_TRACE_EVENT_FILTER1 = 182;
+
+const int _SC_TRACE_INHERIT1 = 183;
+
+const int _SC_TRACE_LOG1 = 184;
+
+const int _SC_LEVEL1_ICACHE_SIZE1 = 185;
+
+const int _SC_LEVEL1_ICACHE_ASSOC1 = 186;
+
+const int _SC_LEVEL1_ICACHE_LINESIZE1 = 187;
+
+const int _SC_LEVEL1_DCACHE_SIZE1 = 188;
+
+const int _SC_LEVEL1_DCACHE_ASSOC1 = 189;
+
+const int _SC_LEVEL1_DCACHE_LINESIZE1 = 190;
+
+const int _SC_LEVEL2_CACHE_SIZE1 = 191;
+
+const int _SC_LEVEL2_CACHE_ASSOC1 = 192;
+
+const int _SC_LEVEL2_CACHE_LINESIZE1 = 193;
+
+const int _SC_LEVEL3_CACHE_SIZE1 = 194;
+
+const int _SC_LEVEL3_CACHE_ASSOC1 = 195;
+
+const int _SC_LEVEL3_CACHE_LINESIZE1 = 196;
+
+const int _SC_LEVEL4_CACHE_SIZE1 = 197;
+
+const int _SC_LEVEL4_CACHE_ASSOC1 = 198;
+
+const int _SC_LEVEL4_CACHE_LINESIZE1 = 199;
+
+const int _SC_IPV61 = 235;
+
+const int _SC_RAW_SOCKETS1 = 236;
+
+const int _SC_V7_ILP32_OFF321 = 237;
+
+const int _SC_V7_ILP32_OFFBIG1 = 238;
+
+const int _SC_V7_LP64_OFF641 = 239;
+
+const int _SC_V7_LPBIG_OFFBIG1 = 240;
+
+const int _SC_SS_REPL_MAX1 = 241;
+
+const int _SC_TRACE_EVENT_NAME_MAX1 = 242;
+
+const int _SC_TRACE_NAME_MAX1 = 243;
+
+const int _SC_TRACE_SYS_MAX1 = 244;
+
+const int _SC_TRACE_USER_EVENT_MAX1 = 245;
+
+const int _SC_XOPEN_STREAMS1 = 246;
+
+const int _SC_THREAD_ROBUST_PRIO_INHERIT1 = 247;
+
+const int _SC_THREAD_ROBUST_PRIO_PROTECT1 = 248;
+
+const int _SC_MINSIGSTKSZ1 = 249;
+
+const int _SC_SIGSTKSZ1 = 250;
+
+const int _CS_PATH1 = 0;
+
+const int _CS_V6_WIDTH_RESTRICTED_ENVS1 = 1;
+
+const int _CS_POSIX_V6_WIDTH_RESTRICTED_ENVS = 1;
+
+const int _CS_GNU_LIBC_VERSION1 = 2;
+
+const int _CS_GNU_LIBPTHREAD_VERSION1 = 3;
+
+const int _CS_V5_WIDTH_RESTRICTED_ENVS1 = 4;
+
+const int _CS_POSIX_V5_WIDTH_RESTRICTED_ENVS = 4;
+
+const int _CS_V7_WIDTH_RESTRICTED_ENVS1 = 5;
+
+const int _CS_POSIX_V7_WIDTH_RESTRICTED_ENVS = 5;
+
+const int _CS_LFS_CFLAGS1 = 1000;
+
+const int _CS_LFS_LDFLAGS1 = 1001;
+
+const int _CS_LFS_LIBS1 = 1002;
+
+const int _CS_LFS_LINTFLAGS1 = 1003;
+
+const int _CS_LFS64_CFLAGS1 = 1004;
+
+const int _CS_LFS64_LDFLAGS1 = 1005;
+
+const int _CS_LFS64_LIBS1 = 1006;
+
+const int _CS_LFS64_LINTFLAGS1 = 1007;
+
+const int _CS_XBS5_ILP32_OFF32_CFLAGS1 = 1100;
+
+const int _CS_XBS5_ILP32_OFF32_LDFLAGS1 = 1101;
+
+const int _CS_XBS5_ILP32_OFF32_LIBS1 = 1102;
+
+const int _CS_XBS5_ILP32_OFF32_LINTFLAGS1 = 1103;
+
+const int _CS_XBS5_ILP32_OFFBIG_CFLAGS1 = 1104;
+
+const int _CS_XBS5_ILP32_OFFBIG_LDFLAGS1 = 1105;
+
+const int _CS_XBS5_ILP32_OFFBIG_LIBS1 = 1106;
+
+const int _CS_XBS5_ILP32_OFFBIG_LINTFLAGS1 = 1107;
+
+const int _CS_XBS5_LP64_OFF64_CFLAGS1 = 1108;
+
+const int _CS_XBS5_LP64_OFF64_LDFLAGS1 = 1109;
+
+const int _CS_XBS5_LP64_OFF64_LIBS1 = 1110;
+
+const int _CS_XBS5_LP64_OFF64_LINTFLAGS1 = 1111;
+
+const int _CS_XBS5_LPBIG_OFFBIG_CFLAGS1 = 1112;
+
+const int _CS_XBS5_LPBIG_OFFBIG_LDFLAGS1 = 1113;
+
+const int _CS_XBS5_LPBIG_OFFBIG_LIBS1 = 1114;
+
+const int _CS_XBS5_LPBIG_OFFBIG_LINTFLAGS1 = 1115;
+
+const int _CS_POSIX_V6_ILP32_OFF32_CFLAGS1 = 1116;
+
+const int _CS_POSIX_V6_ILP32_OFF32_LDFLAGS1 = 1117;
+
+const int _CS_POSIX_V6_ILP32_OFF32_LIBS1 = 1118;
+
+const int _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS1 = 1119;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS1 = 1120;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS1 = 1121;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_LIBS1 = 1122;
+
+const int _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS1 = 1123;
+
+const int _CS_POSIX_V6_LP64_OFF64_CFLAGS1 = 1124;
+
+const int _CS_POSIX_V6_LP64_OFF64_LDFLAGS1 = 1125;
+
+const int _CS_POSIX_V6_LP64_OFF64_LIBS1 = 1126;
+
+const int _CS_POSIX_V6_LP64_OFF64_LINTFLAGS1 = 1127;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS1 = 1128;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS1 = 1129;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_LIBS1 = 1130;
+
+const int _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS1 = 1131;
+
+const int _CS_POSIX_V7_ILP32_OFF32_CFLAGS1 = 1132;
+
+const int _CS_POSIX_V7_ILP32_OFF32_LDFLAGS1 = 1133;
+
+const int _CS_POSIX_V7_ILP32_OFF32_LIBS1 = 1134;
+
+const int _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS1 = 1135;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS1 = 1136;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS1 = 1137;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_LIBS1 = 1138;
+
+const int _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS1 = 1139;
+
+const int _CS_POSIX_V7_LP64_OFF64_CFLAGS1 = 1140;
+
+const int _CS_POSIX_V7_LP64_OFF64_LDFLAGS1 = 1141;
+
+const int _CS_POSIX_V7_LP64_OFF64_LIBS1 = 1142;
+
+const int _CS_POSIX_V7_LP64_OFF64_LINTFLAGS1 = 1143;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS1 = 1144;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS1 = 1145;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_LIBS1 = 1146;
+
+const int _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS1 = 1147;
+
+const int _CS_V6_ENV1 = 1148;
+
+const int _CS_V7_ENV1 = 1149;
+
+const int _GETOPT_POSIX_H = 1;
+
+const int _GETOPT_CORE_H = 1;
+
+const int F_ULOCK = 0;
+
+const int F_LOCK = 1;
+
+const int F_TLOCK = 2;
+
+const int F_TEST = 3;
 
 const int G_DBUS_METHOD_INVOCATION_HANDLED = 1;
 
@@ -92760,3 +108956,9 @@ const String G_VOLUME_IDENTIFIER_KIND_UUID = 'uuid';
 const String G_VOLUME_IDENTIFIER_KIND_NFS_MOUNT = 'nfs-mount';
 
 const String G_VOLUME_IDENTIFIER_KIND_CLASS = 'class';
+
+const int FLATPAK_MAJOR_VERSION = 1;
+
+const int FLATPAK_MINOR_VERSION = 12;
+
+const int FLATPAK_MICRO_VERSION = 7;

@@ -105,15 +105,15 @@ class NativeLibrary {
 
   ffi.Pointer<gchar> get g_utf8_skip => _g_utf8_skip.value;
 
-  late final ffi.Pointer<ffi.Pointer<guint16>> _g_ascii_table =
-      _lookup<ffi.Pointer<guint16>>('g_ascii_table');
-
-  ffi.Pointer<guint16> get g_ascii_table => _g_ascii_table.value;
-
   late final ffi.Pointer<GSourceFuncs> _g_io_watch_funcs =
       _lookup<GSourceFuncs>('g_io_watch_funcs');
 
   GSourceFuncs get g_io_watch_funcs => _g_io_watch_funcs.ref;
+
+  late final ffi.Pointer<ffi.Pointer<guint16>> _g_ascii_table =
+      _lookup<ffi.Pointer<guint16>>('g_ascii_table');
+
+  ffi.Pointer<guint16> get g_ascii_table => _g_ascii_table.value;
 
   late final ffi.Pointer<ffi.Pointer<GTestConfig>> _g_test_config_vars =
       _lookup<ffi.Pointer<GTestConfig>>('g_test_config_vars');
@@ -4484,22 +4484,6 @@ class NativeLibrary {
       _flatpak_transaction_set_reinstallPtr
           .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
 
-  int flatpak_transaction_get_no_interaction(
-    ffi.Pointer<FlatpakTransaction> self,
-  ) {
-    return _flatpak_transaction_get_no_interaction(
-      self,
-    );
-  }
-
-  late final _flatpak_transaction_get_no_interactionPtr = _lookup<
-          ffi
-          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakTransaction>)>>(
-      'flatpak_transaction_get_no_interaction');
-  late final _flatpak_transaction_get_no_interaction =
-      _flatpak_transaction_get_no_interactionPtr
-          .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
-
   void flatpak_transaction_set_no_interaction(
     ffi.Pointer<FlatpakTransaction> self,
     int no_interaction,
@@ -4624,74 +4608,6 @@ class NativeLibrary {
       _flatpak_transaction_get_include_unused_uninstall_opsPtr
           .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
 
-  void flatpak_transaction_set_auto_install_sdk(
-    ffi.Pointer<FlatpakTransaction> self,
-    int auto_install_sdk,
-  ) {
-    return _flatpak_transaction_set_auto_install_sdk(
-      self,
-      auto_install_sdk,
-    );
-  }
-
-  late final _flatpak_transaction_set_auto_install_sdkPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
-              gboolean)>>('flatpak_transaction_set_auto_install_sdk');
-  late final _flatpak_transaction_set_auto_install_sdk =
-      _flatpak_transaction_set_auto_install_sdkPtr
-          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
-
-  int flatpak_transaction_get_auto_install_sdk(
-    ffi.Pointer<FlatpakTransaction> self,
-  ) {
-    return _flatpak_transaction_get_auto_install_sdk(
-      self,
-    );
-  }
-
-  late final _flatpak_transaction_get_auto_install_sdkPtr = _lookup<
-          ffi
-          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakTransaction>)>>(
-      'flatpak_transaction_get_auto_install_sdk');
-  late final _flatpak_transaction_get_auto_install_sdk =
-      _flatpak_transaction_get_auto_install_sdkPtr
-          .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
-
-  void flatpak_transaction_set_auto_install_debug(
-    ffi.Pointer<FlatpakTransaction> self,
-    int auto_install_debug,
-  ) {
-    return _flatpak_transaction_set_auto_install_debug(
-      self,
-      auto_install_debug,
-    );
-  }
-
-  late final _flatpak_transaction_set_auto_install_debugPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<FlatpakTransaction>,
-              gboolean)>>('flatpak_transaction_set_auto_install_debug');
-  late final _flatpak_transaction_set_auto_install_debug =
-      _flatpak_transaction_set_auto_install_debugPtr
-          .asFunction<void Function(ffi.Pointer<FlatpakTransaction>, int)>();
-
-  int flatpak_transaction_get_auto_install_debug(
-    ffi.Pointer<FlatpakTransaction> self,
-  ) {
-    return _flatpak_transaction_get_auto_install_debug(
-      self,
-    );
-  }
-
-  late final _flatpak_transaction_get_auto_install_debugPtr = _lookup<
-          ffi
-          .NativeFunction<gboolean Function(ffi.Pointer<FlatpakTransaction>)>>(
-      'flatpak_transaction_get_auto_install_debug');
-  late final _flatpak_transaction_get_auto_install_debug =
-      _flatpak_transaction_get_auto_install_debugPtr
-          .asFunction<int Function(ffi.Pointer<FlatpakTransaction>)>();
-
   void flatpak_transaction_add_dependency_source(
     ffi.Pointer<FlatpakTransaction> self,
     ffi.Pointer<FlatpakInstallation> installation,
@@ -4787,37 +4703,6 @@ class NativeLibrary {
       _flatpak_transaction_get_current_operationPtr.asFunction<
           ffi.Pointer<FlatpakTransactionOperation> Function(
               ffi.Pointer<FlatpakTransaction>)>();
-
-  ffi.Pointer<FlatpakTransactionOperation>
-      flatpak_transaction_get_operation_for_ref(
-    ffi.Pointer<FlatpakTransaction> self,
-    ffi.Pointer<ffi.Char> remote,
-    ffi.Pointer<ffi.Char> ref,
-    ffi.Pointer<ffi.Pointer<GError>> error,
-  ) {
-    return _flatpak_transaction_get_operation_for_ref(
-      self,
-      remote,
-      ref,
-      error,
-    );
-  }
-
-  late final _flatpak_transaction_get_operation_for_refPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<FlatpakTransactionOperation> Function(
-                  ffi.Pointer<FlatpakTransaction>,
-                  ffi.Pointer<ffi.Char>,
-                  ffi.Pointer<ffi.Char>,
-                  ffi.Pointer<ffi.Pointer<GError>>)>>(
-      'flatpak_transaction_get_operation_for_ref');
-  late final _flatpak_transaction_get_operation_for_ref =
-      _flatpak_transaction_get_operation_for_refPtr.asFunction<
-          ffi.Pointer<FlatpakTransactionOperation> Function(
-              ffi.Pointer<FlatpakTransaction>,
-              ffi.Pointer<ffi.Char>,
-              ffi.Pointer<ffi.Char>,
-              ffi.Pointer<ffi.Pointer<GError>>)>();
 
   ffi.Pointer<FlatpakInstallation> flatpak_transaction_get_installation(
     ffi.Pointer<FlatpakTransaction> self,
@@ -4971,48 +4856,6 @@ class NativeLibrary {
       _flatpak_transaction_add_rebasePtr.asFunction<
           int Function(
               ffi.Pointer<FlatpakTransaction>,
-              ffi.Pointer<ffi.Char>,
-              ffi.Pointer<ffi.Char>,
-              ffi.Pointer<ffi.Pointer<ffi.Char>>,
-              ffi.Pointer<ffi.Pointer<ffi.Char>>,
-              ffi.Pointer<ffi.Pointer<GError>>)>();
-
-  int flatpak_transaction_add_rebase_and_uninstall(
-    ffi.Pointer<FlatpakTransaction> self,
-    ffi.Pointer<ffi.Char> remote,
-    ffi.Pointer<ffi.Char> new_ref,
-    ffi.Pointer<ffi.Char> old_ref,
-    ffi.Pointer<ffi.Pointer<ffi.Char>> subpaths,
-    ffi.Pointer<ffi.Pointer<ffi.Char>> previous_ids,
-    ffi.Pointer<ffi.Pointer<GError>> error,
-  ) {
-    return _flatpak_transaction_add_rebase_and_uninstall(
-      self,
-      remote,
-      new_ref,
-      old_ref,
-      subpaths,
-      previous_ids,
-      error,
-    );
-  }
-
-  late final _flatpak_transaction_add_rebase_and_uninstallPtr = _lookup<
-          ffi.NativeFunction<
-              gboolean Function(
-                  ffi.Pointer<FlatpakTransaction>,
-                  ffi.Pointer<ffi.Char>,
-                  ffi.Pointer<ffi.Char>,
-                  ffi.Pointer<ffi.Char>,
-                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
-                  ffi.Pointer<ffi.Pointer<ffi.Char>>,
-                  ffi.Pointer<ffi.Pointer<GError>>)>>(
-      'flatpak_transaction_add_rebase_and_uninstall');
-  late final _flatpak_transaction_add_rebase_and_uninstall =
-      _flatpak_transaction_add_rebase_and_uninstallPtr.asFunction<
-          int Function(
-              ffi.Pointer<FlatpakTransaction>,
-              ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Pointer<ffi.Char>>,
@@ -5373,8 +5216,6 @@ abstract class GFormatSizeFlags {
   static const int G_FORMAT_SIZE_LONG_FORMAT = 1;
   static const int G_FORMAT_SIZE_IEC_UNITS = 2;
   static const int G_FORMAT_SIZE_BITS = 4;
-  static const int G_FORMAT_SIZE_ONLY_VALUE = 8;
-  static const int G_FORMAT_SIZE_ONLY_UNIT = 16;
 }
 
 final class div_t extends ffi.Struct {
@@ -6899,18 +6740,13 @@ abstract class GUnicodeType {
 /// @G_UNICODE_BREAK_EMOJI_BASE: Emoji Base (EB). Since: 2.50
 /// @G_UNICODE_BREAK_EMOJI_MODIFIER: Emoji Modifier (EM). Since: 2.50
 /// @G_UNICODE_BREAK_ZERO_WIDTH_JOINER: Zero Width Joiner (ZWJ). Since: 2.50
-/// @G_UNICODE_BREAK_AKSARA: Aksara (AK). Since: 2.80
-/// @G_UNICODE_BREAK_AKSARA_PRE_BASE (AP). Since: 2.80
-/// @G_UNICODE_BREAK_AKSARA_START (AS). Since: 2.80
-/// @G_UNICODE_BREAK_VIRAMA_FINAL (VF). Since: 2.80
-/// @G_UNICODE_BREAK_VIRAMA (VI). Since: 2.80
 ///
 /// These are the possible line break classifications.
 ///
-/// Since new Unicode versions may add new types here, applications should be ready
+/// Since new unicode versions may add new types here, applications should be ready
 /// to handle unknown values. They may be regarded as %G_UNICODE_BREAK_UNKNOWN.
 ///
-/// See [Unicode Line Breaking Algorithm](https://www.unicode.org/reports/tr14/).
+/// See [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr14/).
 abstract class GUnicodeBreakType {
   static const int G_UNICODE_BREAK_MANDATORY = 0;
   static const int G_UNICODE_BREAK_CARRIAGE_RETURN = 1;
@@ -6956,11 +6792,6 @@ abstract class GUnicodeBreakType {
   static const int G_UNICODE_BREAK_EMOJI_BASE = 40;
   static const int G_UNICODE_BREAK_EMOJI_MODIFIER = 41;
   static const int G_UNICODE_BREAK_ZERO_WIDTH_JOINER = 42;
-  static const int G_UNICODE_BREAK_AKSARA = 43;
-  static const int G_UNICODE_BREAK_AKSARA_PRE_BASE = 44;
-  static const int G_UNICODE_BREAK_AKSARA_START = 45;
-  static const int G_UNICODE_BREAK_VIRAMA_FINAL = 46;
-  static const int G_UNICODE_BREAK_VIRAMA = 47;
 }
 
 /// GUnicodeScript:
@@ -7140,8 +6971,6 @@ abstract class GUnicodeBreakType {
 /// @G_UNICODE_SCRIPT_TOTO:                 Toto. Since: 2.72
 /// @G_UNICODE_SCRIPT_VITHKUQI:             Vithkuqi. Since: 2.72
 /// @G_UNICODE_SCRIPT_MATH:                 Mathematical notation. Since: 2.72
-/// @G_UNICODE_SCRIPT_KAWI:                 Kawi. Since 2.74
-/// @G_UNICODE_SCRIPT_NAG_MUNDARI:          Nag Mundari. Since 2.74
 ///
 /// The #GUnicodeScript enumeration identifies different writing
 /// systems. The values correspond to the names as defined in the
@@ -7316,8 +7145,6 @@ abstract class GUnicodeScript {
   static const int G_UNICODE_SCRIPT_TOTO = 160;
   static const int G_UNICODE_SCRIPT_VITHKUQI = 161;
   static const int G_UNICODE_SCRIPT_MATH = 162;
-  static const int G_UNICODE_SCRIPT_KAWI = 163;
-  static const int G_UNICODE_SCRIPT_NAG_MUNDARI = 164;
 }
 
 /// GNormalizeMode:
@@ -7351,35 +7178,6 @@ abstract class GNormalizeMode {
   static const int G_NORMALIZE_NFKD = 2;
   static const int G_NORMALIZE_ALL_COMPOSE = 3;
   static const int G_NORMALIZE_NFKC = 3;
-}
-
-abstract class GAsciiType {
-  static const int G_ASCII_ALNUM = 1;
-  static const int G_ASCII_ALPHA = 2;
-  static const int G_ASCII_CNTRL = 4;
-  static const int G_ASCII_DIGIT = 8;
-  static const int G_ASCII_GRAPH = 16;
-  static const int G_ASCII_LOWER = 32;
-  static const int G_ASCII_PRINT = 64;
-  static const int G_ASCII_PUNCT = 128;
-  static const int G_ASCII_SPACE = 256;
-  static const int G_ASCII_UPPER = 512;
-  static const int G_ASCII_XDIGIT = 1024;
-}
-
-typedef guint16 = ffi.UnsignedShort;
-typedef Dartguint16 = int;
-
-/// GNumberParserError:
-/// @G_NUMBER_PARSER_ERROR_INVALID: string was not a valid number
-/// @G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS: string was a number, but out of bounds
-///
-/// Error codes returned by functions converting a string to a number.
-///
-/// Since: 2.54
-abstract class GNumberParserError {
-  static const int G_NUMBER_PARSER_ERROR_INVALID = 0;
-  static const int G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS = 1;
 }
 
 final class _GString extends ffi.Struct {
@@ -7472,7 +7270,6 @@ abstract class GSeekType {
 }
 
 abstract class GIOFlags {
-  static const int G_IO_FLAG_NONE = 0;
   static const int G_IO_FLAG_APPEND = 1;
   static const int G_IO_FLAG_NONBLOCK = 2;
   static const int G_IO_FLAG_IS_READABLE = 4;
@@ -7547,7 +7344,6 @@ abstract class GMarkupError {
 }
 
 /// GMarkupParseFlags:
-/// @G_MARKUP_DEFAULT_FLAGS: No special behaviour. Since: 2.74
 /// @G_MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG: flag you should not use
 /// @G_MARKUP_TREAT_CDATA_AS_TEXT: When this flag is set, CDATA marked
 /// sections are not passed literally to the @passthrough function of
@@ -7566,7 +7362,6 @@ abstract class GMarkupError {
 ///
 /// Flags that affect the behaviour of the parser.
 abstract class GMarkupParseFlags {
-  static const int G_MARKUP_DEFAULT_FLAGS = 0;
   static const int G_MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1;
   static const int G_MARKUP_TREAT_CDATA_AS_TEXT = 2;
   static const int G_MARKUP_PREFIX_ERROR_POSITION = 4;
@@ -7689,11 +7484,8 @@ abstract class GVariantClass {
 
 final class _GVariantIter extends ffi.Struct {
   @ffi.Array.multi([16])
-  external ffi.Array<guintptr> x;
+  external ffi.Array<gsize> x;
 }
-
-typedef guintptr = ffi.UnsignedLong;
-typedef Dartguintptr = int;
 
 final class _GVariantBuilder extends ffi.Struct {
   external UnnamedUnion6 u;
@@ -7703,7 +7495,7 @@ final class UnnamedUnion6 extends ffi.Union {
   external UnnamedStruct13 s;
 
   @ffi.Array.multi([16])
-  external ffi.Array<guintptr> x;
+  external ffi.Array<gsize> x;
 }
 
 final class UnnamedStruct13 extends ffi.Struct {
@@ -7713,9 +7505,16 @@ final class UnnamedStruct13 extends ffi.Struct {
   external ffi.Pointer<GVariantType> type;
 
   @ffi.Array.multi([14])
-  external ffi.Array<guintptr> y;
+  external ffi.Array<gsize> y;
 }
 
+/// GVariantType:
+///
+/// A type in the GVariant type system.
+///
+/// Two types may not be compared by value; use g_variant_type_equal() or
+/// g_variant_type_is_subtype_of().  May be copied using
+/// g_variant_type_copy() and freed using g_variant_type_free().
 typedef GVariantType = _GVariantType;
 
 abstract class GVariantParseError {
@@ -7748,7 +7547,7 @@ final class UnnamedUnion7 extends ffi.Union {
   external UnnamedStruct14 s;
 
   @ffi.Array.multi([16])
-  external ffi.Array<guintptr> x;
+  external ffi.Array<gsize> x;
 }
 
 final class UnnamedStruct14 extends ffi.Struct {
@@ -7758,7 +7557,7 @@ final class UnnamedStruct14 extends ffi.Struct {
   external int partial_magic;
 
   @ffi.Array.multi([14])
-  external ffi.Array<guintptr> y;
+  external ffi.Array<gsize> y;
 }
 
 typedef GVariant = _GVariant;
@@ -7869,7 +7668,7 @@ final class _GOptionEntry extends ffi.Struct {
 }
 
 /// GOptionArg:
-/// @G_OPTION_ARG_NONE: No extra argument. This is useful for simple flags or booleans.
+/// @G_OPTION_ARG_NONE: No extra argument. This is useful for simple flags.
 /// @G_OPTION_ARG_STRING: The option takes a UTF-8 string argument.
 /// @G_OPTION_ARG_INT: The option takes an integer argument.
 /// @G_OPTION_ARG_CALLBACK: The option provides a callback (of type
@@ -7910,8 +7709,7 @@ abstract class GOptionArg {
 /// @G_OPTION_FLAG_IN_MAIN: The option appears in the main section of the
 /// `--help` output, even if it is defined in a group.
 /// @G_OPTION_FLAG_REVERSE: For options of the %G_OPTION_ARG_NONE kind, this
-/// flag indicates that the sense of the option is reversed. i.e. %FALSE will
-/// be stored into the argument rather than %TRUE.
+/// flag indicates that the sense of the option is reversed.
 /// @G_OPTION_FLAG_NO_ARG: For options of the %G_OPTION_ARG_CALLBACK kind,
 /// this flag indicates that the callback does not take any argument
 /// (like a %G_OPTION_ARG_NONE option). Since 2.8
@@ -7953,11 +7751,6 @@ abstract class GOptionError {
   static const int G_OPTION_ERROR_UNKNOWN_OPTION = 0;
   static const int G_OPTION_ERROR_BAD_VALUE = 1;
   static const int G_OPTION_ERROR_FAILED = 2;
-}
-
-final class _GPathBuf extends ffi.Struct {
-  @ffi.Array.multi([8])
-  external ffi.Array<gpointer> dummy;
 }
 
 final class _GPatternSpec extends ffi.Opaque {}
@@ -8148,7 +7941,6 @@ abstract class GRegexError {
 }
 
 /// GRegexCompileFlags:
-/// @G_REGEX_DEFAULT: No special options set. Since: 2.74
 /// @G_REGEX_CASELESS: Letters in the pattern match both upper- and
 /// lowercase letters. This option can be changed within a pattern
 /// by a "(?i)" option setting.
@@ -8192,13 +7984,9 @@ abstract class GRegexError {
 /// followed by "?" behaves as if it were followed by "?:" but named
 /// parentheses can still be used for capturing (and they acquire numbers
 /// in the usual way).
-/// @G_REGEX_OPTIMIZE: Since 2.74 and the port to pcre2, requests JIT
-/// compilation, which, if the just-in-time compiler is available, further
-/// processes a compiled pattern into machine code that executes much
-/// faster. However, it comes at the cost of extra processing before the
-/// match is performed, so it is most beneficial to use this when the same
-/// compiled pattern is used for matching many times. Before 2.74 this
-/// option used the built-in non-JIT optimizations in pcre1.
+/// @G_REGEX_OPTIMIZE: Optimize the regular expression. If the pattern will
+/// be used many times, then it may be worth the effort to optimize it
+/// to improve the speed of matches.
 /// @G_REGEX_FIRSTLINE: Limits an unanchored pattern to match before (or at) the
 /// first newline. Since: 2.34
 /// @G_REGEX_DUPNAMES: Names used to identify capturing subpatterns need not
@@ -8221,14 +8009,12 @@ abstract class GRegexError {
 /// is recognised. If this option is set, then "\R" only recognizes the newline
 /// characters '\r', '\n' and '\r\n'. Since: 2.34
 /// @G_REGEX_JAVASCRIPT_COMPAT: Changes behaviour so that it is compatible with
-/// JavaScript rather than PCRE. Since GLib 2.74 this is no longer supported,
-/// as libpcre2 does not support it. Since: 2.34 Deprecated: 2.74
+/// JavaScript rather than PCRE. Since: 2.34
 ///
 /// Flags specifying compile-time options.
 ///
 /// Since: 2.14
 abstract class GRegexCompileFlags {
-  static const int G_REGEX_DEFAULT = 0;
   static const int G_REGEX_CASELESS = 1;
   static const int G_REGEX_MULTILINE = 2;
   static const int G_REGEX_DOTALL = 4;
@@ -8250,7 +8036,6 @@ abstract class GRegexCompileFlags {
 }
 
 /// GRegexMatchFlags:
-/// @G_REGEX_MATCH_DEFAULT: No special options set. Since: 2.74
 /// @G_REGEX_MATCH_ANCHORED: The pattern is forced to be "anchored", that is,
 /// it is constrained to match only at the first matching point in the
 /// string that is being searched. This effect can also be achieved by
@@ -8315,7 +8100,6 @@ abstract class GRegexCompileFlags {
 ///
 /// Since: 2.14
 abstract class GRegexMatchFlags {
-  static const int G_REGEX_MATCH_DEFAULT = 0;
   static const int G_REGEX_MATCH_ANCHORED = 16;
   static const int G_REGEX_MATCH_NOTBOL = 128;
   static const int G_REGEX_MATCH_NOTEOL = 256;
@@ -8577,12 +8361,6 @@ abstract class GSpawnError {
 /// Since: 2.34
 /// @G_SPAWN_CLOEXEC_PIPES: create all pipes with the `O_CLOEXEC` flag set.
 /// Since: 2.40
-/// @G_SPAWN_CHILD_INHERITS_STDOUT: the child will inherit the parent's standard output.
-/// Since: 2.74
-/// @G_SPAWN_CHILD_INHERITS_STDERR: the child will inherit the parent's standard error.
-/// Since: 2.74
-/// @G_SPAWN_STDIN_FROM_DEV_NULL: the child's standard input is attached to `/dev/null`.
-/// Since: 2.74
 ///
 /// Flags passed to g_spawn_sync(), g_spawn_async() and g_spawn_async_with_pipes().
 abstract class GSpawnFlags {
@@ -8596,27 +8374,35 @@ abstract class GSpawnFlags {
   static const int G_SPAWN_FILE_AND_ARGV_ZERO = 64;
   static const int G_SPAWN_SEARCH_PATH_FROM_ENVP = 128;
   static const int G_SPAWN_CLOEXEC_PIPES = 256;
+}
 
-  /// G_SPAWN_CHILD_INHERITS_STDOUT:
-  ///
-  /// The child will inherit the parent's standard output.
-  ///
-  /// Since: 2.74
-  static const int G_SPAWN_CHILD_INHERITS_STDOUT = 512;
+abstract class GAsciiType {
+  static const int G_ASCII_ALNUM = 1;
+  static const int G_ASCII_ALPHA = 2;
+  static const int G_ASCII_CNTRL = 4;
+  static const int G_ASCII_DIGIT = 8;
+  static const int G_ASCII_GRAPH = 16;
+  static const int G_ASCII_LOWER = 32;
+  static const int G_ASCII_PRINT = 64;
+  static const int G_ASCII_PUNCT = 128;
+  static const int G_ASCII_SPACE = 256;
+  static const int G_ASCII_UPPER = 512;
+  static const int G_ASCII_XDIGIT = 1024;
+}
 
-  /// G_SPAWN_CHILD_INHERITS_STDERR:
-  ///
-  /// The child will inherit the parent's standard error.
-  ///
-  /// Since: 2.74
-  static const int G_SPAWN_CHILD_INHERITS_STDERR = 1024;
+typedef guint16 = ffi.UnsignedShort;
+typedef Dartguint16 = int;
 
-  /// G_SPAWN_STDIN_FROM_DEV_NULL:
-  ///
-  /// The child's standard input is attached to `/dev/null`.
-  ///
-  /// Since: 2.74
-  static const int G_SPAWN_STDIN_FROM_DEV_NULL = 2048;
+/// GNumberParserError:
+/// @G_NUMBER_PARSER_ERROR_INVALID: String was not a valid number.
+/// @G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS: String was a number, but out of bounds.
+///
+/// Error codes returned by functions converting a string to a number.
+///
+/// Since: 2.54
+abstract class GNumberParserError {
+  static const int G_NUMBER_PARSER_ERROR_INVALID = 0;
+  static const int G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS = 1;
 }
 
 final class _GStringChunk extends ffi.Opaque {}
@@ -8628,7 +8414,6 @@ final class GTestCase extends ffi.Opaque {}
 final class GTestSuite extends ffi.Opaque {}
 
 /// GTestTrapFlags:
-/// @G_TEST_TRAP_DEFAULT: Default behaviour. Since: 2.74
 /// @G_TEST_TRAP_SILENCE_STDOUT: Redirect stdout of the test child to
 /// `/dev/null` so it cannot be observed on the console during test
 /// runs. The actual output is still captured though to allow later
@@ -8648,14 +8433,12 @@ final class GTestSuite extends ffi.Opaque {}
 /// which is deprecated. g_test_trap_subprocess() uses
 /// #GTestSubprocessFlags.
 abstract class GTestTrapFlags {
-  static const int G_TEST_TRAP_DEFAULT = 0;
   static const int G_TEST_TRAP_SILENCE_STDOUT = 128;
   static const int G_TEST_TRAP_SILENCE_STDERR = 256;
   static const int G_TEST_TRAP_INHERIT_STDIN = 512;
 }
 
 abstract class GTestSubprocessFlags {
-  static const int G_TEST_SUBPROCESS_DEFAULT = 0;
   static const int G_TEST_SUBPROCESS_INHERIT_STDIN = 1;
   static const int G_TEST_SUBPROCESS_INHERIT_STDOUT = 2;
   static const int G_TEST_SUBPROCESS_INHERIT_STDERR = 4;
@@ -8899,7 +8682,7 @@ final class _GCompletion extends ffi.Struct {
 
 typedef GCompletionFunc
     = ffi.Pointer<ffi.NativeFunction<GCompletionFuncFunction>>;
-typedef GCompletionFuncFunction = ffi.Pointer<gchar> Function(gpointer item);
+typedef GCompletionFuncFunction = ffi.Pointer<gchar> Function(gpointer);
 typedef GCompletionStrncmpFunc
     = ffi.Pointer<ffi.NativeFunction<GCompletionStrncmpFuncFunction>>;
 typedef GCompletionStrncmpFuncFunction = gint Function(
@@ -9229,7 +9012,7 @@ typedef GTypeClass = _GTypeClass;
 /// finalization function for interface types. (optional)
 /// @class_data: User-supplied data passed to the class init/finalize functions
 /// @instance_size: Size of the instance (object) structure (required for instantiatable types only)
-/// @n_preallocs: Prior to GLib 2.10, it specified the number of pre-allocated (cached) instances to reserve memory for (0 indicates no caching). Since GLib 2.10 this field is ignored.
+/// @n_preallocs: Prior to GLib 2.10, it specified the number of pre-allocated (cached) instances to reserve memory for (0 indicates no caching). Since GLib 2.10, it is ignored, since instances are allocated with the [slice allocator][glib-Memory-Slices] now.
 /// @instance_init: Location of the instance initialization function (optional, for instantiatable types only)
 /// @value_table: A #GTypeValueTable function table for generic handling of GValues
 /// of this type (usually only useful for fundamental types)
@@ -9458,173 +9241,73 @@ typedef GTypeInstance = _GTypeInstance;
 typedef GTypeValueTable = _GTypeValueTable;
 
 /// GTypeValueTable:
-/// @value_init: Function to initialize a GValue
-/// @value_free: Function to free a GValue
-/// @value_copy: Function to copy a GValue
-/// @value_peek_pointer: Function to peek the contents of a GValue if they fit
-/// into a pointer
-/// @collect_format: A string format describing how to collect the contents of
-/// this value bit-by-bit. Each character in the format represents
-/// an argument to be collected, and the characters themselves indicate
-/// the type of the argument. Currently supported arguments are:
-/// - `'i'`: Integers, passed as `collect_values[].v_int`
-/// - `'l'`: Longs, passed as `collect_values[].v_long`
-/// - `'d'`: Doubles, passed as `collect_values[].v_double`
-/// - `'p'`: Pointers, passed as `collect_values[].v_pointer`
-/// It should be noted that for variable argument list construction,
-/// ANSI C promotes every type smaller than an integer to an int, and
-/// floats to doubles. So for collection of short int or char, `'i'`
-/// needs to be used, and for collection of floats `'d'`.
-/// @collect_value: Function to initialize a GValue from the values
-/// collected from variadic arguments
-/// @lcopy_format: Format description of the arguments to collect for @lcopy_value,
-/// analogous to @collect_format. Usually, @lcopy_format string consists
-/// only of `'p'`s to provide lcopy_value() with pointers to storage locations.
-/// @lcopy_value: Function to store the contents of a value into the
-/// locations collected from variadic arguments
-///
-/// The #GTypeValueTable provides the functions required by the #GValue
-/// implementation, to serve as a container for values of a type.
-final class _GTypeValueTable extends ffi.Struct {
-  external GTypeValueInitFunc value_init;
-
-  external GTypeValueFreeFunc value_free;
-
-  external GTypeValueCopyFunc value_copy;
-
-  external GTypeValuePeekPointerFunc value_peek_pointer;
-
-  external ffi.Pointer<gchar> collect_format;
-
-  external GTypeValueCollectFunc collect_value;
-
-  external ffi.Pointer<gchar> lcopy_format;
-
-  external GTypeValueLCopyFunc lcopy_value;
-}
-
-/// GTypeValueInitFunc:
-/// @value: the value to initialize
-///
-/// Initializes the value contents by setting the fields of the `value->data`
-/// array.
-///
-/// The data array of the #GValue passed into this function was zero-filled
-/// with `memset()`, so no care has to be taken to free any old contents.
-/// For example, in the case of a string value that may never be %NULL, the
-/// implementation might look like:
-///
+/// @value_init: Default initialize @values contents by poking values
+/// directly into the value->data array. The data array of
+/// the #GValue passed into this function was zero-filled
+/// with `memset()`, so no care has to be taken to free any
+/// old contents. E.g. for the implementation of a string
+/// value that may never be %NULL, the implementation might
+/// look like:
 /// |[<!-- language="C" -->
 /// value->data[0].v_pointer = g_strdup ("");
 /// ]|
-///
-/// Since: 2.78
-typedef GTypeValueInitFunc
-    = ffi.Pointer<ffi.NativeFunction<GTypeValueInitFuncFunction>>;
-typedef GTypeValueInitFuncFunction = ffi.Void Function(
-    ffi.Pointer<GValue> value);
-typedef DartGTypeValueInitFuncFunction = void Function(
-    ffi.Pointer<GValue> value);
-typedef GValue = _GValue;
-
-/// GTypeValueFreeFunc:
-/// @value: the value to free
-///
-/// Frees any old contents that might be left in the `value->data` array of
-/// the given value.
-///
-/// No resources may remain allocated through the #GValue contents after this
-/// function returns. E.g. for our above string type:
-///
+/// @value_free: Free any old contents that might be left in the
+/// data array of the passed in @value. No resources may
+/// remain allocated through the #GValue contents after
+/// this function returns. E.g. for our above string type:
 /// |[<!-- language="C" -->
 /// // only free strings without a specific flag for static storage
 /// if (!(value->data[1].v_uint & G_VALUE_NOCOPY_CONTENTS))
 /// g_free (value->data[0].v_pointer);
 /// ]|
-///
-/// Since: 2.78
-typedef GTypeValueFreeFunc
-    = ffi.Pointer<ffi.NativeFunction<GTypeValueFreeFuncFunction>>;
-typedef GTypeValueFreeFuncFunction = ffi.Void Function(
-    ffi.Pointer<GValue> value);
-typedef DartGTypeValueFreeFuncFunction = void Function(
-    ffi.Pointer<GValue> value);
-
-/// GTypeValueCopyFunc:
-/// @src_value: the value to copy
-/// @dest_value: (out): the location of the copy
-///
-/// Copies the content of a #GValue into another.
-///
-/// The @dest_value is a #GValue with zero-filled data section and @src_value
-/// is a properly initialized #GValue of same type, or derived type.
-///
-/// The purpose of this function is to copy the contents of @src_value
-/// into @dest_value in a way, that even after @src_value has been freed, the
-/// contents of @dest_value remain valid. String type example:
-///
+/// @value_copy: @dest_value is a #GValue with zero-filled data section
+/// and @src_value is a properly setup #GValue of same or
+/// derived type.
+/// The purpose of this function is to copy the contents of
+/// @src_value into @dest_value in a way, that even after
+/// @src_value has been freed, the contents of @dest_value
+/// remain valid. String type example:
 /// |[<!-- language="C" -->
 /// dest_value->data[0].v_pointer = g_strdup (src_value->data[0].v_pointer);
 /// ]|
-///
-/// Since: 2.78
-typedef GTypeValueCopyFunc
-    = ffi.Pointer<ffi.NativeFunction<GTypeValueCopyFuncFunction>>;
-typedef GTypeValueCopyFuncFunction = ffi.Void Function(
-    ffi.Pointer<GValue> src_value, ffi.Pointer<GValue> dest_value);
-typedef DartGTypeValueCopyFuncFunction = void Function(
-    ffi.Pointer<GValue> src_value, ffi.Pointer<GValue> dest_value);
-
-/// GTypeValuePeekPointerFunc:
-/// @value: the value to peek
-///
-/// If the value contents fit into a pointer, such as objects or strings,
-/// return this pointer, so the caller can peek at the current contents.
-///
-/// To extend on our above string example:
-///
+/// @value_peek_pointer: If the value contents fit into a pointer, such as objects
+/// or strings, return this pointer, so the caller can peek at
+/// the current contents. To extend on our above string example:
 /// |[<!-- language="C" -->
 /// return value->data[0].v_pointer;
 /// ]|
-///
-/// Returns: (transfer none): a pointer to the value contents
-///
-/// Since: 2.78
-typedef GTypeValuePeekPointerFunc
-    = ffi.Pointer<ffi.NativeFunction<GTypeValuePeekPointerFuncFunction>>;
-typedef GTypeValuePeekPointerFuncFunction = gpointer Function(
-    ffi.Pointer<GValue> value);
-
-/// GTypeValueCollectFunc:
-/// @value: the value to initialize
-/// @n_collect_values: the number of collected values
-/// @collect_values: (array length=n_collect_values): the collected values
-/// @collect_flags: optional flags
-///
-/// This function is responsible for converting the values collected from
-/// a variadic argument list into contents suitable for storage in a #GValue.
-///
-/// This function should setup @value similar to #GTypeValueInitFunc; e.g.
-/// for a string value that does not allow `NULL` pointers, it needs to either
-/// emit an error, or do an implicit conversion by storing an empty string.
-///
-/// The @value passed in to this function has a zero-filled data array, so
-/// just like for #GTypeValueInitFunc it is guaranteed to not contain any old
-/// contents that might need freeing.
-///
-/// The @n_collect_values argument is the string length of the `collect_format`
-/// field of #GTypeValueTable, and `collect_values` is an array of #GTypeCValue
-/// with length of @n_collect_values, containing the collected values according
-/// to `collect_format`.
-///
-/// The @collect_flags argument provided as a hint by the caller. It may
-/// contain the flag %G_VALUE_NOCOPY_CONTENTS indicating that the collected
-/// value contents may be considered ‘static’ for the duration of the @value
-/// lifetime. Thus an extra copy of the contents stored in @collect_values is
+/// @collect_format: A string format describing how to collect the contents of
+/// this value bit-by-bit. Each character in the format represents
+/// an argument to be collected, and the characters themselves indicate
+/// the type of the argument. Currently supported arguments are:
+/// - 'i' - Integers. passed as collect_values[].v_int.
+/// - 'l' - Longs. passed as collect_values[].v_long.
+/// - 'd' - Doubles. passed as collect_values[].v_double.
+/// - 'p' - Pointers. passed as collect_values[].v_pointer.
+/// It should be noted that for variable argument list construction,
+/// ANSI C promotes every type smaller than an integer to an int, and
+/// floats to doubles. So for collection of short int or char, 'i'
+/// needs to be used, and for collection of floats 'd'.
+/// @collect_value: The collect_value() function is responsible for converting the
+/// values collected from a variable argument list into contents
+/// suitable for storage in a GValue. This function should setup
+/// @value similar to value_init(); e.g. for a string value that
+/// does not allow %NULL pointers, it needs to either spew an error,
+/// or do an implicit conversion by storing an empty string.
+/// The @value passed in to this function has a zero-filled data
+/// array, so just like for value_init() it is guaranteed to not
+/// contain any old contents that might need freeing.
+/// @n_collect_values is exactly the string length of @collect_format,
+/// and @collect_values is an array of unions #GTypeCValue with
+/// length @n_collect_values, containing the collected values
+/// according to @collect_format.
+/// @collect_flags is an argument provided as a hint by the caller.
+/// It may contain the flag %G_VALUE_NOCOPY_CONTENTS indicating,
+/// that the collected value contents may be considered "static"
+/// for the duration of the @value lifetime.
+/// Thus an extra copy of the contents stored in @collect_values is
 /// not required for assignment to @value.
-///
 /// For our above string example, we continue with:
-///
 /// |[<!-- language="C" -->
 /// if (!collect_values[0].v_pointer)
 /// value->data[0].v_pointer = g_strdup ("");
@@ -9638,125 +9321,117 @@ typedef GTypeValuePeekPointerFuncFunction = gpointer Function(
 /// value->data[0].v_pointer = g_strdup (collect_values[0].v_pointer);
 /// return NULL;
 /// ]|
-///
 /// It should be noted, that it is generally a bad idea to follow the
 /// %G_VALUE_NOCOPY_CONTENTS hint for reference counted types. Due to
 /// reentrancy requirements and reference count assertions performed
 /// by the signal emission code, reference counts should always be
-/// incremented for reference counted contents stored in the `value->data`
-/// array. To deviate from our string example for a moment, and taking
-/// a look at an exemplary implementation for `GTypeValueTable.collect_value()`
-/// of `GObject`:
-///
+/// incremented for reference counted contents stored in the value->data
+/// array.  To deviate from our string example for a moment, and taking
+/// a look at an exemplary implementation for collect_value() of
+/// #GObject:
 /// |[<!-- language="C" -->
 /// GObject *object = G_OBJECT (collect_values[0].v_pointer);
 /// g_return_val_if_fail (object != NULL,
-/// g_strdup_printf ("Object %p passed as invalid NULL pointer", object));
+/// g_strdup_printf ("Object passed as invalid NULL pointer"));
 /// // never honour G_VALUE_NOCOPY_CONTENTS for ref-counted types
 /// value->data[0].v_pointer = g_object_ref (object);
 /// return NULL;
 /// ]|
-///
-/// The reference count for valid objects is always incremented, regardless
-/// of `collect_flags`. For invalid objects, the example returns a newly
-/// allocated string without altering `value`.
-///
-/// Upon success, `collect_value()` needs to return `NULL`. If, however,
-/// an error condition occurred, `collect_value()` should return a newly
-/// allocated string containing an error diagnostic.
-///
-/// The calling code makes no assumptions about the `value` contents being
-/// valid upon error returns, `value` is simply thrown away without further
-/// freeing. As such, it is a good idea to not allocate `GValue` contents
-/// prior to returning an error; however, `collect_values()` is not obliged
-/// to return a correctly setup @value for error returns, simply because
-/// any non-`NULL` return is considered a fatal programming error, and
-/// further program behaviour is undefined.
-///
-/// Returns: (transfer full) (nullable): `NULL` on success, otherwise a
-/// newly allocated error string on failure
-///
-/// Since: 2.78
-typedef GTypeValueCollectFunc
-    = ffi.Pointer<ffi.NativeFunction<GTypeValueCollectFuncFunction>>;
-typedef GTypeValueCollectFuncFunction = ffi.Pointer<gchar> Function(
-    ffi.Pointer<GValue> value,
-    guint n_collect_values,
-    ffi.Pointer<GTypeCValue> collect_values,
-    guint collect_flags);
-typedef DartGTypeValueCollectFuncFunction = ffi.Pointer<gchar> Function(
-    ffi.Pointer<GValue> value,
-    Dartguint n_collect_values,
-    ffi.Pointer<GTypeCValue> collect_values,
-    Dartguint collect_flags);
-typedef GTypeCValue = _GTypeCValue;
-
-/// GTypeValueLCopyFunc:
-/// @value: the value to lcopy
-/// @n_collect_values: the number of collected values
-/// @collect_values: (array length=n_collect_values): the collected
-/// locations for storage
-/// @collect_flags: optional flags
-///
-/// This function is responsible for storing the `value`
-/// contents into arguments passed through a variadic argument list which
-/// got collected into `collect_values` according to `lcopy_format`.
-///
-/// The `n_collect_values` argument equals the string length of
-/// `lcopy_format`, and `collect_flags` may contain %G_VALUE_NOCOPY_CONTENTS.
-///
-/// In contrast to #GTypeValueCollectFunc, this function is obliged to always
-/// properly support %G_VALUE_NOCOPY_CONTENTS.
-///
-/// Similar to #GTypeValueCollectFunc the function may prematurely abort by
-/// returning a newly allocated string describing an error condition. To
-/// complete the string example:
-///
+/// The reference count for valid objects is always incremented,
+/// regardless of @collect_flags. For invalid objects, the example
+/// returns a newly allocated string without altering @value.
+/// Upon success, collect_value() needs to return %NULL. If, however,
+/// an error condition occurred, collect_value() may spew an
+/// error by returning a newly allocated non-%NULL string, giving
+/// a suitable description of the error condition.
+/// The calling code makes no assumptions about the @value
+/// contents being valid upon error returns, @value
+/// is simply thrown away without further freeing. As such, it is
+/// a good idea to not allocate #GValue contents, prior to returning
+/// an error, however, collect_values() is not obliged to return
+/// a correctly setup @value for error returns, simply because
+/// any non-%NULL return is considered a fatal condition so further
+/// program behaviour is undefined.
+/// @lcopy_format: Format description of the arguments to collect for @lcopy_value,
+/// analogous to @collect_format. Usually, @lcopy_format string consists
+/// only of 'p's to provide lcopy_value() with pointers to storage locations.
+/// @lcopy_value: This function is responsible for storing the @value contents into
+/// arguments passed through a variable argument list which got
+/// collected into @collect_values according to @lcopy_format.
+/// @n_collect_values equals the string length of @lcopy_format,
+/// and @collect_flags may contain %G_VALUE_NOCOPY_CONTENTS.
+/// In contrast to collect_value(), lcopy_value() is obliged to
+/// always properly support %G_VALUE_NOCOPY_CONTENTS.
+/// Similar to collect_value() the function may prematurely abort
+/// by returning a newly allocated string describing an error condition.
+/// To complete the string example:
 /// |[<!-- language="C" -->
 /// gchar **string_p = collect_values[0].v_pointer;
 /// g_return_val_if_fail (string_p != NULL,
-/// g_strdup ("string location passed as NULL"));
-///
+/// g_strdup_printf ("string location passed as NULL"));
 /// if (collect_flags & G_VALUE_NOCOPY_CONTENTS)
 /// *string_p = value->data[0].v_pointer;
 /// else
 /// *string_p = g_strdup (value->data[0].v_pointer);
 /// ]|
-///
-/// And an illustrative version of this function for reference-counted
-/// types:
-///
+/// And an illustrative version of lcopy_value() for
+/// reference-counted types:
 /// |[<!-- language="C" -->
 /// GObject **object_p = collect_values[0].v_pointer;
 /// g_return_val_if_fail (object_p != NULL,
-/// g_strdup ("object location passed as NULL"));
-///
-/// if (value->data[0].v_pointer == NULL)
+/// g_strdup_printf ("object location passed as NULL"));
+/// if (!value->data[0].v_pointer)
 /// *object_p = NULL;
 /// else if (collect_flags & G_VALUE_NOCOPY_CONTENTS) // always honour
 /// *object_p = value->data[0].v_pointer;
 /// else
 /// *object_p = g_object_ref (value->data[0].v_pointer);
-///
 /// return NULL;
 /// ]|
 ///
-/// Returns: (transfer full) (nullable): `NULL` on success, otherwise
-/// a newly allocated error string on failure
-///
-/// Since: 2.78
-typedef GTypeValueLCopyFunc
-    = ffi.Pointer<ffi.NativeFunction<GTypeValueLCopyFuncFunction>>;
-typedef GTypeValueLCopyFuncFunction = ffi.Pointer<gchar> Function(
-    ffi.Pointer<GValue> value,
-    guint n_collect_values,
-    ffi.Pointer<GTypeCValue> collect_values,
-    guint collect_flags);
-typedef DartGTypeValueLCopyFuncFunction = ffi.Pointer<gchar> Function(
-    ffi.Pointer<GValue> value,
-    Dartguint n_collect_values,
-    ffi.Pointer<GTypeCValue> collect_values,
-    Dartguint collect_flags);
+/// The #GTypeValueTable provides the functions required by the #GValue
+/// implementation, to serve as a container for values of a type.
+final class _GTypeValueTable extends ffi.Struct {
+  external ffi
+      .Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GValue> value)>>
+      value_init;
+
+  external ffi
+      .Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<GValue> value)>>
+      value_free;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<GValue> src_value,
+              ffi.Pointer<GValue> dest_value)>> value_copy;
+
+  external ffi
+      .Pointer<ffi.NativeFunction<gpointer Function(ffi.Pointer<GValue> value)>>
+      value_peek_pointer;
+
+  external ffi.Pointer<gchar> collect_format;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Pointer<gchar> Function(
+              ffi.Pointer<GValue> value,
+              guint n_collect_values,
+              ffi.Pointer<GTypeCValue> collect_values,
+              guint collect_flags)>> collect_value;
+
+  external ffi.Pointer<gchar> lcopy_format;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Pointer<gchar> Function(
+              ffi.Pointer<GValue> value,
+              guint n_collect_values,
+              ffi.Pointer<GTypeCValue> collect_values,
+              guint collect_flags)>> lcopy_value;
+}
+
+typedef GValue = _GValue;
+typedef GTypeCValue = _GTypeCValue;
 
 /// GTypeFundamentalInfo:
 /// @type_flags: #GTypeFundamentalFlags describing the characteristics of the fundamental type
@@ -9864,7 +9539,7 @@ final class _GTypeQuery extends ffi.Struct {
 /// These flags used to be passed to g_type_init_with_debug_flags() which
 /// is now deprecated.
 ///
-/// If you need to enable debugging features, use the `GOBJECT_DEBUG`
+/// If you need to enable debugging features, use the GOBJECT_DEBUG
 /// environment variable.
 ///
 /// Deprecated: 2.36: g_type_init() is now done automatically
@@ -9877,7 +9552,6 @@ abstract class GTypeDebugFlags {
 }
 
 /// GTypeFlags:
-/// @G_TYPE_FLAG_NONE: No special flags. Since: 2.74
 /// @G_TYPE_FLAG_ABSTRACT: Indicates an abstract type. No instances can be
 /// created for an abstract type
 /// @G_TYPE_FLAG_VALUE_ABSTRACT: Indicates an abstract value type, i.e. a type
@@ -9885,17 +9559,12 @@ abstract class GTypeDebugFlags {
 /// g_value_init()
 /// @G_TYPE_FLAG_FINAL: Indicates a final type. A final type is a non-derivable
 /// leaf node in a deep derivable type hierarchy tree. Since: 2.70
-/// @G_TYPE_FLAG_DEPRECATED: The type is deprecated and may be removed in a
-/// future version. A warning will be emitted if it is instantiated while
-/// running with `G_ENABLE_DIAGNOSTIC=1`. Since 2.76
 ///
 /// Bit masks used to check or determine characteristics of a type.
 abstract class GTypeFlags {
-  static const int G_TYPE_FLAG_NONE = 0;
   static const int G_TYPE_FLAG_ABSTRACT = 16;
   static const int G_TYPE_FLAG_VALUE_ABSTRACT = 32;
   static const int G_TYPE_FLAG_FINAL = 64;
-  static const int G_TYPE_FLAG_DEPRECATED = 128;
 }
 
 /// GParamFlags:
@@ -9947,6 +9616,15 @@ abstract class GParamFlags {
   static const int G_PARAM_DEPRECATED = -2147483648;
 }
 
+/// GParamSpec: (ref-func g_param_spec_ref_sink) (unref-func g_param_spec_unref) (set-value-func g_value_set_param) (get-value-func g_value_get_param)
+/// @g_type_instance: private #GTypeInstance portion
+/// @name: name of this parameter: always an interned string
+/// @flags: #GParamFlags flags for this parameter
+/// @value_type: the #GValue type for this parameter
+/// @owner_type: #GType type that uses (introduces) this parameter
+///
+/// All other fields of the GParamSpec struct are private and
+/// should not be used directly.
 final class _GParamSpec extends ffi.Struct {
   external GTypeInstance g_type_instance;
 
@@ -9987,9 +9665,6 @@ final class _GParamSpec extends ffi.Struct {
 /// g_param_value_validate().
 /// @values_cmp: Compares @value1 with @value2 according to this type
 /// (recommended, the default is memcmp()), see g_param_values_cmp().
-/// @value_is_valid: Checks if contents of @value comply with the specifications
-/// set out by this type, without modifying the value. This vfunc is optional.
-/// If it isn't set, GObject will use @value_validate. Since 2.74
 ///
 /// The class structure for the GParamSpec type.
 /// Normally, GParamSpec classes are filled by
@@ -10023,13 +9698,7 @@ final class _GParamSpecClass extends ffi.Struct {
               ffi.Pointer<GValue> value1,
               ffi.Pointer<GValue> value2)>> values_cmp;
 
-  external ffi.Pointer<
-          ffi.NativeFunction<
-              gboolean Function(
-                  ffi.Pointer<GParamSpec> pspec, ffi.Pointer<GValue> value)>>
-      value_is_valid;
-
-  @ffi.Array.multi([3])
+  @ffi.Array.multi([4])
   external ffi.Array<gpointer> dummy;
 }
 
@@ -10112,6 +9781,13 @@ final class _GParamSpecTypeInfo extends ffi.Struct {
               ffi.Pointer<GValue> value2)>> values_cmp;
 }
 
+/// GClosure:
+/// @in_marshal: Indicates whether the closure is currently being invoked with
+/// g_closure_invoke()
+/// @is_invalid: Indicates whether the closure has been invalidated by
+/// g_closure_invalidate()
+///
+/// A #GClosure represents a callback supplied by the programmer.
 final class _GClosure extends ffi.Opaque {}
 
 final class _GClosureNotifyData extends ffi.Struct {
@@ -10238,17 +9914,14 @@ final class _GSignalInvocationHint extends ffi.Struct {
 }
 
 /// GConnectFlags:
-/// @G_CONNECT_DEFAULT: Default behaviour (no special flags). Since: 2.74
-/// @G_CONNECT_AFTER: If set, the handler should be called after the
-/// default handler of the signal. Normally, the handler is called before
-/// the default handler.
-/// @G_CONNECT_SWAPPED: If set, the instance and data should be swapped when
+/// @G_CONNECT_AFTER: whether the handler should be called before or after the
+/// default handler of the signal.
+/// @G_CONNECT_SWAPPED: whether the instance and data should be swapped when
 /// calling the handler; see g_signal_connect_swapped() for an example.
 ///
 /// The connection flags are used to specify the behaviour of a signal's
 /// connection.
 abstract class GConnectFlags {
-  static const int G_CONNECT_DEFAULT = 0;
   static const int G_CONNECT_AFTER = 1;
   static const int G_CONNECT_SWAPPED = 2;
 }
@@ -10273,6 +9946,20 @@ abstract class GSignalMatchType {
   static const int G_SIGNAL_MATCH_UNBLOCKED = 32;
 }
 
+/// GObject:
+///
+/// The base object type.
+///
+/// All the fields in the `GObject` structure are private to the implementation
+/// and should never be accessed directly.
+///
+/// Since GLib 2.72, all #GObjects are guaranteed to be aligned to at least the
+/// alignment of the largest basic GLib type (typically this is #guint64 or
+/// #gdouble). If you need larger alignment for an element in a #GObject, you
+/// should allocate it on the heap (aligned), or arrange for your #GObject to be
+/// appropriately padded. This guarantee applies to the #GObject (or derived)
+/// struct, the #GObjectClass (or derived) struct, and any private data allocated
+/// by G_ADD_PRIVATE().
 final class _GObject extends ffi.Struct {
   external GTypeInstance g_type_instance;
 
@@ -10398,15 +10085,7 @@ final class _GObjectClass extends ffi.Struct {
   @gsize()
   external int flags;
 
-  @gsize()
-  external int n_construct_properties;
-
-  external gpointer pspecs;
-
-  @gsize()
-  external int n_pspecs;
-
-  @ffi.Array.multi([3])
+  @ffi.Array.multi([6])
   external ffi.Array<gpointer> pdummy;
 }
 
@@ -10970,6 +10649,11 @@ final class _GParamSpecVariant extends ffi.Struct {
 
 final class _GSignalGroup extends ffi.Opaque {}
 
+/// GTypeModule:
+/// @name: the name of the module
+///
+/// The members of the GTypeModule structure should not
+/// be accessed directly, except for the @name field.
 final class _GTypeModule extends ffi.Struct {
   external GObject parent_instance;
 
@@ -11015,6 +10699,12 @@ final class _GTypeModuleClass extends ffi.Struct {
 typedef GObjectClass = _GObjectClass;
 typedef GTypeModule = _GTypeModule;
 
+/// GTypePlugin:
+///
+/// The GTypePlugin typedef is used as a placeholder
+/// for objects that implement the GTypePlugin interface.
+/// /
+/// /**
 /// GTypePluginClass:
 /// @use_plugin: Increases the use count of the plugin.
 /// @unuse_plugin: Decreases the use count of the plugin.
@@ -11108,6 +10798,11 @@ typedef DartGTypePluginCompleteInterfaceInfoFunction = void Function(
     ffi.Pointer<GInterfaceInfo> info);
 typedef GInterfaceInfo = _GInterfaceInfo;
 
+/// GValueArray:
+/// @n_values: number of values contained in the array
+/// @values: array of values
+///
+/// A #GValueArray contains an array of #GValue elements.
 final class _GValueArray extends ffi.Struct {
   @guint()
   external int n_values;
@@ -11280,9 +10975,6 @@ abstract class GFileCreateFlags {
 /// sizes.  Normally, the block-size is used, if available, as this is a
 /// more accurate representation of disk space used.
 /// Compare with `du --apparent-size`.
-/// Since GLib 2.78. and similarly to `du` since GNU Coreutils 9.2, this will
-/// ignore the sizes of file types other than regular files and links, as the
-/// sizes of other file types are not specified in a standard way.
 /// @G_FILE_MEASURE_NO_XDEV: Do not cross mount point boundaries.
 /// Compare with `du -x`.
 ///
@@ -11359,8 +11051,6 @@ abstract class GDriveStartStopType {
 /// @G_FILE_COPY_ALL_METADATA: Copy all file metadata instead of just default set used for copy (see #GFileInfo).
 /// @G_FILE_COPY_NO_FALLBACK_FOR_MOVE: Don't use copy and delete fallback if native move not supported.
 /// @G_FILE_COPY_TARGET_DEFAULT_PERMS: Leaves target file with default perms, instead of setting the source file perms.
-/// @G_FILE_COPY_TARGET_DEFAULT_MODIFIED_TIME: Use default modification
-/// timestamps instead of copying them from the source file. Since 2.80
 ///
 /// Flags used when copying or moving files.
 abstract class GFileCopyFlags {
@@ -11371,7 +11061,6 @@ abstract class GFileCopyFlags {
   static const int G_FILE_COPY_ALL_METADATA = 8;
   static const int G_FILE_COPY_NO_FALLBACK_FOR_MOVE = 16;
   static const int G_FILE_COPY_TARGET_DEFAULT_PERMS = 32;
-  static const int G_FILE_COPY_TARGET_DEFAULT_MODIFIED_TIME = 64;
 }
 
 /// GFileMonitorFlags:
@@ -11541,8 +11230,6 @@ abstract class GFileMonitorEvent {
 /// value, which has this more logical name. Since 2.44.
 /// @G_IO_ERROR_NOT_CONNECTED: Transport endpoint is not connected. Since 2.44
 /// @G_IO_ERROR_MESSAGE_TOO_LARGE: Message too large. Since 2.48.
-/// @G_IO_ERROR_NO_SUCH_DEVICE: No such device found. Since 2.74
-/// @G_IO_ERROR_DESTINATION_UNSET: Destination address unset. Since 2.80
 ///
 /// Error codes returned by GIO functions.
 ///
@@ -11611,8 +11298,6 @@ abstract class GIOErrorEnum {
   static const int G_IO_ERROR_CONNECTION_CLOSED = 44;
   static const int G_IO_ERROR_NOT_CONNECTED = 45;
   static const int G_IO_ERROR_MESSAGE_TOO_LARGE = 46;
-  static const int G_IO_ERROR_NO_SUCH_DEVICE = 47;
-  static const int G_IO_ERROR_DESTINATION_UNSET = 48;
 }
 
 /// GAskPasswordFlags:
@@ -12188,12 +11873,6 @@ abstract class GDBusError {
 /// delayed until g_dbus_connection_start_message_processing() is called.
 /// @G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER: When authenticating
 /// as a server, require the UID of the peer to be the same as the UID of the server. (Since: 2.68)
-/// @G_DBUS_CONNECTION_FLAGS_CROSS_NAMESPACE: When authenticating, try to use
-/// protocols that work across a Linux user namespace boundary, even if this
-/// reduces interoperability with older D-Bus implementations. This currently
-/// affects client-side `EXTERNAL` authentication, for which this flag makes
-/// connections to a server in another user namespace succeed, but causes
-/// a deadlock when connecting to a GDBus server older than 2.73.3. Since: 2.74
 ///
 /// Flags used when creating a new #GDBusConnection.
 ///
@@ -12207,7 +11886,6 @@ abstract class GDBusConnectionFlags {
   static const int G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING = 16;
   static const int G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER =
       32;
-  static const int G_DBUS_CONNECTION_FLAGS_CROSS_NAMESPACE = 64;
 }
 
 /// GDBusCapabilityFlags:
@@ -12425,9 +12103,7 @@ abstract class GDBusMessageByteOrder {
 }
 
 /// GApplicationFlags:
-/// @G_APPLICATION_FLAGS_NONE: Default. Deprecated in 2.74, use
-/// %G_APPLICATION_DEFAULT_FLAGS instead
-/// @G_APPLICATION_DEFAULT_FLAGS: Default flags. Since: 2.74
+/// @G_APPLICATION_FLAGS_NONE: Default
 /// @G_APPLICATION_IS_SERVICE: Run as a service. In this mode, registration
 /// fails if the service is already running, and the application
 /// will initially wait up to 10 seconds for an initial activation
@@ -12470,7 +12146,6 @@ abstract class GDBusMessageByteOrder {
 /// Since: 2.28
 abstract class GApplicationFlags {
   static const int G_APPLICATION_FLAGS_NONE = 0;
-  static const int G_APPLICATION_DEFAULT_FLAGS = 0;
   static const int G_APPLICATION_IS_SERVICE = 1;
   static const int G_APPLICATION_IS_LAUNCHER = 2;
   static const int G_APPLICATION_HANDLES_OPEN = 4;
@@ -12520,7 +12195,6 @@ abstract class GTlsError {
 }
 
 /// GTlsCertificateFlags:
-/// @G_TLS_CERTIFICATE_NO_FLAGS: No flags set. Since: 2.74
 /// @G_TLS_CERTIFICATE_UNKNOWN_CA: The signing certificate authority is
 /// not known.
 /// @G_TLS_CERTIFICATE_BAD_IDENTITY: The certificate does not match the
@@ -12551,7 +12225,6 @@ abstract class GTlsError {
 ///
 /// Since: 2.28
 abstract class GTlsCertificateFlags {
-  static const int G_TLS_CERTIFICATE_NO_FLAGS = 0;
   static const int G_TLS_CERTIFICATE_UNKNOWN_CA = 1;
   static const int G_TLS_CERTIFICATE_BAD_IDENTITY = 2;
   static const int G_TLS_CERTIFICATE_NOT_ACTIVATED = 4;
@@ -12583,12 +12256,9 @@ abstract class GTlsAuthenticationMode {
 /// @G_TLS_CHANNEL_BINDING_TLS_SERVER_END_POINT:
 /// [`tls-server-end-point`](https://tools.ietf.org/html/rfc5929#section-4)
 /// binding type
-/// @G_TLS_CHANNEL_BINDING_TLS_EXPORTER:
-/// [`tls-exporter`](https://www.rfc-editor.org/rfc/rfc9266.html) binding
-/// type. Since: 2.74
 ///
 /// The type of TLS channel binding data to retrieve from #GTlsConnection
-/// or #GDtlsConnection, as documented by RFC 5929 or RFC 9266. The
+/// or #GDtlsConnection, as documented by RFC 5929. The
 /// [`tls-unique-for-telnet`](https://tools.ietf.org/html/rfc5929#section-5)
 /// binding type is not currently implemented.
 ///
@@ -12596,7 +12266,6 @@ abstract class GTlsAuthenticationMode {
 abstract class GTlsChannelBindingType {
   static const int G_TLS_CHANNEL_BINDING_TLS_UNIQUE = 0;
   static const int G_TLS_CHANNEL_BINDING_TLS_SERVER_END_POINT = 1;
-  static const int G_TLS_CHANNEL_BINDING_TLS_EXPORTER = 2;
 }
 
 /// GTlsChannelBindingError:
@@ -13155,6 +12824,11 @@ final class _GZlibCompressor extends ffi.Opaque {}
 
 final class _GZlibDecompressor extends ffi.Opaque {}
 
+/// GSimpleActionGroup:
+///
+/// The #GSimpleActionGroup structure contains private data and should only be accessed using the provided API.
+///
+/// Since: 2.28
 final class _GSimpleActionGroup extends ffi.Struct {
   external GObject parent_instance;
 
@@ -13245,6 +12919,9 @@ typedef GFileEnumeratorPrivate = _GFileEnumeratorPrivate;
 
 final class _GFileEnumeratorPrivate extends ffi.Opaque {}
 
+/// GFileMonitor:
+///
+/// Watches for changes to a file.
 final class _GFileMonitor extends ffi.Struct {
   external GObject parent_instance;
 
@@ -13292,6 +12969,8 @@ final class _GFileAttributeInfoList extends ffi.Struct {
 
 typedef GFileAttributeInfo = _GFileAttributeInfo;
 
+final class _GFileDescriptorBased extends ffi.Opaque {}
+
 final class _GFileInputStream extends ffi.Struct {
   external GInputStream parent_instance;
 
@@ -13320,6 +12999,9 @@ final class _GFileIOStream extends ffi.Struct {
 
 typedef GIOStream = _GIOStream;
 
+/// GIOStream:
+///
+/// Base class for read-write streams.
 final class _GIOStream extends ffi.Struct {
   external GObject parent_instance;
 
@@ -13534,6 +13216,11 @@ final class _GSocketService extends ffi.Struct {
   external ffi.Pointer<GSocketServicePrivate> priv;
 }
 
+/// GSocketListener:
+///
+/// A helper class for network servers to listen for and accept connections.
+///
+/// Since: 2.22
 typedef GSocketListener = _GSocketListener;
 typedef GSocketServicePrivate = _GSocketServicePrivate;
 
@@ -13555,6 +13242,11 @@ final class _GTcpConnection extends ffi.Struct {
   external ffi.Pointer<GTcpConnectionPrivate> priv;
 }
 
+/// GSocketConnection:
+///
+/// A socket connection GIOStream object for connection-oriented sockets.
+///
+/// Since: 2.22
 typedef GSocketConnection = _GSocketConnection;
 typedef GTcpConnectionPrivate = _GTcpConnectionPrivate;
 
@@ -13566,6 +13258,11 @@ final class _GTcpWrapperConnection extends ffi.Struct {
   external ffi.Pointer<GTcpWrapperConnectionPrivate> priv;
 }
 
+/// GTcpConnection:
+///
+/// A #GSocketConnection for TCP/IP connections.
+///
+/// Since: 2.22
 typedef GTcpConnection = _GTcpConnection;
 typedef GTcpWrapperConnectionPrivate = _GTcpWrapperConnectionPrivate;
 
@@ -13577,6 +13274,12 @@ final class _GThreadedSocketService extends ffi.Struct {
   external ffi.Pointer<GThreadedSocketServicePrivate> priv;
 }
 
+/// GSocketService:
+///
+/// A helper class for handling accepting incoming connections in the
+/// glib mainloop.
+///
+/// Since: 2.22
 typedef GSocketService = _GSocketService;
 typedef GThreadedSocketServicePrivate = _GThreadedSocketServicePrivate;
 
@@ -13722,6 +13425,11 @@ final class _GInputMessage extends ffi.Struct {
 ///
 /// Since: 2.22
 typedef GInputVector = _GInputVector;
+
+/// GSocketControlMessage:
+///
+/// Base class for socket-type specific control messages that can be sent and
+/// received over #GSocket.
 typedef GSocketControlMessage = _GSocketControlMessage;
 
 final class _GOutputVector extends ffi.Struct {
@@ -13762,30 +13470,20 @@ typedef GOutputVector = _GOutputVector;
 
 final class _GCredentials extends ffi.Opaque {}
 
-final class _GUnixCredentialsMessage extends ffi.Struct {
-  external GSocketControlMessage parent_instance;
+final class _GUnixCredentialsMessage extends ffi.Opaque {}
 
-  external ffi.Pointer<GUnixCredentialsMessagePrivate> priv;
-}
-
-typedef GUnixCredentialsMessagePrivate = _GUnixCredentialsMessagePrivate;
-
-final class _GUnixCredentialsMessagePrivate extends ffi.Opaque {}
-
-final class _GUnixFDList extends ffi.Struct {
-  external GObject parent_instance;
-
-  external ffi.Pointer<GUnixFDListPrivate> priv;
-}
-
-typedef GUnixFDListPrivate = _GUnixFDListPrivate;
-
-final class _GUnixFDListPrivate extends ffi.Opaque {}
+final class _GUnixFDList extends ffi.Opaque {}
 
 final class _GDBusMessage extends ffi.Opaque {}
 
 final class _GDBusConnection extends ffi.Opaque {}
 
+/// GDBusProxy:
+///
+/// The #GDBusProxy structure contains only private data and
+/// should only be accessed using the provided API.
+///
+/// Since: 2.26
 final class _GDBusProxy extends ffi.Struct {
   external GObject parent_instance;
 
@@ -14264,6 +13962,12 @@ typedef GDBusNodeInfo = _GDBusNodeInfo;
 
 final class _GDBusInterface extends ffi.Opaque {}
 
+/// GDBusInterfaceSkeleton:
+///
+/// The #GDBusInterfaceSkeleton structure contains private data and should
+/// only be accessed using the provided API.
+///
+/// Since: 2.30
 final class _GDBusInterfaceSkeleton extends ffi.Struct {
   external GObject parent_instance;
 
@@ -14276,6 +13980,12 @@ final class _GDBusInterfaceSkeletonPrivate extends ffi.Opaque {}
 
 final class _GDBusObject extends ffi.Opaque {}
 
+/// GDBusObjectSkeleton:
+///
+/// The #GDBusObjectSkeleton structure contains private data and should only be
+/// accessed using the provided API.
+///
+/// Since: 2.30
 final class _GDBusObjectSkeleton extends ffi.Struct {
   external GObject parent_instance;
 
@@ -14286,6 +13996,12 @@ typedef GDBusObjectSkeletonPrivate = _GDBusObjectSkeletonPrivate;
 
 final class _GDBusObjectSkeletonPrivate extends ffi.Opaque {}
 
+/// GDBusObjectProxy:
+///
+/// The #GDBusObjectProxy structure contains private data and should
+/// only be accessed using the provided API.
+///
+/// Since: 2.30
 final class _GDBusObjectProxy extends ffi.Struct {
   external GObject parent_instance;
 
@@ -14298,6 +14014,12 @@ final class _GDBusObjectProxyPrivate extends ffi.Opaque {}
 
 final class _GDBusObjectManager extends ffi.Opaque {}
 
+/// GDBusObjectManagerClient:
+///
+/// The #GDBusObjectManagerClient structure contains private data and should
+/// only be accessed using the provided API.
+///
+/// Since: 2.30
 final class _GDBusObjectManagerClient extends ffi.Struct {
   external GObject parent_instance;
 
@@ -14308,6 +14030,12 @@ typedef GDBusObjectManagerClientPrivate = _GDBusObjectManagerClientPrivate;
 
 final class _GDBusObjectManagerClientPrivate extends ffi.Opaque {}
 
+/// GDBusObjectManagerServer:
+///
+/// The #GDBusObjectManagerServer structure contains private data and should
+/// only be accessed using the provided API.
+///
+/// Since: 2.30
 final class _GDBusObjectManagerServer extends ffi.Struct {
   external GObject parent_instance;
 
@@ -14703,7 +14431,7 @@ typedef GCancellable = _GCancellable;
 /// GAsyncReadyCallback:
 /// @source_object: (nullable): the object the asynchronous operation was started with.
 /// @res: a #GAsyncResult.
-/// @data: user data passed to the callback.
+/// @user_data: user data passed to the callback.
 ///
 /// Type definition for a function that will be called back when an asynchronous
 /// operation within GIO has been completed. #GAsyncReadyCallback
@@ -14722,11 +14450,11 @@ typedef GAsyncReadyCallback
 typedef GAsyncReadyCallbackFunction = ffi.Void Function(
     ffi.Pointer<GObject> source_object,
     ffi.Pointer<GAsyncResult> res,
-    gpointer data);
+    gpointer user_data);
 typedef DartGAsyncReadyCallbackFunction = void Function(
     ffi.Pointer<GObject> source_object,
     ffi.Pointer<GAsyncResult> res,
-    gpointer data);
+    gpointer user_data);
 typedef GAsyncResult = _GAsyncResult;
 
 final class _GAppInfoMonitor extends ffi.Opaque {}
@@ -14837,6 +14565,12 @@ final class _GApplicationClass extends ffi.Struct {
 }
 
 typedef GApplication = _GApplication;
+
+/// GFile:
+///
+/// A handle to an object implementing the #GFileIface interface.
+/// Generally stores a location within the file system. Handles do not
+/// necessarily represent files or directories that currently exist.
 typedef GFile = _GFile;
 typedef GApplicationCommandLine = _GApplicationCommandLine;
 typedef GVariantBuilder = _GVariantBuilder;
@@ -14860,12 +14594,7 @@ final class _GApplicationCommandLineClass extends ffi.Struct {
           ffi.Pointer<GInputStream> Function(
               ffi.Pointer<GApplicationCommandLine> cmdline)>> get_stdin;
 
-  external ffi.Pointer<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Pointer<GApplicationCommandLine> cmdline)>>
-      done;
-
-  @ffi.Array.multi([10])
+  @ffi.Array.multi([11])
   external ffi.Array<gpointer> padding;
 }
 
@@ -15045,6 +14774,9 @@ final class _GFilterInputStreamClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved3;
 }
 
+/// GInputStream:
+///
+/// Base class for streaming input operations.
 typedef GInputStreamClass = _GInputStreamClass;
 
 final class _GBufferedInputStreamClass extends ffi.Struct {
@@ -15086,6 +14818,9 @@ final class _GBufferedInputStreamClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved5;
 }
 
+/// GFilterInputStream:
+///
+/// A base class for all input streams that work on an underlying stream.
 typedef GFilterInputStreamClass = _GFilterInputStreamClass;
 
 final class _GOutputStreamClass extends ffi.Struct {
@@ -15241,6 +14976,13 @@ final class _GFilterOutputStreamClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved3;
 }
 
+/// GOutputStream:
+///
+/// Base class for writing output.
+///
+/// All classes derived from GOutputStream should implement synchronous
+/// writing, splicing, flushing and closing streams, but may implement
+/// asynchronous versions.
 typedef GOutputStreamClass = _GOutputStreamClass;
 
 final class _GBufferedOutputStreamClass extends ffi.Struct {
@@ -15251,6 +14993,9 @@ final class _GBufferedOutputStreamClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved2;
 }
 
+/// GFilterOutputStream:
+///
+/// A base class for all output streams that work on an underlying stream.
 typedef GFilterOutputStreamClass = _GFilterOutputStreamClass;
 
 final class _GCancellableClass extends ffi.Struct {
@@ -15478,6 +15223,9 @@ final class _GDataInputStreamClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved5;
 }
 
+/// GBufferedInputStream:
+///
+/// Implements #GFilterInputStream with a sized input buffer.
 typedef GBufferedInputStreamClass = _GBufferedInputStreamClass;
 
 final class _GDataOutputStream extends ffi.Struct {
@@ -16033,6 +15781,9 @@ final class _GDriveIface extends ffi.Struct {
       is_removable;
 }
 
+/// GDrive:
+///
+/// Opaque drive object.
 typedef GDrive = _GDrive;
 typedef GMountOperation = _GMountOperation;
 
@@ -16183,18 +15934,6 @@ final class _GIconIface extends ffi.Struct {
           gboolean Function(
               ffi.Pointer<GIcon> icon1, ffi.Pointer<GIcon> icon2)>> equal;
 
-  /// GIconIface::to_tokens:
-  /// @icon: The #GIcon
-  /// @tokens: (element-type utf8) (out caller-allocates):
-  /// The array to fill with tokens
-  /// @out_version: (out): version of serialized tokens
-  ///
-  /// Serializes the @icon into string tokens.
-  /// This is can be invoked when g_icon_new_for_string() is called.
-  ///
-  /// Returns: %TRUE if serialization took place, %FALSE otherwise
-  ///
-  /// Since: 2.20
   external ffi.Pointer<
       ffi.NativeFunction<
           gboolean Function(
@@ -16202,17 +15941,6 @@ final class _GIconIface extends ffi.Struct {
               ffi.Pointer<GPtrArray> tokens,
               ffi.Pointer<gint> out_version)>> to_tokens;
 
-  /// GIconIface::from_tokens:
-  /// @tokens: (array length=num_tokens): An array of tokens
-  /// @num_tokens: The number of tokens in @tokens
-  /// @version: Version of the serialized tokens
-  /// @error: Return location for errors, or %NULL to ignore
-  ///
-  /// Constructs a #GIcon from a list of @tokens.
-  ///
-  /// Returns: (nullable) (transfer full): the #GIcon or %NULL on error
-  ///
-  /// Since: 2.20
   external ffi.Pointer<
       ffi.NativeFunction<
           ffi.Pointer<GIcon> Function(
@@ -16311,8 +16039,8 @@ final class _GEmblemedIconClass extends ffi.Struct {
 /// @make_directory_finish: Finishes making a directory asynchronously.
 /// @make_symbolic_link: (nullable): Makes a symbolic link. %NULL if symbolic
 /// links are unsupported.
-/// @make_symbolic_link_async: Asynchronously makes a symbolic link
-/// @make_symbolic_link_finish: Finishes making a symbolic link asynchronously.
+/// @_make_symbolic_link_async: Asynchronously makes a symbolic link
+/// @_make_symbolic_link_finish: Finishes making a symbolic link asynchronously.
 /// @copy: (nullable): Copies a file. %NULL if copying is unsupported, which will
 /// cause `GFile` to use a fallback copy method where it reads from the
 /// source and writes to the destination.
@@ -16813,23 +16541,11 @@ final class _GFileIface extends ffi.Struct {
               ffi.Pointer<GCancellable> cancellable,
               ffi.Pointer<ffi.Pointer<GError>> error)>> make_symbolic_link;
 
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<GFile> file,
-              ffi.Pointer<ffi.Char> symlink_value,
-              ffi.Int io_priority,
-              ffi.Pointer<GCancellable> cancellable,
-              GAsyncReadyCallback callback,
-              gpointer user_data)>> make_symbolic_link_async;
+  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>
+      _make_symbolic_link_async;
 
-  external ffi.Pointer<
-          ffi.NativeFunction<
-              gboolean Function(
-                  ffi.Pointer<GFile> file,
-                  ffi.Pointer<GAsyncResult> result,
-                  ffi.Pointer<ffi.Pointer<GError>> error)>>
-      make_symbolic_link_finish;
+  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>
+      _make_symbolic_link_finish;
 
   external ffi.Pointer<
       ffi.NativeFunction<
@@ -17182,6 +16898,10 @@ final class _GFileIface extends ffi.Struct {
 
 typedef GFileEnumerator = _GFileEnumerator;
 typedef GFileInfo = _GFileInfo;
+
+/// GMount:
+///
+/// A handle to an object implementing the #GMountIface interface.
 typedef GMount = _GMount;
 typedef GFileAttributeInfoList = _GFileAttributeInfoList;
 typedef GFileInputStream = _GFileInputStream;
@@ -17190,7 +16910,7 @@ typedef GFileOutputStream = _GFileOutputStream;
 /// GFileProgressCallback:
 /// @current_num_bytes: the current number of bytes in the operation.
 /// @total_num_bytes: the total number of bytes in the operation.
-/// @data: user data passed to the callback.
+/// @user_data: user data passed to the callback.
 ///
 /// When doing file operations that may take a while, such as moving
 /// a file or copying a file, a progress callback is used to pass how
@@ -17198,9 +16918,11 @@ typedef GFileOutputStream = _GFileOutputStream;
 typedef GFileProgressCallback
     = ffi.Pointer<ffi.NativeFunction<GFileProgressCallbackFunction>>;
 typedef GFileProgressCallbackFunction = ffi.Void Function(
-    goffset current_num_bytes, goffset total_num_bytes, gpointer data);
+    goffset current_num_bytes, goffset total_num_bytes, gpointer user_data);
 typedef DartGFileProgressCallbackFunction = void Function(
-    Dartgint64 current_num_bytes, Dartgint64 total_num_bytes, gpointer data);
+    Dartgint64 current_num_bytes,
+    Dartgint64 total_num_bytes,
+    gpointer user_data);
 typedef goffset = gint64;
 typedef GFileMonitor = _GFileMonitor;
 typedef GFileIOStream = _GFileIOStream;
@@ -17210,7 +16932,7 @@ typedef GFileIOStream = _GFileIOStream;
 /// @current_size: the current cumulative size measurement
 /// @num_dirs: the number of directories visited so far
 /// @num_files: the number of non-directory files encountered
-/// @data: the data passed to the original request for this callback
+/// @user_data: the data passed to the original request for this callback
 ///
 /// This callback type is used by g_file_measure_disk_usage() to make
 /// periodic progress reports when measuring the amount of disk spaced
@@ -17248,13 +16970,13 @@ typedef GFileMeasureProgressCallbackFunction = ffi.Void Function(
     guint64 current_size,
     guint64 num_dirs,
     guint64 num_files,
-    gpointer data);
+    gpointer user_data);
 typedef DartGFileMeasureProgressCallbackFunction = void Function(
     Dartgint reporting,
     Dartguint64 current_size,
     Dartguint64 num_dirs,
     Dartguint64 num_files,
-    gpointer data);
+    gpointer user_data);
 
 final class _GFileEnumeratorClass extends ffi.Struct {
   external GObjectClass parent_class;
@@ -18145,6 +17867,9 @@ final class _GMountIface extends ffi.Struct {
       get_symbolic_icon;
 }
 
+/// GVolume:
+///
+/// Opaque mountable volume object.
 typedef GVolume = _GVolume;
 
 final class _GMountOperationClass extends ffi.Struct {
@@ -18361,6 +18086,9 @@ final class _GNativeVolumeMonitorClass extends ffi.Struct {
               ffi.Pointer<GCancellable> cancellable)>> get_mount_for_mount_path;
 }
 
+/// GVolumeMonitor:
+///
+/// A Volume Monitor that watches for volume events.
 typedef GVolumeMonitorClass = _GVolumeMonitorClass;
 
 final class _GNetworkAddressClass extends ffi.Struct {
@@ -18690,6 +18418,10 @@ final class _GProxyAddressEnumeratorClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved7;
 }
 
+/// GSocketAddressEnumerator:
+///
+/// Enumerator type for objects that contain or generate
+/// #GSocketAddress instances.
 typedef GSocketAddressEnumeratorClass = _GSocketAddressEnumeratorClass;
 
 final class _GProxyResolverInterface extends ffi.Struct {
@@ -18725,6 +18457,11 @@ final class _GProxyResolverInterface extends ffi.Struct {
               ffi.Pointer<ffi.Pointer<GError>> error)>> lookup_finish;
 }
 
+/// GProxyResolver:
+///
+/// A helper class to enumerate proxies base on URI.
+///
+/// Since: 2.26
 typedef GProxyResolver = _GProxyResolver;
 
 final class _GRemoteActionGroupInterface extends ffi.Struct {
@@ -18862,7 +18599,7 @@ final class _GResolverClass extends ffi.Struct {
   /// @flags: extra #GResolverNameLookupFlags to modify the lookup
   /// @cancellable: (nullable): a #GCancellable
   /// @callback: (scope async): a #GAsyncReadyCallback to call when completed
-  /// @user_data: data to pass to @callback
+  /// @user_data: (closure): data to pass to @callback
   ///
   /// Asynchronous version of GResolverClass::lookup_by_name_with_flags
   ///
@@ -18950,6 +18687,11 @@ final class _GStaticResource extends ffi.Struct {
   external gpointer padding;
 }
 
+/// GResource:
+///
+/// A resource bundle.
+///
+/// Since: 2.32
 typedef GResource = _GResource;
 typedef GStaticResource = _GStaticResource;
 
@@ -19138,6 +18880,11 @@ final class _GSocketClientClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved4;
 }
 
+/// GSocketClient:
+///
+/// A helper class for network clients to make connections.
+///
+/// Since: 2.22
 typedef GSocketClient = _GSocketClient;
 
 /// GSocketConnectableIface:
@@ -19259,6 +19006,11 @@ final class _GSocketListenerClass extends ffi.Struct {
   external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved6;
 }
 
+/// GSocket:
+///
+/// A lowlevel network socket object.
+///
+/// Since: 2.22
 typedef GSocket = _GSocket;
 
 /// GSocketServiceClass:
@@ -19328,6 +19080,13 @@ final class _GThreadedSocketServiceClass extends ffi.Struct {
 }
 
 typedef GSocketServiceClass = _GSocketServiceClass;
+
+/// GThreadedSocketService:
+///
+/// A helper class for handling accepting incoming connections in the
+/// glib mainloop and handling them in a thread.
+///
+/// Since: 2.22
 typedef GThreadedSocketService = _GThreadedSocketService;
 
 final class _GTlsBackend extends ffi.Opaque {}
@@ -19731,63 +19490,6 @@ final class _GTlsPasswordClass extends ffi.Struct {
 /// Since: 2.26
 final class _GTlsServerConnectionInterface extends ffi.Struct {
   external GTypeInterface g_iface;
-}
-
-final class _GUnixConnection extends ffi.Struct {
-  external GSocketConnection parent_instance;
-
-  external ffi.Pointer<GUnixConnectionPrivate> priv;
-}
-
-typedef GUnixConnectionPrivate = _GUnixConnectionPrivate;
-
-final class _GUnixConnectionPrivate extends ffi.Opaque {}
-
-final class _GUnixConnectionClass extends ffi.Struct {
-  external GSocketConnectionClass parent_class;
-}
-
-/// GUnixCredentialsMessageClass:
-///
-/// Class structure for #GUnixCredentialsMessage.
-///
-/// Since: 2.26
-final class _GUnixCredentialsMessageClass extends ffi.Struct {
-  external GSocketControlMessageClass parent_class;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved1;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved2;
-}
-
-typedef GSocketControlMessageClass = _GSocketControlMessageClass;
-
-final class _GUnixFDListClass extends ffi.Struct {
-  external GObjectClass parent_class;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved1;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved2;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved3;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved4;
-
-  external ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>> _g_reserved5;
-}
-
-final class _GUnixSocketAddress extends ffi.Struct {
-  external GSocketAddress parent_instance;
-
-  external ffi.Pointer<GUnixSocketAddressPrivate> priv;
-}
-
-typedef GUnixSocketAddressPrivate = _GUnixSocketAddressPrivate;
-
-final class _GUnixSocketAddressPrivate extends ffi.Opaque {}
-
-final class _GUnixSocketAddressClass extends ffi.Struct {
-  external GSocketAddressClass parent_class;
 }
 
 final class _GVfsClass extends ffi.Struct {
@@ -20584,8 +20286,6 @@ const int SEGV_MTEAERR = 8;
 
 const int SEGV_MTESERR = 9;
 
-const int SEGV_CPERR = 10;
-
 const int BUS_ADRALN = 1;
 
 const int BUS_ADRERR = 2;
@@ -21332,13 +21032,11 @@ const String G_GNUC_PRETTY_FUNCTION = '';
 
 const int G_ANALYZER_ANALYZING = 0;
 
-const String G_STRLOC = '/tmp/FPBSLN/temp_for_macros.hpp:54';
+const String G_STRLOC = '/tmp/XHVFHI/temp_for_macros.hpp:53';
 
 const int FALSE = 0;
 
 const int TRUE = 1;
-
-const int G_HAVE_GNUC_VISIBILITY = 1;
 
 const int _LIBC_LIMITS_H_ = 1;
 
@@ -21390,8 +21088,6 @@ const int __GLIBC_USE_DEPRECATED_GETS = 0;
 
 const int __GLIBC_USE_DEPRECATED_SCANF = 0;
 
-const int __GLIBC_USE_C2X_STRTOL = 1;
-
 const int _STDC_PREDEF_H = 1;
 
 const int __STDC_IEC_559__ = 1;
@@ -21408,7 +21104,7 @@ const int __GNU_LIBRARY__ = 6;
 
 const int __GLIBC__ = 2;
 
-const int __GLIBC_MINOR__ = 39;
+const int __GLIBC_MINOR__ = 35;
 
 const int _SYS_CDEFS_H = 1;
 
@@ -21438,9 +21134,39 @@ const int __GLIBC_USE_IEC_60559_TYPES_EXT = 1;
 
 const int MB_LEN_MAX = 16;
 
-const int LLONG_MIN = -9223372036854775808;
+const int SCHAR_MAX = 127;
+
+const int SHRT_MAX = 32767;
+
+const int INT_MAX = 2147483647;
+
+const int LONG_MAX = 9223372036854775807;
+
+const int SCHAR_MIN = -128;
+
+const int SHRT_MIN = -32768;
+
+const int INT_MIN = -2147483648;
+
+const int LONG_MIN = -9223372036854775808;
+
+const int UCHAR_MAX = 255;
+
+const int USHRT_MAX = 65535;
+
+const int UINT_MAX = 4294967295;
+
+const int ULONG_MAX = -1;
+
+const int CHAR_BIT = 8;
+
+const int CHAR_MIN = -128;
+
+const int CHAR_MAX = 127;
 
 const int LLONG_MAX = 9223372036854775807;
+
+const int LLONG_MIN = -9223372036854775808;
 
 const int ULLONG_MAX = -1;
 
@@ -21589,36 +21315,6 @@ const int LINE_MAX = 2048;
 const int CHARCLASS_NAME_MAX = 2048;
 
 const int RE_DUP_MAX = 32767;
-
-const int SCHAR_MAX = 127;
-
-const int SHRT_MAX = 32767;
-
-const int INT_MAX = 2147483647;
-
-const int LONG_MAX = 9223372036854775807;
-
-const int SCHAR_MIN = -128;
-
-const int SHRT_MIN = -32768;
-
-const int INT_MIN = -2147483648;
-
-const int LONG_MIN = -9223372036854775808;
-
-const int UCHAR_MAX = 255;
-
-const int USHRT_MAX = 65535;
-
-const int UINT_MAX = 4294967295;
-
-const int ULONG_MAX = -1;
-
-const int CHAR_BIT = 8;
-
-const int CHAR_MIN = -128;
-
-const int CHAR_MAX = 127;
 
 const int FLT_EVAL_METHOD = 0;
 
@@ -21784,15 +21480,17 @@ const String G_GUINTPTR_FORMAT = 'lu';
 
 const int GLIB_MAJOR_VERSION = 2;
 
-const int GLIB_MINOR_VERSION = 80;
+const int GLIB_MINOR_VERSION = 72;
 
-const int GLIB_MICRO_VERSION = 2;
+const int GLIB_MICRO_VERSION = 4;
 
 const int G_VA_COPY_AS_ARRAY = 1;
 
 const int G_HAVE_ISO_VARARGS = 1;
 
 const int G_HAVE_GROWING_STACK = 0;
+
+const int G_HAVE_GNUC_VISIBILITY = 1;
 
 const int G_HAVE_GNUC_VARARGS = 1;
 
@@ -21821,30 +21519,6 @@ const String G_DIR_SEPARATOR_S = '/';
 const int G_SEARCHPATH_SEPARATOR = 58;
 
 const String G_SEARCHPATH_SEPARATOR_S = ':';
-
-const int GLIB_VERSION_2_2 = 131584;
-
-const int GLIB_VERSION_2_4 = 132096;
-
-const int GLIB_VERSION_2_6 = 132608;
-
-const int GLIB_VERSION_2_8 = 133120;
-
-const int GLIB_VERSION_2_10 = 133632;
-
-const int GLIB_VERSION_2_12 = 134144;
-
-const int GLIB_VERSION_2_14 = 134656;
-
-const int GLIB_VERSION_2_16 = 135168;
-
-const int GLIB_VERSION_2_18 = 135680;
-
-const int GLIB_VERSION_2_20 = 136192;
-
-const int GLIB_VERSION_2_22 = 136704;
-
-const int GLIB_VERSION_2_24 = 137216;
 
 const int GLIB_VERSION_2_26 = 137728;
 
@@ -21894,21 +21568,13 @@ const int GLIB_VERSION_2_70 = 148992;
 
 const int GLIB_VERSION_2_72 = 149504;
 
-const int GLIB_VERSION_2_74 = 150016;
+const int GLIB_VERSION_CUR_STABLE = 149504;
 
-const int GLIB_VERSION_2_76 = 150528;
+const int GLIB_VERSION_PREV_STABLE = 148992;
 
-const int GLIB_VERSION_2_78 = 151040;
+const int GLIB_VERSION_MIN_REQUIRED = 149504;
 
-const int GLIB_VERSION_2_80 = 151552;
-
-const int GLIB_VERSION_CUR_STABLE = 151552;
-
-const int GLIB_VERSION_PREV_STABLE = 151040;
-
-const int GLIB_VERSION_MIN_REQUIRED = 151552;
-
-const int GLIB_VERSION_MAX_ALLOWED = 151552;
+const int GLIB_VERSION_MAX_ALLOWED = 149504;
 
 const int _TIME_H = 1;
 
@@ -22045,6 +21711,8 @@ const double G_LOG_2_BASE_10 = 0.3010299956639812;
 const int _STRING_H = 1;
 
 const int _STRINGS_H = 1;
+
+const int __GNUC_VA_LIST = 1;
 
 const String G_OS_INFO_KEY_NAME = 'NAME';
 
@@ -22376,8 +22044,6 @@ const int SEGV_MTEAERR1 = 8;
 
 const int SEGV_MTESERR1 = 9;
 
-const int SEGV_CPERR1 = 10;
-
 const int BUS_ADRALN1 = 1;
 
 const int BUS_ADRERR1 = 2;
@@ -22552,10 +22218,6 @@ const int G_UNICODE_COMBINING_MARK = 10;
 
 const int G_UNICHAR_MAX_DECOMPOSITION_LENGTH = 18;
 
-const String G_STR_DELIMITERS = '_-|> <.';
-
-const int G_ASCII_DTOSTR_BUF_SIZE = 39;
-
 const String G_KEY_FILE_DESKTOP_GROUP = 'Desktop Entry';
 
 const String G_KEY_FILE_DESKTOP_KEY_TYPE = 'Type';
@@ -22612,10 +22274,6 @@ const int G_LOG_FATAL_MASK = 5;
 
 const String G_OPTION_REMAINING = '';
 
-const int G_REF_COUNT_INIT = -1;
-
-const int G_ATOMIC_REF_COUNT_INIT = 1;
-
 const String G_CSET_A_2_Z = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const String G_CSET_a_2_z = 'abcdefghijklmnopqrstuvwxyz';
@@ -22627,6 +22285,10 @@ const String G_CSET_LATINC =
 
 const String G_CSET_LATINS =
     '\xDF\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF';
+
+const String G_STR_DELIMITERS = '_-|> <.';
+
+const int G_ASCII_DTOSTR_BUF_SIZE = 39;
 
 const int _ERRNO_H = 1;
 
@@ -22976,8 +22638,6 @@ const int PTHREAD_ONCE_INIT = 0;
 
 const int PTHREAD_BARRIER_SERIAL_THREAD = -1;
 
-const int G_TYPE_FUNDAMENTAL_SHIFT = 2;
-
 const int G_TYPE_FUNDAMENTAL_MAX = 1020;
 
 const int G_TYPE_INVALID = 0;
@@ -23023,6 +22683,8 @@ const int G_TYPE_PARAM = 76;
 const int G_TYPE_OBJECT = 80;
 
 const int G_TYPE_VARIANT = 84;
+
+const int G_TYPE_FUNDAMENTAL_SHIFT = 2;
 
 const int G_TYPE_RESERVED_GLIB_FIRST = 22;
 
@@ -23987,25 +23649,17 @@ const String G_FILE_ATTRIBUTE_TIME_MODIFIED = 'time::modified';
 
 const String G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC = 'time::modified-usec';
 
-const String G_FILE_ATTRIBUTE_TIME_MODIFIED_NSEC = 'time::modified-nsec';
-
 const String G_FILE_ATTRIBUTE_TIME_ACCESS = 'time::access';
 
 const String G_FILE_ATTRIBUTE_TIME_ACCESS_USEC = 'time::access-usec';
-
-const String G_FILE_ATTRIBUTE_TIME_ACCESS_NSEC = 'time::access-nsec';
 
 const String G_FILE_ATTRIBUTE_TIME_CHANGED = 'time::changed';
 
 const String G_FILE_ATTRIBUTE_TIME_CHANGED_USEC = 'time::changed-usec';
 
-const String G_FILE_ATTRIBUTE_TIME_CHANGED_NSEC = 'time::changed-nsec';
-
 const String G_FILE_ATTRIBUTE_TIME_CREATED = 'time::created';
 
 const String G_FILE_ATTRIBUTE_TIME_CREATED_USEC = 'time::created-usec';
-
-const String G_FILE_ATTRIBUTE_TIME_CREATED_NSEC = 'time::created-nsec';
 
 const String G_FILE_ATTRIBUTE_UNIX_DEVICE = 'unix::device';
 
@@ -24046,39 +23700,6 @@ const String G_FILE_ATTRIBUTE_THUMBNAIL_PATH = 'thumbnail::path';
 const String G_FILE_ATTRIBUTE_THUMBNAILING_FAILED = 'thumbnail::failed';
 
 const String G_FILE_ATTRIBUTE_THUMBNAIL_IS_VALID = 'thumbnail::is-valid';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_PATH_NORMAL = 'thumbnail::path-normal';
-
-const String G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL =
-    'thumbnail::failed-normal';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_NORMAL =
-    'thumbnail::is-valid-normal';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_PATH_LARGE = 'thumbnail::path-large';
-
-const String G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE =
-    'thumbnail::failed-large';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_LARGE =
-    'thumbnail::is-valid-large';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_PATH_XLARGE = 'thumbnail::path-xlarge';
-
-const String G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE =
-    'thumbnail::failed-xlarge';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XLARGE =
-    'thumbnail::is-valid-xlarge';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_PATH_XXLARGE =
-    'thumbnail::path-xxlarge';
-
-const String G_FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE =
-    'thumbnail::failed-xxlarge';
-
-const String G_FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XXLARGE =
-    'thumbnail::is-valid-xxlarge';
 
 const String G_FILE_ATTRIBUTE_PREVIEW_ICON = 'preview::icon';
 
@@ -24125,8 +23746,6 @@ const String G_MENU_LINK_SUBMENU = 'submenu';
 
 const String G_MENU_LINK_SECTION = 'section';
 
-const int G_MENU_EXPORTER_MAX_SECTION_SIZE = 1000;
-
 const String G_VOLUME_MONITOR_EXTENSION_POINT_NAME = 'gio-volume-monitor';
 
 const String G_NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME =
@@ -24163,6 +23782,6 @@ const String G_VOLUME_IDENTIFIER_KIND_CLASS = 'class';
 
 const int FLATPAK_MAJOR_VERSION = 1;
 
-const int FLATPAK_MINOR_VERSION = 15;
+const int FLATPAK_MINOR_VERSION = 12;
 
-const int FLATPAK_MICRO_VERSION = 8;
+const int FLATPAK_MICRO_VERSION = 7;

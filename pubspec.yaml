@@ -22,3 +22,7 @@ ffigen:
   headers:
     entry-points:
       - "/usr/include/flatpak/flatpak.h"
+
+  functions:
+    exclude:
+      - "_.*" # Exclude all functions ending with dispose.
